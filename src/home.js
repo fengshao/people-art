@@ -2,13 +2,5 @@
 require("styles/home.scss");
 //引入ant.design
 require("antd/dist/antd.css");
-var test = require("./scripts/worth-buying/public");
-function init() {
-
-	ReactDOM.render(
-		<test  />,
-		$('#main')[0]
-	);
-
-}
-exports.init = init;
+import Home from './scripts/home'
+ReactDOM.render(<Home  />, $('#main')[0]);

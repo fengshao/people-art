@@ -1,7 +1,7 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var PublicAjax = require("../../../../ajax/public-ajax");
+var PublicAjax = require("../../../ajax/public-ajax");
 
 function WorthBuyingAction() {
 
@@ -17,11 +17,11 @@ function WorthBuyingAction() {
 
 	this.getWorthBuyingList = function (typeID) {
 		var _this = this;
-		PublicAjax.getSpecialList(typeID).then(function (list) {
-			_this.dispatch(list.data);
-		}, function (errorMsg) {
-			_this.dispatch(errorMsg);
-		});
+		// PublicAjax.getSpecialList(typeID).then(function (list) {
+		// 	_this.dispatch(list.data);
+		// }, function (errorMsg) {
+		// 	_this.dispatch(errorMsg);
+		// });
 	};
 
 
