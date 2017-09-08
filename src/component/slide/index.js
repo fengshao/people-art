@@ -1,65 +1,83 @@
 /**
- * Created by fengs on 2017/9/7.
+ * Created by fengshao on 2017/9/8.
  */
-require("./newsdetail.css");
-require("./jquery.SuperSlide.2.1.1.js");
-require("./newsdetail");
-import left1 from './images/left1.jpg'
-import right1 from './images/right1.jpg'
+require("./index.css");
+//require("./script");
+//import image1 from './image/1.png';
+//import image2 from './image/2.png';
+//import image3 from './image/3.png';
+//import image4 from './image/4.png';
+//import image5 from './image/5.png';
 import React from 'react';
+//<button onclick="left()">上一页</button>
+//<button onclick="right()">下一页</button>
+//<div className="img"><img src={image1}/></div>
+//<div className="img"><img src={image2}/></div>
+//	<div className="img"><img src={image3}/></div>
+//	<div className="img"><img src={image4}/></div>
+//	<div className="img"><img src={image5}/></div>
+var HomeStore = require("./script/home-store");
+var HomeAction = require("./script/home-action");
+//窗口大小改变时改变轮播图宽高
+$(window).resize(function () {
+	$(".slide").height($(".slide").width() * 0.56);
+});
 var Slide = React.createClass({
+	getInitialState: function () {
+		var data = HomeStore.getState();
+		return data;
+	},
+
+	onChange: function () {
+		var data = HomeStore.getState();
+		this.setState(data);
+	},
+
+	componentDidMount: function () {
+		HomeStore.listen(this.onChange);
+		HomeAction.initSlide();
+		HomeAction.k_touch();
+	},
+
+	componentWillUnmount: function () {
+		HomeStore.unlisten(this.onChange);
+		alt.flush();
+	},
+
+	events: {
+		deleteSpecialFnc: function (data) {
+			HomeAction.deleteSpecial(data);
+		},
+		showEditFrom: function (rowData) {
+			HomeAction.showEditFrom(rowData);
+		},
+		showAddFrom: function () {
+			HomeAction.showAddFrom();
+		},
+		addSpecial: function (newData) {
+			HomeAction.addSpecial(newData);
+		},
+		editSpecial: function (newData) {
+			HomeAction.editSpecial(newData);
+		},
+		hideEditFrom: function () {
+			HomeAction.hideEditFrom();
+		}
+	},
 	render: function () {
 		return (
-			<div>
-				<center>
-					<div className="detail_context_pic">
-						<div className="detail_context_pic_top">
-							<a href="#"><img src={this.props.imgDatas[0]} alt="" id="pic1" curindex="0"/></a>
-							<a id="preArrow" href="javascript:void(0)" className="contextDiv" title="上一张">
-								<span id="preArrow_A"></span>
-							</a>
-							<a id="nextArrow" href="javascript:void(0)" className="contextDiv" title="上一张">
-								<span id="nextArrow_A"></span>
-							</a>
-							<div id="miaoshuwarp">
-								<div className="miaoshu">
-								</div>
-							</div>
-						</div>
-						<div className="detail_context_pic_bot">
-							<div className="detail_picbot_left">
-								<a href="javascript:void(0)" id="preArrow_B"><img
-									src={left1} alt="上一个"/></a>
-							</div>
-							<div className="detail_picbot_mid">
-								<ul>
-									{
-										this.props.imgDatas.map(function (goodsTypeID, i) {
-											return (
-												<li>
-													<a href='javascript:void(0);'>
-														<img
-															src={goodsTypeID}
-															width='90px'
-															height='60px'
-															title='2014年8月10日19点15分，深圳上空的超级月亮。'
-															alt='2014年8月10日19点15分，深圳上空的超级月亮。'
-															bigimg={goodsTypeID}
-															text='2014年8月10日19点15分，深圳上空的超级月亮。'/>
-													</a>
-												</li>
-											)
-										})
-									}
-								</ul>
-							</div>
-							<div className="detail_picbot_right">
-								<a href="javascript:void(0)" id="nextArrow_B">
-									<img src={right1} alt="下一个"/></a>
-							</div>
-						</div>
-					</div>
-				</center>
+			<div className="container">
+				<div id="slide" className="index-slide slide" alt="star">
+					{
+						this.props.imgDatas.map(function (goodsTypeID, i) {
+							return (
+								<div key={i} className="img"><img src={goodsTypeID}/></div>
+							)
+						})
+					}
+					<div className="slide-bt"></div>
+				</div>
+
 			</div>
 		);
 	}

@@ -70,6 +70,7 @@ $(function () {
 	imgClickFy();
 //触摸滑动模块
 	function k_touch() {
+		debugger
 		var _start = 0, _end = 0, _content = document.getElementById("slide");
 		_content.addEventListener("touchstart", touchStart, false);
 		_content.addEventListener("touchmove", touchMove, false);
@@ -94,6 +95,19 @@ $(function () {
 			}
 		}
 	};
+	//修改当前最中间图片对应按钮选中状态
+	function slideLi() {
+		var slideList = parseInt($(".slide .img3").attr("data-slide-imgId")) + 1;
+		$(".slide-bt span").removeClass("on");
+		$(".slide-bt span[data-slide-bt=" + slideList + "]").addClass("on");
+	};
+	//轮播图片左右图片点击翻页
+	function imgClickFy() {
+		$(".slide .img").removeAttr("onclick");
+		$(".slide .img2").attr("onclick", "left()");
+		$(".slide .img4").attr("onclick", "right()");
+	};
+
 });
 
 
