@@ -4,7 +4,7 @@
  */
 
 // import LunBo from '../../component/lunbo';
-import Slide from '../../component/slide';
+import Slide from '../../component/test';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
