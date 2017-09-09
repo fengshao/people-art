@@ -1,10 +1,11 @@
 /**
- * Created by fengs on 2016/9/16.
- * 值得买
+ * Created by fengs on 2017/9/9.
+ *
  */
+require('./style/main.scss');
 
-// import LunBo from '../../component/lunbo';
 import Slide from '../../component/slide';
+import HomePage from './view/home';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
@@ -21,7 +22,6 @@ var Home = React.createClass({
 
 	componentDidMount: function () {
 		HomeStore.listen(this.onChange);
-		// HomeAction.getWorthBuyingList();
 	},
 
 	componentWillUnmount: function () {
@@ -49,21 +49,12 @@ var Home = React.createClass({
 			HomeAction.hideEditFrom();
 		}
 	},
-// <LunBo interval={100} number={4} boxStyle="content" interval={4000}>
-// 	{
-// 		this.state.imgDatas.map(function (goodsTypeID, i) {
-// 			return (
-// 				<li className="boxStyleLi" key={i}>
-// 					<img src={goodsTypeID}/>
-// 				</li>
-// 			)
-// 		})
-// 	}
-// </LunBo>
+// <Slide imgDatas={this.state.imgDatas}/>
+
 	render: function () {
 		return (
-			<div>
-				<Slide imgDatas={this.state.imgDatas}/>
+			<div className="main-content">
+				<HomePage/>
 			</div>
 		);
 	}
