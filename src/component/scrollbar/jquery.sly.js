@@ -215,7 +215,7 @@
 
 				// Resize handle
 				$handle.css(o.horizontal ? {width: handleSize + 'px'} : {height: handleSize + 'px'});
-				$handle1.css(o.horizontal ? {width: handleSize + 'px'} : {height: handleSize + 'px'});
+				$handle1 ? $handle1.css(o.horizontal ? {width: handleSize + 'px'} : {height: handleSize + 'px'}) : "";
 
 			}
 
@@ -407,7 +407,7 @@
 				hPos.cur = Math.round(( pos.cur - pos.min ) / ( pos.max - pos.min ) * hPos.max);
 				hPos.cur = hPos.cur < hPos.min ? hPos.min : hPos.cur > hPos.max ? hPos.max : hPos.cur;
 				$handle.stop().animate(o.horizontal ? {left: hPos.cur + 'px'} : {top: hPos.cur + 'px'}, isNumber(speed) ? speed : o.speed, o.easing);
-				$handle1.stop().animate(o.horizontal ? {left: hPos.cur + 'px'} : {top: hPos.cur + 'px'}, isNumber(speed) ? speed : o.speed, o.easing);
+				$handle1 ? $handle1.stop().animate(o.horizontal ? {left: hPos.cur + 'px'} : {top: hPos.cur + 'px'}, isNumber(speed) ? speed : o.speed, o.easing) : '';
 
 			}
 
@@ -1166,7 +1166,6 @@
 
 			// Dragging navigation
 			o.dragContent && $dragSource.bind('mousedown.' + namespace, function (e) {
-
 				// Ignore other than left mouse button
 				if (e.which !== 1) {
 					return;
@@ -1190,10 +1189,11 @@
 
 				// Bind dragging events
 				doc.bind(dragEvents, function (e) {
-
+					console.log("e.type:", e.type);
 					var released = e.type === 'mouseup',
 						path = o.horizontal ? e.clientX - leftInit : e.clientY - topInit,
 						newPos = posInit - path;
+					console.log("released:", released);
 
 					// Initialized logic
 					if (!isInitialized && Math.abs(path) > 10) {
@@ -1265,14 +1265,22 @@
 					if (released) {
 						$slidee.trigger(pluginName + ':dragEnd', [pos]);
 					}
-
 				});
-
 			});
 
 			// Scrollbar navigation
 			$handle && o.dragHandle && $handle.bind('mousedown.' + namespace, function (e) {
+				scrollbarNavigation(e);
+			});
 
+			$handle1 && o.dragHandle && $handle1.bind('mousedown.' + namespace, function (e) {
+				scrollbarNavigation(e);
+			});
+
+			o.dragContent && document.getElementById("repertoire-sly").addEventListener("touchstart", draggingNavigation, false);
+			// o.dragContent && $dragSource.addEventListener("touchend", touchEnd, false);
+
+			function scrollbarNavigation(e) {
 				// Ignore other than left mouse button
 				if (e.which !== 1) {
 					return;
@@ -1289,88 +1297,6 @@
 
 				// Add dragging class
 				$handle.addClass(o.draggedClass);
-
-				// Stop potential ongoing animations
-				stop();
-
-				// Bind dragging events
-				doc.bind(dragEvents, function (e) {
-
-					stopDefault(e);
-
-					var released = e.type === 'mouseup',
-						path = o.horizontal ? e.clientX - leftInit : e.clientY - topInit,
-						newPos = posInit + path,
-						time = +new Date();
-
-					// Dragging state
-					isDragging = !released;
-
-					// Unbind events and remove classes when released
-					if (released) {
-
-						doc.unbind(dragEvents);
-						$handle.removeClass(o.draggedClass);
-
-					}
-
-					// Execute only moves within path limits
-					if (path < pathMax + 5 && path > pathMin - 5 || released) {
-
-						// Fix overflows
-						hPos.cur = newPos > hPos.max ? hPos.max : newPos < hPos.min ? hPos.min : newPos;
-
-						// Move handle
-						$handle.stop().css(o.horizontal ? {left: hPos.cur + 'px'} : {top: hPos.cur + 'px'});
-
-						// Trigger :dragStart event
-						if (!nextDrag) {
-							$handle.trigger(pluginName + ':dragStart', [hPos]);
-						}
-
-						// Trigger :drag event
-						$handle.trigger(pluginName + ':drag', [hPos]);
-
-						// Trigger :dragEnd event
-						if (released) {
-							$handle.trigger(pluginName + ':dragEnd', [hPos]);
-						}
-
-						// Throttle sync interval -> smoother animations, lower CPU load
-						if (nextDrag <= time || released || path > pathMax || path < pathMin) {
-
-							nextDrag = time + 50;
-
-							// Synchronize slidee position
-							slide(Math.round(hPos.cur / hPos.max * ( pos.max - pos.min )) + pos.min, released, released ? o.speed : 50);
-
-						}
-
-						// Sync pagesbar
-						syncPages();
-
-					}
-
-				});
-
-			});
-			$handle1 && o.dragHandle && $handle1.bind('mousedown.' + namespace, function (e) {
-
-				// Ignore other than left mouse button
-				if (e.which !== 1) {
-					return;
-				}
-
-				stopDefault(e);
-
-				var leftInit = e.clientX,
-					topInit = e.clientY,
-					posInit = hPos.cur,
-					pathMin = -hPos.cur,
-					pathMax = hPos.max - hPos.cur,
-					nextDrag = 0;
-
-				// Add dragging class
 				$handle1.addClass(o.draggedClass);
 
 				// Stop potential ongoing animations
@@ -1393,6 +1319,7 @@
 					if (released) {
 
 						doc.unbind(dragEvents);
+						$handle.removeClass(o.draggedClass);
 						$handle1.removeClass(o.draggedClass);
 
 					}
@@ -1404,18 +1331,22 @@
 						hPos.cur = newPos > hPos.max ? hPos.max : newPos < hPos.min ? hPos.min : newPos;
 
 						// Move handle
+						$handle.stop().css(o.horizontal ? {left: hPos.cur + 'px'} : {top: hPos.cur + 'px'});
 						$handle1.stop().css(o.horizontal ? {left: hPos.cur + 'px'} : {top: hPos.cur + 'px'});
 
 						// Trigger :dragStart event
 						if (!nextDrag) {
+							$handle.trigger(pluginName + ':dragStart', [hPos]);
 							$handle1.trigger(pluginName + ':dragStart', [hPos]);
 						}
 
 						// Trigger :drag event
+						$handle.trigger(pluginName + ':drag', [hPos]);
 						$handle1.trigger(pluginName + ':drag', [hPos]);
 
 						// Trigger :dragEnd event
 						if (released) {
+							$handle.trigger(pluginName + ':dragEnd', [hPos]);
 							$handle1.trigger(pluginName + ':dragEnd', [hPos]);
 						}
 
@@ -1433,15 +1364,112 @@
 						syncPages();
 
 					}
-
 				});
+			}
 
-			});
+			function draggingNavigation(e) {
+				// Ignore other than left mouse button
+				// if (e.which !== 1) {
+				// 	return;
+				// }
+
+				stopDefault(e);
+
+				var leftInit = e.changedTouches[0].clientX,
+					topInit = e.changedTouches[0].clientY,
+					posInit = pos.cur,
+					start = +new Date(),
+					srcEl = e.target,
+					easeoff = 0,
+					isInitialized = 0;
+
+				// Add dragging class
+				$slidee.addClass(o.draggedClass);
+
+				// Stop potential ongoing animations
+				stop();
+
+				// Bind dragging events
+				o.dragContent && $("body")[0].addEventListener("touchmove", test, false);
+				function test(e) {
+					var released = e.type === 'mouseup',
+						path = o.horizontal ? e.changedTouches[0].clientX - leftInit : e.changedTouches[0].clientY - topInit,
+						newPos = posInit - path;
+					// Initialized logic
+					if (!isInitialized && Math.abs(path) > 10) {
+
+						isInitialized = 1;
+
+						// Trigger :dragStart event
+						$slidee.trigger(pluginName + ':dragStart', [pos]);
+
+					}
+
+					// Limits & Elastic bounds
+					if (newPos > pos.max) {
+						newPos = o.elasticBounds ? pos.max + ( newPos - pos.max ) / 6 : pos.max;
+					} else if (newPos < pos.min) {
+						newPos = o.elasticBounds ? pos.min + ( newPos - pos.min ) / 6 : pos.min;
+					}
+
+					o.dragContent && $("body")[0].addEventListener("touchend", test1, false);
+					function test1(e) {
+						// Cleanup
+						$("body")[0].removeEventListener("touchend", test1);
+						$("body")[0].removeEventListener("touchmove", test1);
+						$slidee.removeClass(o.draggedClass);
+
+						// How long was the dragging
+						var time = +new Date() - start;
+
+						// Calculate swing length
+						var swing = time < 300 ? Math.ceil(Math.pow(6 / ( time / 300 ), 2) * Math.abs(path) / 120) : 0;
+						newPos += path > 0 ? -swing : swing;
+					}
+
+					// Drag only when isInitialized
+					if (!isInitialized) {
+						return;
+					}
+
+					stopDefault(e);
+
+					// Stop default click action on source element
+					if (srcEl) {
+
+						$(srcEl).bind('click.' + namespace, function stopMe(e) {
+
+							stopDefault(e, true);
+							$(this).unbind('click.' + namespace, stopMe);
+
+						});
+
+						srcEl = 0;
+
+					}
+
+					// Dragging state
+					isDragging = !released;
+
+					// Animage, synch bars, & align
+					slide(newPos, released, released ? o.speed : 0);
+					syncBars(released ? null : 0);
+
+					// Trigger :drag event
+					if (isInitialized) {
+						$slidee.trigger(pluginName + ':drag', [pos]);
+					}
+
+					// Trigger :dragEnd event
+					if (released) {
+						$slidee.trigger(pluginName + ':dragEnd', [pos]);
+					}
+				}
+
+			}
 
 		}());
-
 	}
-
 
 // jQuery plugin extension
 	$.fn[pluginName] = function (options, returnInstance) {
