@@ -2,8 +2,8 @@
  * Created by fengs on 2017/9/10.
  */
 require('../style/classicRepertoire.scss');
-var Sly = require("../../../component/scrollbar/jquery.sly.js");
-
+require("../../../component/scrollbar/sly.js");
+// import Sly from "../../../component/scrollbar/sly.js";
 var ClassicRepertoire = React.createClass({
 
 	componentDidMount: function () {
@@ -15,17 +15,21 @@ var ClassicRepertoire = React.createClass({
 		// 	touchDragging: 1
 		// };
 		var cont = $(".classic-repertoire-content"),
-			frame = cont.find(".repertoire-sly"),
+			// frame = cont.find(".repertoire-sly"),
 			scrollbar = cont.find(".repertoire-scrollbar"),
 			options = {
 				"horizontal": 1,
 				"itemNav": "basic",
 				"dragContent": 1,
-				"startAt": 3,
+				// "startAt": 3,
 				scrollBar: scrollbar,
-				"scrollBy": 1
+				"scrollBy": 1,
+				mouseDragging: 1,
+				touchDragging: 1
 			};
-		frame.sly(options);
+		var frame = new Sly('#repertoire-sly', options).init();
+		// $('#repertoire-sl').sly(options);
+		// frame.sly(options);
 	},
 
 	render(){
@@ -44,7 +48,7 @@ var ClassicRepertoire = React.createClass({
 								<div className="repertoire-list-div">
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
+										<div className="repertoire-video-title">《雷雨1》</div>
 									</li>
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
@@ -58,7 +62,7 @@ var ClassicRepertoire = React.createClass({
 								<div className="repertoire-list-div">
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
+										<div className="repertoire-video-title">《雷雨2》</div>
 									</li>
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
@@ -72,7 +76,7 @@ var ClassicRepertoire = React.createClass({
 								<div className="repertoire-list-div">
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
+										<div className="repertoire-video-title">《雷雨3》</div>
 									</li>
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
@@ -86,7 +90,7 @@ var ClassicRepertoire = React.createClass({
 								<div className="repertoire-list-div">
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
+										<div className="repertoire-video-title">《雷雨4》</div>
 									</li>
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
@@ -100,7 +104,7 @@ var ClassicRepertoire = React.createClass({
 								<div className="repertoire-list-div">
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
+										<div className="repertoire-video-title">《雷雨5》</div>
 									</li>
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
@@ -114,7 +118,7 @@ var ClassicRepertoire = React.createClass({
 								<div className="repertoire-list-div">
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
+										<div className="repertoire-video-title">《雷雨6》</div>
 									</li>
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
@@ -128,7 +132,7 @@ var ClassicRepertoire = React.createClass({
 								<div className="repertoire-list-div">
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
+										<div className="repertoire-video-title">《雷雨7》</div>
 									</li>
 									<li className="repertoire-list-li">
 										<div className="repertoire-video-img"></div>
