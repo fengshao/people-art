@@ -6,6 +6,7 @@ require('./style/main.scss');
 
 import Slide from '../../component/slide';
 import HomePage from './view/home';
+import ClassicRepertoire from './view/ClassicRepertoire';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
@@ -30,23 +31,14 @@ var Home = React.createClass({
 	},
 
 	events: {
-		deleteSpecialFnc: function (data) {
-			HomeAction.deleteSpecial(data);
+		openClassicRepertoire: function () {
+			HomeAction.openClassicRepertoire();
 		},
-		showEditFrom: function (rowData) {
-			HomeAction.showEditFrom(rowData);
+		openPeopleArtList: function () {
+			HomeAction.openPeopleArtList();
 		},
-		showAddFrom: function () {
-			HomeAction.showAddFrom();
-		},
-		addSpecial: function (newData) {
-			HomeAction.addSpecial(newData);
-		},
-		editSpecial: function (newData) {
-			HomeAction.editSpecial(newData);
-		},
-		hideEditFrom: function () {
-			HomeAction.hideEditFrom();
+		backOff: function (type) {
+			HomeAction.backOff(type);
 		}
 	},
 // <Slide imgDatas={this.state.imgDatas}/>
@@ -54,7 +46,19 @@ var Home = React.createClass({
 	render: function () {
 		return (
 			<div className="main-content">
-				<HomePage/>
+				{
+					this.state.isOpenHomePage ?
+						<HomePage
+							openClassicRepertoire={this.events.openClassicRepertoire}
+							openPeopleArtList={this.events.openPeopleArtList}
+						/> : null
+				}
+				{
+					this.state.isOpenClassicRepertoire ?
+						<ClassicRepertoire
+							backOff={this.events.backOff}
+						/> : null
+				}
 			</div>
 		);
 	}

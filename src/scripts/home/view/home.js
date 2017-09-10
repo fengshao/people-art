@@ -2,16 +2,15 @@
  * Created by fengs on 2017/9/9.
  */
 require('../style/home.scss');
-var AddBannerForm = React.createClass({
+var HomePage = React.createClass({
 	render(){
-
 		return (
 			<div className="home-content">
-				<div className="click-div">
+				<div className="click-div" onClick={this.props.openPeopleArtList.bind(this)}>
 					<div className="performer-time-content">1952-2017</div>
 				</div>
 				<div className="bottom-content">
-					<div className="bottom-left">
+					<div className="bottom-left" onClick={this.props.openClassicRepertoire.bind(this)}>
 						<div className="left-title-img"></div>
 						<div className="left-click-in-img"></div>
 					</div>
@@ -23,4 +22,4 @@ var AddBannerForm = React.createClass({
 		);
 	}
 });
-module.exports = AddBannerForm;
+module.exports = HomePage;

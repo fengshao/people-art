@@ -3,11 +3,10 @@
  */
 var WorthBuyingAction = require("../action/home-action");
 
-function WorthBuyingStore() {
-	this.worthBuyingList = [];
-	this.editRowData = {};
-	this.isShowEditFrom = false;
-	this.isShowAddFrom = false;
+function HomeStore() {
+	this.isOpenClassicRepertoire = false;
+	this.isOpenPeopleArtList = false;
+	this.isOpenHomePage = true;
 
 	this.imgDatas = ["http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
 		"http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
@@ -21,75 +20,30 @@ function WorthBuyingStore() {
 	this.bindActions(WorthBuyingAction);
 }
 
-WorthBuyingStore.prototype.getWorthBuyingList = function (worthBuyingList) {
-	this.editRowData = {
-		title: "",
-		sort: "",
-		id: "",
-		url_wechat: "",
-		url_qq: "",
-		url_app: "",
-		img_qq: "",
-		img_app: "",
-		img_wechat: ""
-	};
-	this.isShowEditFrom = false;
-	this.isShowAddFrom = false;
-	this.worthBuyingList = worthBuyingList;
+//进入经典曲目页面
+HomeStore.prototype.openClassicRepertoire = function (worthBuyingList) {
+	this.isOpenClassicRepertoire = true;
+	this.isOpenPeopleArtList = false;
+	this.isOpenHomePage = false;
 };
 
-WorthBuyingStore.prototype.deleteSpecial = function (obj) {
-	if (obj.data.error == 0) {
-		var id = obj.id;
-		for (var i = 0; i < this.worthBuyingList.length; i++) {
-			if (id == this.worthBuyingList[i].id) {
-				this.worthBuyingList.splice(i, 1);
-			}
-		}
+//进入演员列表页
+HomeStore.prototype.openPeopleArtList = function (obj) {
+	this.isOpenClassicRepertoire = false;
+	this.isOpenPeopleArtList = true;
+	this.isOpenHomePage = false;
+};
+
+//回到上一页
+HomeStore.prototype.backOff = function (type) {
+	switch (type) {
+		case "homePage":
+			this.isOpenClassicRepertoire = false;
+			this.isOpenPeopleArtList = false;
+			this.isOpenHomePage = true;
+			break;
 	}
-
 };
 
-WorthBuyingStore.prototype.showEditFrom = function (rowData) {
-	this.editRowData = rowData;
-	this.isShowEditFrom = true;
-};
 
-WorthBuyingStore.prototype.showAddFrom = function () {
-	this.editRowData = {
-		title: "",
-		sort: "",
-		id: "",
-		url_wechat: "",
-		url_qq: "",
-		url_app: "",
-		img_qq: "",
-		img_app: "",
-		img_wechat: ""
-	};
-	this.isShowAddFrom = true;
-};
-
-WorthBuyingStore.prototype.addSpecial = function () {
-};
-
-WorthBuyingStore.prototype.editSpecial = function () {
-};
-
-WorthBuyingStore.prototype.hideEditFrom = function () {
-	this.editRowData = {
-		title: "",
-		sort: "",
-		id: "",
-		url_wechat: "",
-		url_qq: "",
-		url_app: "",
-		img_qq: "",
-		img_app: "",
-		img_wechat: ""
-	};
-	this.isShowEditFrom = false;
-	this.isShowAddFrom = false;
-};
-
-module.exports = alt.createStore(WorthBuyingStore, 'WorthBuyingStore');
+module.exports = alt.createStore(HomeStore, 'HomeStore');
