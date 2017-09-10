@@ -65,7 +65,7 @@ if (webpackMode === 'production') {
 	}));
 }
 
-var webpackOutPublicPath = webpackMode == "production" ? '/shoppingCMS/dist/' : "/dist/";
+var webpackOutPublicPath = webpackMode == "production" ? '/dist/' : "/dist/";
 module.exports = {
 	devtool: '#cheap-module-source-map',
 	devServer: {
