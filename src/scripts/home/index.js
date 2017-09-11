@@ -3,10 +3,12 @@
  *
  */
 require('./style/main.scss');
+require("../../component/scrollbar/sly.js");
 
 import Slide from '../../component/slide';
 import HomePage from './view/home';
 import ClassicRepertoire from './view/ClassicRepertoire';
+import PerformerList from './view/performer-list';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
@@ -57,6 +59,13 @@ var Home = React.createClass({
 					this.state.isOpenClassicRepertoire ?
 						<ClassicRepertoire
 							backOff={this.events.backOff}
+						/> : null
+				}
+				{
+					this.state.isOpenPerformerList ?
+						<PerformerList
+							letterArr={this.state.letterArr}
+							performerArr={this.state.performerArr}
 						/> : null
 				}
 			</div>

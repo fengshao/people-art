@@ -1,0 +1,106 @@
+.performer-list-content {
+  width: 100%;
+  height: 100%;
+  background: transparent url("~images/performer-list/performer-list-bg.png") no-repeat;
+  background-size: contain;
+  position: relative;
+
+  .performer-list-div {
+	height: 1579px;
+	width: 985px;
+	position: absolute;
+	top: 345px;
+	left: 48px;
+	border: 1px solid #0b97c4;
+	.performer-list-scrollbar {
+	  width: 10px;
+	  height: 100%;
+	  background-color: #572d18;
+	  position: absolute;
+
+	  .handle {
+		width: 6px;
+		margin: 0 auto;
+		background-color: #e0d6d1;
+
+	  }
+	}
+
+	.performer-list-scrollbar-content {
+	  width: 100%;
+	  height: 100%;
+	  .performer-sly {
+		width: 100%;
+		height: 100%;
+		.performer-big {
+		  margin: 0;
+		  padding: 0;
+
+		  .performer-li {
+			float: left;
+			margin-left: 30px;
+			width: 279px;
+			height: 357px;
+			background: transparent url("~images/performer-list/performer.png") no-repeat;
+			background-size: contain;
+		  }
+		}
+	  }
+	}
+
+  }
+
+  .letter-content {
+	width: 466px;
+	height: 1612px;
+	position: absolute;
+	top: 545px;
+	right: 0;
+	border: 1px solid #0b97c4;
+	display: none; //overflow: hidden;
+
+	.letter-list {
+	  width: 2000px;
+	  position: absolute;
+	  -webkit-transform: rotate(-89deg);
+	  z-index: 999;
+	  left: -952px;
+	  top: 612px;
+	  font-size: 0;
+	  //-moz-transform: matrix(0.47987220447284, 0, 0, 0.48009367681499, 0, 0);
+	  //-ms-transform: matrix(0.47987220447284, 0, 0, 0.48009367681499, 0, 0);
+
+	  .letter-li {
+		float: left;
+		//width: 65px;
+		text-align: center;
+
+		.letter-name {
+		  font-size: 80px;
+		  color: #821c1e;
+		  font-weight: bold;
+		  display: block;
+		  width: 100%;
+		  height: 70px;
+		  line-height: 70px;
+		}
+		.select-img {
+		  height: 32px;
+		  background: transparent url("~images/performer-list/performer-list-select.png") no-repeat;
+		  background-size: contain;
+		  display: block;
+		  width: 100%;
+		  text-align: center;
+		  background-position: center;
+		  margin-top: 15px;
+		}
+	  }
+	}
+  }
+
+  .letter-title {
+	font-size: 300px;
+	color: #ffffff;
+  }
+
+}

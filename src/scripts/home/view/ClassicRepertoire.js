@@ -2,18 +2,9 @@
  * Created by fengs on 2017/9/10.
  */
 require('../style/classicRepertoire.scss');
-require("../../../component/scrollbar/sly.js");
-// import Sly from "../../../component/scrollbar/sly.js";
 var ClassicRepertoire = React.createClass({
 
 	componentDidMount: function () {
-		// var options = {
-		// 	horizontal: 1,
-		// 	itemNav: 'basic',
-		// 	speed: 300,
-		// 	mouseDragging: 1,
-		// 	touchDragging: 1
-		// };
 		var cont = $(".classic-repertoire-content"),
 			// frame = cont.find(".repertoire-sly"),
 			scrollbar = cont.find(".repertoire-scrollbar"),
@@ -28,8 +19,6 @@ var ClassicRepertoire = React.createClass({
 				touchDragging: 1
 			};
 		var frame = new Sly('#repertoire-sly', options).init();
-		// $('#repertoire-sl').sly(options);
-		// frame.sly(options);
 	},
 
 	render(){
