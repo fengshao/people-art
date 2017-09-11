@@ -17,6 +17,12 @@ if (process.argv.indexOf('p') >= 0
 	webpackMode = 'production';
 }
 
+if (process.argv.indexOf('-tomcat') >= 0 ||
+	process.argv.indexOf('tomcat') >= 0) {
+	webpackMode = "tomcat";
+}
+
+
 var devEntry = [
 	'./publicFile/index'
 ];
@@ -65,7 +71,9 @@ if (webpackMode === 'production') {
 	}));
 }
 
-var webpackOutPublicPath = webpackMode == "production" ? '/dist/' : "/dist/";
+//var webpackOutPublicPath = webpackMode == "production" ? '/dist/' : "/dist/";
+var webpackOutPublicPath = webpackMode == "production" ? '/dist/' : webpackMode == "tomcat" ? "./dist/" : "/dist/";
+
 module.exports = {
 	devtool: '#cheap-module-source-map',
 	devServer: {
