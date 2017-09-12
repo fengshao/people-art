@@ -10,21 +10,66 @@ function HomeStore() {
 	this.isOpenTest = false;
 	this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
 	this.performerArr = [
-		{"id": "1", "img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"},
-		{"id": "2", "img": "~images/performer-list/performer.png"},
-		{"id": "3", "img": "~images/performer-list/performer.png"},
-		{"id": "4", "img": "~images/performer-list/performer.png"},
-		{"id": "5", "img": "~images/performer-list/performer.png"},
-		{"id": "6", "img": "~images/performer-list/performer.png"},
-		{"id": "7", "img": "~images/performer-list/performer.png"},
-		{"id": "8", "img": "~images/performer-list/performer.png"},
-		{"id": "9", "img": "~images/performer-list/performer.png"},
-		{"id": "10", "img": "~images/performer-list/performer.png"},
-		{"id": "11", "img": "~images/performer-list/performer.png"},
-		{"id": "12", "img": "~images/performer-list/performer.png"},
-		{"id": "13", "img": "~images/performer-list/performer.png"},
-		{"id": "14", "img": "~images/performer-list/performer.png"},
-		{"id": "15", "img": "~images/performer-list/performer.png"}
+		{
+			"id": "1",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "2",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "3",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "4",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "5",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "6",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "7",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "8",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "9",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "10",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "11",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "12",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "13",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "14",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		},
+		{
+			"id": "15",
+			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+		}
 	];
 
 	this.classicRepertoireList = [

@@ -35,6 +35,11 @@ var HomePage = React.createClass({
 			arrTest.push(i);
 		}
 
+		var performerSlyCls = classNames({
+			'performer-sly': true,
+			'performer-sly-vertical': length <= 4
+		});
+
 		return (
 			<div className="performer-list-content">
 				<div className="performer-list-div">
@@ -42,7 +47,7 @@ var HomePage = React.createClass({
 						<div className="handle"></div>
 					</div>
 					<div className="performer-list-scrollbar-content">
-						<div className="performer-sly" id="performer-sly">
+						<div className={performerSlyCls} id="performer-sly">
 							<ul className="performer-big">
 								{
 									arrTest.map(function (index, key) {

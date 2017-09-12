@@ -36,6 +36,12 @@
 		width: 100%;
 		height: 100%;
 
+		&.performer-sly-vertical {
+		  //justify-content: center;
+		  align-items: center;
+		  display: -webkit-flex;
+		}
+
 		.performer-big {
 		  margin: 0;
 		  padding: 0;
