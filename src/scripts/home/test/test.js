@@ -6,20 +6,22 @@ var ClassicRepertoire = React.createClass({
 
 	componentDidMount: function () {
 		var cont = $(".repertoire-list-content"),
-		 frame = cont.find(".repertoire-sly"),
+			frame = cont.find(".repertoire-sly"),
 			scrollbar = cont.find(".repertoire-scrollbar"),
 			options = {
 				"horizontal": 1,
 				"itemNav": "basic",
 				"dragContent": 1,
-				// "startAt": 3,
 				scrollBar: scrollbar,
+				dynamicHandle: true,
 				"scrollBy": 1,
 				mouseDragging: 1,
 				touchDragging: 1
 			};
+		var frame = new Sly('#repertoire-sly', options).init();
 
-		frame.sly(options);
+		//$('#repertoire-sly').sly(options);
+		//frame.sly(options);
 	},
 
 	render(){

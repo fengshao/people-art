@@ -3,8 +3,7 @@
  *
  */
 require('./style/main.scss');
-//require("../../component/scrollbar/sly.js");
-require("../../component/scrollbar/jquery.sly.js");
+require("../../component/scrollbar/sly.js");
 
 import Slide from '../../component/slide';
 import HomePage from './view/home';

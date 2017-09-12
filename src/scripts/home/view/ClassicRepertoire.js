@@ -12,9 +12,9 @@ var ClassicRepertoire = React.createClass({
 				"horizontal": 1,
 				"itemNav": "basic",
 				"dragContent": 1,
-				// "startAt": 3,
 				scrollBar: scrollbar,
 				"scrollBy": 1,
+				dynamicHandle: true,
 				mouseDragging: 1,
 				touchDragging: 1
 			};

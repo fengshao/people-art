@@ -16,15 +16,24 @@ var HomePage = React.createClass({
 				"itemNav": "basic",
 				"dragContent": 1,
 				scrollBar: scrollbar,
-				// "scrollBy": 1,
 				mouseDragging: 1,
 				touchDragging: 1,
-				scrollBy: 100
+				scrollBy: 1,
+				dynamicHandle: true
 			};
 		var frame = new Sly('#performer-sly', options).init();
 
 	},
+
 	render(){
+
+		var performerArr = this.props.performerArr;
+		var length = Math.ceil(performerArr.length / 3);
+		var arrTest = [];
+		for (let i = 0; i < length; i++) {
+			arrTest.push(i);
+		}
+
 		return (
 			<div className="performer-list-content">
 				<div className="performer-list-div">
@@ -35,14 +44,24 @@ var HomePage = React.createClass({
 						<div className="performer-sly" id="performer-sly">
 							<ul className="performer-big">
 								{
-									this.props.performerArr.map(function (performer, i) {
+									arrTest.map(function (index, key) {
 										return (
-											<div className="performer-li" key={i}>
+											<div className="repertoire-list-div" key={key}>
+												{
+													performerArr.map(function (performer, i) {
+
+														return (
+															i < 3 * (key + 1) && i >= 3 * key ?
+																<div className="performer-li" key={i}>
+																</div> :
+																null
+														)
+													})
+												}
 											</div>
-										);
+										)
 									})
 								}
-
 							</ul>
 						</div>
 					</div>
