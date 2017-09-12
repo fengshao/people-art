@@ -54,9 +54,10 @@
 	.bottom-right {
 	  display: inline-block;
 	  height: 100%;
+	  vertical-align: top;
 	  .right-thumbnail {
-		background: transparent url("~images/home/thumbnail.png") no-repeat;
-		background-size: contain;
+		//background: transparent url("~images/home/thumbnail.png") no-repeat;
+		//background-size: contain;
 		height: 443px;
 		width: 710px;
 		margin-left: 85px;

@@ -6,12 +6,28 @@ var WorthBuyingAction = require("../action/home-action");
 function HomeStore() {
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerList = false;
-	this.isOpenHomePage = false;
-	this.isOpenTest = true;
+	this.isOpenHomePage = true;
+	this.isOpenTest = false;
 	this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
-	this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
-	this.performerArr = [];
-	this.performerList = [
+	this.performerArr = [
+		{"id": "1", "img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"},
+		{"id": "2", "img": "~images/performer-list/performer.png"},
+		{"id": "3", "img": "~images/performer-list/performer.png"},
+		{"id": "4", "img": "~images/performer-list/performer.png"},
+		{"id": "5", "img": "~images/performer-list/performer.png"},
+		{"id": "6", "img": "~images/performer-list/performer.png"},
+		{"id": "7", "img": "~images/performer-list/performer.png"},
+		{"id": "8", "img": "~images/performer-list/performer.png"},
+		{"id": "9", "img": "~images/performer-list/performer.png"},
+		{"id": "10", "img": "~images/performer-list/performer.png"},
+		{"id": "11", "img": "~images/performer-list/performer.png"},
+		{"id": "12", "img": "~images/performer-list/performer.png"},
+		{"id": "13", "img": "~images/performer-list/performer.png"},
+		{"id": "14", "img": "~images/performer-list/performer.png"},
+		{"id": "15", "img": "~images/performer-list/performer.png"}
+	];
+
+	this.classicRepertoireList = [
 		{"id": "1", "name": "雷雨1"},
 		{"id": "2", "name": "雷雨2"},
 		{"id": "3", "name": "雷雨3"},
@@ -27,9 +43,7 @@ function HomeStore() {
 		{"id": "13", "name": "雷雨13"},
 		{"id": "14", "name": "雷雨14"}
 	];
-	for (var i = 0; i < 30; i++) {
-		this.performerArr.push(i);
-	}
+
 	this.imgDatas = ["http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
 		"http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
 		"http://upload-images.jianshu.io/upload_images/971705-1ebf3743a7d163c7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",

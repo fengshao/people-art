@@ -2,6 +2,7 @@
  * Created by fengs on 2017/9/9.
  */
 require('../style/home.scss');
+var thumbnail = require("../../../images/home/thumbnail.png");
 var HomePage = React.createClass({
 	render(){
 		return (
@@ -15,7 +16,9 @@ var HomePage = React.createClass({
 						<div className="left-click-in-img"></div>
 					</div>
 					<div className="bottom-right">
-						<div className="right-thumbnail"></div>
+						<div className="right-thumbnail">
+							<img src={thumbnail} alt="暂无图片"/>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -2,6 +2,7 @@
  * Created by fengs on 2017/9/11.
  */
 require('../style/performer-list.scss');
+var videoImg = require("../../../images/performer-list/video.png");
 import classNames from 'classnames';
 
 var HomePage = React.createClass({
@@ -53,6 +54,7 @@ var HomePage = React.createClass({
 														return (
 															i < 3 * (key + 1) && i >= 3 * key ?
 																<div className="performer-li" key={i}>
+																	<img src={performer.img} alt="暂无图片"/>
 																</div> :
 																null
 														)
@@ -87,6 +89,11 @@ var HomePage = React.createClass({
 
 					</div>
 					<div className="letter-title"></div>
+				</div>
+				<div className="video-content">
+					<div className="video-content-div">
+						<img src={videoImg} alt="暂无图片"/>
+					</div>
 				</div>
 			</div>
 		);

@@ -25,8 +25,8 @@ var ClassicRepertoire = React.createClass({
 	},
 
 	render(){
-		var performerList = this.props.performerList;
-		var length = Math.ceil(performerList.length / 3);
+		var classicRepertoireList = this.props.classicRepertoireList;
+		var length = Math.ceil(classicRepertoireList.length / 3);
 		var arrTest = [];
 		for (let i = 0; i < length; i++) {
 			arrTest.push(i);
@@ -45,7 +45,7 @@ var ClassicRepertoire = React.createClass({
 									return (
 										<div className="repertoire-list-div" key={key}>
 											{
-												performerList.map(function (performer, i) {
+												classicRepertoireList.map(function (performer, i) {
 
 													return (
 														i < 3 * (key + 1) && i >= 3 * key ?

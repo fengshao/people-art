@@ -11,7 +11,7 @@
 	position: absolute;
 	top: 345px;
 	left: 48px;
-	border: 1px solid #0b97c4;
+
 	.performer-list-scrollbar {
 	  width: 10px;
 	  height: 100%;
@@ -28,21 +28,35 @@
 
 	.performer-list-scrollbar-content {
 	  width: 100%;
-	  height: 100%;
+	  height: 1535px;
+	  padding-top: 44px;
+	  //padding-bottom: 44px;
+
 	  .performer-sly {
 		width: 100%;
 		height: 100%;
+
 		.performer-big {
 		  margin: 0;
 		  padding: 0;
+
+		  .repertoire-list-div {
+			margin-top: 44px;
+			float: left;
+		  }
 
 		  .performer-li {
 			float: left;
 			margin-left: 30px;
 			width: 279px;
 			height: 357px;
-			background: transparent url("~images/performer-list/performer.png") no-repeat;
-			background-size: contain;
+			//background: transparent url("~images/performer-list/performer.png") no-repeat;
+			//background-size: contain;
+			//background-repeat: no-repeat;
+			img {
+			  box-shadow: 4px 2px 2px #000;
+			  border-radius: 5px;
+			}
 		  }
 		}
 	  }
@@ -101,6 +115,16 @@
   .letter-title {
 	font-size: 300px;
 	color: #ffffff;
+  }
+
+  .video-content {
+	.video-content-div {
+	  width: 820px;
+	  height: 480px;
+	  position: absolute;
+	  left: 145px;
+	  bottom: 150px;
+	}
   }
 
 }

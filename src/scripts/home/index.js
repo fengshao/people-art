@@ -60,6 +60,7 @@ var Home = React.createClass({
 					this.state.isOpenClassicRepertoire ?
 						<ClassicRepertoire
 							backOff={this.events.backOff}
+							classicRepertoireList={this.state.classicRepertoireList}
 						/> : null
 				}
 				{
@@ -72,7 +73,7 @@ var Home = React.createClass({
 				{
 					this.state.isOpenTest ?
 						<Test
-							performerList={this.state.performerList}
+							classicRepertoireList={this.state.classicRepertoireList}
 						/> : null
 				}
 			</div>
