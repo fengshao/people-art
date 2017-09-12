@@ -3,12 +3,14 @@
  *
  */
 require('./style/main.scss');
-require("../../component/scrollbar/sly.js");
+//require("../../component/scrollbar/sly.js");
+require("../../component/scrollbar/jquery.sly.js");
 
 import Slide from '../../component/slide';
 import HomePage from './view/home';
 import ClassicRepertoire from './view/ClassicRepertoire';
 import PerformerList from './view/performer-list';
+import Test from './test/test.js';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
@@ -66,6 +68,12 @@ var Home = React.createClass({
 						<PerformerList
 							letterArr={this.state.letterArr}
 							performerArr={this.state.performerArr}
+						/> : null
+				}
+				{
+					this.state.isOpenTest ?
+						<Test
+							performerList={this.state.performerList}
 						/> : null
 				}
 			</div>
