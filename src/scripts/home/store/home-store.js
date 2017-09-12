@@ -6,10 +6,27 @@ var WorthBuyingAction = require("../action/home-action");
 function HomeStore() {
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerList = false;
-	this.isOpenHomePage = true;
+	this.isOpenHomePage = false;
+	this.isOpenTest = true;
 	this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
 	this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
 	this.performerArr = [];
+	this.performerList = [
+		{"id": "1", "name": "雷雨1"},
+		{"id": "2", "name": "雷雨2"},
+		{"id": "3", "name": "雷雨3"},
+		{"id": "4", "name": "雷雨4"},
+		{"id": "5", "name": "雷雨5"},
+		{"id": "6", "name": "雷雨6"},
+		{"id": "7", "name": "雷雨7"},
+		{"id": "8", "name": "雷雨8"},
+		{"id": "9", "name": "雷雨9"},
+		{"id": "10", "name": "雷雨10"},
+		{"id": "11", "name": "雷雨11"},
+		{"id": "12", "name": "雷雨12"},
+		{"id": "13", "name": "雷雨13"},
+		{"id": "14", "name": "雷雨14"}
+	];
 	for (var i = 0; i < 30; i++) {
 		this.performerArr.push(i);
 	}

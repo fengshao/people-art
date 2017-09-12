@@ -6,7 +6,7 @@ var ClassicRepertoire = React.createClass({
 
 	componentDidMount: function () {
 		var cont = $(".classic-repertoire-content"),
-			// frame = cont.find(".repertoire-sly"),
+		// frame = cont.find(".repertoire-sly"),
 			scrollbar = cont.find(".repertoire-scrollbar"),
 			options = {
 				"horizontal": 1,
@@ -22,6 +22,12 @@ var ClassicRepertoire = React.createClass({
 	},
 
 	render(){
+		var performerList = this.props.performerList;
+		var length = Math.ceil(performerList.length / 3);
+		var arrTest = [];
+		for (let i = 0; i < length; i++) {
+			arrTest.push(i);
+		}
 
 		return (
 			<div className="classic-repertoire-content">
@@ -34,104 +40,29 @@ var ClassicRepertoire = React.createClass({
 					<div className="test-cls">
 						<div className="repertoire-sly" id="repertoire-sly">
 							<ul className="big cfix">
-								<div className="repertoire-list-div">
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨1》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-								</div>
-								<div className="repertoire-list-div">
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨2》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-								</div>
-								<div className="repertoire-list-div">
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨3》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-								</div>
-								<div className="repertoire-list-div">
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨4》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-								</div>
-								<div className="repertoire-list-div">
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨5》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-								</div>
-								<div className="repertoire-list-div">
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨6》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-								</div>
-								<div className="repertoire-list-div">
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨7》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-									<li className="repertoire-list-li">
-										<div className="repertoire-video-img"></div>
-										<div className="repertoire-video-title">《雷雨》</div>
-									</li>
-								</div>
+								{
+									arrTest.map(function (index, key) {
+										return (
+											<div className="repertoire-list-div" key={key}>
+												{
+													performerList.map(function (performer, i) {
+
+														return (
+															i < 3 * (key + 1) && i >= 3 * key ?
+																<li className="repertoire-list-li" key={i}>
+																	<div
+																		className="repertoire-video-img">{performer.id}</div>
+																	<div
+																		className="repertoire-video-title">{performer.name}</div>
+																</li> :
+																null
+														)
+													})
+												}
+											</div>
+										)
+									})
+								}
 							</ul>
 						</div>
 					</div>
