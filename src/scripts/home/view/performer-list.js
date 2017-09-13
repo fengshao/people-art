@@ -35,6 +35,7 @@ var HomePage = React.createClass({
 			arrTest.push(i);
 		}
 
+		//演员列表无法填充满滚动区域时 既行数小于 4 时 添加特殊class 垂直居中
 		var performerSlyCls = classNames({
 			'performer-sly': true,
 			'performer-sly-vertical': length <= 4

@@ -5,7 +5,6 @@
 require('./style/main.scss');
 require("../../component/scrollbar/sly.js");
 
-import Slide from '../../component/slide';
 import HomePage from './view/home';
 import ClassicRepertoire from './view/ClassicRepertoire';
 import PerformerList from './view/performer-list';
@@ -73,7 +72,7 @@ var Home = React.createClass({
 				{
 					this.state.isOpenTest ?
 						<Test
-							classicRepertoireList={this.state.classicRepertoireList}
+							imgDatas={this.state.imgDatas}
 						/> : null
 				}
 			</div>

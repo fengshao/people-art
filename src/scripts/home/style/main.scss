@@ -1,3 +1,4 @@
+//取消选中样式
 * {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Chrome/Safari/Opera */
@@ -31,6 +32,7 @@ body {
 
   }
 
+  //返回按钮样式
   .back-off {
 	position: absolute;
 	right: 77px;

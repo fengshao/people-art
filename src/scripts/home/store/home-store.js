@@ -6,8 +6,8 @@ var WorthBuyingAction = require("../action/home-action");
 function HomeStore() {
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerList = false;
-	this.isOpenHomePage = true;
-	this.isOpenTest = false;
+	this.isOpenHomePage = false;
+	this.isOpenTest = true;
 	this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
 	this.performerArr = [
 		{

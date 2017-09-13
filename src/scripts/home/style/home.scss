@@ -1,3 +1,4 @@
+//首页样式
 .home-content {
   background: transparent url("~images/home/home-bg.png") no-repeat;
   width: 100%;
@@ -5,6 +6,7 @@
   background-size: contain;
   position: relative;
 
+  /*-----------顶部点击区域样式 start 既时间展示区域------------*/
   .click-div {
 	text-align: center;
 	width: 100%;
@@ -13,6 +15,7 @@
 	z-index: 10;
 	top: 777px;
 
+	//时间样式
 	.performer-time-content {
 	  font-size: 120px;
 	  position: absolute;
@@ -23,23 +26,31 @@
 	  padding-left: 29px;
 	}
   }
+  /*-----------顶部点击区域样式 end 既时间展示区域------------*/
 
+  /*-----------样式-------------*/
   .bottom-content {
 	width: 1240px;
 	height: 720px;
 	position: absolute;
 	bottom: 286px;
 	left: 152px;
+
+	//左侧进入经典剧目页样式
 	.bottom-left {
 	  display: inline-block;
 	  height: 100%;
 	  width: 340px;
+
+	  //经典剧目 区域样式
 	  .left-title-img {
 		background: transparent url("~images/home/home-title.png") no-repeat;
 		background-size: contain;
 		height: 167px;
 		width: 294px;
 	  }
+
+	  //点击进入样式
 	  .left-click-in-img {
 		background: transparent url("~images/home/home-click.png") no-repeat;
 		background-size: contain;
@@ -51,6 +62,7 @@
 	  }
 	}
 
+	//底部右侧viede/img展示样式
 	.bottom-right {
 	  display: inline-block;
 	  height: 100%;
@@ -67,6 +79,7 @@
 	}
 
   }
+  /*------------------------*/
 
 }
 
