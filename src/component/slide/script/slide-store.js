@@ -1,19 +1,19 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var WorthBuyingAction = require("./home-action");
+var SlideAction = require("./slide-action");
 
-function WorthBuyingStore() {
+function SlideStore() {
 	this.autoLb = false;          //autoLb=true为开启自动轮播
 	this.autoLbtime = 1;         //autoLbtime为轮播间隔时间（单位秒）
 	this.touch = true;           //touch=true为开启触摸滑动
 	this.slideBt = true;         //slideBt=true为开启滚动按钮
 	this.slideNub;               //轮播图片数量
 
-	this.bindActions(WorthBuyingAction);
+	this.bindActions(SlideAction);
 }
 
-WorthBuyingStore.prototype.initSlide = function () {
+SlideStore.prototype.initSlide = function () {
 	$(".slide").height($(".slide").width() * 0.56);
 	this.slideNub = $(".slide .img").size();             //获取轮播图片数量
 	for (let i = 0; i < this.slideNub; i++) {
@@ -53,7 +53,7 @@ WorthBuyingStore.prototype.initSlide = function () {
 	this.imgClickFy();
 };
 
-WorthBuyingStore.prototype.k_touch = function () {
+SlideStore.prototype.k_touch = function () {
 	var _this = this;
 	var _start = 0, _end = 0, _content = document.getElementById("slide");
 	_content.addEventListener("touchstart", touchStart, false);
@@ -81,7 +81,7 @@ WorthBuyingStore.prototype.k_touch = function () {
 
 };
 
-WorthBuyingStore.prototype.left = function () {
+SlideStore.prototype.left = function () {
 	var fy = new Array();
 	for (let i = 0; i < this.slideNub; i++) {
 		fy[i] = $(".slide .img[data-slide-imgId=" + i + "]").attr("class");
@@ -96,7 +96,7 @@ WorthBuyingStore.prototype.left = function () {
 	// this.imgClickFy();
 };
 
-WorthBuyingStore.prototype.right = function () {
+SlideStore.prototype.right = function () {
 	var fy = new Array();
 	for (let i = 0; i < this.slideNub; i++) {
 		fy[i] = $(".slide .img[data-slide-imgId=" + i + "]").attr("class");
@@ -110,7 +110,7 @@ WorthBuyingStore.prototype.right = function () {
 	}
 };
 
-WorthBuyingStore.prototype.imgClickFy = function () {
+SlideStore.prototype.imgClickFy = function () {
 	var _this = this;
 	$(".slide .img").removeAttr("onclick");
 	$(".slide").delegate(".img2,.img1", "click", function () {
@@ -121,4 +121,4 @@ WorthBuyingStore.prototype.imgClickFy = function () {
 	});
 };
 
-module.exports = alt.createStore(WorthBuyingStore, 'WorthBuyingStore');
+module.exports = alt.createStore(SlideStore, 'SlideStore');

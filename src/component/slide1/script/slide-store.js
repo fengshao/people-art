@@ -1,9 +1,20 @@
 /**
- * Created by fengshao on 2017/9/8.
+ * Created by fengs on 2016/9/16.
  */
-require("./index.scss");
-exports.initSlide = function ($element) {
-	//$(".slide").height($(".slide").width() * 0.56);
+var SlideAction = require("./slide-action");
+
+function SlideStore() {
+	this.autoLb = false;          //autoLb=true为开启自动轮播
+	this.autoLbtime = 1;         //autoLbtime为轮播间隔时间（单位秒）
+	this.touch = true;           //touch=true为开启触摸滑动
+	this.slideBt = true;         //slideBt=true为开启滚动按钮
+	this.slideNub;               //轮播图片数量
+
+	this.bindActions(SlideAction);
+}
+
+SlideStore.prototype.initSlide = function () {
+	$(".slide").height($(".slide").width() * 0.56);
 	this.slideNub = $(".slide .img").size();             //获取轮播图片数量
 	for (let i = 0; i < this.slideNub; i++) {
 		$(".slide .img:eq(" + i + ")").attr("data-slide-imgId", i);
@@ -42,7 +53,7 @@ exports.initSlide = function ($element) {
 	this.imgClickFy();
 };
 
-exports.k_touch = function () {
+SlideStore.prototype.k_touch = function () {
 	var _this = this;
 	var _start = 0, _end = 0, _content = document.getElementById("slide");
 	_content.addEventListener("touchstart", touchStart, false);
@@ -70,7 +81,7 @@ exports.k_touch = function () {
 
 };
 
-exports.left = function () {
+SlideStore.prototype.left = function () {
 	var fy = new Array();
 	for (let i = 0; i < this.slideNub; i++) {
 		fy[i] = $(".slide .img[data-slide-imgId=" + i + "]").attr("class");
@@ -85,7 +96,7 @@ exports.left = function () {
 	// this.imgClickFy();
 };
 
-exports.right = function () {
+SlideStore.prototype.right = function () {
 	var fy = new Array();
 	for (let i = 0; i < this.slideNub; i++) {
 		fy[i] = $(".slide .img[data-slide-imgId=" + i + "]").attr("class");
@@ -99,7 +110,7 @@ exports.right = function () {
 	}
 };
 
-exports.imgClickFy = function () {
+SlideStore.prototype.imgClickFy = function () {
 	var _this = this;
 	$(".slide .img").removeAttr("onclick");
 	$(".slide").delegate(".img2,.img1", "click", function () {
@@ -109,3 +120,5 @@ exports.imgClickFy = function () {
 		_this.right();
 	});
 };
+
+module.exports = alt.createStore(SlideStore, 'SlideStore');

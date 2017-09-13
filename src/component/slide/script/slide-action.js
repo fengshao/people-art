@@ -2,7 +2,7 @@
  * Created by fengs on 2016/9/16.
  */
 
-function WorthBuyingAction() {
+function SlideAction() {
 
 	this.generateActions(
 		'initSlide',
@@ -12,4 +12,4 @@ function WorthBuyingAction() {
 		'imgClickFy'
 	);
 }
-module.exports = alt.createActions(WorthBuyingAction);
+module.exports = alt.createActions(SlideAction);

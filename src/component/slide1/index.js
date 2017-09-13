@@ -1,65 +1,52 @@
 /**
- * Created by fengs on 2017/9/7.
+ * Created by fengshao on 2017/9/8.
  */
-require("./newsdetail.css");
-require("./jquery.SuperSlide.2.1.1.js");
-require("./newsdetail");
-import left1 from './images/left1.jpg'
-import right1 from './images/right1.jpg'
+require("./index.scss");
 import React from 'react';
+var SlideStore = require("./script/slide-store");
+var SlideAction = require("./script/slide-action");
+//窗口大小改变时改变轮播图宽高
+$(window).resize(function () {
+	$(".slide").height($(".slide").width() * 0.56);
+});
 var Slide = React.createClass({
+	getInitialState: function () {
+		var data = SlideStore.getState();
+		return data;
+	},
+
+	onChange: function () {
+		var data = SlideStore.getState();
+		this.setState(data);
+	},
+
+	componentDidMount: function () {
+		SlideStore.listen(this.onChange);
+		SlideAction.initSlide();
+		SlideAction.k_touch();
+	},
+
+	componentWillUnmount: function () {
+		SlideStore.unlisten(this.onChange);
+		alt.flush();
+	},
+
+	events: {
+	},
 	render: function () {
 		return (
-			<div>
-				<center>
-					<div className="detail_context_pic">
-						<div className="detail_context_pic_top">
-							<a href="#"><img src={this.props.imgDatas[0]} alt="" id="pic1" curindex="0"/></a>
-							<a id="preArrow" href="javascript:void(0)" className="contextDiv" title="上一张">
-								<span id="preArrow_A"></span>
-							</a>
-							<a id="nextArrow" href="javascript:void(0)" className="contextDiv" title="上一张">
-								<span id="nextArrow_A"></span>
-							</a>
-							<div id="miaoshuwarp">
-								<div className="miaoshu">
-								</div>
-							</div>
-						</div>
-						<div className="detail_context_pic_bot">
-							<div className="detail_picbot_left">
-								<a href="javascript:void(0)" id="preArrow_B"><img
-									src={left1} alt="上一个"/></a>
-							</div>
-							<div className="detail_picbot_mid">
-								<ul>
-									{
-										this.props.imgDatas.map(function (goodsTypeID, i) {
-											return (
-												<li>
-													<a href='javascript:void(0);'>
-														<img
-															src={goodsTypeID}
-															width='90px'
-															height='60px'
-															title='2014年8月10日19点15分，深圳上空的超级月亮。'
-															alt='2014年8月10日19点15分，深圳上空的超级月亮。'
-															bigimg={goodsTypeID}
-															text='2014年8月10日19点15分，深圳上空的超级月亮。'/>
-													</a>
-												</li>
-											)
-										})
-									}
-								</ul>
-							</div>
-							<div className="detail_picbot_right">
-								<a href="javascript:void(0)" id="nextArrow_B">
-									<img src={right1} alt="下一个"/></a>
-							</div>
-						</div>
-					</div>
-				</center>
+			<div className="slide-container">
+				<div id="slide" className="index-slide slide" alt="star">
+					{
+						this.props.imgDatas.map(function (goodsTypeID, i) {
+							return (
+								<div key={i} className="img"><img src={goodsTypeID}/></div>
+							)
+						})
+					}
+					<div className="slide-bt"></div>
+				</div>
+
 			</div>
 		);
 	}

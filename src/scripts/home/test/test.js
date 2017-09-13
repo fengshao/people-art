@@ -2,75 +2,50 @@
  * Created by fengshao on 2017/9/12.
  */
 require('./test.scss');
+import Slide from '../../../component/slide';
+
 var ClassicRepertoire = React.createClass({
 
 	componentDidMount: function () {
-		var cont = $(".repertoire-list-content"),
-			frame = cont.find(".repertoire-sly"),
-			scrollbar = cont.find(".repertoire-scrollbar"),
-			options = {
-				"horizontal": 1,
-				"itemNav": "basic",
-				"dragContent": 1,
-				scrollBar: scrollbar,
-				dynamicHandle: true,
-				"scrollBy": 1,
-				mouseDragging: 1,
-				touchDragging: 1
-			};
-		var frame = new Sly('#repertoire-sly', options).init();
-
-		//$('#repertoire-sly').sly(options);
-		//frame.sly(options);
+		Slide.initSlide($("top-slide"));
+		Slide.k_touch($("top-slide"));
 	},
 
+//<div className="bottom-slide">
+//	<div className="slide-container">
+//		<div id="slide" className="index-slide slide" alt="star">
+//			{
+//				this.props.imgDatas.map(function (goodsTypeID, i) {
+//					return (
+//						<div key={i} className="img"><img src={goodsTypeID}/></div>
+//					)
+//				})
+//			}
+//			<div className="slide-bt"></div>
+//		</div>
+//	</div>
+//</div>
+
+
 	render(){
-		var classicRepertoireList = this.props.classicRepertoireList;
-		var length = Math.ceil(classicRepertoireList.length / 3);
-		var arrTest = [];
-		for (let i = 0; i < length; i++) {
-			arrTest.push(i);
-		}
 
 		return (
-			<div className="repertoire-list-content" id="repertoire-list-content">
-				<div className="repertoire-scrollbar">
-					<div className="handle"></div>
-				</div>
-				<div className="test-cls">
-					<div className="repertoire-sly" id="repertoire-sly">
-						<ul className="big cfix">
+			<div className="test-content" id="test-content">
+				<div className="top-slide">
+					<div className="slide-container">
+						<div id="slide" className="index-slide slide" alt="star">
 							{
-								arrTest.map(function (index, key) {
+								this.props.imgDatas.map(function (goodsTypeID, i) {
 									return (
-										<div className="repertoire-list-div" key={key}>
-											{
-												classicRepertoireList.map(function (performer, i) {
-
-													return (
-														i < 3 * (key + 1) && i >= 3 * key ?
-															<li className="repertoire-list-li" key={i}>
-																<div
-																	className="repertoire-video-img">{performer.id}</div>
-																<div
-																	className="repertoire-video-title">{performer.name}</div>
-															</li> :
-															null
-													)
-												})
-											}
-										</div>
+										<div key={i} className="img"><img src={goodsTypeID}/></div>
 									)
 								})
 							}
-						</ul>
+							<div className="slide-bt"></div>
+						</div>
 					</div>
 				</div>
-				<div className="repertoire-scrollbar">
-					<div className="handle"></div>
-				</div>
 			</div>
-
 		);
 	}
 });
