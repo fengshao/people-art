@@ -9,7 +9,7 @@ function HomeAction() {
 		'openClassicRepertoire',
 		'openPeopleArtList',
 		'backOff',
-		'editSpecial',
+		'performerInfoDropDown',
 		'showEditFrom',
 		'showAddFrom',
 		'hideEditFrom'
@@ -18,8 +18,12 @@ function HomeAction() {
 	this.openClassicRepertoire = function () {
 		this.dispatch();
 	};
+
 	this.backOff = function (type) {
 		this.dispatch(type);
+	};
+	this.openPerformerInfo = function (id) {
+		this.dispatch(id);
 	};
 }
 module.exports = alt.createActions(HomeAction);

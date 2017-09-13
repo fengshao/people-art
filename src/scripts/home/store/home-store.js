@@ -6,8 +6,10 @@ var WorthBuyingAction = require("../action/home-action");
 function HomeStore() {
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerList = false;
-	this.isOpenHomePage = false;
-	this.isOpenTest = true;
+	this.isOpenHomePage = true;
+	this.isOpenPerformerInfo = false;
+	this.isOpenTest = false;
+	this.isPerformerInfoDropDown = false;
 	this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
 	this.performerArr = [
 		{
@@ -111,9 +113,19 @@ HomeStore.prototype.openClassicRepertoire = function (worthBuyingList) {
 //进入演员列表页
 HomeStore.prototype.openPeopleArtList = function (obj) {
 	this.isOpenClassicRepertoire = false;
-	this.isOpenPerformerList = true;
+	this.isOpenPerformerInfo = false;
 	this.isOpenHomePage = false;
+	this.isOpenPerformerList = true;
 };
+
+//进入演员列表页
+HomeStore.prototype.openPerformerInfo = function (id) {
+	this.isOpenClassicRepertoire = false;
+	this.isOpenPerformerList = false;
+	this.isOpenHomePage = false;
+	this.isOpenPerformerInfo = true;
+};
+
 
 //回到上一页
 HomeStore.prototype.backOff = function (type) {
@@ -121,8 +133,24 @@ HomeStore.prototype.backOff = function (type) {
 		case "homePage":
 			this.isOpenClassicRepertoire = false;
 			this.isOpenPerformerList = false;
+			this.isOpenPerformerInfo = false;
 			this.isOpenHomePage = true;
 			break;
+		case "performerList":
+			this.isOpenClassicRepertoire = false;
+			this.isOpenHomePage = false;
+			this.isOpenPerformerInfo = false;
+			this.isOpenPerformerList = true;
+			break;
+	}
+};
+
+//是否展开演员信息
+HomeStore.prototype.performerInfoDropDown = function () {
+	if (this.isPerformerInfoDropDown) {
+		this.isPerformerInfoDropDown = false;
+	} else {
+		this.isPerformerInfoDropDown = true;
 	}
 };
 

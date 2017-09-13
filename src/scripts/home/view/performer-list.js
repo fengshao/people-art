@@ -28,6 +28,7 @@ var HomePage = React.createClass({
 
 	render(){
 
+		var _this = this;
 		var performerArr = this.props.performerArr;
 		var length = Math.ceil(performerArr.length / 3);
 		var arrTest = [];
@@ -59,7 +60,8 @@ var HomePage = React.createClass({
 
 														return (
 															i < 3 * (key + 1) && i >= 3 * key ?
-																<div className="performer-li" key={i}>
+																<div className="performer-li" key={i}
+																	 onClick={_this.props.openPerformerInfo.bind(_this,performer.id)}>
 																	<img src={performer.img} alt="暂无图片"/>
 																</div> :
 																null

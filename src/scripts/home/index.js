@@ -8,7 +8,8 @@ require("../../component/scrollbar/sly.js");
 import HomePage from './view/home';
 import ClassicRepertoire from './view/ClassicRepertoire';
 import PerformerList from './view/performer-list';
-import Test from './test/test.js';
+import PerformerInfo from './view/performer-info';
+// import Test from './test/test.js';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
@@ -36,11 +37,21 @@ var Home = React.createClass({
 		openClassicRepertoire: function () {
 			HomeAction.openClassicRepertoire();
 		},
+
 		openPeopleArtList: function () {
 			HomeAction.openPeopleArtList();
 		},
+
 		backOff: function (type) {
 			HomeAction.backOff(type);
+		},
+
+		performerInfoDropDown: function () {
+			HomeAction.performerInfoDropDown();
+		},
+
+		openPerformerInfo: function (id) {
+			HomeAction.openPerformerInfo(id);
 		}
 	},
 // <Slide imgDatas={this.state.imgDatas}/>
@@ -67,6 +78,15 @@ var Home = React.createClass({
 						<PerformerList
 							letterArr={this.state.letterArr}
 							performerArr={this.state.performerArr}
+							openPerformerInfo={this.events.openPerformerInfo}
+						/> : null
+				}
+				{
+					this.state.isOpenPerformerInfo ?
+						<PerformerInfo
+							backOff={this.events.backOff}
+							performerInfoDropDown={this.events.performerInfoDropDown}
+							isPerformerInfoDropDown={this.state.isPerformerInfoDropDown}
 						/> : null
 				}
 				{

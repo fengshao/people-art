@@ -1,0 +1,226 @@
+.performer-info-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  @mixin transition-public($type) {
+	transition: $type 1s;
+	-moz-transition: $type 1s; /* Firefox 4 */
+	-webkit-transition: $type 1s; /* Safari and Chrome */
+	-o-transition: $type 1s; /* Opera */
+  }
+
+  //超出部分隐藏公共样式
+  .overhidden-public {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+  }
+
+  // 设置行内块级元素并且元素居中对其
+  .inline-block-vertical-align {
+	vertical-align: middle;
+	display: inline-block;
+  }
+
+  .top-arrow {
+	background: transparent url("~images/performer-info/top-arrow.png") no-repeat;
+	background-size: contain;
+	background-position: center;
+	width: 100%;
+	height: 38px;
+	position: absolute;
+	top: 877px;
+	z-index: 98;
+	@include transition-public(top);
+	&.top-arrow-open {
+	  top: 1760px;
+
+	}
+  }
+
+  //顶部文案样式
+  .top-content {
+	position: relative;
+	background: transparent url("~images/performer-info/top-bg.png") no-repeat;
+	background-size: contain;
+	width: 100%;
+	height: 891px;
+	overflow: hidden;
+	@include transition-public(height);
+
+	.top-right-logo {
+	  background: transparent url("~images/performer-info/top-right-logo.png") no-repeat;
+	  background-size: contain;
+	  position: absolute;
+	  right: 0;
+	  width: 247px;
+	  height: 275px;
+	  top: 22px;
+	  z-index: 1;
+	}
+
+	&.top-content-open {
+	  height: 1769px;
+	  background: transparent url("~images/performer-info/top-bg-select.png") no-repeat !important;
+	}
+	.top-info {
+	  height: 882px;
+	  width: 100%;
+	  //左侧头像 姓名区域样式
+	  .left-content {
+		width: 626px;
+		height: 857px;
+		float: left;
+
+		.actor-name {
+		  margin-top: 82px;
+		  margin-left: 92px;
+		  font-size: 120px;
+		  color: #FFFFFF;
+		}
+
+		.actor-img {
+		  margin-top: 56px;
+		  width: 472px;
+		  height: 507px;
+		  margin-left: 40px;
+		  font-size: 0;
+
+		}
+	  }
+
+	  //右侧文字区域样式
+	  .right-content {
+		float: left;
+		height: 857px;
+		width: 870px;
+		z-index: 10;
+		position: relative;
+
+		//来院时间及毕业院校区域样式
+		.educational-information {
+		  margin-top: 100px;
+		  //width: 640px;
+		  height: 130px;
+		  font-size: 50px;
+		  color: #821c1e;
+
+		  .educational-title {
+			@extend .inline-block-vertical-align;
+		  }
+
+		  .educational-content {
+			width: 452px;
+			@extend .inline-block-vertical-align;
+			@extend .overhidden-public;
+
+		  }
+		}
+
+		//个性签名区域样式
+		.personalized-signature {
+		  width: 740px;
+		  height: 200px;
+		  color: #821c1e;
+		  font-size: 50px;
+		  margin-top: 60px;
+		  line-height: 64px;
+		  overflow: hidden;
+		  word-break: break-all;
+		}
+
+		.brief-introduction {
+		  width: 780px;
+		  height: 338px;
+		  font-size: 37px;
+		  color: #1a0b03;
+		  margin-top: 25px;
+		  overflow: hidden;
+		}
+	  }
+	}
+
+	.bottom-info {
+	  margin-top: 42px;
+	  width: 100%;
+	  height: 847px;
+
+	  .bottom-info-title {
+		font-size: 46px;
+		color: #1a0b03;
+	  }
+	  .bottom-info-content {
+		font-size: 32px;
+		color: #1a0b03;
+		padding-right: 20px;
+	  }
+
+	  .bottom-info-scrollbar {
+		height: 100%;
+		width: 10px;
+		background-color: #9f857a;
+		position: absolute;
+		border-radius: 50px;
+		right: 0;
+
+		.handle {
+		  width: 6px;
+		  margin: 0 auto;
+		  background-color: #fcfbfa;
+		  border-radius: 50px;
+
+		}
+	  }
+
+	  .teleplay-works {
+		margin-left: 100px;
+		width: 630px;
+		height: 800px;
+		float: left;
+		position: relative;
+
+		.teleplay-works-scrollbar-content {
+		  height: 100%;
+		  width: 100%;
+		}
+	  }
+	  .honour-record {
+		width: 630px;
+		height: 800px;
+		float: left;
+		margin-left: 74px;
+		position: relative;
+		.honour-record-scrollbar-content {
+		  height: 100%;
+		  width: 100%;
+		}
+	  }
+	}
+
+  }
+
+  .bottom-content {
+	background: transparent url("~images/performer-info/bottom-bg.png") no-repeat;
+	background-size: contain;
+	width: 100%;
+	height: 1808px;
+  }
+
+  .foter-content {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 481px;
+	background: transparent url("~images/performer-info/foter.png") no-repeat;
+	background-size: contain;
+
+	.back-off {
+	  position: absolute;
+	  right: 83px;
+	  bottom: 154px;
+	}
+  }
+
+}
