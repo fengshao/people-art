@@ -206,6 +206,42 @@
 	background-size: contain;
 	width: 100%;
 	height: 1808px;
+	padding-top: 55px;
+
+	.nav-content {
+	  margin-left: 251px;
+	  width: 1204px;
+	  height: 139px;
+	  overflow: hidden;
+
+	  .nav-li {
+		float: left;
+		width: 300px;
+		height: 139px;
+		background: transparent url("~images/performer-info/bottom-bg.png") no-repeat;
+		background-size: contain;
+
+		.nav-li-title {
+		  height: 112px;
+		  width: 304px;
+		  line-height: 112px;
+		  color: #495978;
+		  font-size: 40px;
+
+		  .select {
+			color: #12151d;
+		  }
+		}
+
+		&.nav-li-select {
+		  background: transparent url("~images/performer-info/top-right-logo.png") no-repeat;
+		  .nav-li-title {
+			color: #12151d;
+		  }
+		}
+	  }
+	}
+
   }
 
   .foter-content {

@@ -3,6 +3,8 @@
  */
 require('../style/performer-info.scss');
 import classNames from 'classnames';
+import Slide from '../../../component/slide';
+
 var actorImg = require("../../../images/performer-info/the-actor.png");
 var PerformerInfo = React.createClass({
 
@@ -35,10 +37,15 @@ var PerformerInfo = React.createClass({
 		var frame = new Sly('#teleplay-works-scrollbar-content', options).init();
 		var frame1 = new Sly('#honour-record-scrollbar-content', options1).init();
 
+
+		Slide.initSlide($("top-slide"));
+		Slide.k_touch($("top-slide"));
+
 	},
 
 	render(){
 
+		var _this = this;
 		var performerSlyCls = classNames({
 			'top-content': true,
 			'top-content-open': this.props.isPerformerInfoDropDown
@@ -223,7 +230,40 @@ var PerformerInfo = React.createClass({
 
 					<div className="top-right-logo"></div>
 				</div>
-				<div className="bottom-content"></div>
+				<div className="bottom-content">
+					<div className="nav-content">
+						{
+							this.props.performeInfoNavList.map(function (performeInfoNav, index) {
+								var topArrowCls = classNames({
+									'nav-li': true,
+									'nav-li-select': performeInfoNav.isSelect
+								});
+								return (
+									<div onClick={_this.props.selectPerformeInfoNav.bind(this,performeInfoNav.id)}
+										 className={topArrowCls} key={index} data-id={performeInfoNav.id}>
+										<div className="nav-li-title">{performeInfoNav.name}</div>
+									</div>
+								)
+							})
+						}
+
+					</div>
+					<div className="slide-content">
+						<div className="modern-contnet">
+							<div className="slide-container">
+								<div id="slide" className="index-slide slide" alt="star">
+									{
+										this.props.imgDatas.map(function (goodsTypeID, i) {
+											return (
+												<div key={i} className="img"><img src={goodsTypeID}/></div>
+											)
+										})
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div className="foter-content">
 					<div className="back-off" onClick={this.props.backOff.bind(this,"performerList")}></div>
 				</div>

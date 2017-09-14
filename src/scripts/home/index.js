@@ -52,6 +52,10 @@ var Home = React.createClass({
 
 		openPerformerInfo: function (id) {
 			HomeAction.openPerformerInfo(id);
+		},
+
+		selectPerformeInfoNav: function (id) {
+			HomeAction.selectPerformeInfoNav(id);
 		}
 	},
 // <Slide imgDatas={this.state.imgDatas}/>
@@ -86,7 +90,10 @@ var Home = React.createClass({
 						<PerformerInfo
 							backOff={this.events.backOff}
 							performerInfoDropDown={this.events.performerInfoDropDown}
+							selectPerformeInfoNav={this.events.selectPerformeInfoNav}
 							isPerformerInfoDropDown={this.state.isPerformerInfoDropDown}
+							imgDatas={this.state.imgDatas}
+							performeInfoNavList={this.state.performeInfoNavList}
 						/> : null
 				}
 				{

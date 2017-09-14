@@ -10,8 +10,8 @@ function HomeAction() {
 		'openPeopleArtList',
 		'backOff',
 		'performerInfoDropDown',
-		'showEditFrom',
-		'showAddFrom',
+		'selectPerformeInfoNav',
+		'openPerformerInfo',
 		'hideEditFrom'
 	);
 
@@ -22,8 +22,14 @@ function HomeAction() {
 	this.backOff = function (type) {
 		this.dispatch(type);
 	};
+
 	this.openPerformerInfo = function (id) {
 		this.dispatch(id);
 	};
+
+	this.selectPerformeInfoNav = function (id) {
+		this.dispatch(id);
+	};
+
 }
 module.exports = alt.createActions(HomeAction);

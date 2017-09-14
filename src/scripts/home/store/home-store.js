@@ -1,7 +1,7 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var WorthBuyingAction = require("../action/home-action");
+var HomeAction = require("../action/home-action");
 
 function HomeStore() {
 	this.isOpenClassicRepertoire = false;
@@ -100,7 +100,14 @@ function HomeStore() {
 		"http://upload-images.jianshu.io/upload_images/971705-1ebf3743a7d163c7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240",
 		"http://upload-images.jianshu.io/upload_images/971705-6d38b15221a904c9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
 
-	this.bindActions(WorthBuyingAction);
+	this.performeInfoNavList = [
+		{"id": "1", "name": "话剧作品", "isSelect": true},
+		{"id": "2", "name": "他院作品", "isSelect": false},
+		{"id": "3", "name": "影视作品", "isSelect": false},
+		{"id": "4", "name": "发表文章", "isSelect": false}
+	]
+
+	this.bindActions(HomeAction);
 }
 
 //进入经典曲目页面
@@ -152,6 +159,20 @@ HomeStore.prototype.performerInfoDropDown = function () {
 	} else {
 		this.isPerformerInfoDropDown = true;
 	}
+};
+
+//是否展开演员信息
+HomeStore.prototype.selectPerformeInfoNav = function (id) {
+	debugger
+	this.performeInfoNavList.map(function (performeInfoNav, index) {
+
+		if (performeInfoNav.id == id) {
+			performeInfoNav.isSelect = true;
+		} else {
+			performeInfoNav.isSelect = false;
+		}
+
+	});
 };
 
 
