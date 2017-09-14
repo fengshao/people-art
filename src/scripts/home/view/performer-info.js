@@ -9,7 +9,6 @@ var actorImg = require("../../../images/performer-info/the-actor.png");
 var PerformerInfo = React.createClass({
 
 	componentDidMount: function () {
-
 		var cont = $(".performer-info-content"),
 			scrollbar = cont.find(".teleplay-works-scrollbar"),
 			options = {
@@ -37,10 +36,142 @@ var PerformerInfo = React.createClass({
 		var frame = new Sly('#teleplay-works-scrollbar-content', options).init();
 		var frame1 = new Sly('#honour-record-scrollbar-content', options1).init();
 
+		this.slideInit();
+		Slide.k_touch($(".slide-container"));
 
-		Slide.initSlide($("top-slide"));
-		Slide.k_touch($("top-slide"));
+	},
+	componentDidUpdate: function () {
+		this.slideInit();
+	},
 
+	slideInit: function () {
+		var _this = this;
+		switch (_this.props.isSelectPerformeInfoNavId) {
+			case "1":
+				Slide.initSlide($(".modern-contnet"));
+				break;
+			case "2":
+				Slide.initSlide($(".he-institute-contnet"));
+				break;
+			case "3":
+				Slide.initSlide($(".movies-contnet"));
+				break;
+		}
+	},
+
+	events: {
+		left: function (element) {
+			Slide.left($("." + element));
+		},
+
+		right: function (element) {
+			Slide.right($("." + element));
+		},
+
+		selectPerformeInfoNav: function (id, ele) {
+
+			var _this = this;
+			switch (_this.props.isSelectPerformeInfoNavId) {
+				case "1":
+					Slide.removeEventFnc($(".modern-contnet"));
+					break;
+				case "2":
+					Slide.removeEventFnc($(".he-institute-contnet"));
+					break;
+				case "3":
+					Slide.removeEventFnc($(".movies-contnet"));
+					break;
+			}
+			_this.props.selectPerformeInfoNav(id);
+		}
+	},
+
+	createSlideContent: function () {
+		var _this = this;
+		switch (_this.props.isSelectPerformeInfoNavId) {
+			case "1":
+				return (
+					<div className="modern-contnet">
+						<div className="left-arrow"
+							 onClick={_this.events.left.bind(_this,"modern-contnet")}></div>
+						<div className="right-arrow"
+							 onClick={_this.events.right.bind(_this,"modern-contnet")}></div>
+						<div className="slide-container">
+							<div id="slide" className="index-slide slide" alt="star">
+								{
+									this.props.imgDatas.map(function (goodsTypeID, i) {
+										return (
+											<div key={i} className="img modern-slide-content">
+												<div className="modern-name">{goodsTypeID.name}</div>
+												<div className="modern-img">
+													<img src={goodsTypeID.img}/>
+												</div>
+											</div>
+										)
+									})
+								}
+							</div>
+						</div>
+					</div>
+				);
+				break;
+			case "2":
+				return (
+					<div className="he-institute-contnet">
+						<div className="left-arrow"
+							 onClick={_this.events.left.bind(_this,"he-institute-contnet")}></div>
+						<div className="right-arrow"
+							 onClick={_this.events.right.bind(_this,"he-institute-contnet")}></div>
+						<div className="slide-container">
+							<div id="slide" className="index-slide slide" alt="star">
+								{
+									this.props.imgDatas.map(function (goodsTypeID, i) {
+										return (
+											<div key={i} className="img he-institute-slide-content">
+												<div className="he-institute-name">
+													<p>{goodsTypeID.name}</p>
+												</div>
+												<div className="he-institute-img">
+													<img src={goodsTypeID.img}/>
+												</div>
+											</div>
+										)
+									})
+								}
+							</div>
+						</div>
+					</div>
+				);
+				break;
+			case "3":
+				return (
+					<div className="movies-contnet">
+						<div className="left-arrow"
+							 onClick={_this.events.left.bind(_this,"movies-contnet")}></div>
+						<div className="right-arrow"
+							 onClick={_this.events.right.bind(_this,"movies-contnet")}></div>
+						<div className="slide-container">
+							<div id="slide" className="index-slide slide" alt="star">
+								{
+									this.props.imgDatas.map(function (goodsTypeID, i) {
+										return (
+											<div key={i} className="img movies-slide-content">
+												<div className="movies-name">
+													<p>{goodsTypeID.name}</p>
+												</div>
+												<div className="movies-img">
+													<img src={goodsTypeID.img}/>
+												</div>
+											</div>
+										)
+									})
+								}
+							</div>
+						</div>
+					</div>
+				);
+				break;
+		}
 	},
 
 	render(){
@@ -239,7 +370,7 @@ var PerformerInfo = React.createClass({
 									'nav-li-select': performeInfoNav.isSelect
 								});
 								return (
-									<div onClick={_this.props.selectPerformeInfoNav.bind(this,performeInfoNav.id)}
+									<div onClick={_this.events.selectPerformeInfoNav.bind(_this, performeInfoNav.id)}
 										 className={topArrowCls} key={index} data-id={performeInfoNav.id}>
 										<div className="nav-li-title">{performeInfoNav.name}</div>
 									</div>
@@ -249,19 +380,9 @@ var PerformerInfo = React.createClass({
 
 					</div>
 					<div className="slide-content">
-						<div className="modern-contnet">
-							<div className="slide-container">
-								<div id="slide" className="index-slide slide" alt="star">
-									{
-										this.props.imgDatas.map(function (goodsTypeID, i) {
-											return (
-												<div key={i} className="img"><img src={goodsTypeID}/></div>
-											)
-										})
-									}
-								</div>
-							</div>
-						</div>
+						{
+							_this.createSlideContent()
+						}
 					</div>
 				</div>
 				<div className="foter-content">

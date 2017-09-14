@@ -94,6 +94,7 @@ var Home = React.createClass({
 							isPerformerInfoDropDown={this.state.isPerformerInfoDropDown}
 							imgDatas={this.state.imgDatas}
 							performeInfoNavList={this.state.performeInfoNavList}
+							isSelectPerformeInfoNavId={this.state.isSelectPerformeInfoNavId}
 						/> : null
 				}
 				{

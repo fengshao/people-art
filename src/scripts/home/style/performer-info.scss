@@ -11,6 +11,14 @@
 	-o-transition: $type 1s; /* Opera */
   }
 
+  @mixin transform-public($type) {
+	transform: $type;
+	-ms-transform: $type; /* Internet Explorer */
+	-moz-transform: $type; /* Firefox */
+	-webkit-transform: $type; /* Safari 和 Chrome */
+	-o-transform: $type; /* Opera */
+  }
+
   //超出部分隐藏公共样式
   .overhidden-public {
 	white-space: nowrap;
@@ -22,6 +30,23 @@
   .inline-block-vertical-align {
 	vertical-align: middle;
 	display: inline-block;
+  }
+
+  .left-arrow-public {
+	background: transparent url("~images/performer-info/left-right.png") no-repeat;
+	background-size: contain;
+	width: 74px;
+	height: 117px;
+	position: absolute;
+	left: -82px;
+  }
+  .right-arrow-public {
+	background: transparent url("~images/performer-info/right-arrow.png") no-repeat;
+	background-size: contain;
+	width: 68px;
+	height: 117px;
+	position: absolute;
+	right: -82px;
   }
 
   .top-arrow {
@@ -201,6 +226,7 @@
 
   }
 
+  //图片轮播样式
   .bottom-content {
 	background: transparent url("~images/performer-info/bottom-bg.png") no-repeat;
 	background-size: contain;
@@ -208,25 +234,32 @@
 	height: 1808px;
 	padding-top: 55px;
 
+	//顶部导航样式
 	.nav-content {
-	  margin-left: 251px;
+	  padding-left: 157px;
 	  width: 1204px;
-	  height: 139px;
+	  //height: 139px;
 	  overflow: hidden;
 
 	  .nav-li {
 		float: left;
-		width: 300px;
-		height: 139px;
-		background: transparent url("~images/performer-info/bottom-bg.png") no-repeat;
+		width: 297px;
+		height: 131px;
+		background: transparent url("~images/performer-info/nav-bg.png") no-repeat;
 		background-size: contain;
+		margin-left: 3px;
+
+		&:first-child {
+		  margin-left: 0;
+		}
 
 		.nav-li-title {
-		  height: 112px;
-		  width: 304px;
-		  line-height: 112px;
+		  height: 107px;
+		  width: 297px;
+		  line-height: 107px;
 		  color: #495978;
 		  font-size: 40px;
+		  text-align: center;
 
 		  .select {
 			color: #12151d;
@@ -234,7 +267,7 @@
 		}
 
 		&.nav-li-select {
-		  background: transparent url("~images/performer-info/top-right-logo.png") no-repeat;
+		  background: transparent url("~images/performer-info/nav-bg-select.png") no-repeat;
 		  .nav-li-title {
 			color: #12151d;
 		  }
@@ -242,6 +275,213 @@
 	  }
 	}
 
+	//底部轮区域样式
+	.slide-content {
+	  padding-right: 156px;
+	  padding-left: 156px;
+	  padding-top: 30px;
+
+	  //话剧作品轮播样式
+	  .modern-contnet {
+		position: relative;
+
+		.left-arrow {
+		  @extend .left-arrow-public;
+		  top: 174px;
+		}
+		.right-arrow {
+		  @extend .right-arrow-public;
+		  top: 174px;
+		}
+
+		.slide-container {
+		  width: 100%;
+		  margin: 0 auto;
+
+		  .slide {
+			width: 100%;
+			height: 400px;
+			overflow: hidden;
+			position: relative;
+
+			.modern-slide-content {
+			  width: 411px;
+			  height: 388px;
+			  overflow: hidden;
+			  position: absolute;
+			  //transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s, z-index 0.4s;
+			  transition: left 0.4s;
+
+			  .modern-name {
+				font-size: 50px;
+				color: #ffffff;
+				height: 60px;
+				margin-bottom: 20px;
+				text-align: center;
+				visibility: hidden;
+
+			  }
+			  .modern-img {
+				width: 411px;
+				height: 308px;
+				overflow: hidden;
+				position: absolute;
+			  }
+
+			  &.img1 {
+				left: 0;
+				z-index: 1;
+				opacity: 0.4;
+				@include transform-public(scaleY(0.8));
+			  }
+
+			  &.img2 {
+				z-index: 2;
+				left: calc((100% - 411px) / 2 - (411px) / 2);
+				opacity: 0.6;
+				@include transform-public(scaleY(0.9));
+
+			  }
+
+			  &.img3 {
+				left: calc((100% - 411px) / 2);
+				z-index: 3;
+				.modern-name {
+				  visibility: visible;
+
+				}
+			  }
+
+			  &.img4 {
+				left: calc((100% - 411px) / 2 + (411px) / 2);
+				z-index: 2;
+				opacity: 0.6;
+				@include transform-public(scaleY(0.9));
+			  }
+
+			  &.img5 {
+				left: calc((100% - 411px) / 2 + 411px);
+				z-index: 1;
+				opacity: 0.4;
+				@include transform-public(scaleY(0.8));
+			  }
+			  &.img6 {
+				display: none;
+			  }
+			}
+		  }
+		}
+
+	  }
+
+	  //影视作品 他院作品样式
+	  .he-institute-contnet, .movies-contnet {
+		position: relative;
+
+		.left-arrow {
+		  @extend .left-arrow-public;
+		  top: 217px;
+		}
+
+		.right-arrow {
+		  @extend .right-arrow-public;
+		  top: 217px;
+		}
+
+		.slide-container {
+		  width: 100%;
+		  margin: 0 auto;
+
+		  .slide {
+			width: 100%;
+			height: 595px;
+			overflow: hidden;
+			position: relative;
+			.he-institute-slide-content, .movies-slide-content {
+			  width: 100%;
+			  height: 100%;
+			  overflow: hidden;
+			  position: absolute;
+			  //transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s, z-index 0.4s;
+			  transition: left 0.4s;
+
+			  .he-institute-name, .movies-name {
+				font-size: 50px;
+				color: #ffffff;
+				height: 100%;
+				text-align: center;
+				float: left;
+				width: calc(100% - 810px);
+				p {
+				  display: table-cell;
+				  vertical-align: middle;
+				  margin: 0;
+				  width: 380px;
+				  height: 550px;
+				}
+
+			  }
+
+			  .he-institute-img, .movies-img {
+				background: transparent url("~images/performer-info/works-bg.png") no-repeat;
+				background-size: contain;
+				float: left;
+				width: 810px;
+				height: 100%;
+				overflow: hidden;
+				img {
+				  margin: 47px 77px 161px 77px;
+				  width: calc(810px - 77px * 2);
+				  height: calc(100% - 208px);
+				}
+
+			  }
+
+			  &.img1 {
+				left: -200%;
+				z-index: 1;
+				opacity: 0.4;
+				@include transform-public(scaleY(0.8));
+			  }
+
+			  &.img2 {
+				z-index: 2;
+				left: -100%;
+				opacity: 0.6;
+				@include transform-public(scaleY(0.9));
+
+			  }
+
+			  &.img3 {
+				left: 0;
+				z-index: 3;
+				visibility: visible;
+			  }
+
+			  &.img4 {
+				left: 100%;
+				z-index: 2;
+				opacity: 0.6;
+				@include transform-public(scaleY(0.9));
+			  }
+
+			  &.img5 {
+				left: 200%;
+				z-index: 1;
+				opacity: 0.4;
+				@include transform-public(scaleY(0.8));
+			  }
+
+			  &.img6 {
+				display: none;
+			  }
+			}
+		  }
+		}
+
+	  }
+
+	}
   }
 
   .foter-content {
