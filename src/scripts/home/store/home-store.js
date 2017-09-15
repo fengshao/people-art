@@ -91,20 +91,24 @@ function HomeStore() {
 		{"id": "14", "name": "雷雨14"}
 	];
 
+
+	//"//storage.wesai.com/d/ee0/5bfa3/dee0a5bfa3ca9b3ea2417f08a12d4e96.png"
+
 	this.imgDatas = [
 		{
 			"id": "1",
-			"name": "test1",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+			"name": "《濮存昕： 我是来学习的》 我是来学习的",
+			//"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+			"img": "//storage.wesai.com/d/ee0/5bfa3/dee0a5bfa3ca9b3ea2417f08a12d4e96.png"
 		},
 		{
 			"id": "2",
-			"name": "test2",
+			"name": "《濮存昕： 我是来学习的》 我是来学习的",
 			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 		},
 		{
 			"id": "3",
-			"name": "test3",
+			"name": "《濮存昕： 我是来学习的》 我是来学习的",
 			"img": "http://upload-images.jianshu.io/upload_images/971705-1ebf3743a7d163c7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 
 		}, {

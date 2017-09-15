@@ -56,6 +56,9 @@ var PerformerInfo = React.createClass({
 			case "3":
 				Slide.initSlide($(".movies-contnet"));
 				break;
+			case "4":
+				Slide.initSlide($(".article-contnet"));
+				break;
 		}
 	},
 
@@ -80,6 +83,9 @@ var PerformerInfo = React.createClass({
 					break;
 				case "3":
 					Slide.removeEventFnc($(".movies-contnet"));
+					break;
+				case "4":
+					Slide.removeEventFnc($(".article-contnet"));
 					break;
 			}
 			_this.props.selectPerformeInfoNav(id);
@@ -171,6 +177,57 @@ var PerformerInfo = React.createClass({
 					</div>
 				);
 				break;
+
+			case "4":
+
+				var imgDatas = this.props.imgDatas;
+				var length = Math.ceil(imgDatas.length / 4);
+				var arrTest = [];
+				for (let i = 0; i < length; i++) {
+					arrTest.push(i);
+				}
+
+				return (
+					<div className="article-contnet">
+						<div className="left-arrow"
+							 onClick={_this.events.left.bind(_this,"article-contnet")}></div>
+						<div className="right-arrow"
+							 onClick={_this.events.right.bind(_this,"article-contnet")}></div>
+						<div className="slide-container">
+							<div id="slide" className="index-slide slide" alt="star">
+								{
+									arrTest.map(function (index, key) {
+
+										return (
+											<div className="img article-slide-content" key={key}>
+												{
+													imgDatas.map(function (goodsTypeID, i) {
+														return (
+															i < 4 * (key + 1) && i >= 4 * key ?
+																<div key={i} className="article-li">
+																	<div className="article-img">
+																		<img src={goodsTypeID.img}/>
+																	</div>
+																	<div className="article-name">
+																		{goodsTypeID.name}
+																	</div>
+																</div> :
+																null
+
+														)
+													})
+												}
+											</div>
+										)
+									})
+
+								}
+							</div>
+						</div>
+					</div>
+				);
+				break;
+
 		}
 	},
 
@@ -215,7 +272,9 @@ var PerformerInfo = React.createClass({
 							</div>
 
 							<div className="brief-introduction">
-								濮存昕，北京人民艺术剧院副院长，国家一级演员，中国戏剧家协会主席，全国政协委员。从事戏剧影视表演艺术多年，主演过数十部话剧、电影、电视剧作品，多次获国内外大奖。代表作品有话剧《李白》、《茶馆》、《天之骄子》等
+								濮存昕，北京人民艺术剧院副院长，国家一级演员，中国戏剧家协会主席，全国政协委员。
+								从事戏剧影视表演艺术多年，主演过数十部话剧、电影、电视剧作品，多次获国内外大奖。
+								代表作品有话剧《李白》、《茶馆》、《天之骄子》等
 								，电视剧《英雄无悔》、《来来往往》、《光荣之旅》，电影《洗澡》、《一轮明月》等。
 							</div>
 						</div>
@@ -304,8 +363,7 @@ var PerformerInfo = React.createClass({
 									</div>
 									<div className="bottom-info-content"> 1994年 《长天烽火》中饰演大哥；《我爱我家》中饰演阿文
 									</div>
-									<div className="bottom-info-content"> 1996年
-										《英雄无悔》中饰演高天；《一场风花雪月的事》中饰演记者；《运河人家》中饰演叶三车
+									<div className="bottom-info-content"> 1996年 《英雄无悔》中饰演高天；《一场风花雪月的事》中饰演记者；《运河人家》中饰演叶三车
 									</div>
 									<div className="bottom-info-content"> 1998年 《来来往往》中饰演康伟业
 									</div>

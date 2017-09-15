@@ -182,6 +182,11 @@
 		padding-right: 20px;
 	  }
 
+	  .zhanwi {
+		height: 30px;
+		width: 100%;
+	  }
+
 	  .bottom-info-scrollbar {
 		height: 100%;
 		width: 10px;
@@ -433,6 +438,105 @@
 				  margin: 47px 77px 161px 77px;
 				  width: calc(810px - 77px * 2);
 				  height: calc(100% - 208px);
+				}
+
+			  }
+
+			  &.img1 {
+				left: -200%;
+				z-index: 1;
+				opacity: 0.4;
+				@include transform-public(scaleY(0.8));
+			  }
+
+			  &.img2 {
+				z-index: 2;
+				left: -100%;
+				opacity: 0.6;
+				@include transform-public(scaleY(0.9));
+
+			  }
+
+			  &.img3 {
+				left: 0;
+				z-index: 3;
+				visibility: visible;
+			  }
+
+			  &.img4 {
+				left: 100%;
+				z-index: 2;
+				opacity: 0.6;
+				@include transform-public(scaleY(0.9));
+			  }
+
+			  &.img5 {
+				left: 200%;
+				z-index: 1;
+				opacity: 0.4;
+				@include transform-public(scaleY(0.8));
+			  }
+
+			  &.img6 {
+				display: none;
+			  }
+			}
+		  }
+		}
+
+	  }
+	  .article-contnet {
+		position: relative;
+
+		.left-arrow {
+		  @extend .left-arrow-public;
+		  top: 217px;
+		}
+
+		.right-arrow {
+		  @extend .right-arrow-public;
+		  top: 217px;
+		}
+
+		.slide-container {
+		  width: 100%;
+		  margin: 0 auto;
+
+		  .slide {
+			width: 100%;
+			height: 595px;
+			overflow: hidden;
+			position: relative;
+			.article-slide-content {
+			  width: 100%;
+			  height: 100%;
+			  overflow: hidden;
+			  position: absolute;
+			  //transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s, z-index 0.4s;
+			  transition: left 0.4s;
+
+			  .article-li {
+				width: 247px;
+				float: left;
+				margin-left: 59px;
+
+				&:first-child {
+				  margin-left: 0;
+				}
+
+				.article-name {
+				  font-size: 30px;
+				  color: #ffffff;
+				  width: 100%;
+				  text-align: center;
+				  float: left;
+				}
+
+				.article-img {
+				  float: left;
+				  width: 247px;
+				  height: 292px;
+				  overflow: hidden;
 				}
 
 			  }
