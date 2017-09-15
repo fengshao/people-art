@@ -4,8 +4,8 @@
 require('../style/performer-info.scss');
 import classNames from 'classnames';
 import Slide from '../../../component/slide';
+import SlideCompent from './slide';
 
-var actorImg = require("../../../images/performer-info/the-actor.png");
 var PerformerInfo = React.createClass({
 
 	componentDidMount: function () {
@@ -35,43 +35,10 @@ var PerformerInfo = React.createClass({
 			};
 		var frame = new Sly('#teleplay-works-scrollbar-content', options).init();
 		var frame1 = new Sly('#honour-record-scrollbar-content', options1).init();
-
-		this.slideInit();
-		Slide.k_touch($(".slide-container"));
-
-	},
-	componentDidUpdate: function () {
-		this.slideInit();
-	},
-
-	slideInit: function () {
-		var _this = this;
-		switch (_this.props.isSelectPerformeInfoNavId) {
-			case "1":
-				Slide.initSlide($(".modern-contnet"));
-				break;
-			case "2":
-				Slide.initSlide($(".he-institute-contnet"));
-				break;
-			case "3":
-				Slide.initSlide($(".movies-contnet"));
-				break;
-			case "4":
-				Slide.initSlide($(".article-contnet"));
-				break;
-		}
 	},
 
 	events: {
-		left: function (element) {
-			Slide.left($("." + element));
-		},
-
-		right: function (element) {
-			Slide.right($("." + element));
-		},
-
-		selectPerformeInfoNav: function (id, ele) {
+		selectPerformeInfoNav: function (id) {
 
 			var _this = this;
 			switch (_this.props.isSelectPerformeInfoNavId) {
@@ -89,150 +56,6 @@ var PerformerInfo = React.createClass({
 					break;
 			}
 			_this.props.selectPerformeInfoNav(id);
-		}
-	},
-
-	createSlideContent: function () {
-		var _this = this;
-
-		var modernList = this.props.performer.modernList;
-		var heInstituteList = this.props.performer.heInstituteList;
-		var moviesList = this.props.performer.moviesList;
-		var articleList = this.props.performer.articleList;
-
-		switch (_this.props.isSelectPerformeInfoNavId) {
-			case "1":
-				return (
-					<div className="modern-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"modern-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"modern-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
-								{
-									modernList.map(function (modern, i) {
-										return (
-											<div key={i} className="img modern-slide-content">
-												<div className="modern-name">{modern.name}</div>
-												<div className="modern-img">
-													<img src={modern.preview}/>
-												</div>
-											</div>
-										)
-									})
-								}
-							</div>
-						</div>
-					</div>
-				);
-				break;
-			case "2":
-				return (
-					<div className="he-institute-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"he-institute-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"he-institute-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
-								{
-									heInstituteList.map(function (heInstitute, i) {
-										return (
-											<div key={i} className="img he-institute-slide-content">
-												<div className="he-institute-name">
-													<p>{heInstitute.name}</p>
-												</div>
-												<div className="he-institute-img">
-													<img src={heInstitute.preview}/>
-												</div>
-											</div>
-										)
-									})
-								}
-							</div>
-						</div>
-					</div>
-				);
-				break;
-			case "3":
-				return (
-					<div className="movies-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"movies-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"movies-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
-								{
-									moviesList.map(function (movies, i) {
-										return (
-											<div key={i} className="img movies-slide-content">
-												<div className="movies-name">
-													<p>{movies.name}</p>
-												</div>
-												<div className="movies-img">
-													<img src={movies.preview}/>
-												</div>
-											</div>
-										)
-									})
-								}
-							</div>
-						</div>
-					</div>
-				);
-				break;
-
-			case "4":
-
-				var length = Math.ceil(articleList.length / 4);
-				var arrTest = [];
-				for (let i = 0; i < length; i++) {
-					arrTest.push(i);
-				}
-
-				return (
-					<div className="article-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"article-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"article-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
-								{
-									arrTest.map(function (index, key) {
-
-										return (
-											<div className="img article-slide-content" key={key}>
-												{
-													articleList.map(function (article, i) {
-														return (
-															i < 4 * (key + 1) && i >= 4 * key ?
-																<div key={i} className="article-li">
-																	<div className="article-img">
-																		<img src={article.preview}/>
-																	</div>
-																	<div className="article-name">
-																		{article.name}
-																	</div>
-																</div> :
-																null
-
-														)
-													})
-												}
-											</div>
-										)
-									})
-
-								}
-							</div>
-						</div>
-					</div>
-				);
-				break;
-
 		}
 	},
 
@@ -272,13 +95,12 @@ var PerformerInfo = React.createClass({
 									<span className="educational-content">{performer.educationalSchool}</span>
 								</div>
 							</div>
-
 							<div className="personalized-signature">
 								{performer.personalizedSignature}
 							</div>
 
 							<div className="brief-introduction">
-								{performer.briefIntroduction}
+								{ performer.briefIntroduction }
 							</div>
 						</div>
 					</div>
@@ -289,9 +111,7 @@ var PerformerInfo = React.createClass({
 								<div className="handle"></div>
 							</div>
 							<div className="teleplay-works-scrollbar-content" id="teleplay-works-scrollbar-content">
-								<div>
-									{performer.teleplayWorks}
-									<div></div>
+								<div dangerouslySetInnerHTML={{__html : performer.teleplayWorks }}>
 								</div>
 							</div>
 
@@ -301,9 +121,7 @@ var PerformerInfo = React.createClass({
 								<div className="handle"></div>
 							</div>
 							<div className="honour-record-scrollbar-content" id="honour-record-scrollbar-content">
-								<div>
-									{performer.honourRecord}
-									<div></div>
+								<div dangerouslySetInnerHTML={{__html : performer.honourRecord }}>
 								</div>
 							</div>
 						</div>
@@ -331,11 +149,11 @@ var PerformerInfo = React.createClass({
 						}
 
 					</div>
-					<div className="slide-content">
-						{
-							_this.createSlideContent()
-						}
-					</div>
+					<SlideCompent
+						Slide={Slide}
+						performer={this.props.performer}
+						isSelectPerformeInfoNavId={this.props.isSelectPerformeInfoNavId}
+					/>
 				</div>
 				<div className="foter-content">
 					<div className="back-off" onClick={this.props.backOff.bind(this,"performerList")}></div>

@@ -6,7 +6,7 @@ require('./style/main.scss');
 require("../../component/scrollbar/sly.js");
 
 import HomePage from './view/home';
-import ClassicRepertoire from './view/ClassicRepertoire';
+import ClassicRepertoire from './view/classicRepertoire';
 import PerformerList from './view/performer-list';
 import PerformerInfo from './view/performer-info';
 // import Test from './test/test.js';
@@ -25,7 +25,6 @@ var Home = React.createClass({
 	},
 
 	componentDidMount: function () {
-		debugger
 		HomeStore.listen(this.onChange);
 		HomeAction.getHomePageData();
 	},
@@ -86,6 +85,7 @@ var Home = React.createClass({
 						<PerformerList
 							letterArr={this.state.letterArr}
 							performerList={this.state.performerList}
+							isShowLeterStr={this.state.isShowLeterStr}
 							isShowPerformerList={this.state.isShowPerformerList}
 							classicRepertoireList={this.state.classicRepertoireList}
 							openPerformerInfo={this.events.openPerformerInfo}

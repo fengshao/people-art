@@ -114,6 +114,11 @@
 		  height: 507px;
 		  margin-left: 40px;
 		  font-size: 0;
+		  padding-left: 35px;
+		  img {
+			width: 366px;
+			height: 476px;
+		  }
 
 		}
 	  }
@@ -492,12 +497,12 @@
 
 		.left-arrow {
 		  @extend .left-arrow-public;
-		  top: 217px;
+		  top: 95px;
 		}
 
 		.right-arrow {
 		  @extend .right-arrow-public;
-		  top: 217px;
+		  top: 95px;
 		}
 
 		.slide-container {

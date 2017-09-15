@@ -53,7 +53,7 @@ var ClassicRepertoire = React.createClass({
 															i < 3 * (key + 1) && i >= 3 * key ?
 																<li className="repertoire-list-li" key={i}>
 																	<div className="repertoire-video-img">
-																		{performer.preview}
+																		<img src={performer.preview} alt="暂无图片"/>
 																	</div>
 																	<div
 																		className="repertoire-video-title">{performer.name}</div>

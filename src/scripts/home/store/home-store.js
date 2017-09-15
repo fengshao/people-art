@@ -17,6 +17,7 @@ function HomeStore() {
 	this.letterArr = [];
 	this.classicRepertoireList = [];
 	this.classicRepertoire = [];
+	this.isShowLeterStr = "";
 	this.homePageData = {
 		"id": "",
 		"time": "",
@@ -54,28 +55,35 @@ HomeStore.prototype.getLetterArr = function (letterArr) {
 
 //获取演员列表
 HomeStore.prototype.getPerformerList = function (obj) {
-
+	var _this = this;
 	this.performerList = obj.performerList;
 	this.letterArr = obj.letterArr;
 	this.classicRepertoireList = obj.classicRepertoireList;
-	this.isShowPerformerList = obj.performerList[0];
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerInfo = false;
 	this.isOpenHomePage = false;
 	this.isOpenPerformerList = true;
+	this.isShowLeterStr = obj.letterArr[0];
+	obj.performerList.map(function (performer, index) {
+		if (performer.surname.toLowerCase() == obj.letterArr[0].toLowerCase()) {
+			_this.isShowPerformerList.push(performer)
+		}
+	});
+
 };
 
 
 //进入演员信息页
 HomeStore.prototype.openPerformerInfo = function (id) {
+	var _this = this;
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerList = false;
 	this.isOpenHomePage = false;
 	this.isOpenPerformerInfo = true;
 
-	this.performer = this.performerList.map(function (performer, index) {
+	this.performerList.map(function (performer, index) {
 		if (performer.id == id) {
-			return performer;
+			_this.performer = performer;
 		}
 	})
 

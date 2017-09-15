@@ -5,7 +5,7 @@ require('../style/performer-list.scss');
 var videoImg = require("../../../images/performer-list/video.png");
 import classNames from 'classnames';
 
-var HomePage = React.createClass({
+var PerformerListPage = React.createClass({
 	componentDidMount: function () {
 		require("../../../component/arctext/jquery.arctext.js");
 		// $(".letter-list").arctext({radius: 1100});
@@ -96,7 +96,7 @@ var HomePage = React.createClass({
 						}
 
 					</div>
-					<div className="letter-title"></div>
+					<div className="letter-title">{_this.props.isShowLeterStr}</div>
 				</div>
 				<div className="video-content">
 					<div className="video-content-div">
@@ -107,4 +107,4 @@ var HomePage = React.createClass({
 		);
 	}
 });
-module.exports = HomePage;
+module.exports = PerformerListPage;

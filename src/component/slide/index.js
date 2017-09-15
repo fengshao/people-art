@@ -1,7 +1,6 @@
 /**
  * Created by fengshao on 2017/9/8.
  */
-// require("./index.scss");
 exports.initSlide = function ($element) {
 	this.slideNub = $element.find(".slide .img").size();             //获取轮播图片数量
 	for (let i = 0; i < this.slideNub; i++) {
