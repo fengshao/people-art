@@ -25,7 +25,9 @@ var Home = React.createClass({
 	},
 
 	componentDidMount: function () {
+		debugger
 		HomeStore.listen(this.onChange);
+		HomeAction.getHomePageData();
 	},
 
 	componentWillUnmount: function () {
@@ -34,12 +36,12 @@ var Home = React.createClass({
 	},
 
 	events: {
-		openClassicRepertoire: function () {
-			HomeAction.openClassicRepertoire();
+		getClassicRepertoireList: function () {
+			HomeAction.getClassicRepertoireList();
 		},
 
-		openPeopleArtList: function () {
-			HomeAction.openPeopleArtList();
+		getPerformerList: function () {
+			HomeAction.getPerformerList();
 		},
 
 		backOff: function (type) {
@@ -66,8 +68,9 @@ var Home = React.createClass({
 				{
 					this.state.isOpenHomePage ?
 						<HomePage
-							openClassicRepertoire={this.events.openClassicRepertoire}
-							openPeopleArtList={this.events.openPeopleArtList}
+							getClassicRepertoireList={this.events.getClassicRepertoireList}
+							getPerformerList={this.events.getPerformerList}
+							homePageData={this.state.homePageData}
 						/> : null
 				}
 				{
@@ -75,13 +78,16 @@ var Home = React.createClass({
 						<ClassicRepertoire
 							backOff={this.events.backOff}
 							classicRepertoireList={this.state.classicRepertoireList}
+							classicRepertoire={this.state.classicRepertoire}
 						/> : null
 				}
 				{
 					this.state.isOpenPerformerList ?
 						<PerformerList
 							letterArr={this.state.letterArr}
-							performerArr={this.state.performerArr}
+							performerList={this.state.performerList}
+							isShowPerformerList={this.state.isShowPerformerList}
+							classicRepertoireList={this.state.classicRepertoireList}
 							openPerformerInfo={this.events.openPerformerInfo}
 						/> : null
 				}
@@ -92,7 +98,7 @@ var Home = React.createClass({
 							performerInfoDropDown={this.events.performerInfoDropDown}
 							selectPerformeInfoNav={this.events.selectPerformeInfoNav}
 							isPerformerInfoDropDown={this.state.isPerformerInfoDropDown}
-							imgDatas={this.state.imgDatas}
+							performer={this.state.performer}
 							performeInfoNavList={this.state.performeInfoNavList}
 							isSelectPerformeInfoNavId={this.state.isSelectPerformeInfoNavId}
 						/> : null

@@ -10,133 +10,18 @@ function HomeStore() {
 	this.isOpenPerformerInfo = false;
 	this.isOpenTest = false;
 	this.isPerformerInfoDropDown = false;
-	this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
-	this.performerArr = [
-		{
-			"id": "1",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "2",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "3",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "4",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "5",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "6",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "7",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "8",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "9",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "10",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "11",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "12",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "13",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "14",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "15",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		}
-	];
-
-	this.classicRepertoireList = [
-		{"id": "1", "name": "雷雨1"},
-		{"id": "2", "name": "雷雨2"},
-		{"id": "3", "name": "雷雨3"},
-		{"id": "4", "name": "雷雨4"},
-		{"id": "5", "name": "雷雨5"},
-		{"id": "6", "name": "雷雨6"},
-		{"id": "7", "name": "雷雨7"},
-		{"id": "8", "name": "雷雨8"},
-		{"id": "9", "name": "雷雨9"},
-		{"id": "10", "name": "雷雨10"},
-		{"id": "11", "name": "雷雨11"},
-		{"id": "12", "name": "雷雨12"},
-		{"id": "13", "name": "雷雨13"},
-		{"id": "14", "name": "雷雨14"}
-	];
-
-
-	//"//storage.wesai.com/d/ee0/5bfa3/dee0a5bfa3ca9b3ea2417f08a12d4e96.png"
-
-	this.imgDatas = [
-		{
-			"id": "1",
-			"name": "《濮存昕： 我是来学习的》 我是来学习的",
-			//"img": "http://upload-images.jianshu.io/upload_images/971705-2c8d6d5d8d3b59bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-			"img": "//storage.wesai.com/d/ee0/5bfa3/dee0a5bfa3ca9b3ea2417f08a12d4e96.png"
-		},
-		{
-			"id": "2",
-			"name": "《濮存昕： 我是来学习的》 我是来学习的",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-1158b127a710879a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		},
-		{
-			"id": "3",
-			"name": "《濮存昕： 我是来学习的》 我是来学习的",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-1ebf3743a7d163c7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-
-		}, {
-			"id": "4",
-			"name": "test4",
-			"img": "http://upload-images.jianshu.io/upload_images/971705-6d38b15221a904c9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-		}, {
-			"id": "5",
-			"name": "test5",
-			"img": "http://www.w3school.com.cn/ui2017/compatible_safari.png"
-		}, {
-			"id": "6",
-			"name": "test6",
-			"img": "http://www.w3school.com.cn/ui2017/compatible_opera.png"
-		},
-		{
-			"id": "7",
-			"name": "test7",
-			"img": "http://www.w3school.com.cn/ui2017/compatible_firefox.png"
-		}, {
-			"id": "8",
-			"name": "test8",
-			"img": "http://www.w3school.com.cn/ui2017/compatible_chrome.png"
-
-
-		}
-	];
-
+	//this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
+	this.performerList = [];
+	this.isShowPerformerList = [];
+	this.performer = {};
+	this.letterArr = [];
+	this.classicRepertoireList = [];
+	this.classicRepertoire = [];
+	this.homePageData = {
+		"id": "",
+		"time": "",
+		"img": []
+	};
 	this.isSelectPerformeInfoNavId = "1";
 	this.performeInfoNavList = [
 		{"id": "1", "name": "话剧作品", "isSelect": true},
@@ -148,27 +33,53 @@ function HomeStore() {
 	this.bindActions(HomeAction);
 }
 
-//进入经典曲目页面
-HomeStore.prototype.openClassicRepertoire = function (worthBuyingList) {
+
+//获取首页数据
+HomeStore.prototype.getHomePageData = function (homePageData) {
+	this.homePageData = homePageData;
+};
+
+//获取经典剧目列表
+HomeStore.prototype.getClassicRepertoireList = function (classicRepertoireList) {
+	this.classicRepertoireList = classicRepertoireList;
 	this.isOpenClassicRepertoire = true;
 	this.isOpenPerformerList = false;
 	this.isOpenHomePage = false;
 };
 
-//进入演员列表页
-HomeStore.prototype.openPeopleArtList = function (obj) {
+//获取演员姓氏列表
+HomeStore.prototype.getLetterArr = function (letterArr) {
+	this.homePageData = letterArr;
+};
+
+//获取演员列表
+HomeStore.prototype.getPerformerList = function (obj) {
+
+	this.performerList = obj.performerList;
+	this.letterArr = obj.letterArr;
+	this.classicRepertoireList = obj.classicRepertoireList;
+	this.isShowPerformerList = obj.performerList[0];
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerInfo = false;
 	this.isOpenHomePage = false;
 	this.isOpenPerformerList = true;
 };
 
-//进入演员列表页
+
+//进入演员信息页
 HomeStore.prototype.openPerformerInfo = function (id) {
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerList = false;
 	this.isOpenHomePage = false;
 	this.isOpenPerformerInfo = true;
+
+	this.performer = this.performerList.map(function (performer, index) {
+		if (performer.id == id) {
+			return performer;
+		}
+	})
+
+
 };
 
 

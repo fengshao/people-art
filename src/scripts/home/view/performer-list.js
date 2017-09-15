@@ -29,8 +29,8 @@ var HomePage = React.createClass({
 	render(){
 
 		var _this = this;
-		var performerArr = this.props.performerArr;
-		var length = Math.ceil(performerArr.length / 3);
+		var performerList = this.props.isShowPerformerList;
+		var length = Math.ceil(performerList.length / 3);
 		var arrTest = [];
 		for (let i = 0; i < length; i++) {
 			arrTest.push(i);
@@ -56,13 +56,13 @@ var HomePage = React.createClass({
 										return (
 											<div className="repertoire-list-div" key={key}>
 												{
-													performerArr.map(function (performer, i) {
+													performerList.map(function (performer, i) {
 
 														return (
 															i < 3 * (key + 1) && i >= 3 * key ?
 																<div className="performer-li" key={i}
 																	 onClick={_this.props.openPerformerInfo.bind(_this,performer.id)}>
-																	<img src={performer.img} alt="暂无图片"/>
+																	<img src={performer.headPortrait} alt="暂无图片"/>
 																</div> :
 																null
 														)

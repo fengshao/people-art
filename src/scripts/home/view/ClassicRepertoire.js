@@ -23,6 +23,7 @@ var ClassicRepertoire = React.createClass({
 
 	render(){
 		var classicRepertoireList = this.props.classicRepertoireList;
+		var classicRepertoire = this.props.classicRepertoire;
 		var length = Math.ceil(classicRepertoireList.length / 3);
 		var arrTest = [];
 		for (let i = 0; i < length; i++) {
@@ -31,8 +32,10 @@ var ClassicRepertoire = React.createClass({
 
 		return (
 			<div className="classic-repertoire-content">
-				<div className="repertoire-title">《蔡文姬》</div>
-				<div className="repertoire-video-play-content"></div>
+				<div className="repertoire-title">{classicRepertoire.name ? classicRepertoire.name : ""}</div>
+				<div className="repertoire-video-play-content">
+					<img alt="暂无图片" src={classicRepertoire.video ? classicRepertoire.video : ""}/>
+				</div>
 				<div className="repertoire-list-content" id="repertoire-list-content">
 					<div className="repertoire-scrollbar">
 						<div className="handle"></div>
@@ -49,8 +52,9 @@ var ClassicRepertoire = React.createClass({
 														return (
 															i < 3 * (key + 1) && i >= 3 * key ?
 																<li className="repertoire-list-li" key={i}>
-																	<div
-																		className="repertoire-video-img">{performer.id}</div>
+																	<div className="repertoire-video-img">
+																		{performer.preview}
+																	</div>
 																	<div
 																		className="repertoire-video-title">{performer.name}</div>
 																</li> :
