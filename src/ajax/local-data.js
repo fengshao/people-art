@@ -918,7 +918,7 @@ var performerList = [
 			}
 		]
 	}
-]
+];
 
 exports.homePageData = homePageData;
 exports.classicRepertoireData = classicRepertoireData;

@@ -441,10 +441,21 @@
 				width: 810px;
 				height: 100%;
 				overflow: hidden;
+				position: relative;
 				img {
 				  margin: 47px 77px 161px 77px;
 				  width: calc(810px - 77px * 2);
 				  height: calc(100% - 208px);
+				}
+
+				.suspend-logo {
+				  background: transparent url("~images/performer-info/suspend-logo-small.png") no-repeat;
+				  background-size: contain;
+				  width: 62px;
+				  height: 65px;
+				  position: absolute;
+				  left: 370px;
+				  top: 217px;
 				}
 
 			  }

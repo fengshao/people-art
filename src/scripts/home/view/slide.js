@@ -50,6 +50,9 @@ var SlideCompent = React.createClass({
 		var moviesList = this.props.performer.moviesList;
 		var articleList = this.props.performer.articleList;
 
+		// var videoRegular = /^https?.+\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|png)$/i;
+		var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
+
 		switch (_this.props.isSelectPerformeInfoNavId) {
 			case "1":
 				return (
@@ -95,6 +98,10 @@ var SlideCompent = React.createClass({
 												</div>
 												<div className="he-institute-img">
 													<img src={heInstitute.preview}/>
+													{
+														videoRegular.test(heInstitute.video) ?
+															<div className="suspend-logo"></div> : null
+													}
 												</div>
 											</div>
 										)
@@ -123,6 +130,10 @@ var SlideCompent = React.createClass({
 												</div>
 												<div className="movies-img">
 													<img src={movies.preview}/>
+													{
+														videoRegular.test(movies.video) ?
+															<div className="suspend-logo"></div> : null
+													}
 												</div>
 											</div>
 										)
