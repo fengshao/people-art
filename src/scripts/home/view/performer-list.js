@@ -7,8 +7,6 @@ import classNames from 'classnames';
 
 var PerformerListPage = React.createClass({
 	componentDidMount: function () {
-		require("../../../component/arctext/jquery.arctext.js");
-		// $(".letter-list").arctext({radius: 1100});
 
 		var cont = $(".performer-list-content"),
 			scrollbar = cont.find(".performer-list-scrollbar"),

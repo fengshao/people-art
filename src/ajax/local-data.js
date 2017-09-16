@@ -174,13 +174,13 @@ var performerList = [
 				"id": "1",
 				"name": "《万家灯火》",
 				"preview": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png",
-				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png"
+				"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
 			},
 			{
 				"id": "2",
 				"name": "《白鹿原》 ",
 				"preview": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png",
-				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png"
+				"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
 			},
 			{
 				"id": "3",

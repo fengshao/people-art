@@ -2,7 +2,6 @@
  * Created by fengs on 2017/9/9.
  *
  */
-require('./style/main.scss');
 require("../../component/scrollbar/sly.js");
 
 import HomePage from './view/home';
@@ -35,6 +34,19 @@ var Home = React.createClass({
 	},
 
 	events: {
+
+		maskLayerInitSlide: function () {
+			HomeAction.maskLayerInitSlide();
+		},
+
+		maskLayerLeft: function () {
+			HomeAction.maskLayerLeft({"$element1": element1, "$element2": element2});
+		},
+
+		maskLayerRight: function () {
+			HomeAction.maskLayerRight();
+		},
+
 		getClassicRepertoireList: function () {
 			HomeAction.getClassicRepertoireList();
 		},
@@ -73,6 +85,27 @@ var Home = React.createClass({
 
 		onPlay: function () {
 			HomeAction.onPlay();
+		},
+
+		showMaskLayer: function (a, b) {
+			HomeAction.showMaskLayer();
+		},
+
+		hideMaskLayer: function () {
+			HomeAction.hideMaskLayer();
+		},
+
+		maskLayerControl: function (id) {
+			HomeAction.maskLayerControl(id);
+		},
+		touchStart: function (e) {
+			HomeAction.touchStart(e);
+		},
+		touchEnd: function (e) {
+			HomeAction.touchEnd(e);
+		},
+		touchMove: function (e) {
+			HomeAction.touchMove(e);
 		}
 	},
 
@@ -114,13 +147,26 @@ var Home = React.createClass({
 				{
 					this.state.isOpenPerformerInfo ?
 						<PerformerInfo
+
+							maskLayerInitSlide={this.events.maskLayerInitSlide}
+							maskLayerLeft={this.events.maskLayerLeft}
+							maskLayerRight={this.events.maskLayerRight}
+							touchMove={this.events.touchMove}
+							touchEnd={this.events.touchEnd}
+							touchStart={this.events.touchStart}
+
 							backOff={this.events.backOff}
+							showMaskLayer={this.events.showMaskLayer}
+							hideMaskLayer={this.events.hideMaskLayer}
+							maskLayerControl={this.events.maskLayerControl}
 							performerInfoDropDown={this.events.performerInfoDropDown}
 							selectPerformeInfoNav={this.events.selectPerformeInfoNav}
 							isPerformerInfoDropDown={this.state.isPerformerInfoDropDown}
 							performer={this.state.performer}
 							performeInfoNavList={this.state.performeInfoNavList}
 							isSelectPerformeInfoNavId={this.state.isSelectPerformeInfoNavId}
+							isShowMaskLayer={this.state.isShowMaskLayer}
+							isMaskLayerPlay={this.state.isMaskLayerPlay}
 						/> : null
 				}
 				{

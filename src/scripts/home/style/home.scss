@@ -1,4 +1,59 @@
 //首页样式
+@import "./main.scss";
+
+//取消选中样式
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+ not supported by any browser */
+}
+
+body {
+  background: transparent;
+  overflow: auto;
+  font-size: 16px;
+  width: 1502px;
+  height: 2665px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  img {
+	width: 100%;
+	height: 100%;
+  }
+
+  video {
+	height: 100%;
+	width: 100%;
+	object-fit: fill
+  }
+
+  #main, .main-content {
+	width: 100%;
+	height: 100%;
+	position: relative;
+
+  }
+
+  //返回按钮样式
+  .back-off {
+	position: absolute;
+	right: 77px;
+	bottom: 644px;
+	background: transparent url("~images/back-off.png") no-repeat;
+	background-size: contain;
+	width: 124px;
+	height: 124px;
+  }
+
+}
+
 .home-content {
   background: transparent url("~images/home/home-bg.png") no-repeat;
   width: 100%;

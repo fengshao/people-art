@@ -1,52 +1,47 @@
-//取消选中样式
-* {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Chrome/Safari/Opera */
-  -khtml-user-select: none; /* Konqueror */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently
- not supported by any browser */
+
+
+@mixin transition-public($type) {
+  transition: $type 1s;
+  -moz-transition: $type 1s; /* Firefox 4 */
+  -webkit-transition: $type 1s; /* Safari and Chrome */
+  -o-transition: $type 1s; /* Opera */
 }
 
-body {
-  background: transparent;
-  overflow: auto;
-  font-size: 16px;
-  width: 1502px;
-  height: 2665px;
-  margin: 0;
-  padding: 0;
-  position: relative;
+@mixin transform-public($type) {
+  transform: $type;
+  -ms-transform: $type; /* Internet Explorer */
+  -moz-transform: $type; /* Firefox */
+  -webkit-transform: $type; /* Safari 和 Chrome */
+  -o-transform: $type; /* Opera */
+}
 
-  img {
-	width: 100%;
-	height: 100%;
-  }
+//超出部分隐藏公共样式
+.overhidden-public {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  video {
-	height: 100%;
-	width: 100%;
-	object-fit: fill
-  }
+// 设置行内块级元素并且元素居中对其
+.inline-block-vertical-align {
+  vertical-align: middle;
+  display: inline-block;
+}
 
-  #main, .main-content {
-	width: 100%;
-	height: 100%;
-	position: relative;
+.left-arrow-public {
+  background: transparent url("~images/performer-info/left-right.png") no-repeat;
+  background-size: contain;
+  width: 74px;
+  height: 117px;
+  position: absolute;
+  left: -82px;
+}
 
-  }
-
-  //返回按钮样式
-  .back-off {
-	position: absolute;
-	right: 77px;
-	bottom: 644px;
-	background: transparent url("~images/back-off.png") no-repeat;
-	background-size: contain;
-	width: 124px;
-	height: 124px;
-  }
-
+.right-arrow-public {
+  background: transparent url("~images/performer-info/right-arrow.png") no-repeat;
+  background-size: contain;
+  width: 68px;
+  height: 117px;
+  position: absolute;
+  right: -82px;
 }

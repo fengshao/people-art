@@ -38,6 +38,17 @@ var SlideCompent = React.createClass({
 
 		right: function (element) {
 			this.props.Slide.right($("." + element));
+		},
+
+		showMaskLayer: function (data, element, event) {
+			var classNmae = event.currentTarget.className;
+			if (classNmae.indexOf("img3") != -1) {
+				this.props.showMaskLayer();
+			} else if (classNmae.indexOf("img1") != -1 || classNmae.indexOf("img2") != -1) {
+				this.props.Slide.left($("." + element));
+			} else if (classNmae.indexOf("img5") != -1 || classNmae.indexOf("img4") != -1) {
+				this.props.Slide.right($("." + element));
+			}
 		}
 
 	},
@@ -66,7 +77,8 @@ var SlideCompent = React.createClass({
 								{
 									modernList.map(function (modern, i) {
 										return (
-											<div key={i} className="img modern-slide-content">
+											<div key={i} className="img modern-slide-content"
+												 onClick={_this.events.showMaskLayer.bind(_this,modern, "modern-contnet")}>
 												<div className="modern-name">{modern.name}</div>
 												<div className="modern-img">
 													<img src={modern.preview}/>
@@ -92,7 +104,8 @@ var SlideCompent = React.createClass({
 								{
 									heInstituteList.map(function (heInstitute, i) {
 										return (
-											<div key={i} className="img he-institute-slide-content">
+											<div key={i} className="img he-institute-slide-content"
+												 onClick={_this.events.showMaskLayer.bind(_this,heInstitute, "he-institute-contnet")}>
 												<div className="he-institute-name">
 													<p>{heInstitute.name}</p>
 												</div>
@@ -124,7 +137,8 @@ var SlideCompent = React.createClass({
 								{
 									moviesList.map(function (movies, i) {
 										return (
-											<div key={i} className="img movies-slide-content">
+											<div key={i} className="img movies-slide-content"
+												 onClick={_this.events.showMaskLayer.bind(_this,movies, "movies-contnet")}>
 												<div className="movies-name">
 													<p>{movies.name}</p>
 												</div>
@@ -170,7 +184,8 @@ var SlideCompent = React.createClass({
 													articleList.map(function (article, i) {
 														return (
 															i < 4 * (key + 1) && i >= 4 * key ?
-																<div key={i} className="article-li">
+																<div key={i} className="article-li"
+																	 onClick={_this.events.showMaskLayer.bind(_this,article, "article-contnet")}>
 																	<div className="article-img">
 																		<img src={article.preview}/>
 																	</div>

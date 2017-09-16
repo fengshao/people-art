@@ -5,6 +5,7 @@ require('../style/performer-info.scss');
 import classNames from 'classnames';
 import Slide from '../../../component/slide';
 import SlideCompent from './slide';
+import MaskLayer from '../../../component/mask-layer';
 
 var PerformerInfo = React.createClass({
 
@@ -75,6 +76,24 @@ var PerformerInfo = React.createClass({
 
 		return (
 			<div className="performer-info-content">
+				{
+					this.props.isShowMaskLayer ?
+						<MaskLayer
+							hideMaskLayer={this.props.hideMaskLayer}
+							isSelectPerformeInfoNavId={this.props.isSelectPerformeInfoNavId}
+							performer={this.props.performer}
+							maskLayerControl={this.props.maskLayerControl}
+							isMaskLayerPlay={this.props.isMaskLayerPlay}
+
+							maskLayerInitSlide={this.props.maskLayerInitSlide}
+							maskLayerLeft={this.props.maskLayerLeft}
+							maskLayerRight={this.props.maskLayerRight}
+							touchMove={this.props.touchMove}
+							touchEnd={this.props.touchEnd}
+							touchStart={this.props.touchStart}
+						/> : null
+				}
+
 				<div className={topArrowCls} onClick={this.props.performerInfoDropDown.bind(this,"id")}></div>
 				<div className={performerSlyCls}>
 					<div className="top-info">
@@ -152,6 +171,7 @@ var PerformerInfo = React.createClass({
 					<SlideCompent
 						Slide={Slide}
 						performer={this.props.performer}
+						showMaskLayer={this.props.showMaskLayer}
 						isSelectPerformeInfoNavId={this.props.isSelectPerformeInfoNavId}
 					/>
 				</div>

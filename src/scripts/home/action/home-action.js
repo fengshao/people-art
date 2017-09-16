@@ -17,7 +17,18 @@ function HomeAction() {
 		'playVideo',
 		'onPlay',
 		'onPause',
-		'playVideoPerformer'
+		'playVideoPerformer',
+		'showMaskLayer',
+		'hideMaskLayer',
+		'maskLayerControl',
+
+		'maskLayerInitSlide',
+		'maskLayerK_touch',
+		'maskLayerLeft',
+		'maskLayerRight',
+		'touchStart',
+		'touchEnd',
+		'touchMove'
 	);
 
 	this.getHomePageData = function () {

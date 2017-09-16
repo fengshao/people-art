@@ -1,53 +1,9 @@
+@import "./main.scss";
 .performer-info-content {
   width: 100%;
   height: 100%;
   overflow: hidden;
   position: relative;
-
-  @mixin transition-public($type) {
-	transition: $type 1s;
-	-moz-transition: $type 1s; /* Firefox 4 */
-	-webkit-transition: $type 1s; /* Safari and Chrome */
-	-o-transition: $type 1s; /* Opera */
-  }
-
-  @mixin transform-public($type) {
-	transform: $type;
-	-ms-transform: $type; /* Internet Explorer */
-	-moz-transform: $type; /* Firefox */
-	-webkit-transform: $type; /* Safari 和 Chrome */
-	-o-transform: $type; /* Opera */
-  }
-
-  //超出部分隐藏公共样式
-  .overhidden-public {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-  }
-
-  // 设置行内块级元素并且元素居中对其
-  .inline-block-vertical-align {
-	vertical-align: middle;
-	display: inline-block;
-  }
-
-  .left-arrow-public {
-	background: transparent url("~images/performer-info/left-right.png") no-repeat;
-	background-size: contain;
-	width: 74px;
-	height: 117px;
-	position: absolute;
-	left: -82px;
-  }
-  .right-arrow-public {
-	background: transparent url("~images/performer-info/right-arrow.png") no-repeat;
-	background-size: contain;
-	width: 68px;
-	height: 117px;
-	position: absolute;
-	right: -82px;
-  }
 
   .top-arrow {
 	background: transparent url("~images/performer-info/top-arrow.png") no-repeat;

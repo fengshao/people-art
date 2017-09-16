@@ -37,7 +37,7 @@ exports.initSlide = function ($element) {
 			}
 		}
 	}
-	this.imgClickFy($element);
+	// this.imgClickFy($element);
 };
 
 exports.k_touch = function ($element) {
@@ -100,13 +100,13 @@ exports.right = function ($element) {
 
 exports.imgClickFy = function ($element) {
 	var _this = this;
-	$element.find(".slide .img").removeAttr("onclick");
-	$element.find(".slide").undelegate(".img2,.img1", "click").delegate(".img2,.img1", "click", function () {
-		_this.left($element);
-	});
-	$element.find(".slide").undelegate(".img4,.img5", "click").delegate(".img4,.img5", "click", function () {
-		_this.right($element);
-	});
+	// $element.find(".slide .img").removeAttr("onclick");
+	// $element.find(".slide").undelegate(".img2,.img1", "click").delegate(".img2,.img1", "click", function () {
+	// 	_this.left($element);
+	// });
+	// $element.find(".slide").undelegate(".img4,.img5", "click").delegate(".img4,.img5", "click", function () {
+	// 	_this.right($element);
+	// });
 };
 exports.removeEventFnc = function ($element) {
 	$element.find(".slide").undelegate(".img2,.img1", "click");
