@@ -184,8 +184,6 @@ HomeStore.prototype.maskLayerControl = function (id) {
 		this.isMaskLayerPlay = true;
 		$("#" + id + " .media-video")[0].play();
 	}
-	console.log("maskLayerControl", this.isMaskLayerPlay);
-
 };
 
 
@@ -238,66 +236,10 @@ HomeStore.prototype.maskLayerInitSlide = function ($element) {
 	// this.imgClickFy($element2);
 };
 
-HomeStore.prototype.maskLayerK_touch = function ($element) {
-	var _this = this;
-	var _start = 0, _end = 0, _content = $element2.find("#slide")[0];
-	_content.addEventListener("touchstart", touchStart, false);
-	_content.addEventListener("touchmove", touchMove, false);
-	_content.addEventListener("touchend", touchEnd, false);
-
-	var _start1 = 0, _end1 = 0, _content1 = $(this.$element1).find("#slide")[0];
-	_content1.addEventListener("touchstart", touchStart1, false);
-	_content1.addEventListener("touchmove", touchMove1, false);
-	_content1.addEventListener("touchend", touchEnd1, false);
-
-	function touchStart(event) {
-		var touch = event.targetTouches[0];
-		_start = touch.pageX;
-	}
-
-	function touchMove(event) {
-		var touch = event.targetTouches[0];
-		_end = (_start - touch.pageX);
-	}
-
-	function touchEnd(event) {
-		if (_end < -100) {
-			_this.maskLayerLeft();
-			_end = 0;
-		} else if (_end > 100) {
-			_this.maskLayerRight();
-			_end = 0;
-		}
-	}
-
-	function touchStart1(event) {
-		var touch = event.targetTouches[0];
-		_start1 = touch.pageX;
-	}
-
-	function touchMove1(event) {
-		var touch = event.targetTouches[0];
-		_end1 = (_start1 - touch.pageX);
-	}
-
-	function touchEnd1(event) {
-		if (_end1 < -100) {
-			_this.maskLayerLeft();
-			_end1 = 0;
-		} else if (_end1 > 100) {
-			_this.maskLayerRight();
-			_end1 = 0;
-		}
-	}
-
-};
-
 HomeStore.prototype.maskLayerLeft = function ($element) {
 	var fy = new Array();
 	var fy1 = new Array();
-	console.log("maskLayerLeft1", this.isMaskLayerPlay);
 	this.isMaskLayerPlay = false;
-	console.log("maskLayerLeft2", this.isMaskLayerPlay);
 	for (let i = 0; i < $(".media-video").length; i++) {
 		$(".media-video")[i].pause();
 	}
@@ -315,16 +257,13 @@ HomeStore.prototype.maskLayerLeft = function ($element) {
 			$(this.$element1).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy1[i + 1]);
 		}
 	}
-	// this.imgClickFy();
 };
 
 HomeStore.prototype.maskLayerRight = function ($element) {
 	var fy = new Array();
 	var fy1 = new Array();
-	console.log("maskLayerRight1", this.isMaskLayerPlay);
 
 	this.isMaskLayerPlay = false;
-	console.log("maskLayerRight2", this.isMaskLayerPlay);
 	for (let i = 0; i < $(".media-video").length; i++) {
 		$(".media-video")[i].pause();
 	}
@@ -345,12 +284,12 @@ HomeStore.prototype.maskLayerRight = function ($element) {
 HomeStore.prototype.touchStart = function (event) {
 	var touch = event.targetTouches[0];
 	this._start = touch.pageX;
-}
+};
 
 HomeStore.prototype.touchMove = function (event) {
 	var touch = event.targetTouches[0];
 	this._end = (this._start - touch.pageX);
-}
+};
 
 HomeStore.prototype.touchEnd = function (event) {
 	if (this._end < -100) {
@@ -360,6 +299,6 @@ HomeStore.prototype.touchEnd = function (event) {
 		this.maskLayerRight();
 		this._end = 0;
 	}
-}
+};
 
 module.exports = alt.createStore(HomeStore, 'HomeStore');

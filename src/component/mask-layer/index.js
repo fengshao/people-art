@@ -44,7 +44,6 @@ var MaskLayer = React.createClass({
 				break;
 		}
 		var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
-		console.log("render:" + this.props.isMaskLayerPlay);
 		var maskLayerSuspendCls = classNames({
 			'mask-layer-suspend': true,
 			'mask-layer-suspend-none': this.props.isMaskLayerPlay
