@@ -6,30 +6,33 @@ import classNames from 'classnames';
 
 var MaskLayer = React.createClass({
 	componentDidMount: function () {
-		this.props.maskLayerInitSlide();
+		this.props.maskLayerInitSlide(this.props.imgId);
 
-		var cont = $(".article-content"),
-			scrollbar = cont.find(".mask-layer-scrollbar"),
-			options = {
-				"horizontal": 0,
-				"itemNav": "basic",
-				"dragContent": 1,
-				scrollBar: scrollbar,
-				mouseDragging: 1,
-				touchDragging: 1,
-				scrollBy: 1,
-				dynamicHandle: true
-			};
-		var frame1 = new Sly('#maskLayer3', options).init();
+		if (this.props.isSelectPerformeInfoNavId == 4) {
+
+			var cont = $(".article-content"),
+				scrollbar = cont.find(".mask-layer-scrollbar"),
+				options = {
+					"horizontal": 0,
+					"itemNav": "basic",
+					"dragContent": 1,
+					scrollBar: scrollbar,
+					mouseDragging: 1,
+					touchDragging: 1,
+					scrollBy: 1,
+					dynamicHandle: true
+				};
+			var frame1 = new Sly('#maskLayer3', options).init();
+		}
 
 	},
 	events: {
-		left: function () {
-			this.props.maskLayerLeft();
+		left: function (type) {
+			this.props.maskLayerLeft(type);
 		},
 
-		right: function () {
-			this.props.maskLayerRight();
+		right: function (type) {
+			this.props.maskLayerRight(type);
 		}
 
 	},
@@ -81,19 +84,19 @@ var MaskLayer = React.createClass({
 						<div className="title-work-name">{title}</div>
 						<div className="top-slide-contnet">
 							<div className="left-arrow"
-								 onClick={_this.events.left.bind(_this,"top-slide-contnet")}></div>
+								 onClick={_this.events.left.bind(_this,"article-top")}></div>
 							<div className="right-arrow"
-								 onClick={_this.events.right.bind(_this,"top-slide-contnet")}></div>
+								 onClick={_this.events.right.bind(_this,"article-top")}></div>
 							<div className="slide-container">
 								<div id="slide" className="index-slide slide" alt="star"
-									 onTouchStart={_this.props.touchStart}
-									 onTouchMove={_this.props.touchMove}
-									 onTouchEnd={_this.props.touchEnd}
+									 onTouchStart={_this.props.touchStart.bind(_this)}
+									 onTouchMove={_this.props.touchMove.bind(_this)}
+									 onTouchEnd={_this.props.touchEnd.bind(_this,"article-top")}
 								>
 									{
 										dataList.map(function (modern, i) {
 											return (
-												<div key={i} className="img video-slide-content">
+												<div key={i} className="img video-slide-content" data-id={modern.id}>
 													<div className="mask-layer-scrollbar bottom-info-scrollbar">
 														<div className="handle"></div>
 													</div>
@@ -113,14 +116,14 @@ var MaskLayer = React.createClass({
 						</div>
 						<div className="bottom-slide-contnet">
 							<div className="left-arrow"
-								 onClick={_this.events.left.bind(_this,"bottom-slide-contnet")}></div>
+								 onClick={_this.events.left.bind(_this,"article-bottom")}></div>
 							<div className="right-arrow"
-								 onClick={_this.events.right.bind(_this,"bottom-slide-contnet")}></div>
+								 onClick={_this.events.right.bind(_this,"article-bottom")}></div>
 							<div className="slide-container">
 								<div id="slide" className="index-slide slide" alt="star"
-									 onTouchStart={_this.props.touchStart}
-									 onTouchMove={_this.props.touchMove}
-									 onTouchEnd={_this.props.touchEnd}
+									 onTouchStart={_this.props.touchStart.bind(_this)}
+									 onTouchMove={_this.props.touchMove.bind(_this)}
+									 onTouchEnd={_this.props.touchEnd.bind(_this,"article-bottom")}
 								>
 									{
 										arrTest.map(function (index, key) {
@@ -128,9 +131,14 @@ var MaskLayer = React.createClass({
 												<div className="img article-slide-content" key={key}>
 													{
 														dataList.map(function (article, i) {
+															var cls = classNames({
+																'article-li': true,
+																'article-li-isSelect': article.isSelect
+															});
 															return (
 																i < 3 * (key + 1) && i >= 3 * key ?
-																	<div key={i} className="article-li"
+																	<div key={i} className={cls} data-id={i}
+																		 onClick={_this.props.selectArticle.bind(_this,i,article.id)}
 																	>
 																		<div className="article-img">
 																			<img src={article.preview}/>

@@ -8,7 +8,6 @@ import HomePage from './view/home';
 import ClassicRepertoire from './view/classicRepertoire';
 import PerformerList from './view/performer-list';
 import PerformerInfo from './view/performer-info';
-// import Test from './test/test.js';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
@@ -35,16 +34,16 @@ var Home = React.createClass({
 
 	events: {
 
-		maskLayerInitSlide: function () {
-			HomeAction.maskLayerInitSlide();
+		maskLayerInitSlide: function (imgId) {
+			HomeAction.maskLayerInitSlide(imgId);
 		},
 
-		maskLayerLeft: function () {
-			HomeAction.maskLayerLeft();
+		maskLayerLeft: function (type) {
+			HomeAction.maskLayerLeft(type);
 		},
 
-		maskLayerRight: function () {
-			HomeAction.maskLayerRight();
+		maskLayerRight: function (type) {
+			HomeAction.maskLayerRight(type);
 		},
 
 		getClassicRepertoireList: function () {
@@ -87,8 +86,8 @@ var Home = React.createClass({
 			HomeAction.onPlay();
 		},
 
-		showMaskLayer: function (a, b) {
-			HomeAction.showMaskLayer();
+		showMaskLayer: function (imgId) {
+			HomeAction.showMaskLayer(imgId);
 		},
 
 		hideMaskLayer: function () {
@@ -98,14 +97,24 @@ var Home = React.createClass({
 		maskLayerControl: function (id) {
 			HomeAction.maskLayerControl(id);
 		},
+
 		touchStart: function (e) {
 			HomeAction.touchStart(e);
 		},
-		touchEnd: function (e) {
-			HomeAction.touchEnd(e);
+
+		touchEnd: function (type) {
+			HomeAction.touchEnd(type);
 		},
+
 		touchMove: function (e) {
 			HomeAction.touchMove(e);
+		},
+
+		selectArticle: function (index, id) {
+			HomeAction.selectArticle({
+				"index": index,
+				"id": id
+			});
 		}
 	},
 
@@ -154,6 +163,7 @@ var Home = React.createClass({
 							touchMove={this.events.touchMove}
 							touchEnd={this.events.touchEnd}
 							touchStart={this.events.touchStart}
+							selectArticle={this.events.selectArticle}
 
 							backOff={this.events.backOff}
 							showMaskLayer={this.events.showMaskLayer}
@@ -167,6 +177,7 @@ var Home = React.createClass({
 							isSelectPerformeInfoNavId={this.state.isSelectPerformeInfoNavId}
 							isShowMaskLayer={this.state.isShowMaskLayer}
 							isMaskLayerPlay={this.state.isMaskLayerPlay}
+							imgId={this.state.imgId}
 						/> : null
 				}
 				{

@@ -28,7 +28,8 @@ function HomeAction() {
 		'maskLayerRight',
 		'touchStart',
 		'touchEnd',
-		'touchMove'
+		'touchMove',
+		'selectArticle'
 	);
 
 	this.getHomePageData = function () {

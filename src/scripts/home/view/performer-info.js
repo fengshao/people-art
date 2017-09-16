@@ -91,6 +91,8 @@ var PerformerInfo = React.createClass({
 							touchMove={this.props.touchMove}
 							touchEnd={this.props.touchEnd}
 							touchStart={this.props.touchStart}
+							imgId={this.props.imgId}
+							selectArticle={this.props.selectArticle}
 						/> : null
 				}
 
@@ -159,8 +161,9 @@ var PerformerInfo = React.createClass({
 									'nav-li-select': performeInfoNav.isSelect
 								});
 								return (
-									<div onClick={_this.events.selectPerformeInfoNav.bind(_this, performeInfoNav.id)}
-										 className={topArrowCls} key={index} data-id={performeInfoNav.id}>
+									<div
+										onClick={_this.events.selectPerformeInfoNav.bind(_this, performeInfoNav.id)}
+										className={topArrowCls} key={index} data-id={performeInfoNav.id}>
 										<div className="nav-li-title">{performeInfoNav.name}</div>
 									</div>
 								)

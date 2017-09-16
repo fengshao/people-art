@@ -1,6 +1,17 @@
 /**
  * Created by fengshao on 2017/9/8.
  */
+
+
+exports.removeClassFnc = function ($element, i) {
+	$element.find(".slide .img:eq(" + i + ")").removeClass("img1");
+	$element.find(".slide .img:eq(" + i + ")").removeClass("img2");
+	$element.find(".slide .img:eq(" + i + ")").removeClass("img3");
+	$element.find(".slide .img:eq(" + i + ")").removeClass("img4");
+	$element.find(".slide .img:eq(" + i + ")").removeClass("img5");
+	$element.find(".slide .img:eq(" + i + ")").removeClass("img6");
+};
+
 exports.initSlide = function ($element) {
 	this.slideNub = $element.find(".slide .img").size();             //获取轮播图片数量
 	for (let i = 0; i < this.slideNub; i++) {
@@ -10,29 +21,35 @@ exports.initSlide = function ($element) {
 //根据轮播图片数量设定图片位置对应的class
 	if (this.slideNub == 1) {
 		for (let i = 0; i < this.slideNub; i++) {
+			this.removeClassFnc($element, i);
 			$element.find(".slide .img:eq(" + i + ")").addClass("img3");
 		}
 	}
 	if (this.slideNub == 2) {
 		for (let i = 0; i < this.slideNub; i++) {
+			this.removeClassFnc($element, i);
 			$element.find(".slide .img:eq(" + i + ")").addClass("img" + (i + 3));
 		}
 	}
 	if (this.slideNub == 3) {
 		for (let i = 0; i < this.slideNub; i++) {
+			this.removeClassFnc($element, i);
 			$element.find(".slide .img:eq(" + i + ")").addClass("img" + (i + 2));
 		}
 	}
 	if (this.slideNub > 3 && this.slideNub < 6) {
 		for (let i = 0; i < this.slideNub; i++) {
+			this.removeClassFnc($element, i);
 			$element.find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
 		}
 	}
 	if (this.slideNub >= 6) {
 		for (let i = 0; i < this.slideNub; i++) {
 			if (i < 5) {
+				this.removeClassFnc($element, i);
 				$element.find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
 			} else {
+				this.removeClassFnc($element, i);
 				$element.find(".slide .img:eq(" + i + ")").addClass("img6");
 			}
 		}
