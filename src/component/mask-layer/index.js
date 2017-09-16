@@ -10,19 +10,21 @@ var MaskLayer = React.createClass({
 
 		if (this.props.isSelectPerformeInfoNavId == 4) {
 
-			var cont = $(".article-content"),
-				scrollbar = cont.find(".mask-layer-scrollbar"),
-				options = {
-					"horizontal": 0,
-					"itemNav": "basic",
-					"dragContent": 1,
-					scrollBar: scrollbar,
-					mouseDragging: 1,
-					touchDragging: 1,
-					scrollBy: 1,
-					dynamicHandle: true
-				};
-			var frame1 = new Sly('#maskLayer3', options).init();
+			$(".article-content .video-slide-content").each(function () {
+				var id = $(this).find(".article-scroll-content").attr("id");
+				var scrollbar = $(this).find(".mask-layer-scrollbar"),
+					options = {
+						"horizontal": 0,
+						"itemNav": "basic",
+						"dragContent": 1,
+						scrollBar: scrollbar,
+						mouseDragging: 1,
+						touchDragging: 1,
+						scrollBy: 1,
+						dynamicHandle: true
+					};
+				var frame1 = new Sly('#' + id, options).init();
+			});
 		}
 
 	},

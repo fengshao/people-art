@@ -83,7 +83,7 @@ HomeStore.prototype.getPerformerList = function (obj) {
 	this.isShowLeterStr = obj.letterArr[0];
 	this.letterArr[0].isSelect = true;
 	obj.performerList.map(function (performer, index) {
-		if (performer.surname.toLowerCase() == obj.letterArr[0].letter.toLowerCase()) {
+		if (performer.surname == obj.letterArr[0].id) {
 			_this.isShowPerformerList.push(performer)
 		}
 	});
@@ -132,6 +132,7 @@ HomeStore.prototype.openPerformerInfo = function (id) {
 
 //回到上一页
 HomeStore.prototype.backOff = function (type) {
+	var _this = this;
 	switch (type) {
 		case "homePage":
 			this.isOpenClassicRepertoire = false;
@@ -144,6 +145,16 @@ HomeStore.prototype.backOff = function (type) {
 			this.isOpenHomePage = false;
 			this.isOpenPerformerInfo = false;
 			this.isOpenPerformerList = true;
+
+			this.performeInfoNavList.map(function (performeInfoNav, index) {
+				if (index == 0) {
+					performeInfoNav.isSelect = true;
+					_this.isSelectPerformeInfoNavId = performeInfoNav.id;
+				} else {
+					performeInfoNav.isSelect = false;
+				}
+			});
+
 			break;
 	}
 };
