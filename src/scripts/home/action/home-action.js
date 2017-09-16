@@ -29,7 +29,8 @@ function HomeAction() {
 		'touchStart',
 		'touchEnd',
 		'touchMove',
-		'selectArticle'
+		'selectArticle',
+		'selectLetter'
 	);
 
 	this.getHomePageData = function () {

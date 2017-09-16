@@ -101,12 +101,29 @@ var classicRepertoireData = [
 
 //演员姓氏列表
 // var letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
-var letterArr = ["x", "z"];
+// var letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
+var letterArr = [
+	{"id":"1","letter":"A"},
+	{"id":"2","letter":"B"},
+	{"id":"3","letter":"C"},
+	{"id":"4","letter":"D"},
+	{"id":"5","letter":"E"},
+	{"id":"6","letter":"F"},
+	{"id":"7","letter":"G"},
+	{"id":"8","letter":"H"},
+	{"id":"9","letter":"I"},
+	{"id":"10","letter":"G"},
+	{"id":"11","letter":"K"},
+	{"id":"12","letter":"K"},
+	{"id":"13","letter":"K"},
+	{"id":"14","letter":"K"},
+	{"id":"15","letter":"K"}
+];
 //演员列表
 var performerList = [
 	{
 		"id": "1",
-		"surname": "X",
+		"surname": "1",
 		"headPortrait": "//storage.wesai.com/b/072/a16c6/b0722a16c6e2399eedba3c9bbff388da.png",
 		"actorName": "濮存晰",
 		"educationalTime": "2017年9月14日",
@@ -492,7 +509,7 @@ var performerList = [
 	},
 	{
 		"id": "2",
-		"surname": "X",
+		"surname": "2",
 		"headPortrait": "//storage.wesai.com/2/9d3/397fe/29d30397fe09437b9eb8c013286980e2.png",
 		"actorName": "不认识",
 		"educationalTime": "2014年01月14日",
@@ -761,7 +778,7 @@ var performerList = [
 	},
 	{
 		"id": "3",
-		"surname": "Z",
+		"surname": "3",
 		"headPortrait": "//storage.wesai.com/b/072/a16c6/b0722a16c6e2399eedba3c9bbff388da.png",
 		"actorName": "不晓得",
 		"educationalTime": "2017年9月14日",

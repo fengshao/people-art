@@ -81,8 +81,30 @@ HomeStore.prototype.getPerformerList = function (obj) {
 	this.isOpenHomePage = false;
 	this.isOpenPerformerList = true;
 	this.isShowLeterStr = obj.letterArr[0];
+	this.letterArr[0].isSelect = true;
 	obj.performerList.map(function (performer, index) {
-		if (performer.surname.toLowerCase() == obj.letterArr[0].toLowerCase()) {
+		if (performer.surname.toLowerCase() == obj.letterArr[0].letter.toLowerCase()) {
+			_this.isShowPerformerList.push(performer)
+		}
+	});
+
+};
+
+//根据选中字母展示演员列表
+HomeStore.prototype.selectLetter = function (letterID) {
+	var _this = this;
+	_this.isShowPerformerList = [];
+	this.letterArr.map(function (letter, index) {
+		if (letterID == letter.id) {
+			letter.isSelect = true;
+			_this.isShowLeterStr = letter;
+		} else {
+			letter.isSelect = false;
+		}
+	});
+
+	this.performerList.map(function (performer, index) {
+		if (performer.surname == letterID) {
 			_this.isShowPerformerList.push(performer)
 		}
 	});

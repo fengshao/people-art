@@ -115,6 +115,10 @@ var Home = React.createClass({
 				"index": index,
 				"id": id
 			});
+		},
+
+		selectLetter: function (id) {
+			HomeAction.selectLetter(id);
 		}
 	},
 
@@ -151,6 +155,7 @@ var Home = React.createClass({
 							isShowPerformerList={this.state.isShowPerformerList}
 							classicRepertoireList={this.state.classicRepertoireList}
 							openPerformerInfo={this.events.openPerformerInfo}
+							selectLetter={this.events.selectLetter}
 						/> : null
 				}
 				{

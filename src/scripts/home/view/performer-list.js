@@ -7,6 +7,8 @@ import classNames from 'classnames';
 
 var PerformerListPage = React.createClass({
 	componentDidMount: function () {
+		require("../../../component/arctext/jquery.arctext.js");
+		$(".letter-list").arctext({radius: 1100});
 
 		var cont = $(".performer-list-content"),
 			scrollbar = cont.find(".performer-list-scrollbar"),
@@ -25,7 +27,6 @@ var PerformerListPage = React.createClass({
 	},
 
 	render(){
-
 		var _this = this;
 		var performerList = this.props.isShowPerformerList;
 		var length = Math.ceil(performerList.length / 3);
@@ -39,6 +40,10 @@ var PerformerListPage = React.createClass({
 			'performer-sly': true,
 			'performer-sly-vertical': length <= 4
 		});
+		var buquanArr = [];
+		for (let i = 0; i < 26 - this.props.letterArr.length; i++) {
+			buquanArr.push(i)
+		}
 
 		return (
 			<div className="performer-list-content">
@@ -77,24 +82,39 @@ var PerformerListPage = React.createClass({
 				<div className="letter-content">
 					<div className="letter-list">
 						{
-							this.props.letterArr.map(function (lerrer, i) {
-								var cls = "char" + i;
+							buquanArr.map(function (lerrera, i) {
+								return (
+									<div className="letter-li buquan-cls" key={i}>
+										<span className="letter-name">{i}</span>
+										<span className="letter-bg">
+											<span className="select-img"></span>
+										</span>
+									</div>
+								);
+							})
+						}
+						{
+							this.props.letterArr.map(function (letter, i) {
 								const liCls = classNames({
 									'letter-li': true,
-									cls: true
+									"letter-li-select": letter.isSelect
 								});
 
 								return (
-									<div className={liCls} key={i}>
-										<span className="letter-name">{lerrer}</span>
-										<span className="select-img"></span>
+									<div className={liCls} key={i}
+										 onClick={_this.props.selectLetter.bind(_this,letter.id)}>
+										<span className="letter-name">{letter.letter}</span>
+										<span className="letter-bg">
+											<span className="select-img"></span>
+										</span>
 									</div>
 								);
 							})
 						}
 
+
 					</div>
-					<div className="letter-title">{_this.props.isShowLeterStr}</div>
+					<div className="letter-title">{_this.props.isShowLeterStr.letter}</div>
 				</div>
 				<div className="video-content">
 					<div className="video-content-div">

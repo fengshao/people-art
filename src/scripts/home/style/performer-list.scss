@@ -1,5 +1,6 @@
 //演员列表页样式
 @import "./main.scss";
+
 .performer-list-content {
   width: 100%;
   height: 100%;
@@ -85,24 +86,31 @@
 	top: 545px;
 	right: 0;
 	border: 1px solid #0b97c4;
-	display: none; //overflow: hidden;
+	//display: none;
+	//overflow: hidden;
 
 	.letter-list {
 	  width: 2000px;
 	  position: absolute;
-	  -webkit-transform: rotate(-89deg);
+	  -webkit-transform: rotate(-92deg);
 	  z-index: 999;
-	  left: -952px;
-	  top: 612px;
+	  left: -913px;
+	  top: 539px;
 	  font-size: 0;
-	  //-moz-transform: matrix(0.47987220447284, 0, 0, 0.48009367681499, 0, 0);
-	  //-ms-transform: matrix(0.47987220447284, 0, 0, 0.48009367681499, 0, 0);
 
 	  .letter-li {
 		float: left;
-		//width: 65px;
+		width: 61px;
 		text-align: center;
 
+		&.buquan-cls {
+		  visibility: hidden;
+		}
+		&.letter-li-select {
+		  .select-img {
+			display: block !important;
+		  }
+		}
 		.letter-name {
 		  font-size: 80px;
 		  color: #821c1e;
@@ -112,15 +120,26 @@
 		  height: 70px;
 		  line-height: 70px;
 		}
-		.select-img {
-		  height: 32px;
-		  background: transparent url("~images/performer-list/performer-list-select.png") no-repeat;
+
+		.letter-bg {
+		  background: transparent url("~images/performer-list/letter-bg.png") no-repeat;
 		  background-size: contain;
-		  display: block;
+		  height: 74px;
 		  width: 100%;
+		  display: block;
 		  text-align: center;
 		  background-position: center;
-		  margin-top: 15px;
+		  margin-top: 50px;
+		  .select-img {
+			height: 60px;
+			background: transparent url("~images/performer-list/performer-list-select.png") no-repeat;
+			width: 100%;
+			text-align: center;
+			background-size: 32px 32px;
+			background-position: 23px 23px;
+			display: none;
+
+		  }
 		}
 	  }
 	}
@@ -129,6 +148,10 @@
   .letter-title {
 	font-size: 300px;
 	color: #ffffff;
+	z-index: 1000;
+	position: absolute;
+	right: 16px;
+	top: 517px;
   }
 
   //底部视频循环播放区域样式
