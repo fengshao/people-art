@@ -9,11 +9,29 @@
   //顶部 视频播放区域样式
   .repertoire-video-play-content {
 	position: absolute;
-	background: transparent url("~images/classicRepertoire/repertoire-video-play.png") no-repeat;
-	background-size: contain;
+	//background: transparent url("~images/classicRepertoire/repertoire-video-play.png") no-repeat;
+	//background-size: contain;
 	width: 100%;
 	height: 890px;
 	top: 473px;
+
+	.suspend-content {
+	  position: absolute;
+	  width: 100%;
+	  height: 825px;
+	  left: 0;
+	  top: 0;
+	  background: transparent url("~images/classicRepertoire/suspend-logo.png") no-repeat;
+	  background-size: 179px 179px;
+	  background-position: center;
+	  z-index: 100;
+	  display: none;
+	  &.suspend-content-block {
+		display: block;
+	  }
+
+	}
+
   }
   //顶部视频标题样式
   .repertoire-title {

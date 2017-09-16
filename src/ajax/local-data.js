@@ -17,67 +17,61 @@ var classicRepertoireData = [
 		"id": "1",
 		"name": "雷雨",
 		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
+		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
 	},
 	{
 		"id": "2",
 		"name": "白鹿原",
 		"preview": "//storage.wesai.com/8/a83/fe0d4/8a836fe0d4f8b99e6bfb7fa0d90dd0ef.png",
-		"video": "//storage.wesai.com/8/a83/fe0d4/8a836fe0d4f8b99e6bfb7fa0d90dd0ef.png"
+		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
 	},
 	{
 		"id": "3",
 		"name": "大将军",
 		"preview": "//storage.wesai.com/1/ee4/ccf2a/1ee42ccf2a0befa70e106a723d29a78b.png",
-		"video": "//storage.wesai.com/1/ee4/ccf2a/1ee42ccf2a0befa70e106a723d29a78b.png"
+		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
 	},
 	{
 		"id": "4",
 		"name": "教皇父子",
 		"preview": "//storage.wesai.com/4/f4e/52f80/4f4e052f807f21f0c452e8f5758feaea.png",
-		"video": "//storage.wesai.com/4/f4e/52f80/4f4e052f807f21f0c452e8f5758feaea.png"
+		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
 	},
 	{
 		"id": "5",
 		"name": "天之骄子",
 		"preview": "//storage.wesai.com/4/ae0/d35a8/4ae0ed35a80b35e60c66c777b3f6bb29.png",
-		"video": "//storage.wesai.com/4/ae0/d35a8/4ae0ed35a80b35e60c66c777b3f6bb29.png"
+		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
 	},
 	{
 		"id": "6",
 		"name": "万家灯火",
 		"preview": "//storage.wesai.com/6/e9e/fd756/6e9eefd756c25ba0e32443840ca8f3ff.png",
-		"video": "//storage.wesai.com/6/e9e/fd756/6e9eefd756c25ba0e32443840ca8f3ff.png"
+		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
 	},
 	{
 		"id": "7",
 		"name": "吴王金戈越王剑",
 		"preview": "//storage.wesai.com/2/e61/821b1/2e612821b1786670ae8a03615d8e96a8.png",
-		"video": "//storage.wesai.com/2/e61/821b1/2e612821b1786670ae8a03615d8e96a8.png"
+		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
 	},
 	{
 		"id": "8",
 		"name": "新阮玲玉",
 		"preview": "//storage.wesai.com/1/d3e/a452d/1d3eea452dc501da403b893263a55351.png",
-		"video": "//storage.wesai.com/1/d3e/a452d/1d3eea452dc501da403b893263a55351.png"
+		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
 	},
 	{
 		"id": "9",
 		"name": "雷雨9",
 		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
-	},
-	{
-		"id": "1",
-		"name": "雷雨1",
-		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
+		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
 	},
 	{
 		"id": "10",
 		"name": "雷雨10",
 		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
+		"video": "http://player.youku.com/player.php/sid/XMTI5ODEzNTM2MA==/v.swfg"
 	},
 	{
 		"id": "11",

@@ -13,7 +13,11 @@ function HomeAction() {
 		'openPerformerInfo',//进入演员信息页
 		'getHomePageData',//获取首页信息
 		'getClassicRepertoireList',//进入经典曲目页面 经典剧目列表
-		'getLetterArr'//获取演员姓氏列表
+		'getLetterArr',//获取演员姓氏列表
+		'playVideo',
+		'onPlay',
+		'onPause',
+		'playVideoPerformer'
 	);
 
 	this.getHomePageData = function () {

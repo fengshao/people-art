@@ -10,13 +10,14 @@ function HomeStore() {
 	this.isOpenPerformerInfo = false;
 	this.isOpenTest = false;
 	this.isPerformerInfoDropDown = false;
+	this.isShowSuspend = true;
 	//this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
 	this.performerList = [];
 	this.isShowPerformerList = [];
 	this.performer = {};
 	this.letterArr = [];
 	this.classicRepertoireList = [];
-	this.classicRepertoire = [];
+	this.classicRepertoire = {};
 	this.isShowLeterStr = "";
 	this.homePageData = {
 		"id": "",
@@ -43,6 +44,10 @@ HomeStore.prototype.getHomePageData = function (homePageData) {
 //获取经典剧目列表
 HomeStore.prototype.getClassicRepertoireList = function (classicRepertoireList) {
 	this.classicRepertoireList = classicRepertoireList;
+	if (classicRepertoireList.length > 0) {
+		this.classicRepertoire = _.extend(this.classicRepertoire, classicRepertoireList[0]);
+	}
+
 	this.isOpenClassicRepertoire = true;
 	this.isOpenPerformerList = false;
 	this.isOpenHomePage = false;
@@ -131,6 +136,28 @@ HomeStore.prototype.selectPerformeInfoNav = function (id) {
 		}
 
 	});
+};
+
+HomeStore.prototype.playVideo = function () {
+	if (this.isShowSuspend) {
+		this.isShowSuspend = false;
+		$("#media")[0].play();
+	} else {
+		this.isShowSuspend = true;
+		$("#media")[0].pause();
+	}
+};
+
+HomeStore.prototype.playVideoPerformer = function (performer) {
+	this.classicRepertoire = performer;
+	this.isShowSuspend = true;
+};
+HomeStore.prototype.onPlay = function () {
+	this.isShowSuspend = false;
+};
+
+HomeStore.prototype.onPause = function () {
+	this.isShowSuspend = true;
 };
 
 

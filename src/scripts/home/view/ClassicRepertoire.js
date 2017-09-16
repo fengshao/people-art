@@ -2,6 +2,8 @@
  * Created by fengs on 2017/9/10.
  */
 require('../style/classicRepertoire.scss');
+import classNames from 'classnames';
+
 var ClassicRepertoire = React.createClass({
 
 	componentDidMount: function () {
@@ -22,6 +24,7 @@ var ClassicRepertoire = React.createClass({
 	},
 
 	render(){
+		var _this = this;
 		var classicRepertoireList = this.props.classicRepertoireList;
 		var classicRepertoire = this.props.classicRepertoire;
 		var length = Math.ceil(classicRepertoireList.length / 3);
@@ -29,12 +32,29 @@ var ClassicRepertoire = React.createClass({
 		for (let i = 0; i < length; i++) {
 			arrTest.push(i);
 		}
-
+		var suspendContentCls = classNames({
+			'suspend-content': true,
+			'suspend-content-block': this.props.isShowSuspend
+		});
 		return (
 			<div className="classic-repertoire-content">
 				<div className="repertoire-title">{classicRepertoire.name ? classicRepertoire.name : ""}</div>
 				<div className="repertoire-video-play-content">
-					<img alt="暂无图片" src={classicRepertoire.video ? classicRepertoire.video : ""}/>
+					<div className={suspendContentCls} onClick={_this.props.playVideo.bind(this)}>
+
+					</div>
+
+					<video id='media' ref='media' className="video" controls="controls"
+						   type='video/mp4'
+						   loop="loop"
+						   preload="preload"
+						   src={classicRepertoire.video ? classicRepertoire.video : ""}
+						   onPlay={this.props.onPlay.bind(this)}
+						   onPause={this.props.onPause.bind(this)}
+						   poster={classicRepertoire.preview ? classicRepertoire.preview : ""}
+					>
+					</video>
+
 				</div>
 				<div className="repertoire-list-content" id="repertoire-list-content">
 					<div className="repertoire-scrollbar">
@@ -51,7 +71,8 @@ var ClassicRepertoire = React.createClass({
 													classicRepertoireList.map(function (performer, i) {
 														return (
 															i < 3 * (key + 1) && i >= 3 * key ?
-																<li className="repertoire-list-li" key={i}>
+																<li className="repertoire-list-li" key={i}
+																	onClick={_this.props.playVideoPerformer.bind(_this,performer)}>
 																	<div className="repertoire-video-img">
 																		<img src={performer.preview} alt="暂无图片"/>
 																	</div>

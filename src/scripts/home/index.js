@@ -57,9 +57,24 @@ var Home = React.createClass({
 
 		selectPerformeInfoNav: function (id) {
 			HomeAction.selectPerformeInfoNav(id);
+		},
+
+		playVideoPerformer: function (performer) {
+			HomeAction.playVideoPerformer(performer);
+		},
+
+		playVideo: function () {
+			HomeAction.playVideo();
+		},
+
+		onPause: function () {
+			HomeAction.onPause();
+		},
+
+		onPlay: function () {
+			HomeAction.onPlay();
 		}
 	},
-// <Slide imgDatas={this.state.imgDatas}/>
 
 	render: function () {
 		return (
@@ -76,8 +91,13 @@ var Home = React.createClass({
 					this.state.isOpenClassicRepertoire ?
 						<ClassicRepertoire
 							backOff={this.events.backOff}
+							playVideoPerformer={this.events.playVideoPerformer}
+							playVideo={this.events.playVideo}
+							onPause={this.events.onPause}
+							onPlay={this.events.onPlay}
 							classicRepertoireList={this.state.classicRepertoireList}
 							classicRepertoire={this.state.classicRepertoire}
+							isShowSuspend={this.state.isShowSuspend}
 						/> : null
 				}
 				{
