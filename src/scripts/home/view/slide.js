@@ -42,7 +42,7 @@ var SlideCompent = React.createClass({
 
 		showMaskLayer: function (data, element, event) {
 			var classNmae = event.currentTarget.className;
-			if (classNmae.indexOf("img3") != -1) {
+			if (classNmae.indexOf("img3") != -1 || classNmae.indexOf("article-li") != -1) {
 				this.props.showMaskLayer();
 			} else if (classNmae.indexOf("img1") != -1 || classNmae.indexOf("img2") != -1) {
 				this.props.Slide.left($("." + element));

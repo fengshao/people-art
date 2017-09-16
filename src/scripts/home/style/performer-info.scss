@@ -1,4 +1,5 @@
 @import "./main.scss";
+
 .performer-info-content {
   width: 100%;
   height: 100%;
@@ -490,6 +491,7 @@
 			  transition: left 0.4s;
 
 			  .article-li {
+				word-break: break-all;
 				width: 247px;
 				float: left;
 				margin-left: 59px;

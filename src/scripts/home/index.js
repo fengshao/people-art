@@ -40,7 +40,7 @@ var Home = React.createClass({
 		},
 
 		maskLayerLeft: function () {
-			HomeAction.maskLayerLeft({"$element1": element1, "$element2": element2});
+			HomeAction.maskLayerLeft();
 		},
 
 		maskLayerRight: function () {

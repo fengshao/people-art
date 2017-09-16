@@ -327,19 +327,103 @@ var performerList = [
 				"id": "1",
 				"name": "《濮存昕： 我是来学习的》 我是来学习的",
 				"preview": "//storage.wesai.com/d/ee0/5bfa3/dee0a5bfa3ca9b3ea2417f08a12d4e96.png",
-				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png"
+				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png",
+				"articleContent": '<div class="bottom-info-title">其他作品电视剧:</div>' +
+				' <div class="bottom-info-content"> 1984年 《中国姑娘》； </div>' +
+				'<div class="bottom-info-content"> 《三国演义》中饰演孙策 </div>' +
+				'<div class="bottom-info-content"> 1991年 《梧桐梧桐》中饰演刘小岸；《编辑部的故事》中饰演诗人田乔</div>' +
+				'<div class="bottom-info-content"> 1994年 《长天烽火》中饰演大哥；《我爱我家》中饰演阿文</div>' +
+				'<div class="bottom-info-content"> 1996年 《英雄无悔》中饰演高天；《一场风花雪月的事》中饰演记者；《运河人家》中饰演叶三车 </div>' +
+				'<div class="bottom-info-content"> 1998年 《来来往往》中饰演康伟业</div>' +
+				'<div class="bottom-info-content"> 1999年 《尊严》中饰演李岩；《镜花缘传奇》中饰演李世民</div>' +
+				'<div class="bottom-info-content"> 2000年 《堆积情感·男人篇》中饰演李皓；《光荣之旅》中饰演贺援朝</div>' +
+				'<div class="bottom-info-content"> 2002年 《曹操与蔡文姬》中饰演曹操；《失乐园》中饰演权正阳；《公安局长》</div>' +
+				'<div class="bottom-info-content"> 2004年 《天下第一楼》中饰演修鼎新</div>' +
+				'<div class="bottom-info-content"> 2004年 《公安局长2》中饰演黎剑</div>' +
+				'<div class="bottom-info-content"> 2007年 《男人底线》中饰演魏海峰</div>' +
+				'<div class="bottom-info-content"> 2009年 《闯关东2》中饰演魏德民</div>' +
+				'<div class="bottom-info-content"> 2010年 《为爱而生》中饰演林尚斌</div>' +
+				'<div class="bottom-info-content"> 2011年 《金太郎的幸福生活》中饰演教授</div>' +
+				'<div class="bottom-info-content"> 2012年 《推拿》中饰演沙复明</div>' +
+				'<div class="bottom-info-content"> 电影：</div>' +
+				'<div class="bottom-info-content"> 1979年 《山重水复》中饰演游击队员</div>' +
+				'<div class="bottom-info-content"> 1986年 《大漠紫禁令》中饰演李七郎</div>' +
+				'<div class="bottom-info-content"> 1989年 《最后的贵族》中饰演陈寅</div>' +
+				'<div class="bottom-info-content"> 1991年 《清凉寺的钟声》中饰演明镜法师</div>' +
+				'<div class="bottom-info-content"> 1995年 《与往事干杯》中饰演宋医生</div>' +
+				'<div class="bottom-info-content"> 1997年 《伴你到黎明》</div>' +
+				'<div class="bottom-info-content"> 1999年 《说好不分手》中饰演滕远峰</div>' +
+				'<div class="bottom-info-content"> 2000年 《洗澡》中饰演大明</div>' +
+				'<div class="bottom-info-content"> 2005年 《鲁迅》中饰演鲁迅；《一轮明月》中饰演李叔同 </div>' +
+				'<div class="bottom-info-content"> 2011年 《最爱》中饰演赵齐全</div>'
 			},
 			{
 				"id": "2",
 				"name": "《白鹿原》 ",
 				"preview": "//storage.wesai.com/d/ee0/5bfa3/dee0a5bfa3ca9b3ea2417f08a12d4e96.png",
-				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png"
+				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png",
+				"articleContent": '<div class="bottom-info-title">其他作品电视剧:</div>' +
+				' <div class="bottom-info-content"> 1984年 《中国姑娘》； </div>' +
+				'<div class="bottom-info-content"> 《三国演义》中饰演孙策 </div>' +
+				'<div class="bottom-info-content"> 1991年 《梧桐梧桐》中饰演刘小岸；《编辑部的故事》中饰演诗人田乔</div>' +
+				'<div class="bottom-info-content"> 1994年 《长天烽火》中饰演大哥；《我爱我家》中饰演阿文</div>' +
+				'<div class="bottom-info-content"> 1996年 《英雄无悔》中饰演高天；《一场风花雪月的事》中饰演记者；《运河人家》中饰演叶三车 </div>' +
+				'<div class="bottom-info-content"> 1998年 《来来往往》中饰演康伟业</div>' +
+				'<div class="bottom-info-content"> 1999年 《尊严》中饰演李岩；《镜花缘传奇》中饰演李世民</div>' +
+				'<div class="bottom-info-content"> 2000年 《堆积情感·男人篇》中饰演李皓；《光荣之旅》中饰演贺援朝</div>' +
+				'<div class="bottom-info-content"> 2002年 《曹操与蔡文姬》中饰演曹操；《失乐园》中饰演权正阳；《公安局长》</div>' +
+				'<div class="bottom-info-content"> 2004年 《天下第一楼》中饰演修鼎新</div>' +
+				'<div class="bottom-info-content"> 2004年 《公安局长2》中饰演黎剑</div>' +
+				'<div class="bottom-info-content"> 2007年 《男人底线》中饰演魏海峰</div>' +
+				'<div class="bottom-info-content"> 2009年 《闯关东2》中饰演魏德民</div>' +
+				'<div class="bottom-info-content"> 2010年 《为爱而生》中饰演林尚斌</div>' +
+				'<div class="bottom-info-content"> 2011年 《金太郎的幸福生活》中饰演教授</div>' +
+				'<div class="bottom-info-content"> 2012年 《推拿》中饰演沙复明</div>' +
+				'<div class="bottom-info-content"> 电影：</div>' +
+				'<div class="bottom-info-content"> 1979年 《山重水复》中饰演游击队员</div>' +
+				'<div class="bottom-info-content"> 1986年 《大漠紫禁令》中饰演李七郎</div>' +
+				'<div class="bottom-info-content"> 1989年 《最后的贵族》中饰演陈寅</div>' +
+				'<div class="bottom-info-content"> 1991年 《清凉寺的钟声》中饰演明镜法师</div>' +
+				'<div class="bottom-info-content"> 1995年 《与往事干杯》中饰演宋医生</div>' +
+				'<div class="bottom-info-content"> 1997年 《伴你到黎明》</div>' +
+				'<div class="bottom-info-content"> 1999年 《说好不分手》中饰演滕远峰</div>' +
+				'<div class="bottom-info-content"> 2000年 《洗澡》中饰演大明</div>' +
+				'<div class="bottom-info-content"> 2005年 《鲁迅》中饰演鲁迅；《一轮明月》中饰演李叔同 </div>' +
+				'<div class="bottom-info-content"> 2011年 《最爱》中饰演赵齐全</div>'
 			},
 			{
 				"id": "3",
 				"name": "《教皇父子》",
 				"preview": "//storage.wesai.com/d/ee0/5bfa3/dee0a5bfa3ca9b3ea2417f08a12d4e96.png",
-				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png"
+				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png",
+				"articleContent": '<div class="bottom-info-title">其他作品电视剧:</div>' +
+				' <div class="bottom-info-content"> 1984年 《中国姑娘》； </div>' +
+				'<div class="bottom-info-content"> 《三国演义》中饰演孙策 </div>' +
+				'<div class="bottom-info-content"> 1991年 《梧桐梧桐》中饰演刘小岸；《编辑部的故事》中饰演诗人田乔</div>' +
+				'<div class="bottom-info-content"> 1994年 《长天烽火》中饰演大哥；《我爱我家》中饰演阿文</div>' +
+				'<div class="bottom-info-content"> 1996年 《英雄无悔》中饰演高天；《一场风花雪月的事》中饰演记者；《运河人家》中饰演叶三车 </div>' +
+				'<div class="bottom-info-content"> 1998年 《来来往往》中饰演康伟业</div>' +
+				'<div class="bottom-info-content"> 1999年 《尊严》中饰演李岩；《镜花缘传奇》中饰演李世民</div>' +
+				'<div class="bottom-info-content"> 2000年 《堆积情感·男人篇》中饰演李皓；《光荣之旅》中饰演贺援朝</div>' +
+				'<div class="bottom-info-content"> 2002年 《曹操与蔡文姬》中饰演曹操；《失乐园》中饰演权正阳；《公安局长》</div>' +
+				'<div class="bottom-info-content"> 2004年 《天下第一楼》中饰演修鼎新</div>' +
+				'<div class="bottom-info-content"> 2004年 《公安局长2》中饰演黎剑</div>' +
+				'<div class="bottom-info-content"> 2007年 《男人底线》中饰演魏海峰</div>' +
+				'<div class="bottom-info-content"> 2009年 《闯关东2》中饰演魏德民</div>' +
+				'<div class="bottom-info-content"> 2010年 《为爱而生》中饰演林尚斌</div>' +
+				'<div class="bottom-info-content"> 2011年 《金太郎的幸福生活》中饰演教授</div>' +
+				'<div class="bottom-info-content"> 2012年 《推拿》中饰演沙复明</div>' +
+				'<div class="bottom-info-content"> 电影：</div>' +
+				'<div class="bottom-info-content"> 1979年 《山重水复》中饰演游击队员</div>' +
+				'<div class="bottom-info-content"> 1986年 《大漠紫禁令》中饰演李七郎</div>' +
+				'<div class="bottom-info-content"> 1989年 《最后的贵族》中饰演陈寅</div>' +
+				'<div class="bottom-info-content"> 1991年 《清凉寺的钟声》中饰演明镜法师</div>' +
+				'<div class="bottom-info-content"> 1995年 《与往事干杯》中饰演宋医生</div>' +
+				'<div class="bottom-info-content"> 1997年 《伴你到黎明》</div>' +
+				'<div class="bottom-info-content"> 1999年 《说好不分手》中饰演滕远峰</div>' +
+				'<div class="bottom-info-content"> 2000年 《洗澡》中饰演大明</div>' +
+				'<div class="bottom-info-content"> 2005年 《鲁迅》中饰演鲁迅；《一轮明月》中饰演李叔同 </div>' +
+				'<div class="bottom-info-content"> 2011年 《最爱》中饰演赵齐全</div>'
 			},
 			{
 				"id": "4",

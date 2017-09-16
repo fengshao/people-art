@@ -20,7 +20,8 @@ function HomeStore() {
 	this.classicRepertoireList = [];
 	this.classicRepertoire = {};
 	this.isShowLeterStr = "";
-	this.slideNub = 0;
+	this.slideNub2 = 0;
+	this.slideNub1 = 0;
 	this._start = 0;
 	this._end = 0;
 
@@ -187,99 +188,98 @@ HomeStore.prototype.maskLayerControl = function (id) {
 };
 
 
-/**
- * Created by fengshao on 2017/9/8.
- */
-HomeStore.prototype.maskLayerInitSlide = function ($element) {
-	this.slideNub = $(this.$element1).find(".slide .img").size();             //获取轮播图片数量
-	for (let i = 0; i < this.slideNub; i++) {
-		$(this.$element2).find(".slide .img:eq(" + i + ")").attr("data-slide-imgId", i);
-		$(this.$element1).find(".slide .img:eq(" + i + ")").attr("data-slide-imgId", i);
+HomeStore.prototype.initChangeDom = function (slideNub, $element) {
+	for (let i = 0; i < slideNub; i++) {
+		$($element).find(".slide .img:eq(" + i + ")").attr("data-slide-imgId", i);
 	}
 
 //根据轮播图片数量设定图片位置对应的class
-	if (this.slideNub == 1) {
-		for (let i = 0; i < this.slideNub; i++) {
-			$(this.$element2).find(".slide .img:eq(" + i + ")").addClass("img3");
-			$(this.$element1).find(".slide .img:eq(" + i + ")").addClass("img3");
+	if (slideNub == 1) {
+		for (let i = 0; i < slideNub; i++) {
+			$($element).find(".slide .img:eq(" + i + ")").addClass("img3");
 		}
 	}
-	if (this.slideNub == 2) {
-		for (let i = 0; i < this.slideNub; i++) {
-			$(this.$element2).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 3));
-			$(this.$element1).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 3));
+	if (slideNub == 2) {
+		for (let i = 0; i < slideNub; i++) {
+			$($element).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 3));
 		}
 	}
-	if (this.slideNub == 3) {
-		for (let i = 0; i < this.slideNub; i++) {
-			$(this.$element2).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 2));
-			$(this.$element1).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 2));
+	if (slideNub == 3) {
+		for (let i = 0; i < slideNub; i++) {
+			$($element).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 2));
 		}
 	}
-	if (this.slideNub > 3 && this.slideNub < 6) {
-		for (let i = 0; i < this.slideNub; i++) {
-			$(this.$element2).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
-			$(this.$element1).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
+	if (slideNub > 3 && slideNub < 6) {
+		for (let i = 0; i < slideNub; i++) {
+			$($element).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
 		}
 	}
-	if (this.slideNub >= 6) {
-		for (let i = 0; i < this.slideNub; i++) {
+	if (slideNub >= 6) {
+		for (let i = 0; i < slideNub; i++) {
 			if (i < 5) {
-				$(this.$element2).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
-				$(this.$element1).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
+				$($element).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
 			} else {
-				$(this.$element2).find(".slide .img:eq(" + i + ")").addClass("img6");
-				$(this.$element1).find(".slide .img:eq(" + i + ")").addClass("img6");
+				$($element).find(".slide .img:eq(" + i + ")").addClass("img6");
 			}
 		}
 	}
-	// this.imgClickFy($element2);
 };
 
-HomeStore.prototype.maskLayerLeft = function ($element) {
-	var fy = new Array();
-	var fy1 = new Array();
-	this.isMaskLayerPlay = false;
-	for (let i = 0; i < $(".media-video").length; i++) {
-		$(".media-video")[i].pause();
-	}
+HomeStore.prototype.maskLayerInitSlide = function () {
+	this.slideNub1 = $(this.$element1).find(".slide .img").size();             //获取轮播图片数量
+	this.slideNub2 = $(this.$element2).find(".slide .img").size();             //获取轮播图片数量
+	this.initChangeDom(this.slideNub1, this.$element1);
+	this.initChangeDom(this.slideNub2, this.$element2);
+};
 
-	for (let i = 0; i < this.slideNub; i++) {
-		fy[i] = $(this.$element2).find(".slide .img[data-slide-imgId=" + i + "]").attr("class");
-		fy1[i] = $(this.$element1).find(".slide .img[data-slide-imgId=" + i + "]").attr("class");
+HomeStore.prototype.maskLayerLeftFnc = function (slideNub, $element) {
+	var fy = new Array();
+	for (let i = 0; i < slideNub; i++) {
+		fy[i] = $($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class");
 	}
-	for (let i = 0; i < this.slideNub; i++) {
-		if (i == (this.slideNub - 1)) {
-			$(this.$element2).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[0]);
-			$(this.$element1).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy1[0]);
+	for (let i = 0; i < slideNub; i++) {
+		if (i == (slideNub - 1)) {
+			$($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[0]);
 		} else {
-			$(this.$element2).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[i + 1]);
-			$(this.$element1).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy1[i + 1]);
+			$($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[i + 1]);
 		}
 	}
 };
 
-HomeStore.prototype.maskLayerRight = function ($element) {
-	var fy = new Array();
-	var fy1 = new Array();
-
+HomeStore.prototype.maskLayerLeft = function () {
 	this.isMaskLayerPlay = false;
 	for (let i = 0; i < $(".media-video").length; i++) {
 		$(".media-video")[i].pause();
 	}
-	for (let i = 0; i < this.slideNub; i++) {
-		fy[i] = $(this.$element2).find(".slide .img[data-slide-imgId=" + i + "]").attr("class");
-		fy1[i] = $(this.$element1).find(".slide .img[data-slide-imgId=" + i + "]").attr("class");
+
+	this.maskLayerLeftFnc(this.slideNub1, this.$element1);
+	this.maskLayerLeftFnc(this.slideNub2, this.$element2);
+};
+
+HomeStore.prototype.maskLayerRightFnc = function (slideNub, $element) {
+	var fy = new Array();
+	for (let i = 0; i < slideNub; i++) {
+		fy[i] = $($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class");
 	}
-	for (let i = 0; i < this.slideNub; i++) {
+	for (let i = 0; i < slideNub; i++) {
 		if (i == 0) {
-			$(this.$element2).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[this.slideNub - 1]);
-			$(this.$element1).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy1[this.slideNub - 1]);
+			$($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[slideNub - 1]);
 		} else {
-			$(this.$element2).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[i - 1]);
-			$(this.$element1).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy1[i - 1]);
+			$($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[i - 1]);
 		}
 	}
+};
+
+HomeStore.prototype.maskLayerRight = function () {
+
+	this.isMaskLayerPlay = false;
+	for (let i = 0; i < $(".media-video").length; i++) {
+		$(".media-video")[i].pause();
+	}
+
+	this.maskLayerRightFnc(this.slideNub1, this.$element1);
+	this.maskLayerRightFnc(this.slideNub2, this.$element2);
+
 };
 HomeStore.prototype.touchStart = function (event) {
 	var touch = event.targetTouches[0];

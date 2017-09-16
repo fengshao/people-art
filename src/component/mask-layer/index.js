@@ -6,8 +6,22 @@ import classNames from 'classnames';
 
 var MaskLayer = React.createClass({
 	componentDidMount: function () {
-
 		this.props.maskLayerInitSlide();
+
+		var cont = $(".article-content"),
+			scrollbar = cont.find(".mask-layer-scrollbar"),
+			options = {
+				"horizontal": 0,
+				"itemNav": "basic",
+				"dragContent": 1,
+				scrollBar: scrollbar,
+				mouseDragging: 1,
+				touchDragging: 1,
+				scrollBy: 1,
+				dynamicHandle: true
+			};
+		var frame1 = new Sly('#maskLayer3', options).init();
+
 	},
 	events: {
 		left: function () {
@@ -44,14 +58,101 @@ var MaskLayer = React.createClass({
 				break;
 		}
 		var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
+
 		var maskLayerSuspendCls = classNames({
 			'mask-layer-suspend': true,
 			'mask-layer-suspend-none': this.props.isMaskLayerPlay
 		});
+
+		var maskLayerTopLogoCls = classNames({
+			'mask-layer-top-logo': true,
+			'mask-layer-top-logo-top': this.props.isSelectPerformeInfoNavId == 4
+		});
+		var length = Math.ceil(dataList.length / 3);
+		var arrTest = [];
+		for (let i = 0; i < length; i++) {
+			arrTest.push(i);
+		}
+
 		return (
 			<div className="mask-layer-content">
 				{this.props.isSelectPerformeInfoNavId == 4 ?
-					null
+					<div className="video-content article-content">
+						<div className="title-work-name">{title}</div>
+						<div className="top-slide-contnet">
+							<div className="left-arrow"
+								 onClick={_this.events.left.bind(_this,"top-slide-contnet")}></div>
+							<div className="right-arrow"
+								 onClick={_this.events.right.bind(_this,"top-slide-contnet")}></div>
+							<div className="slide-container">
+								<div id="slide" className="index-slide slide" alt="star"
+									 onTouchStart={_this.props.touchStart}
+									 onTouchMove={_this.props.touchMove}
+									 onTouchEnd={_this.props.touchEnd}
+								>
+									{
+										dataList.map(function (modern, i) {
+											return (
+												<div key={i} className="img video-slide-content">
+													<div className="mask-layer-scrollbar bottom-info-scrollbar">
+														<div className="handle"></div>
+													</div>
+													<div className="article-scroll-content"
+														 id={"maskLayer" + modern.id}>
+														<div
+															dangerouslySetInnerHTML={{__html : modern.articleContent }}>
+
+														</div>
+													</div>
+												</div>
+											)
+										})
+									}
+								</div>
+							</div>
+						</div>
+						<div className="bottom-slide-contnet">
+							<div className="left-arrow"
+								 onClick={_this.events.left.bind(_this,"bottom-slide-contnet")}></div>
+							<div className="right-arrow"
+								 onClick={_this.events.right.bind(_this,"bottom-slide-contnet")}></div>
+							<div className="slide-container">
+								<div id="slide" className="index-slide slide" alt="star"
+									 onTouchStart={_this.props.touchStart}
+									 onTouchMove={_this.props.touchMove}
+									 onTouchEnd={_this.props.touchEnd}
+								>
+									{
+										arrTest.map(function (index, key) {
+											return (
+												<div className="img article-slide-content" key={key}>
+													{
+														dataList.map(function (article, i) {
+															return (
+																i < 3 * (key + 1) && i >= 3 * key ?
+																	<div key={i} className="article-li"
+																	>
+																		<div className="article-img">
+																			<img src={article.preview}/>
+																		</div>
+																		<div className="article-name">
+																			{article.name}
+																		</div>
+																	</div> :
+																	null
+
+															)
+														})
+													}
+												</div>
+											)
+										})
+
+									}
+								</div>
+							</div>
+						</div>
+					</div>
 					:
 					<div className="video-content">
 						<div className="title-work-name">{title}</div>
@@ -126,7 +227,7 @@ var MaskLayer = React.createClass({
 					</div>
 				}
 
-				<div className="mask-layer-top-logo"></div>
+				<div className={maskLayerTopLogoCls}></div>
 				<div className="back-off" onClick={this.props.hideMaskLayer.bind(this)}></div>
 			</div>
 		);
