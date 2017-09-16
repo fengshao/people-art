@@ -2,7 +2,6 @@
  * Created by fengs on 2017/9/11.
  */
 require('../style/performer-list.scss');
-var videoImg = require("../../../images/performer-list/video.png");
 import classNames from 'classnames';
 
 var PerformerListPage = React.createClass({
@@ -44,6 +43,7 @@ var PerformerListPage = React.createClass({
 		for (let i = 0; i < 26 - this.props.letterArr.length; i++) {
 			buquanArr.push(i)
 		}
+		var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
 
 		return (
 			<div className="performer-list-content">
@@ -118,7 +118,21 @@ var PerformerListPage = React.createClass({
 				</div>
 				<div className="video-content">
 					<div className="video-content-div">
-						<img src={videoImg} alt="暂无图片"/>
+						<video id='media' ref='media' className="video" controls="controls"
+							   type='video/mp4'
+							   preload="preload"
+						>
+							{
+								this.props.classicRepertoireList.map(function (classicRepertoire, index) {
+									return (
+										videoRegular.test(classicRepertoire.video) ?
+											<source key={index} src={classicRepertoire.video} type="video/mp4"/>
+											: null
+									)
+								})
+
+							}
+						</video>
 					</div>
 				</div>
 			</div>
