@@ -30,7 +30,8 @@ function HomeAction() {
 		'touchEnd',
 		'touchMove',
 		'selectArticle',
-		'selectLetter'
+		'selectLetter',
+		'loopVideo'
 	);
 
 	this.getHomePageData = function () {

@@ -22,7 +22,8 @@ var PerformerListPage = React.createClass({
 				dynamicHandle: true
 			};
 		var frame = new Sly('#performer-sly', options).init();
-
+		$("#loop-video-media")[0].play();
+		this.props.loopVideo();
 	},
 
 	render(){
@@ -118,20 +119,12 @@ var PerformerListPage = React.createClass({
 				</div>
 				<div className="video-content">
 					<div className="video-content-div">
-						<video id='media' ref='media' className="video" controls="controls"
+						<video id='loop-video-media' ref='media' className="video" controls="controls"
 							   type='video/mp4'
 							   preload="preload"
+							   src={this.props.classicRepertoireList[0].video ? this.props.classicRepertoireList[0].video : ""}
+							   poster={this.props.classicRepertoireList[0].preview ? this.props.classicRepertoireList[0].preview : ""}
 						>
-							{
-								this.props.classicRepertoireList.map(function (classicRepertoire, index) {
-									return (
-										videoRegular.test(classicRepertoire.video) ?
-											<source key={index} src={classicRepertoire.video} type="video/mp4"/>
-											: null
-									)
-								})
-
-							}
 						</video>
 					</div>
 				</div>

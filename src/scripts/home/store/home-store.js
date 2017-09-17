@@ -20,6 +20,7 @@ function HomeStore() {
 	this.letterArr = [];
 	this.classicRepertoireList = [];
 	this.classicRepertoire = {};
+	this.loopVideoArr = [];
 	this.isShowLeterStr = "";
 	this.slideNub2 = 0;
 	this.slideNub1 = 0;
@@ -87,6 +88,15 @@ HomeStore.prototype.getPerformerList = function (obj) {
 			_this.isShowPerformerList.push(performer)
 		}
 	});
+	var loopVideoArr = [];
+	var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
+
+	obj.classicRepertoireList.map(function (classicRepertoire, index) {
+		if (classicRepertoire.video && videoRegular.test(classicRepertoire.video)) {
+			loopVideoArr.push(classicRepertoire.video);
+		}
+	});
+	this.loopVideoArr = loopVideoArr;
 
 };
 
@@ -546,8 +556,25 @@ HomeStore.prototype.selectArticle = function (obj) {
 			article.isSelect = false;
 		}
 	})
+};
 
-
+HomeStore.prototype.loopVideo = function (obj) {
+	var vList = this.loopVideoArr; // 初始化播放列表 var
+	var vLen = vList.length; // 播放列表的长度
+	var curr = 1; // 当前播放的视频
+	var video = document.getElementById("loop-video-media");
+	video.addEventListener('ended', play);
+	// play();
+	function play() {
+		var video = document.getElementById("loop-video-media");
+		video.src = vList[curr];
+		video.load(); //如果短的话，可以加载完成之后再播放，监听 canplaythrough 事件即可
+		video.play();
+		curr++;
+		if (curr >= vLen) {
+			curr = 0; // 播放完了，重新播放
+		}
+	}
 };
 
 module.exports = alt.createStore(HomeStore, 'HomeStore');

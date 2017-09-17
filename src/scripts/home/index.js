@@ -119,6 +119,10 @@ var Home = React.createClass({
 
 		selectLetter: function (id) {
 			HomeAction.selectLetter(id);
+		},
+
+		loopVideo: function () {
+			HomeAction.loopVideo();
 		}
 	},
 
@@ -156,6 +160,7 @@ var Home = React.createClass({
 							classicRepertoireList={this.state.classicRepertoireList}
 							openPerformerInfo={this.events.openPerformerInfo}
 							selectLetter={this.events.selectLetter}
+							loopVideo={this.events.loopVideo}
 						/> : null
 				}
 				{
