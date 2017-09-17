@@ -99,11 +99,25 @@ var MaskLayer = React.createClass({
 										dataList.map(function (modern, i) {
 											return (
 												<div key={i} className="img video-slide-content" data-id={modern.id}>
-													<div className="mask-layer-scrollbar bottom-info-scrollbar">
-														<div className="handle"></div>
+													<div className="previous-content">
+														<div
+															dangerouslySetInnerHTML={{__html : modern.articleContent }}>
+
+														</div>
 													</div>
-													<div className="article-scroll-content"
-														 id={"maskLayer" + modern.id}>
+													<div>
+														<div className="mask-layer-scrollbar bottom-info-scrollbar">
+															<div className="handle"></div>
+														</div>
+														<div className="article-scroll-content"
+															 id={"maskLayer" + modern.id}>
+															<div
+																dangerouslySetInnerHTML={{__html : modern.articleContent }}>
+
+															</div>
+														</div>
+													</div>
+													<div className="next-content">
 														<div
 															dangerouslySetInnerHTML={{__html : modern.articleContent }}>
 
@@ -179,25 +193,47 @@ var MaskLayer = React.createClass({
 								>
 									{
 										dataList.map(function (modern, i) {
+
+											var previous = i == 0 ? dataList[dataList.length - 1] : dataList[i - 1];
+											var next = i == dataList.length - 1 ? dataList[0] : dataList[i + 1];
 											return (
 												<div key={i} className="img video-slide-content">
 													{
 
 														videoRegular.test(modern.video) ?
-															<div className="video-img" id={"maskLayer" + modern.id}>
-																<div className={maskLayerSuspendCls}
-																	 onClick={_this.props.maskLayerControl.bind(this,"maskLayer" + modern.id)}></div>
-																<video ref='media' className="media-video"
-																	   type='video/mp4'
-																	   loop="loop"
-																	   preload="preload"
-																	   src={modern.video ? modern.video : ""}
-																	   poster={modern.preview ? modern.preview : ""}
-																>
-																</video>
-															</div> :
-															<div className="video-img">
-																<img src={modern.video}/>
+															<div className="">
+																<div className="previous-content">
+																	<div className="mask-layer-suspend"></div>
+																	<img src={previous.preview}/>
+																</div>
+																<div className="video-img" id={"maskLayer" + modern.id}>
+																	<div className={maskLayerSuspendCls}
+																		 onClick={_this.props.maskLayerControl.bind(this,"maskLayer" + modern.id)}></div>
+																	<video ref='media' className="media-video"
+																		   type='video/mp4'
+																		   loop="loop"
+																		   preload="preload"
+																		   src={modern.video ? modern.video : ""}
+																		   poster={modern.preview ? modern.preview : ""}
+																	>
+																	</video>
+																</div>
+																<div className="next-content">
+																	<div className="mask-layer-suspend"></div>
+																	<img src={next.preview}/>
+																</div>
+															</div>
+															:
+															<div>
+																<div className="previous-content">
+																	<img src={previous.preview}/>
+																</div>
+																<div className="video-img">
+																	<img src={modern.preview}/>
+																</div>
+																<div className="next-content">
+																	<img src={next.preview}/>
+																</div>
 															</div>
 													}
 
@@ -210,9 +246,9 @@ var MaskLayer = React.createClass({
 						</div>
 						<div className="bottom-slide-contnet">
 							<div className="left-arrow"
-								 onClick={_this.events.left.bind(_this,"bottom-slide-contnet")}></div>
+								 onClick={_this.events.left.bind(_this, "bottom-slide-contnet")}></div>
 							<div className="right-arrow"
-								 onClick={_this.events.right.bind(_this,"bottom-slide-contnet")}></div>
+								 onClick={_this.events.right.bind(_this, "bottom-slide-contnet")}></div>
 							<div className="slide-container">
 								<div id="slide" className="index-slide slide" alt="star"
 									 onTouchStart={_this.props.touchStart}
