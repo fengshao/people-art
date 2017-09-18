@@ -74,6 +74,7 @@ HomeStore.prototype.getLetterArr = function (letterArr) {
 //获取演员列表
 HomeStore.prototype.getPerformerList = function (obj) {
 	var _this = this;
+	_this.isShowPerformerList = [];
 	this.performerList = obj.performerList;
 	this.letterArr = obj.letterArr;
 	this.classicRepertoireList = obj.classicRepertoireList;
@@ -93,7 +94,7 @@ HomeStore.prototype.getPerformerList = function (obj) {
 
 	obj.classicRepertoireList.map(function (classicRepertoire, index) {
 		if (classicRepertoire.video && videoRegular.test(classicRepertoire.video)) {
-			loopVideoArr.push(classicRepertoire.video);
+			loopVideoArr.push(classicRepertoire);
 		}
 	});
 	this.loopVideoArr = loopVideoArr;
@@ -406,6 +407,32 @@ HomeStore.prototype.initChangeDom = function (slideNub, $element, imgId) {
 			}
 		}
 	}
+
+	if (this.isSelectPerformeInfoNavId == 4) {
+		this.slideTriggerArticle();
+	}
+
+};
+
+//文章列表弹层 轮播时候 上下轮播一致
+HomeStore.prototype.slideTriggerArticle = function (imgId) {
+	var topSlildID = $(".article-content .top-slide-contnet .img3").attr("data-slide-imgid");
+	var bottomSlildID = $(".article-content .bottom-slide-contnet .img3").attr("data-slide-imgid");
+
+	var yeshu = Math.ceil((topSlildID + 1) / 3);
+
+
+	var num = yeshu - bottomSlildID - 1;
+	if (num > 0) {
+		for (let i = 0; i < num; i++) {
+			this.maskLayerRight("article-bottom");
+		}
+	} else if (num < 0) {
+		num = -num;
+		for (let i = 0; i < num; i++) {
+			this.maskLayerLeft("article-bottom");
+		}
+	}
 };
 
 HomeStore.prototype.maskLayerInitSlide = function (imgId) {
@@ -438,6 +465,7 @@ HomeStore.prototype.maskLayerLeftFnc = function (slideNub, $element, type) {
 					article.isSelect = false;
 				}
 			});
+			this.slideTriggerArticle();
 		}
 	}
 };
@@ -487,6 +515,7 @@ HomeStore.prototype.maskLayerRightFnc = function (slideNub, $element, type) {
 					article.isSelect = false;
 				}
 			});
+			this.slideTriggerArticle();
 		}
 	}
 
@@ -567,7 +596,8 @@ HomeStore.prototype.loopVideo = function (obj) {
 	// play();
 	function play() {
 		var video = document.getElementById("loop-video-media");
-		video.src = vList[curr];
+		video.src = vList[curr].video;
+		video.poster = vList[curr].preview;
 		video.load(); //如果短的话，可以加载完成之后再播放，监听 canplaythrough 事件即可
 		video.play();
 		curr++;

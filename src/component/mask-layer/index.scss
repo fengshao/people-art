@@ -82,9 +82,11 @@
 			  text-align: center;
 			  color: #fff;
 			  line-height: 50px;
+			  display: none;
 
 			}
 			.next-content {
+			  display: none;
 			  transform: rotateX(80deg);
 			  -moz-transform: rotateX(80deg);
 			  -webkit-transform: rotateX(80deg);
