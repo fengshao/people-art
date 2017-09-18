@@ -8,6 +8,12 @@
   background-size: contain;
   position: relative;
 
+  .back-off {
+	position: absolute;
+	right: 100px;
+	bottom: 100px;
+  }
+
   //演员列表区域样式
   .performer-list-div {
 	height: 1579px;

@@ -128,6 +128,7 @@ var PerformerListPage = React.createClass({
 						</video>
 					</div>
 				</div>
+				<div className="back-off" onClick={this.props.backOff.bind(this,"homePage")}></div>
 			</div>
 		);
 	}

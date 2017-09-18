@@ -161,6 +161,7 @@ var Home = React.createClass({
 							openPerformerInfo={this.events.openPerformerInfo}
 							selectLetter={this.events.selectLetter}
 							loopVideo={this.events.loopVideo}
+							backOff={this.events.backOff}
 						/> : null
 				}
 				{
@@ -188,12 +189,6 @@ var Home = React.createClass({
 							isShowMaskLayer={this.state.isShowMaskLayer}
 							isMaskLayerPlay={this.state.isMaskLayerPlay}
 							imgId={this.state.imgId}
-						/> : null
-				}
-				{
-					this.state.isOpenTest ?
-						<Test
-							imgDatas={this.state.imgDatas}
 						/> : null
 				}
 			</div>
