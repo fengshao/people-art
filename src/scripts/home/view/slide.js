@@ -42,7 +42,10 @@ var SlideCompent = React.createClass({
 
 		showMaskLayer: function (data, element, event) {
 			var classNmae = event.currentTarget.className;
-			var imgId = $("."+element +" .img3").attr("data-slide-imgid");
+			var imgId = $("." + element + " .img3").attr("data-slide-imgid");
+			if (this.props.isSelectPerformeInfoNavId == 4) {
+				imgId = data;
+			}
 			if (classNmae.indexOf("img3") != -1 || classNmae.indexOf("article-li") != -1) {
 				this.props.showMaskLayer(imgId);
 			} else if (classNmae.indexOf("img1") != -1 || classNmae.indexOf("img2") != -1) {
@@ -185,8 +188,8 @@ var SlideCompent = React.createClass({
 													articleList.map(function (article, i) {
 														return (
 															i < 4 * (key + 1) && i >= 4 * key ?
-																<div key={i} className="article-li"
-																	 onClick={_this.events.showMaskLayer.bind(_this,article, "article-contnet")}>
+																<div key={i} className="article-li" data-img-index={i}
+																	 onClick={_this.events.showMaskLayer.bind(_this,i, "article-contnet")}>
 																	<div className="article-img">
 																		<img src={article.preview}/>
 																	</div>

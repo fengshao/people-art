@@ -253,130 +253,6 @@ HomeStore.prototype.initChangeDom = function (slideNub, $element, imgId) {
 	for (let i = 0; i < slideNub; i++) {
 		$($element).find(".slide .img:eq(" + i + ")").attr("data-slide-imgId", i);
 	}
-	// var imgId = parseInt(imgId);
-	//
-	// $($element).find(".slide .img:eq(" + imgId + ")").addClass("img3");
-	//
-	// if (imgId == 0) {
-	//
-	// 	if (slideNub == 2) {
-	// 		$($element).find(".slide .img:eq(" + (imgId + 1) + ")").addClass("img4");
-	// 	}
-	// 	if (slideNub == 3) {
-	// 		$($element).find(".slide .img:eq(" + (imgId + 1) + ")").addClass("img4");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 2) + ")").addClass("img2");
-	// 	}
-	//
-	// 	if (slideNub == 4) {
-	// 		$($element).find(".slide .img:eq(" + (imgId + 1) + ")").addClass("img4");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 2) + ")").addClass("img5");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 3) + ")").addClass("img2");
-	// 	}
-	//
-	// 	if (slideNub == 5) {
-	// 		$($element).find(".slide .img:eq(" + (imgId + 1) + ")").addClass("img4");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 2) + ")").addClass("img5");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 3) + ")").addClass("img2");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 4) + ")").addClass("img1");
-	// 	}
-	//
-	// 	for (let i = (imgId + 1); i < slideNub; i++) {
-	// 		if (i == imgId + 1) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img4");
-	// 		} else if (i == imgId + 2) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img5");
-	// 		} else if (i == slideNub - 1) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img2");
-	// 		} else if (i == slideNub - 2) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img1");
-	// 		} else {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img6");
-	// 		}
-	// 	}
-	// }
-	// if (imgId == 1) {
-	// 	if (slideNub == 2) {
-	// 		$($element).find(".slide .img:eq(" + (imgId - 1) + ")").addClass("img4");
-	// 	}
-	// 	if (slideNub == 3) {
-	// 		$($element).find(".slide .img:eq(" + (imgId + 1) + ")").addClass("img4");
-	// 		$($element).find(".slide .img:eq(" + (imgId - 1) + ")").addClass("img2");
-	// 	}
-	//
-	// 	if (slideNub == 4) {
-	// 		$($element).find(".slide .img:eq(" + (imgId - 1) + ")").addClass("img2");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 1) + ")").addClass("img4");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 2) + ")").addClass("img5");
-	// 	}
-	//
-	// 	if (slideNub == 5) {
-	// 		$($element).find(".slide .img:eq(" + (imgId - 1) + ")").addClass("img2");
-	// 		$($element).find(".slide .img:eq(" + (imgId - 2) + ")").addClass("img1");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 1) + ")").addClass("img4");
-	// 		$($element).find(".slide .img:eq(" + (imgId + 2) + ")").addClass("img5");
-	// 	}
-	//
-	// 	for (let i = (imgId + 1); i < slideNub; i++) {
-	// 		if (i == imgId + 1) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img4");
-	// 		} else if (i == imgId + 2) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img5");
-	// 		} else if (i == slideNub - 1) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img2");
-	// 		} else if (i == slideNub - 2) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img1");
-	// 		} else {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img6");
-	// 		}
-	// 	}
-	// }
-	//
-	//
-	// if (slideNub - imgId > 2 && imgId > 1) {
-	// 	for (let i = (imgId + 1); i < slideNub; i++) {
-	// 		if (i == imgId + 1) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img4");
-	// 		} else if (i == imgId + 2) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img5");
-	// 		} else {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img6");
-	// 		}
-	// 	}
-	//
-	// 	for (let i = imgId - 1; i >= 0; i--) {
-	// 		if (i == imgId - 1) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img2");
-	// 		} else if (i == imgId - 2) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img1");
-	// 		} else {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img6");
-	// 		}
-	// 	}
-	// }
-	//
-	// if (imgId == slideNub - 1) {
-	// 	for (let i = (imgId + 1); i < slideNub; i++) {
-	// 		if (i == imgId + 1) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img4");
-	// 		} else if (i == imgId + 2) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img5");
-	// 		} else {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img6");
-	// 		}
-	// 	}
-	//
-	// 	for (let i = imgId - 1; i >= 0; i--) {
-	// 		if (i == imgId - 1) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img2");
-	// 		} else if (i == imgId - 2) {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img1");
-	// 		} else {
-	// 			$($element).find(".slide .img:eq(" + i + ")").addClass("img6");
-	// 		}
-	// 	}
-	// }
-
-
 // 根据轮播图片数量设定图片位置对应的class
 	if (slideNub == 1) {
 		for (let i = 0; i < slideNub; i++) {
@@ -407,15 +283,27 @@ HomeStore.prototype.initChangeDom = function (slideNub, $element, imgId) {
 			}
 		}
 	}
+};
 
-	if (this.isSelectPerformeInfoNavId == 4) {
-		this.slideTriggerArticle();
+//点击轮播图打开弹层轮播的时候 大图轮播跳转到点击的位置
+HomeStore.prototype.slideClick = function (imgId) {
+	var topSlildID = $(".top-slide-contnet .img3").attr("data-slide-imgid");
+
+	var num = imgId - topSlildID;
+	if (num > 0) {
+		for (let i = 0; i < num; i++) {
+			this.maskLayerRight(this.isSelectPerformeInfoNavId == 4 ? "article-top" : "");
+		}
+	} else if (num < 0) {
+		num = -num;
+		for (let i = 0; i < num; i++) {
+			this.maskLayerLeft(this.isSelectPerformeInfoNavId == 4 ? "article-top" : "");
+		}
 	}
-
 };
 
 //文章列表弹层 轮播时候 上下轮播一致
-HomeStore.prototype.slideTriggerArticle = function (imgId) {
+HomeStore.prototype.slideTriggerArticle = function () {
 	var topSlildID = $(".article-content .top-slide-contnet .img3").attr("data-slide-imgid");
 	var bottomSlildID = $(".article-content .bottom-slide-contnet .img3").attr("data-slide-imgid");
 
@@ -440,6 +328,10 @@ HomeStore.prototype.maskLayerInitSlide = function (imgId) {
 	this.slideNub2 = $(this.$element2).find(".slide .img").size();             //获取轮播图片数量
 	this.initChangeDom(this.slideNub1, this.$element1, imgId);
 	this.initChangeDom(this.slideNub2, this.$element2, imgId);
+	this.slideClick(imgId);
+	if (this.isSelectPerformeInfoNavId == 4) {
+		this.slideTriggerArticle();
+	}
 };
 
 HomeStore.prototype.maskLayerLeftFnc = function (slideNub, $element, type) {
