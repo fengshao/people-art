@@ -253,7 +253,7 @@
 	  //话剧作品轮播样式
 	  .modern-contnet {
 		position: relative;
-
+		height: 500px;;
 		.left-arrow {
 		  @extend .left-arrow-public;
 		  top: 174px;
@@ -266,78 +266,28 @@
 		.slide-container {
 		  width: 100%;
 		  margin: 0 auto;
+		  height: 500px;;
 
-		  .slide {
-			width: 100%;
-			height: 400px;
-			overflow: hidden;
-			position: relative;
+		  .modern-slide-content {
+			width: 411px;
+			height: 388px;
 
-			.modern-slide-content {
+			.modern-name {
+			  font-size: 50px;
+			  color: #ffffff;
+			  height: 60px;
+			  margin-bottom: 20px;
+			  text-align: center;
+			  //visibility: hidden;
+
+			}
+			.modern-img {
 			  width: 411px;
-			  height: 388px;
+			  height: 308px;
 			  overflow: hidden;
 			  position: absolute;
-			  //transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s, z-index 0.4s;
-			  transition: left 0.4s;
-
-			  .modern-name {
-				font-size: 50px;
-				color: #ffffff;
-				height: 60px;
-				margin-bottom: 20px;
-				text-align: center;
-				visibility: hidden;
-
-			  }
-			  .modern-img {
-				width: 411px;
-				height: 308px;
-				overflow: hidden;
-				position: absolute;
-			  }
-
-			  &.img1 {
-				left: 0;
-				z-index: 1;
-				opacity: 0.4;
-				@include transform-public(scaleY(0.8));
-			  }
-
-			  &.img2 {
-				z-index: 2;
-				left: calc((100% - 411px) / 2 - (411px) / 2);
-				opacity: 0.6;
-				@include transform-public(scaleY(0.9));
-
-			  }
-
-			  &.img3 {
-				left: calc((100% - 411px) / 2);
-				z-index: 3;
-				.modern-name {
-				  visibility: visible;
-
-				}
-			  }
-
-			  &.img4 {
-				left: calc((100% - 411px) / 2 + (411px) / 2);
-				z-index: 2;
-				opacity: 0.6;
-				@include transform-public(scaleY(0.9));
-			  }
-
-			  &.img5 {
-				left: calc((100% - 411px) / 2 + 411px);
-				z-index: 1;
-				opacity: 0.4;
-				@include transform-public(scaleY(0.8));
-			  }
-			  &.img6 {
-				display: none;
-			  }
 			}
+
 		  }
 		}
 

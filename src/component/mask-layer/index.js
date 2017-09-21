@@ -6,8 +6,29 @@ import classNames from 'classnames';
 
 var MaskLayer = React.createClass({
 	componentDidMount: function () {
-		this.props.maskLayerInitSlide(this.props.imgId);
+		var mySwiper = new Swiper('.top-slide-contnet .swiper-container', {
+			loop: true,
+			// 如果需要前进后退按钮
+			nextButton: '.top-slide-contnet .swiper-button-next',
+			prevButton: '.top-slide-contnet .swiper-button-prev'
+		});
 
+		var swiper = new Swiper('.bottom-slide-contnet .swiper-container', {
+			loop: true,
+			effect: 'coverflow',
+			grabCursor: true,
+			centeredSlides: true,
+			slidesPerView: 'auto',
+			coverflow: {
+				rotate: 50,
+				stretch: 0,
+				depth: 100,
+				modifier: 1,
+				slideShadows: true
+			},
+			nextButton: '.bottom-slide-contnet .swiper-button-next, .top-slide-contnet .swiper-button-next',
+			prevButton: '.bottom-slide-contnet .swiper-button-prev, .top-slide-contnet .swiper-button-prev'
+		});
 		if (this.props.isSelectPerformeInfoNavId == 4) {
 
 			$(".article-content .video-slide-content").each(function () {
@@ -181,62 +202,34 @@ var MaskLayer = React.createClass({
 					<div className="video-content">
 						<div className="title-work-name">{title}</div>
 						<div className="top-slide-contnet">
-							<div className="left-arrow"
-								 onClick={_this.events.left.bind(_this,"top-slide-contnet")}></div>
-							<div className="right-arrow"
-								 onClick={_this.events.right.bind(_this,"top-slide-contnet")}></div>
-							<div className="slide-container">
-								<div id="slide" className="index-slide slide" alt="star"
-									 onTouchStart={_this.props.touchStart}
-									 onTouchMove={_this.props.touchMove}
-									 onTouchEnd={_this.props.touchEnd}
-								>
+							<div className="left-arrow swiper-button-prev"></div>
+							<div className="right-arrow swiper-button-next"></div>
+							<div className="swiper-container">
+								<div className="swiper-wrapper slide-container">
 									{
 										dataList.map(function (modern, i) {
-
-											var previous = i == 0 ? dataList[dataList.length - 1] : dataList[i - 1];
-											var next = i == dataList.length - 1 ? dataList[0] : dataList[i + 1];
 											return (
-												<div key={i} className="img video-slide-content">
-													{
-
-														videoRegular.test(modern.video) ?
-															<div className="">
-																<div className="previous-content">
-																	<div className="mask-layer-suspend"></div>
-																	<img src={previous.preview}/>
-																</div>
-																<div className="video-img" id={"maskLayer" + modern.id}>
-																	<div className={maskLayerSuspendCls}
-																		 onClick={_this.props.maskLayerControl.bind(this,"maskLayer" + modern.id)}></div>
-																	<video ref='media' className="media-video"
-																		   type='video/mp4'
-																		   loop="loop"
-																		   preload="preload"
-																		   src={modern.video ? modern.video : ""}
-																		   poster={modern.preview ? modern.preview : ""}
-																	>
-																	</video>
-																</div>
-																<div className="next-content">
-																	<div className="mask-layer-suspend"></div>
-																	<img src={next.preview}/>
-																</div>
+												<div key={i} className="swiper-slide video-slide-content">
+													{videoRegular.test(modern.video) ?
+														<div className="video-img" id={"maskLayer" + modern.id}>
+															<div className={maskLayerSuspendCls}
+																 onClick={_this.props.maskLayerControl.bind(this,"maskLayer" + modern.id)}></div>
+															<video ref='media' className="media-video"
+																   type='video/mp4'
+																   loop="loop"
+																   preload="preload"
+																   src={modern.video ? modern.video : ""}
+																   poster={modern.preview ? modern.preview : ""}
+															>
+															</video>
+														</div>
+														:
+														<div>
+															<div className="video-img">
+																<img src={modern.preview}/>
 															</div>
-															:
-															<div>
-																<div className="previous-content">
-																	<img src={previous.preview}/>
-																</div>
-																<div className="video-img">
-																	<img src={modern.preview}/>
-																</div>
-																<div className="next-content">
-																	<img src={next.preview}/>
-																</div>
-															</div>
+														</div>
 													}
-
 												</div>
 											)
 										})
@@ -245,20 +238,14 @@ var MaskLayer = React.createClass({
 							</div>
 						</div>
 						<div className="bottom-slide-contnet">
-							<div className="left-arrow"
-								 onClick={_this.events.left.bind(_this, "bottom-slide-contnet")}></div>
-							<div className="right-arrow"
-								 onClick={_this.events.right.bind(_this, "bottom-slide-contnet")}></div>
-							<div className="slide-container">
-								<div id="slide" className="index-slide slide" alt="star"
-									 onTouchStart={_this.props.touchStart}
-									 onTouchMove={_this.props.touchMove}
-									 onTouchEnd={_this.props.touchEnd}
-								>
+							<div className="left-arrow swiper-button-prev"></div>
+							<div className="right-arrow swiper-button-next"></div>
+							<div className="swiper-container ">
+								<div className="swiper-wrapper slide-container">
 									{
 										dataList.map(function (modern, i) {
 											return (
-												<div key={i} className="img preview-slide-content">
+												<div key={i} className="swiper-slide preview-slide-content">
 													<div className="modern-img">
 														<img src={modern.preview}/>
 													</div>

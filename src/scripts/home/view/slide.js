@@ -1,26 +1,45 @@
 /**
  * Created by fengs on 2017/9/16.
  */
-require('../style/home.scss');
+// require('../style/home.scss');
 
 var SlideCompent = React.createClass({
 	componentDidMount: function () {
 		this.slideInit();
-		this.props.Slide.k_touch($(".slide-container"));
 	},
 
 	componentDidUpdate: function () {
-		this.slideInit();
+		// this.slideInit();
 	},
 
 	slideInit: function () {
 		var _this = this;
 		switch (_this.props.isSelectPerformeInfoNavId) {
 			case "1":
-				_this.props.Slide.initSlide($(".modern-contnet"));
+				var swiper = new Swiper('.bottom-content .swiper-container', {
+					loop: true,
+					effect: 'coverflow',
+					grabCursor: true,
+					centeredSlides: true,
+					slidesPerView: 'auto',
+					coverflow: {
+						rotate: 50,
+						stretch: 0,
+						depth: 100,
+						modifier: 1,
+						slideShadows: true
+					},
+					nextButton: '.bottom-content .swiper-button-next',
+					prevButton: '.bottom-content .swiper-button-prev'
+				});
 				break;
 			case "2":
-				_this.props.Slide.initSlide($(".he-institute-contnet"));
+				var mySwiper = new Swiper('.swiper-container', {
+					loop: true,
+					// 如果需要前进后退按钮
+					nextButton: '.swiper-button-next',
+					prevButton: '.swiper-button-prev'
+				});
 				break;
 			case "3":
 				_this.props.Slide.initSlide($(".movies-contnet"));
@@ -42,16 +61,8 @@ var SlideCompent = React.createClass({
 
 		showMaskLayer: function (data, element, event) {
 			var classNmae = event.currentTarget.className;
-			var imgId = $("." + element + " .img3").attr("data-slide-imgid");
-			if (this.props.isSelectPerformeInfoNavId == 4) {
-				imgId = data;
-			}
-			if (classNmae.indexOf("img3") != -1 || classNmae.indexOf("article-li") != -1) {
-				this.props.showMaskLayer(imgId);
-			} else if (classNmae.indexOf("img1") != -1 || classNmae.indexOf("img2") != -1) {
-				this.props.Slide.left($("." + element));
-			} else if (classNmae.indexOf("img5") != -1 || classNmae.indexOf("img4") != -1) {
-				this.props.Slide.right($("." + element));
+			if (classNmae.indexOf("swiper-slide-active") != -1 || classNmae.indexOf("article-li") != -1) {
+				this.props.showMaskLayer();
 			}
 		}
 
@@ -72,16 +83,12 @@ var SlideCompent = React.createClass({
 			case "1":
 				return (
 					<div className="modern-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"modern-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"modern-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
+						<div className="swiper-container ">
+							<div className="swiper-wrapper slide-container">
 								{
 									modernList.map(function (modern, i) {
 										return (
-											<div key={i} className="img modern-slide-content"
+											<div key={i} className="swiper-slide modern-slide-content"
 												 onClick={_this.events.showMaskLayer.bind(_this,modern, "modern-contnet")}>
 												<div className="modern-name">{modern.name}</div>
 												<div className="modern-img">
@@ -93,39 +100,21 @@ var SlideCompent = React.createClass({
 								}
 							</div>
 						</div>
+						<div className="left-arrow swiper-button-prev"></div>
+						<div className="right-arrow swiper-button-next"></div>
 					</div>
 				);
 				break;
 			case "2":
 				return (
-					<div className="he-institute-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"he-institute-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"he-institute-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
-								{
-									heInstituteList.map(function (heInstitute, i) {
-										return (
-											<div key={i} className="img he-institute-slide-content"
-												 onClick={_this.events.showMaskLayer.bind(_this,heInstitute, "he-institute-contnet")}>
-												<div className="he-institute-name">
-													<p>{heInstitute.name}</p>
-												</div>
-												<div className="he-institute-img">
-													<img src={heInstitute.preview}/>
-													{
-														videoRegular.test(heInstitute.video) ?
-															<div className="suspend-logo"></div> : null
-													}
-												</div>
-											</div>
-										)
-									})
-								}
-							</div>
+					<div className="swiper-container he-institute-contnet">
+						<div className="swiper-wrapper">
+							<div className="swiper-slide">Slide 1</div>
+							<div className="swiper-slide">Slide 2</div>
+							<div className="swiper-slide">Slide 3</div>
 						</div>
+						<div className="swiper-button-prev"></div>
+						<div className="swiper-button-next"></div>
 					</div>
 				);
 				break;

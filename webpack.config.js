@@ -16,7 +16,6 @@ if (process.argv.indexOf('p') >= 0
 	process.argv.indexOf('--production') >= 0) {
 	webpackMode = 'production';
 }
-
 if (process.argv.indexOf('-tomcat') >= 0 ||
 	process.argv.indexOf('tomcat') >= 0) {
 	webpackMode = "tomcat";
@@ -44,7 +43,8 @@ var pluginLists = [
 		$: 'jquery',
 		jQuery: 'jquery',
 		'window.jQuery': 'jquery',
-		'_': 'underscore'
+		'_': 'underscore',
+		'Swiper': __dirname + '/src/component/swiper/swiper.js'
 	}),
 	new webpack.optimize.CommonsChunkPlugin({
 		name: 'vendor',
