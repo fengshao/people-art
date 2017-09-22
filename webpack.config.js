@@ -26,12 +26,13 @@ var devEntry = [
 	'./publicFile/index'
 ];
 
-if (webpackMode !== 'production') {
+if (webpackMode !== 'production' && webpackMode !== 'tomcat') {
 	devEntry.push(
 		'webpack-dev-server/client?http://localhost:3001',
 		'webpack/hot/only-dev-server'
 	);
 }
+
 
 //插件
 var pluginLists = [
@@ -51,12 +52,13 @@ var pluginLists = [
 		filename: 'vendor.js'
 	})
 ];
+
 //热替换插件
-if (webpackMode !== 'production') {
+if (webpackMode !== 'production' && webpackMode !== 'tomcat') {
 	pluginLists.push(new webpack.HotModuleReplacementPlugin());
 }
 //压缩混淆插件
-if (webpackMode === 'production') {
+if (webpackMode === 'production' || webpackMode === 'tomcat') {
 	pluginLists.push(new webpack.optimize.UglifyJsPlugin({
 		test: /(\.jsx|\.js)$/,
 		compress: {
