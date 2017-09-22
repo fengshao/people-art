@@ -310,101 +310,92 @@
 		.slide-container {
 		  width: 100%;
 		  margin: 0 auto;
-
-		  .slide {
+		  height: 595px;
+		  .he-institute-slide-content, .movies-slide-content {
 			width: 100%;
-			height: 595px;
+			height: 100%;
 			overflow: hidden;
-			position: relative;
-			.he-institute-slide-content, .movies-slide-content {
-			  width: 100%;
+
+			.he-institute-name, .movies-name {
+			  font-size: 50px;
+			  color: #ffffff;
+			  height: 100%;
+			  text-align: center;
+			  float: left;
+			  width: calc(100% - 810px);
+			  p {
+				display: table-cell;
+				vertical-align: middle;
+				margin: 0;
+				width: 380px;
+				height: 550px;
+			  }
+
+			}
+
+			.he-institute-img, .movies-img {
+			  background: transparent url("~images/performer-info/works-bg.png") no-repeat;
+			  background-size: contain;
+			  float: left;
+			  width: 810px;
 			  height: 100%;
 			  overflow: hidden;
-			  position: absolute;
-			  //transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s, z-index 0.4s;
-			  transition: left 0.4s;
-
-			  .he-institute-name, .movies-name {
-				font-size: 50px;
-				color: #ffffff;
-				height: 100%;
-				text-align: center;
-				float: left;
-				width: calc(100% - 810px);
-				p {
-				  display: table-cell;
-				  vertical-align: middle;
-				  margin: 0;
-				  width: 380px;
-				  height: 550px;
-				}
-
+			  position: relative;
+			  img {
+				margin: 47px 77px 161px 77px;
+				width: calc(810px - 77px * 2);
+				height: calc(100% - 208px);
 			  }
 
-			  .he-institute-img, .movies-img {
-				background: transparent url("~images/performer-info/works-bg.png") no-repeat;
+			  .suspend-logo {
+				background: transparent url("~images/performer-info/suspend-logo-small.png") no-repeat;
 				background-size: contain;
-				float: left;
-				width: 810px;
-				height: 100%;
-				overflow: hidden;
-				position: relative;
-				img {
-				  margin: 47px 77px 161px 77px;
-				  width: calc(810px - 77px * 2);
-				  height: calc(100% - 208px);
-				}
-
-				.suspend-logo {
-				  background: transparent url("~images/performer-info/suspend-logo-small.png") no-repeat;
-				  background-size: contain;
-				  width: 62px;
-				  height: 65px;
-				  position: absolute;
-				  left: 370px;
-				  top: 217px;
-				}
-
+				width: 62px;
+				height: 65px;
+				position: absolute;
+				left: 370px;
+				top: 217px;
 			  }
 
-			  &.img1 {
-				left: -200%;
-				z-index: 1;
-				opacity: 0.4;
-				@include transform-public(scaleY(0.8));
-			  }
+			}
 
-			  &.img2 {
-				z-index: 2;
-				left: -100%;
-				opacity: 0.6;
-				@include transform-public(scaleY(0.9));
+			&.img1 {
+			  left: -200%;
+			  z-index: 1;
+			  opacity: 0.4;
+			  @include transform-public(scaleY(0.8));
+			}
 
-			  }
+			&.img2 {
+			  z-index: 2;
+			  left: -100%;
+			  opacity: 0.6;
+			  @include transform-public(scaleY(0.9));
 
-			  &.img3 {
-				left: 0;
-				z-index: 3;
-				visibility: visible;
-			  }
+			}
 
-			  &.img4 {
-				left: 100%;
-				z-index: 2;
-				opacity: 0.6;
-				@include transform-public(scaleY(0.9));
-			  }
+			&.img3 {
+			  left: 0;
+			  z-index: 3;
+			  visibility: visible;
+			}
 
-			  &.img5 {
-				left: 200%;
-				z-index: 1;
-				opacity: 0.4;
-				@include transform-public(scaleY(0.8));
-			  }
+			&.img4 {
+			  left: 100%;
+			  z-index: 2;
+			  opacity: 0.6;
+			  @include transform-public(scaleY(0.9));
+			}
 
-			  &.img6 {
-				display: none;
-			  }
+			&.img5 {
+			  left: 200%;
+			  z-index: 1;
+			  opacity: 0.4;
+			  @include transform-public(scaleY(0.8));
+			}
+
+			&.img6 {
+			  display: none;
 			}
 		  }
 		}
@@ -426,87 +417,26 @@
 		.slide-container {
 		  width: 100%;
 		  margin: 0 auto;
+		  height: 595px;
 
-		  .slide {
-			width: 100%;
-			height: 595px;
-			overflow: hidden;
-			position: relative;
-			.article-slide-content {
+		  .article-li {
+			.article-name {
+			  font-size: 30px;
+			  color: #ffffff;
 			  width: 100%;
-			  height: 100%;
-			  overflow: hidden;
-			  position: absolute;
-			  //transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s, z-index 0.4s;
-			  transition: left 0.4s;
-
-			  .article-li {
-				word-break: break-all;
-				width: 247px;
-				float: left;
-				margin-left: 59px;
-
-				&:first-child {
-				  margin-left: 0;
-				}
-
-				.article-name {
-				  font-size: 30px;
-				  color: #ffffff;
-				  width: 100%;
-				  text-align: center;
-				  float: left;
-				}
-
-				.article-img {
-				  float: left;
-				  width: 247px;
-				  height: 292px;
-				  overflow: hidden;
-				}
-
-			  }
-
-			  &.img1 {
-				left: -200%;
-				z-index: 1;
-				opacity: 0.4;
-				@include transform-public(scaleY(0.8));
-			  }
-
-			  &.img2 {
-				z-index: 2;
-				left: -100%;
-				opacity: 0.6;
-				@include transform-public(scaleY(0.9));
-
-			  }
-
-			  &.img3 {
-				left: 0;
-				z-index: 3;
-				visibility: visible;
-			  }
-
-			  &.img4 {
-				left: 100%;
-				z-index: 2;
-				opacity: 0.6;
-				@include transform-public(scaleY(0.9));
-			  }
-
-			  &.img5 {
-				left: 200%;
-				z-index: 1;
-				opacity: 0.4;
-				@include transform-public(scaleY(0.8));
-			  }
-
-			  &.img6 {
-				display: none;
-			  }
+			  text-align: center;
+			  float: left;
 			}
+
+			.article-img {
+			  float: left;
+			  width: 247px;
+			  height: 292px;
+			  overflow: hidden;
+			}
+
 		  }
+
 		}
 
 	  }

@@ -98,18 +98,6 @@ var Home = React.createClass({
 			HomeAction.maskLayerControl(id);
 		},
 
-		touchStart: function (e) {
-			HomeAction.touchStart(e);
-		},
-
-		touchEnd: function (type) {
-			HomeAction.touchEnd(type);
-		},
-
-		touchMove: function (e) {
-			HomeAction.touchMove(e);
-		},
-
 		selectArticle: function (index, id) {
 			HomeAction.selectArticle({
 				"index": index,
@@ -171,9 +159,6 @@ var Home = React.createClass({
 							maskLayerInitSlide={this.events.maskLayerInitSlide}
 							maskLayerLeft={this.events.maskLayerLeft}
 							maskLayerRight={this.events.maskLayerRight}
-							touchMove={this.events.touchMove}
-							touchEnd={this.events.touchEnd}
-							touchStart={this.events.touchStart}
 							selectArticle={this.events.selectArticle}
 
 							backOff={this.events.backOff}
@@ -189,6 +174,7 @@ var Home = React.createClass({
 							isShowMaskLayer={this.state.isShowMaskLayer}
 							isMaskLayerPlay={this.state.isMaskLayerPlay}
 							imgId={this.state.imgId}
+							swiper={this.state.swiper}
 						/> : null
 				}
 			</div>

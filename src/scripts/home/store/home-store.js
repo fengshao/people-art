@@ -26,6 +26,7 @@ function HomeStore() {
 	this.slideNub1 = 0;
 	this._start = 0;
 	this._end = 0;
+	this.swiper = "";
 
 	this.imgId = 0;
 

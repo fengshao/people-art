@@ -13,23 +13,19 @@ var MaskLayer = React.createClass({
 			prevButton: '.top-slide-contnet .swiper-button-prev'
 		});
 
-		var swiper = new Swiper('.bottom-slide-contnet .swiper-container', {
-			loop: true,
-			effect: 'coverflow',
-			grabCursor: true,
-			centeredSlides: true,
-			slidesPerView: 'auto',
-			coverflow: {
-				rotate: 50,
-				stretch: 0,
-				depth: 100,
-				modifier: 1,
-				slideShadows: true
-			},
-			nextButton: '.bottom-slide-contnet .swiper-button-next, .top-slide-contnet .swiper-button-next',
-			prevButton: '.bottom-slide-contnet .swiper-button-prev, .top-slide-contnet .swiper-button-prev'
-		});
+
 		if (this.props.isSelectPerformeInfoNavId == 4) {
+
+
+			var swiper = new Swiper('.bottom-slide-contnet .swiper-container', {
+				slidesPerView: 4,
+				//centeredSlides: true,
+				spaceBetween: 140,
+				loop: true,
+				// 如果需要前进后退按钮
+				nextButton: '.bottom-slide-contnet .swiper-button-next',
+				prevButton: '.bottom-slide-contnet .swiper-button-prev'
+			});
 
 			$(".article-content .video-slide-content").each(function () {
 				var id = $(this).find(".article-scroll-content").attr("id");
@@ -45,6 +41,25 @@ var MaskLayer = React.createClass({
 						dynamicHandle: true
 					};
 				var frame1 = new Sly('#' + id, options).init();
+			});
+		} else {
+
+
+			var swiper = new Swiper('.bottom-slide-contnet .swiper-container', {
+				loop: true,
+				effect: 'coverflow',
+				grabCursor: true,
+				centeredSlides: true,
+				slidesPerView: 'auto',
+				coverflow: {
+					rotate: 50,
+					stretch: 0,
+					depth: 100,
+					modifier: 1,
+					slideShadows: true
+				},
+				nextButton: '.bottom-slide-contnet .swiper-button-next, .top-slide-contnet .swiper-button-next',
+				prevButton: '.bottom-slide-contnet .swiper-button-prev, .top-slide-contnet .swiper-button-prev'
 			});
 		}
 
@@ -106,26 +121,15 @@ var MaskLayer = React.createClass({
 					<div className="video-content article-content">
 						<div className="title-work-name">{title}</div>
 						<div className="top-slide-contnet">
-							<div className="left-arrow"
-								 onClick={_this.events.left.bind(_this,"article-top")}></div>
-							<div className="right-arrow"
-								 onClick={_this.events.right.bind(_this,"article-top")}></div>
-							<div className="slide-container">
-								<div id="slide" className="index-slide slide" alt="star"
-									 onTouchStart={_this.props.touchStart.bind(_this)}
-									 onTouchMove={_this.props.touchMove.bind(_this)}
-									 onTouchEnd={_this.props.touchEnd.bind(_this,"article-top")}
-								>
+							<div className="left-arrow swiper-button-prev"></div>
+							<div className="right-arrow swiper-button-next"></div>
+							<div className="swiper-container">
+								<div className="swiper-wrapper slide-container">
 									{
 										dataList.map(function (modern, i) {
 											return (
-												<div key={i} className="img video-slide-content" data-id={modern.id}>
-													<div className="previous-content">
-														<div
-															dangerouslySetInnerHTML={{__html : modern.articleContent }}>
-
-														</div>
-													</div>
+												<div key={i} className="swiper-slide video-slide-content"
+													 data-id={modern.id}>
 													<div>
 														<div className="mask-layer-scrollbar bottom-info-scrollbar">
 															<div className="handle"></div>
@@ -138,12 +142,6 @@ var MaskLayer = React.createClass({
 															</div>
 														</div>
 													</div>
-													<div className="next-content">
-														<div
-															dangerouslySetInnerHTML={{__html : modern.articleContent }}>
-
-														</div>
-													</div>
 												</div>
 											)
 										})
@@ -152,47 +150,29 @@ var MaskLayer = React.createClass({
 							</div>
 						</div>
 						<div className="bottom-slide-contnet">
-							<div className="left-arrow"
-								 onClick={_this.events.left.bind(_this,"article-bottom")}></div>
-							<div className="right-arrow"
-								 onClick={_this.events.right.bind(_this,"article-bottom")}></div>
-							<div className="slide-container">
-								<div id="slide" className="index-slide slide" alt="star"
-									 onTouchStart={_this.props.touchStart.bind(_this)}
-									 onTouchMove={_this.props.touchMove.bind(_this)}
-									 onTouchEnd={_this.props.touchEnd.bind(_this,"article-bottom")}
-								>
+							<div className="left-arrow swiper-button-prev"></div>
+							<div className="right-arrow swiper-button-next"></div>
+							<div className="swiper-container">
+								<div className="swiper-wrapper slide-container">
 									{
-										arrTest.map(function (index, key) {
+										dataList.map(function (article, i) {
+											var cls = classNames({
+												'article-li swiper-slide': true,
+												'article-li-isSelect': article.isSelect
+											});
 											return (
-												<div className="img article-slide-content" key={key}>
-													{
-														dataList.map(function (article, i) {
-															var cls = classNames({
-																'article-li': true,
-																'article-li-isSelect': article.isSelect
-															});
-															return (
-																i < 3 * (key + 1) && i >= 3 * key ?
-																	<div key={i} className={cls} data-id={i}
-																		 onClick={_this.props.selectArticle.bind(_this,i,article.id)}
-																	>
-																		<div className="article-img">
-																			<img src={article.preview}/>
-																		</div>
-																		<div className="article-name">
-																			{article.name}
-																		</div>
-																	</div> :
-																	null
-
-															)
-														})
-													}
+												<div key={i} className={cls} data-id={i}
+													 onClick={_this.props.selectArticle.bind(_this,i,article.id)}
+												>
+													<div className="article-img">
+														<img src={article.preview}/>
+													</div>
+													<div className="article-name">
+														{article.name}
+													</div>
 												</div>
 											)
 										})
-
 									}
 								</div>
 							</div>

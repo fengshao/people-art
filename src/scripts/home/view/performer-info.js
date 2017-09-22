@@ -56,6 +56,7 @@ var PerformerInfo = React.createClass({
 					Slide.removeEventFnc($(".article-contnet"));
 					break;
 			}
+
 			_this.props.selectPerformeInfoNav(id);
 		}
 	},
@@ -174,6 +175,7 @@ var PerformerInfo = React.createClass({
 					<SlideCompent
 						Slide={Slide}
 						performer={this.props.performer}
+						swiper={this.props.swiper}
 						showMaskLayer={this.props.showMaskLayer}
 						isSelectPerformeInfoNavId={this.props.isSelectPerformeInfoNavId}
 					/>
