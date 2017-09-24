@@ -41,6 +41,57 @@
 	.top-slide-contnet {
 	  position: relative;
 	  margin-top: 120px;
+	  //height: 887px;
+
+	  .preview-content {
+		position: absolute;
+		-webkit-perspective: 1200px;
+		-moz-perspective: 1200px;
+		-o-perspective: 1200px;
+		perspective: 1200px;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		width: 100%;
+		height: 887px;
+		bottom: 485px;
+		img {
+		  transform: translate3d(0px, 0px, -429px) rotateX(85deg) rotateY(0deg);
+		}
+
+		> div {
+		  background-color: #ffffff;
+		  padding: 50px;
+		  transform: translate3d(0px, 0px, -429px) rotateX(85deg) rotateY(0deg);
+		}
+	  }
+
+	  .next-content {
+		position: absolute;
+		-webkit-perspective: 1200px;
+		-moz-perspective: 1200px;
+		-o-perspective: 1200px;
+		perspective: 1200px;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		width: 100%;
+		height: 887px;
+		top: 535px;
+
+		img {
+		  transform: translate3d(0px, 0px, -436px) rotateX(-78deg) rotateY(0deg);
+		}
+
+		> div {
+		  background-color: #ffffff;
+		  padding: 50px;
+		  transform: translate3d(0px, 0px, -436px) rotateX(-78deg) rotateY(0deg);
+		}
+	  }
+
 	  .left-arrow {
 		@extend .left-arrow-public;
 		top: 380px;
@@ -61,7 +112,7 @@
 
 		.video-slide-content {
 		  width: 100%;
-		  height: 887px;
+		  //height: 887px;
 
 		  .video-img {
 			width: 100%;
@@ -158,6 +209,34 @@
 	  background-size: contain;
 	  background-position: center;
 
+	  .preview-content {
+		height: 1100px;
+		bottom: 598px;
+		width: 100%;
+
+		> div {
+		  width: 100%;
+		  height: 1100px;
+		  background-color: #ffffff;
+		  padding: 50px;
+		  transform: translate3d(0px, 0px, -529px) rotateX(85deg) rotateY(0deg);
+		}
+	  }
+
+	  .next-content {
+		width: 100%;
+		height: 1100px;
+		top: 646px;
+
+		> div {
+		  width: 100%;
+		  height: 1100px;
+		  background-color: #ffffff;
+		  padding: 50px;
+		  transform: translate3d(0px, 0px, -534px) rotateX(-80deg) rotateY(0deg);
+		}
+	  }
+
 	  .left-arrow {
 		@extend .left-arrow-public;
 		background: transparent url("~images/performer-info/article-arrow-left.png") no-repeat;
@@ -181,8 +260,8 @@
 		height: 1100px;
 
 		.article-scroll-content {
-		  width: 1402px;
-		  height: 1000px;
+		  width: 100%;
+		  height: 1100px;
 		  //overflow: hidden;
 		  background-color: #ffffff;
 		  padding: 50px;

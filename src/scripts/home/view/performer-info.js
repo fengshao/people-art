@@ -93,8 +93,11 @@ var PerformerInfo = React.createClass({
 							touchMove={this.props.touchMove}
 							touchEnd={this.props.touchEnd}
 							touchStart={this.props.touchStart}
-							imgId={this.props.imgId}
+							clickedIndex={this.props.clickedIndex}
 							selectArticle={this.props.selectArticle}
+							nextContent={this.props.nextContent}
+							previewContent={this.props.previewContent}
+							changePreview={this.props.changePreview}
 						/> : null
 				}
 
@@ -180,7 +183,6 @@ var PerformerInfo = React.createClass({
 					</div>
 					<SlideCompent
 						performer={this.props.performer}
-						swiper={this.props.swiper}
 						showMaskLayer={this.props.showMaskLayer}
 						isSelectPerformeInfoNavId={this.props.isSelectPerformeInfoNavId}
 					/>

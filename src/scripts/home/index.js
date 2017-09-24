@@ -35,10 +35,6 @@ var Home = React.createClass({
 
 	events: {
 
-		maskLayerInitSlide: function (imgId) {
-			HomeAction.maskLayerInitSlide(imgId);
-		},
-
 		maskLayerLeft: function (type) {
 			HomeAction.maskLayerLeft(type);
 		},
@@ -87,8 +83,8 @@ var Home = React.createClass({
 			HomeAction.onPlay();
 		},
 
-		showMaskLayer: function (imgId) {
-			HomeAction.showMaskLayer(imgId);
+		showMaskLayer: function (clickedIndex, id, dataList) {
+			HomeAction.showMaskLayer({"clickedIndex": clickedIndex, "id": id, "dataList": dataList});
 		},
 
 		hideMaskLayer: function () {
@@ -121,6 +117,10 @@ var Home = React.createClass({
 
 		touchMove: function (e) {
 			HomeAction.touchMove(e);
+		},
+
+		changePreview: function (id, dataList) {
+			HomeAction.changePreview({"id": id, "dataList": dataList});
 		}
 	},
 
@@ -174,6 +174,7 @@ var Home = React.createClass({
 							touchMove={this.events.touchMove}
 							touchEnd={this.events.touchEnd}
 							touchStart={this.events.touchStart}
+							changePreview={this.events.changePreview}
 
 							backOff={this.events.backOff}
 							showMaskLayer={this.events.showMaskLayer}
@@ -190,8 +191,9 @@ var Home = React.createClass({
 							isMaskLayerPlay={this.state.isMaskLayerPlay}
 							touchTop={this.state.touchTop}
 							touchHeight={this.state.touchHeight}
-							imgId={this.state.imgId}
-							swiper={this.state.swiper}
+							clickedIndex={this.state.clickedIndex}
+							nextContent={this.state.nextContent}
+							previewContent={this.state.previewContent}
 						/> : null
 				}
 			</div>

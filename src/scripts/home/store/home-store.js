@@ -23,14 +23,11 @@ function HomeStore() {
 	this.classicRepertoire = {};
 	this.loopVideoArr = [];
 	this.isShowLeterStr = "";
-	this.slideNub2 = 0;
-	this.slideNub1 = 0;
 	this._start = 0;
 	this._end = 0;
-	this.swiper = "";
 	this.touchHeight = 891;
 	this.touchTop = 877;
-	this.imgId = 0;
+	this.clickedIndex = 0;
 	this.isLoading = true;
 
 	this.homePageData = {
@@ -45,6 +42,8 @@ function HomeStore() {
 		{"id": "3", "name": "影视作品", "isSelect": false},
 		{"id": "4", "name": "发表文章", "isSelect": false}
 	];
+	this.previewContent = "";
+	this.nextContent = "";
 
 	this.bindActions(HomeAction);
 }
@@ -136,9 +135,7 @@ HomeStore.prototype.openPerformerInfo = function (id) {
 		if (performer.id == id) {
 			_this.performer = performer;
 		}
-	})
-
-
+	});
 };
 
 
@@ -230,15 +227,61 @@ HomeStore.prototype.onPause = function () {
 	this.isShowSuspend = true;
 };
 
-HomeStore.prototype.showMaskLayer = function (imgId) {
+HomeStore.prototype.changePreview = function (obj) {
+	this.changePreviewFnc(obj.id, obj.dataList);
+};
+
+HomeStore.prototype.changePreviewFnc = function (id, dataList) {
+	var dataListLength = dataList.length;
+	if (this.isSelectPerformeInfoNavId == 4) {
+		for (let i = 0; i < dataListLength; i++) {
+			if (dataList[i].id == id) {
+				if (i == 0) {
+					// this.previewContent = dataList[dataListLength - 1].articleContent;
+					this.previewContent = "";
+					this.nextContent = dataList[i + 1].articleContent;
+				} else if (i == (dataListLength - 1)) {
+					this.previewContent = dataList[i - 1].articleContent;
+					this.nextContent = "";
+					// this.nextContent = dataList[0].articleContent;
+				} else {
+					this.previewContent = dataList[i - 1].articleContent;
+					this.nextContent = dataList[i + 1].articleContent;
+				}
+			}
+		}
+	} else {
+		for (let i = 0; i < dataListLength; i++) {
+			if (dataList[i].id == id) {
+				if (i == 0) {
+					// this.previewContent = dataList[dataListLength - 1].preview;
+					this.previewContent = "";
+					this.nextContent = dataList[i + 1].preview;
+				} else if (i == (dataListLength - 1)) {
+					this.previewContent = dataList[i - 1].preview;
+					this.nextContent = "";
+					// this.nextContent = dataList[0].preview;
+				} else {
+					this.previewContent = dataList[i - 1].preview;
+					this.nextContent = dataList[i + 1].preview;
+				}
+			}
+		}
+	}
+};
+
+HomeStore.prototype.showMaskLayer = function (obj) {
 	this.isShowMaskLayer = true;
-	this.imgId = imgId;
+	this.clickedIndex = obj.clickedIndex;
+	var id = obj.id;
+	var dataList = obj.dataList;
+	this.changePreviewFnc(id, dataList);
 };
 
 HomeStore.prototype.hideMaskLayer = function () {
 	this.isShowMaskLayer = false;
 	this.isMaskLayerPlay = false;
-	this.imgId = 0;
+	this.clickedIndex = 0;
 	this.performer.articleList.map(function (article, index) {
 		article.isSelect = false;
 	});

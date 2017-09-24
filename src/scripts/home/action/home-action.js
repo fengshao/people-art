@@ -21,6 +21,7 @@ function HomeAction() {
 		'showMaskLayer',
 		'hideMaskLayer',
 		'maskLayerControl',
+		'changePreview',
 
 		'maskLayerInitSlide',
 		'maskLayerK_touch',

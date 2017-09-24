@@ -7,6 +7,8 @@ var frame1 = "";
 var topSwiper = "";
 var bottomSwiper = "";
 var controlSwiper3 = "";
+var dataList = [];
+
 var MaskLayer = React.createClass({
 	componentDidMount: function () {
 		var _this = this;
@@ -20,18 +22,29 @@ var MaskLayer = React.createClass({
 			nextButton: '.top-slide-contnet .swiper-button-next',
 			prevButton: '.top-slide-contnet .swiper-button-prev',
 			controlBy: 'container',
-			initialSlide: this.props.imgId,
+			initialSlide: this.props.clickedIndex,
 			onSlideChangeEnd: function (swiper) {
 				if (_this.props.isSelectPerformeInfoNavId == 4) {
 					_this.slideArticle();
-					var $element = $(".article-content .top-slide-contnet .video-slide-content.swiper-slide-active");
-					_this.props.selectArticle($element.attr("data-id"));
+					let $articleElement = $(".article-content .top-slide-contnet .video-slide-content.swiper-slide-active");
+					_this.props.selectArticle($articleElement.attr("data-id"));
 				}
+
 			},
 			onSlideChangeStart: function (swiper) {
 				for (let i = 0; i < $(".media-video").length; i++) {
 					$(".media-video")[i].pause();
 				}
+
+				$(".preview-content").fadeOut(1000, function () {
+					let $element = $(".top-slide-contnet .video-slide-content.swiper-slide-active");
+					var id = $element.attr("data-id");
+					_this.props.changePreview(id, dataList);
+					$(".preview-content").fadeIn();
+				});
+				$(".next-content").fadeOut(1000, function () {
+					$(".next-content").fadeIn();
+				});
 			}
 		});
 
@@ -48,7 +61,7 @@ var MaskLayer = React.createClass({
 				slidesPerView: 'auto',
 
 				// 如果需要前进后退按钮
-				initialSlide: this.props.imgId,
+				initialSlide: this.props.clickedIndex,
 				nextButton: '.bottom-slide-contnet .swiper-button-next',
 				prevButton: '.bottom-slide-contnet .swiper-button-prev',
 				onInit: function (swiper) {
@@ -65,7 +78,7 @@ var MaskLayer = React.createClass({
 				grabCursor: true,
 				centeredSlides: true,
 				slidesPerView: 'auto',
-				initialSlide: this.props.imgId,
+				initialSlide: this.props.clickedIndex,
 				coverflow: {
 					rotate: 50,
 					stretch: 0,
@@ -122,7 +135,6 @@ var MaskLayer = React.createClass({
 		},
 
 		selectArticle: function (id) {
-			console.log("bottomSwiper.clickedIndex:" + bottomSwiper.clickedIndex);
 			topSwiper ? topSwiper.slideTo(bottomSwiper.clickedIndex, 1000, false) : "";
 			this.props.selectArticle(id);
 		}
@@ -131,7 +143,6 @@ var MaskLayer = React.createClass({
 
 	render(){
 		var title = "";
-		var dataList = [];
 		var _this = this;
 
 		switch (this.props.isSelectPerformeInfoNavId) {
@@ -175,6 +186,23 @@ var MaskLayer = React.createClass({
 					<div className="video-content article-content">
 						<div className="title-work-name">{title}</div>
 						<div className="top-slide-contnet">
+							<div className="preview-content">
+								{
+									this.props.previewContent ?
+										<div dangerouslySetInnerHTML={{__html : this.props.previewContent }}>
+										</div>
+										: null
+								}
+							</div>
+							<div className="next-content">
+								{
+									this.props.nextContent ?
+										<div dangerouslySetInnerHTML={{__html : this.props.nextContent }}>
+										</div>
+										: null
+								}
+							</div>
+
 							<div className="left-arrow swiper-button-prev"></div>
 							<div className="right-arrow swiper-button-next"></div>
 							<div className="swiper-container slide-container">
@@ -237,12 +265,27 @@ var MaskLayer = React.createClass({
 						<div className="top-slide-contnet">
 							<div className="left-arrow swiper-button-prev"></div>
 							<div className="right-arrow swiper-button-next"></div>
+							<div className="preview-content">
+								{
+									this.props.previewContent ?
+										<img src={this.props.previewContent}/>
+										: null
+								}
+							</div>
+							<div className="next-content">
+								{
+									this.props.nextContent ?
+										<img src={this.props.nextContent}/>
+										: null
+								}
+							</div>
 							<div className="swiper-container slide-container">
 								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
 											return (
-												<div key={i} className="swiper-slide video-slide-content">
+												<div key={i} className="swiper-slide video-slide-content"
+													 data-id={modern.id}>
 													{videoRegular.test(modern.video) ?
 														<div className="video-img" id={"maskLayer" + modern.id}>
 															<div className={maskLayerSuspendCls}
