@@ -98,11 +98,8 @@ var Home = React.createClass({
 			HomeAction.maskLayerControl(id);
 		},
 
-		selectArticle: function (index, id) {
-			HomeAction.selectArticle({
-				"index": index,
-				"id": id
-			});
+		selectArticle: function (id) {
+			HomeAction.selectArticle(id);
 		},
 
 		selectLetter: function (id) {
@@ -111,6 +108,18 @@ var Home = React.createClass({
 
 		loopVideo: function () {
 			HomeAction.loopVideo();
+		},
+
+		touchStart: function (e) {
+			HomeAction.touchStart(e);
+		},
+
+		touchEnd: function (type) {
+			HomeAction.touchEnd(type);
+		},
+
+		touchMove: function (e) {
+			HomeAction.touchMove(e);
 		}
 	},
 
@@ -160,6 +169,9 @@ var Home = React.createClass({
 							maskLayerLeft={this.events.maskLayerLeft}
 							maskLayerRight={this.events.maskLayerRight}
 							selectArticle={this.events.selectArticle}
+							touchMove={this.events.touchMove}
+							touchEnd={this.events.touchEnd}
+							touchStart={this.events.touchStart}
 
 							backOff={this.events.backOff}
 							showMaskLayer={this.events.showMaskLayer}
@@ -168,11 +180,14 @@ var Home = React.createClass({
 							performerInfoDropDown={this.events.performerInfoDropDown}
 							selectPerformeInfoNav={this.events.selectPerformeInfoNav}
 							isPerformerInfoDropDown={this.state.isPerformerInfoDropDown}
+							isPerformerInfoDropDownShowBg={this.state.isPerformerInfoDropDownShowBg}
 							performer={this.state.performer}
 							performeInfoNavList={this.state.performeInfoNavList}
 							isSelectPerformeInfoNavId={this.state.isSelectPerformeInfoNavId}
 							isShowMaskLayer={this.state.isShowMaskLayer}
 							isMaskLayerPlay={this.state.isMaskLayerPlay}
+							touchTop={this.state.touchTop}
+							touchHeight={this.state.touchHeight}
 							imgId={this.state.imgId}
 							swiper={this.state.swiper}
 						/> : null

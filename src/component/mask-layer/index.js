@@ -3,54 +3,69 @@
  */
 require('./index.scss');
 import classNames from 'classnames';
-
+var frame1 = "";
+var topSwiper = "";
+var bottomSwiper = "";
+var controlSwiper3 = "";
 var MaskLayer = React.createClass({
 	componentDidMount: function () {
-		var mySwiper = new Swiper('.top-slide-contnet .swiper-container', {
-			loop: true,
+		var _this = this;
+		bottomSwiper ? bottomSwiper.destroy(true, true) : bottomSwiper = "";
+		topSwiper ? topSwiper.destroy(true, true) : topSwiper = "";
+		controlSwiper3 = "";
+		topSwiper = "";
+		bottomSwiper = "";
+		topSwiper = new Swiper('.top-slide-contnet .swiper-container', {
 			// 如果需要前进后退按钮
 			nextButton: '.top-slide-contnet .swiper-button-next',
-			prevButton: '.top-slide-contnet .swiper-button-prev'
+			prevButton: '.top-slide-contnet .swiper-button-prev',
+			controlBy: 'container',
+			initialSlide: this.props.imgId,
+			onSlideChangeEnd: function (swiper) {
+				if (_this.props.isSelectPerformeInfoNavId == 4) {
+					_this.slideArticle();
+					var $element = $(".article-content .top-slide-contnet .video-slide-content.swiper-slide-active");
+					_this.props.selectArticle($element.attr("data-id"));
+				}
+			},
+			onSlideChangeStart: function (swiper) {
+				for (let i = 0; i < $(".media-video").length; i++) {
+					$(".media-video")[i].pause();
+				}
+			}
 		});
 
 
 		if (this.props.isSelectPerformeInfoNavId == 4) {
-
-
-			var swiper = new Swiper('.bottom-slide-contnet .swiper-container', {
-				slidesPerView: 4,
-				//centeredSlides: true,
+			bottomSwiper = new Swiper('.bottom-slide-contnet .swiper-container', {
+				// slidesPerView: 3,
+				// centeredSlides: true,
 				spaceBetween: 140,
-				loop: true,
+				// freeMode: true,
+
+				grabCursor: true,
+				// centeredSlides: true,
+				slidesPerView: 'auto',
+
 				// 如果需要前进后退按钮
+				initialSlide: this.props.imgId,
 				nextButton: '.bottom-slide-contnet .swiper-button-next',
-				prevButton: '.bottom-slide-contnet .swiper-button-prev'
+				prevButton: '.bottom-slide-contnet .swiper-button-prev',
+				onInit: function (swiper) {
+					var $element = $(".article-content .bottom-slide-contnet .article-li.swiper-slide-active");
+					_this.props.selectArticle($element.attr("data-id"));
+				}
+
 			});
 
-			$(".article-content .video-slide-content").each(function () {
-				var id = $(this).find(".article-scroll-content").attr("id");
-				var scrollbar = $(this).find(".mask-layer-scrollbar"),
-					options = {
-						"horizontal": 0,
-						"itemNav": "basic",
-						"dragContent": 1,
-						scrollBar: scrollbar,
-						mouseDragging: 1,
-						touchDragging: 1,
-						scrollBy: 1,
-						dynamicHandle: true
-					};
-				var frame1 = new Sly('#' + id, options).init();
-			});
 		} else {
 
-
-			var swiper = new Swiper('.bottom-slide-contnet .swiper-container', {
-				loop: true,
+			bottomSwiper = new Swiper('.bottom-slide-contnet .swiper-container', {
 				effect: 'coverflow',
 				grabCursor: true,
 				centeredSlides: true,
 				slidesPerView: 'auto',
+				initialSlide: this.props.imgId,
 				coverflow: {
 					rotate: 50,
 					stretch: 0,
@@ -58,12 +73,45 @@ var MaskLayer = React.createClass({
 					modifier: 1,
 					slideShadows: true
 				},
-				nextButton: '.bottom-slide-contnet .swiper-button-next, .top-slide-contnet .swiper-button-next',
-				prevButton: '.bottom-slide-contnet .swiper-button-prev, .top-slide-contnet .swiper-button-prev'
+				nextButton: '.bottom-slide-contnet .swiper-button-next',
+				prevButton: '.bottom-slide-contnet .swiper-button-prev',
+				onSlideChangeStart: function (swiper) {
+					for (let i = 0; i < $(".media-video").length; i++) {
+						$(".media-video")[i].pause();
+					}
+				}
 			});
 		}
 
+		topSwiper.params.control = bottomSwiper;//需要在bottomSwiper初始化后，topSwiper控制bottomSwiper
+		bottomSwiper.params.control = topSwiper;//需要在topSwiper初始化后，bottomSwiper控制topSwiper
+		controlSwiper3 = new Swiper('#swiper-container3', {
+			control: [topSwiper, bottomSwiper]//控制前面两个Swiper
+		})
+
 	},
+
+	slideArticle: function () {
+		if (frame1) {
+			frame1.destroy();
+			frame1 = "";
+		}
+		var $element = $(".article-content .video-slide-content.swiper-slide-active");
+		var scrollbar = $element.find(".mask-layer-scrollbar"),
+			options = {
+				"horizontal": 0,
+				"itemNav": "basic",
+				"dragContent": 1,
+				scrollBar: scrollbar,
+				mouseDragging: 1,
+				touchDragging: 1,
+				scrollBy: 1,
+				dynamicHandle: true
+			};
+		var scrollbarId = $element.find(".article-scroll-content").attr("id");
+		frame1 = new Sly('#' + scrollbarId, options).init();
+	},
+
 	events: {
 		left: function (type) {
 			this.props.maskLayerLeft(type);
@@ -71,6 +119,12 @@ var MaskLayer = React.createClass({
 
 		right: function (type) {
 			this.props.maskLayerRight(type);
+		},
+
+		selectArticle: function (id) {
+			console.log("bottomSwiper.clickedIndex:" + bottomSwiper.clickedIndex);
+			topSwiper ? topSwiper.slideTo(bottomSwiper.clickedIndex, 1000, false) : "";
+			this.props.selectArticle(id);
 		}
 
 	},
@@ -123,8 +177,8 @@ var MaskLayer = React.createClass({
 						<div className="top-slide-contnet">
 							<div className="left-arrow swiper-button-prev"></div>
 							<div className="right-arrow swiper-button-next"></div>
-							<div className="swiper-container">
-								<div className="swiper-wrapper slide-container">
+							<div className="swiper-container slide-container">
+								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
 											return (
@@ -152,8 +206,8 @@ var MaskLayer = React.createClass({
 						<div className="bottom-slide-contnet">
 							<div className="left-arrow swiper-button-prev"></div>
 							<div className="right-arrow swiper-button-next"></div>
-							<div className="swiper-container">
-								<div className="swiper-wrapper slide-container">
+							<div className="swiper-container slide-container">
+								<div className="swiper-wrapper">
 									{
 										dataList.map(function (article, i) {
 											var cls = classNames({
@@ -161,9 +215,8 @@ var MaskLayer = React.createClass({
 												'article-li-isSelect': article.isSelect
 											});
 											return (
-												<div key={i} className={cls} data-id={i}
-													 onClick={_this.props.selectArticle.bind(_this,i,article.id)}
-												>
+												<div key={i} className={cls} data-id={article.id}
+													 onClick={_this.events.selectArticle.bind(_this,article.id)}>
 													<div className="article-img">
 														<img src={article.preview}/>
 													</div>
@@ -184,8 +237,8 @@ var MaskLayer = React.createClass({
 						<div className="top-slide-contnet">
 							<div className="left-arrow swiper-button-prev"></div>
 							<div className="right-arrow swiper-button-next"></div>
-							<div className="swiper-container">
-								<div className="swiper-wrapper slide-container">
+							<div className="swiper-container slide-container">
+								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
 											return (
@@ -194,6 +247,8 @@ var MaskLayer = React.createClass({
 														<div className="video-img" id={"maskLayer" + modern.id}>
 															<div className={maskLayerSuspendCls}
 																 onClick={_this.props.maskLayerControl.bind(this,"maskLayer" + modern.id)}></div>
+															<div className="modern-name11"
+																 style={{"color":"red","fontSize":"40px"}}>{modern.name}</div>
 															<video ref='media' className="media-video"
 																   type='video/mp4'
 																   loop="loop"
@@ -206,6 +261,8 @@ var MaskLayer = React.createClass({
 														:
 														<div>
 															<div className="video-img">
+																<div className="modern-name11"
+																	 style={{"color":"red","fontSize":"40px"}}>{modern.name}</div>
 																<img src={modern.preview}/>
 															</div>
 														</div>
@@ -220,8 +277,8 @@ var MaskLayer = React.createClass({
 						<div className="bottom-slide-contnet">
 							<div className="left-arrow swiper-button-prev"></div>
 							<div className="right-arrow swiper-button-next"></div>
-							<div className="swiper-container ">
-								<div className="swiper-wrapper slide-container">
+							<div className="swiper-container  slide-container">
+								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
 											return (

@@ -18,7 +18,6 @@
 	@include transition-public(top);
 	&.top-arrow-open {
 	  top: 1760px;
-
 	}
   }
 
@@ -45,8 +44,12 @@
 
 	&.top-content-open {
 	  height: 1769px;
+	}
+
+	&.top-content-open-showBg {
 	  background: transparent url("~images/performer-info/top-bg-select.jpg") no-repeat !important;
 	}
+
 	.top-info {
 	  height: 882px;
 	  width: 100%;
@@ -420,6 +423,10 @@
 		  height: 595px;
 
 		  .article-li {
+			word-break: break-all;
+			width: 247px;
+			float: left;
+
 			.article-name {
 			  font-size: 30px;
 			  color: #ffffff;

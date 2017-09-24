@@ -14,11 +14,10 @@ var SlideCompent = React.createClass({
 
 	slideInit: function () {
 		var _this = this;
-		swiper ? swiper.destroy(true, true) : "";
+		swiper ? swiper.destroy(true, true) : swiper = "";
 		switch (_this.props.isSelectPerformeInfoNavId) {
 			case "1":
 				swiper = new Swiper('.bottom-content .modern-contnet .swiper-container', {
-					loop: true,
 					effect: 'coverflow',
 					grabCursor: true,
 					centeredSlides: true,
@@ -36,7 +35,6 @@ var SlideCompent = React.createClass({
 				break;
 			case "2":
 				swiper = new Swiper('.bottom-content .he-institute-contnet .swiper-container', {
-					loop: true,
 					// 如果需要前进后退按钮
 					nextButton: '.bottom-content .he-institute-contnet .swiper-button-next',
 					prevButton: '.bottom-content .he-institute-contnet .swiper-button-prev'
@@ -44,7 +42,6 @@ var SlideCompent = React.createClass({
 				break;
 			case "3":
 				swiper = new Swiper('.bottom-content .movies-contnet .swiper-container', {
-					loop: true,
 					// 如果需要前进后退按钮
 					nextButton: '.bottom-content .movies-contnet .swiper-button-next',
 					prevButton: '.bottom-content .movies-contnet .swiper-button-prev'
@@ -53,9 +50,7 @@ var SlideCompent = React.createClass({
 			case "4":
 				swiper = new Swiper('.bottom-content .article-contnet .swiper-container', {
 					slidesPerView: 4,
-					//centeredSlides: true,
 					spaceBetween: 60,
-					loop: true,
 					// 如果需要前进后退按钮
 					nextButton: '.bottom-content .article-contnet .swiper-button-next',
 					prevButton: '.bottom-content .article-contnet .swiper-button-prev'
@@ -74,9 +69,10 @@ var SlideCompent = React.createClass({
 		},
 
 		showMaskLayer: function (data, element, event) {
+			var imgId = swiper.clickedIndex;
 			var classNmae = event.currentTarget.className;
 			if (classNmae.indexOf("swiper-slide-active") != -1 || classNmae.indexOf("article-li") != -1) {
-				this.props.showMaskLayer();
+				this.props.showMaskLayer(imgId);
 			}
 		}
 

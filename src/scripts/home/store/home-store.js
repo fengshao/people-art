@@ -11,6 +11,7 @@ function HomeStore() {
 	this.isOpenPerformerInfo = false;
 	this.isOpenTest = false;
 	this.isPerformerInfoDropDown = false;
+	this.isPerformerInfoDropDownShowBg = false;
 	this.isShowSuspend = true;
 	this.isMaskLayerPlay = false;
 //this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
@@ -27,11 +28,9 @@ function HomeStore() {
 	this._start = 0;
 	this._end = 0;
 	this.swiper = "";
-
+	this.touchHeight = 891;
+	this.touchTop = 877;
 	this.imgId = 0;
-
-	this.$element1 = ".top-slide-contnet";
-	this.$element2 = ".bottom-slide-contnet";
 
 	this.homePageData = {
 		"id": "",
@@ -151,12 +150,19 @@ HomeStore.prototype.backOff = function (type) {
 			this.isOpenPerformerList = false;
 			this.isOpenPerformerInfo = false;
 			this.isOpenHomePage = true;
+			this.isMaskLayerPlay = false;
+
 			break;
 		case "performerList":
 			this.isOpenClassicRepertoire = false;
 			this.isOpenHomePage = false;
 			this.isOpenPerformerInfo = false;
 			this.isOpenPerformerList = true;
+			this.touchHeight = 891;
+			this.touchTop = 877;
+			this.isPerformerInfoDropDownShowBg = false;
+			this.isPerformerInfoDropDown = false;
+			this.isMaskLayerPlay = false;
 
 			this.performeInfoNavList.map(function (performeInfoNav, index) {
 				if (index == 0) {
@@ -175,9 +181,17 @@ HomeStore.prototype.backOff = function (type) {
 HomeStore.prototype.performerInfoDropDown = function () {
 	if (this.isPerformerInfoDropDown) {
 		this.isPerformerInfoDropDown = false;
+		this.isPerformerInfoDropDownShowBg = false;
+		this.touchHeight = 891;
+		this.touchTop = 877;
 	} else {
 		this.isPerformerInfoDropDown = true;
+		this.isPerformerInfoDropDownShowBg = true;
+		this.touchHeight = 1769;
+		this.touchTop = 1760;
 	}
+
+
 };
 
 //切换演员作品列表
@@ -217,10 +231,13 @@ HomeStore.prototype.onPause = function () {
 
 HomeStore.prototype.showMaskLayer = function (imgId) {
 	this.isShowMaskLayer = true;
+	this.imgId = imgId;
 };
 
 HomeStore.prototype.hideMaskLayer = function () {
 	this.isShowMaskLayer = false;
+	this.isMaskLayerPlay = false;
+	this.imgId = 0;
 	this.performer.articleList.map(function (article, index) {
 		article.isSelect = false;
 	});
@@ -254,6 +271,88 @@ HomeStore.prototype.loopVideo = function (obj) {
 		if (curr >= vLen) {
 			curr = 0; // 播放完了，重新播放
 		}
+	}
+};
+
+HomeStore.prototype.selectArticle = function (id) {
+	this.performer.articleList.map(function (article, index) {
+		if (article.id == id) {
+			article.isSelect = true;
+		} else {
+			article.isSelect = false;
+		}
+	})
+};
+
+HomeStore.prototype.touchStart = function (event) {
+	var touch = event.targetTouches[0];
+	this._start = touch.pageY;
+};
+
+//高度要增高 878  箭头 top 要增加883
+HomeStore.prototype.touchMove = function (event) {
+	var touch = event.targetTouches[0];
+	this._end = (this._start - touch.pageY);
+
+	console.log("this._end:" + this._end);
+
+	//上移 为正  下移为负
+	if (this.isPerformerInfoDropDown) {
+		//	打开状态 上移 高度变低
+		if (this._end > 878) {
+			return
+		}
+		if (this.touchHeight >= 1769 && this._end < 0) {
+			return
+		}
+
+		this.touchHeight = 1769 - this._end;
+		this.touchTop = 1760 - this._end;
+	} else {
+		if (-this._end > 878) {
+			return
+		}
+
+		if (this.touchHeight <= 891 && this._end > 0) {
+			return
+		}
+		this.isPerformerInfoDropDownShowBg = true;
+
+		this.touchHeight = 891 - this._end;
+		this.touchTop = 877 - this._end;
+	}
+
+};
+
+HomeStore.prototype.touchEnd = function (type) {
+	if (this._end < 0) {
+		if (-439 < this._end && this._end < 0) {
+			this.touchHeight = 891;
+			this.touchTop = 877;
+			this.isPerformerInfoDropDown = false;
+			this.isPerformerInfoDropDownShowBg = false;
+		} else {
+			this.touchHeight = 1769;
+			this.touchTop = 1760;
+			this.isPerformerInfoDropDown = true;
+			this.isPerformerInfoDropDownShowBg = true;
+		}
+		this._end = 0;
+
+	} else if (this._end > 0) {
+		if (0 < this._end && this._end < 439) {
+			this.touchHeight = 1769;
+			this.touchTop = 1760;
+			this.isPerformerInfoDropDown = true;
+			this.isPerformerInfoDropDownShowBg = true;
+		} else {
+			this.touchHeight = 891;
+			this.touchTop = 877;
+			this.isPerformerInfoDropDown = false;
+			this.isPerformerInfoDropDownShowBg = false;
+		}
+		this._end = 0;
+
 	}
 };
 

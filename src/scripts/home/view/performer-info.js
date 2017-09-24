@@ -67,7 +67,8 @@ var PerformerInfo = React.createClass({
 		var _this = this;
 		var performerSlyCls = classNames({
 			'top-content': true,
-			'top-content-open': this.props.isPerformerInfoDropDown
+			'top-content-open': this.props.isPerformerInfoDropDown,
+			'top-content-open-showBg': this.props.isPerformerInfoDropDownShowBg
 		});
 
 		var topArrowCls = classNames({
@@ -97,8 +98,13 @@ var PerformerInfo = React.createClass({
 						/> : null
 				}
 
-				<div className={topArrowCls} onClick={this.props.performerInfoDropDown.bind(this,"id")}></div>
-				<div className={performerSlyCls}>
+				<div className={topArrowCls} style={{"top":this.props.touchTop}}
+					 onClick={this.props.performerInfoDropDown.bind(this,"id")}
+					 onTouchStart={this.props.touchStart.bind(_this)}
+					 onTouchMove={this.props.touchMove.bind(_this)}
+					 onTouchEnd={this.props.touchEnd.bind(_this)}
+				></div>
+				<div className={performerSlyCls} style={{"height":this.props.touchHeight}}>
 					<div className="top-info">
 						<div className="left-content">
 							<div className="actor-name">{performer.actorName}</div>
@@ -173,7 +179,6 @@ var PerformerInfo = React.createClass({
 
 					</div>
 					<SlideCompent
-						Slide={Slide}
 						performer={this.props.performer}
 						swiper={this.props.swiper}
 						showMaskLayer={this.props.showMaskLayer}
