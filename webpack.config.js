@@ -83,7 +83,7 @@ module.exports = {
 	},
 	entry: {
 		home: devEntry.concat('./src/home'),
-		vendor: ['react']
+		vendor: ['react', 'antd']
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
@@ -110,7 +110,7 @@ module.exports = {
 				loaders: ['style', 'css'],
 				include: [
 					path.join(__dirname, 'src'),
-					path.join(__dirname, 'node_modules/antd'),
+					path.join(__dirname, 'node_modules/antd')
 				]
 			},
 			{
@@ -152,7 +152,7 @@ module.exports = {
 				include: [
 					path.resolve(__dirname, "src")
 				]
-			},
+			}
 		]
 	}
 };

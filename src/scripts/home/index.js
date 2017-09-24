@@ -3,6 +3,7 @@
  *
  */
 require("../../component/scrollbar/sly.js");
+require("antd/dist/antd.css");
 
 import HomePage from './view/home';
 import ClassicRepertoire from './view/classicRepertoire';
@@ -150,6 +151,7 @@ var Home = React.createClass({
 				{
 					this.state.isOpenPerformerList ?
 						<PerformerList
+							isLoading={this.state.isLoading}
 							letterArr={this.state.letterArr}
 							performerList={this.state.performerList}
 							isShowLeterStr={this.state.isShowLeterStr}

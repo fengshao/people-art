@@ -247,8 +247,6 @@ var MaskLayer = React.createClass({
 														<div className="video-img" id={"maskLayer" + modern.id}>
 															<div className={maskLayerSuspendCls}
 																 onClick={_this.props.maskLayerControl.bind(this,"maskLayer" + modern.id)}></div>
-															<div className="modern-name11"
-																 style={{"color":"red","fontSize":"40px"}}>{modern.name}</div>
 															<video ref='media' className="media-video"
 																   type='video/mp4'
 																   loop="loop"
@@ -261,8 +259,6 @@ var MaskLayer = React.createClass({
 														:
 														<div>
 															<div className="video-img">
-																<div className="modern-name11"
-																	 style={{"color":"red","fontSize":"40px"}}>{modern.name}</div>
 																<img src={modern.preview}/>
 															</div>
 														</div>
