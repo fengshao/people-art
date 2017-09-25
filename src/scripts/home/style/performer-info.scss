@@ -7,7 +7,8 @@
   position: relative;
 
   .top-arrow {
-	background: transparent url("~images/performer-info/top-arrow.png") no-repeat;
+	background-image: url("~images/performer-info/top-arrow.png");
+	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
 	width: 100%;
@@ -24,7 +25,8 @@
   //顶部文案样式
   .top-content {
 	position: relative;
-	background: transparent url("~images/performer-info/top-bg.jpg") no-repeat;
+	background-image: url("~images/performer-info/top-bg.jpg");
+	background-repeat: no-repeat;
 	background-size: contain;
 	width: 100%;
 	height: 891px;
@@ -32,7 +34,8 @@
 	@include transition-public(height);
 
 	.top-right-logo {
-	  background: transparent url("~images/performer-info/top-right-logo.png") no-repeat;
+	  background-image: url("~images/performer-info/top-right-logo.png");
+	  background-repeat: no-repeat;
 	  background-size: contain;
 	  position: absolute;
 	  right: 0;
@@ -47,7 +50,8 @@
 	}
 
 	&.top-content-open-showBg {
-	  background: transparent url("~images/performer-info/top-bg-select.jpg") no-repeat !important;
+	  background-image: url("~images/performer-info/top-bg-select.jpg") !important;
+	  background-repeat: no-repeat;
 	}
 
 	.top-info {
@@ -67,7 +71,8 @@
 		}
 
 		.actor-img {
-		  background: transparent url("~images/performer-info/the-actor-bg.png") no-repeat !important;
+		  background-image: url("~images/performer-info/the-actor-bg.png") !important;
+		  background-repeat: no-repeat;
 		  background-size: contain;
 		  margin-top: 56px;
 		  width: 472px;
@@ -200,7 +205,8 @@
 
   //图片轮播样式
   .bottom-content {
-	background: transparent url("~images/performer-info/bottom-bg.jpg") no-repeat;
+	background-image: url("~images/performer-info/bottom-bg.jpg");
+	background-repeat: no-repeat;
 	background-size: contain;
 	width: 100%;
 	height: 1808px;
@@ -217,7 +223,8 @@
 		float: left;
 		width: 297px;
 		height: 131px;
-		background: transparent url("~images/performer-info/nav-bg.png") no-repeat;
+		background-image: url("~images/performer-info/nav-bg.png");
+		background-repeat: no-repeat;
 		background-size: contain;
 		margin-left: 3px;
 
@@ -239,7 +246,8 @@
 		}
 
 		&.nav-li-select {
-		  background: transparent url("~images/performer-info/nav-bg-select.png") no-repeat;
+		  background-image: url("~images/performer-info/nav-bg-select.png");
+		  background-repeat: no-repeat;
 		  .nav-li-title {
 			color: #12151d;
 		  }
@@ -337,7 +345,8 @@
 			}
 
 			.he-institute-img, .movies-img {
-			  background: transparent url("~images/performer-info/works-bg.png") no-repeat;
+			  background-image: url("~images/performer-info/works-bg.png");
+			  background-repeat: no-repeat;
 			  background-size: contain;
 			  float: left;
 			  width: 810px;
@@ -351,7 +360,8 @@
 			  }
 
 			  .suspend-logo {
-				background: transparent url("~images/performer-info/suspend-logo-small.png") no-repeat;
+				background-image: url("~images/performer-info/suspend-logo-small.png");
+				background-repeat: no-repeat;
 				background-size: contain;
 				width: 62px;
 				height: 65px;
@@ -456,7 +466,8 @@
 	bottom: 0;
 	width: 100%;
 	height: 481px;
-	background: transparent url("~images/performer-info/foter.png") no-repeat;
+	background-image: url("~images/performer-info/foter.png");
+	background-repeat: no-repeat;
 	background-size: contain;
 
 	.back-off {

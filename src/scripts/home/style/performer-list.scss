@@ -4,7 +4,8 @@
 .performer-list-content {
   width: 100%;
   height: 100%;
-  background: transparent url("~images/performer-list/performer-list-bg.jpg") no-repeat;
+  background-image: url("~images/performer-list/performer-list-bg.jpg");
+  background-repeat: no-repeat;
   background-size: contain;
   position: relative;
 
@@ -127,7 +128,8 @@
 		}
 
 		.letter-bg {
-		  background: transparent url("~images/performer-list/letter-bg.png") no-repeat;
+		  background-image: url("~images/performer-list/letter-bg.png");
+		  background-repeat: no-repeat;
 		  background-size: contain;
 		  height: 74px;
 		  width: 100%;
@@ -137,7 +139,8 @@
 		  margin-top: 50px;
 		  .select-img {
 			height: 60px;
-			background: transparent url("~images/performer-list/performer-list-select.png") no-repeat;
+			background-image: url("~images/performer-list/performer-list-select.png");
+			background-repeat: no-repeat;
 			width: 100%;
 			text-align: center;
 			background-size: 32px 32px;

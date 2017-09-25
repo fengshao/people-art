@@ -1,5 +1,3 @@
-
-
 @mixin transition-public($type) {
   transition: $type 1s;
   -moz-transition: $type 1s; /* Firefox 4 */
@@ -29,8 +27,9 @@
 }
 
 .left-arrow-public {
-  background: transparent url("~images/performer-info/left-right.png") no-repeat;
+  background-image: url("~images/performer-info/left-right.png");
   background-size: contain;
+  background-repeat: no-repeat;
   width: 74px;
   height: 117px;
   position: absolute;
@@ -38,7 +37,8 @@
 }
 
 .right-arrow-public {
-  background: transparent url("~images/performer-info/right-arrow.png") no-repeat;
+  background-image: url("~images/performer-info/right-arrow.png");
+  background-repeat: no-repeat;
   background-size: contain;
   width: 68px;
   height: 117px;

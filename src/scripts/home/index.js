@@ -3,12 +3,14 @@
  *
  */
 require("../../component/scrollbar/sly.js");
+// require("../../component/imgpreload/jquery.imgpreload.js");
 require("antd/dist/antd.css");
 
 import HomePage from './view/home';
 import ClassicRepertoire from './view/classicRepertoire';
 import PerformerList from './view/performer-list';
 import PerformerInfo from './view/performer-info';
+import LoadingInfo from '../../component/loading/';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
@@ -26,6 +28,7 @@ var Home = React.createClass({
 	componentDidMount: function () {
 		HomeStore.listen(this.onChange);
 		HomeAction.getHomePageData();
+		HomeAction.preLoadImg();
 	},
 
 	componentWillUnmount: function () {
@@ -127,6 +130,9 @@ var Home = React.createClass({
 	render: function () {
 		return (
 			<div className="main-content">
+				<LoadingInfo
+					percent={this.state.percent}
+				/>
 				{
 					this.state.isOpenHomePage ?
 						<HomePage

@@ -2,7 +2,6 @@
  * Created by fengs on 2016/9/16.
  */
 var HomeAction = require("../action/home-action");
-import Slide from '../../../component/slide';
 
 function HomeStore() {
 	this.isOpenClassicRepertoire = false;
@@ -14,7 +13,6 @@ function HomeStore() {
 	this.isPerformerInfoDropDownShowBg = false;
 	this.isShowSuspend = true;
 	this.isMaskLayerPlay = false;
-//this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
 	this.performerList = [];
 	this.isShowPerformerList = [];
 	this.performer = {};
@@ -44,6 +42,11 @@ function HomeStore() {
 	];
 	this.previewContent = "";
 	this.nextContent = "";
+
+	this.images = [];
+	this.imgNum = 0;
+	this.percent = 0;
+
 
 	this.bindActions(HomeAction);
 }
@@ -398,6 +401,145 @@ HomeStore.prototype.touchEnd = function (type) {
 		this._end = 0;
 
 	}
+};
+
+HomeStore.prototype.showLoading = function () {
+	$(".progress-title").html("0 %");
+	$(".loading-content").show();
+};
+
+
+//里面有两种方式
+HomeStore.prototype.preLoadImg = function () {
+	//第一种方式：通过dom方法获取页面中的所有img，包括<img>标签和css中的background-image
+	/*get all imgs those tag is <img>
+	 var imgs = document.images;
+	 for (var i = 0; i < imgs.length; i++) {
+	 images.push(imgs[i].src);
+	 }*/
+	var images = [];
+	this.images = images;
+	//get all images in style
+	var cssImages = this.getallBgimages();
+	for (var j = 0; j < cssImages.length; j++) {
+		images.push(cssImages[j]);
+	}
+	this.images = images;
+	this.imgpreloadFnc(images);
+};
+
+HomeStore.prototype.imgpreload = function (images) {
+	//then push all other images in array to load
+	/*这里是真正的图片预加载 preload*/
+	var imgNum = 0;
+	$.imgpreload(images, {
+		each: function () {
+			debugger
+			/*this will be called after each image loaded*/
+			var status = $(this).data('loaded') ? 'success' : 'error';
+			if (status == "success") {
+				var v = (parseFloat(++imgNum) / images.length).toFixed(2);
+				// _this.percent = Math.round(v * 100);
+				// _this.setPercent(Math.round(v * 100));
+				// console.log("_this.percent-->" + Math.round(v * 100));
+				// $(".progress-title").html(Math.round(v * 100) + " %");
+
+			}
+		},
+		all: function () {
+			/*this will be called after all images loaded*/
+			// $(".progress-title").html("100 %");
+			// $(".loading-content").fadeOut(1000);
+			// $(".main").show();
+		}
+	});
+};
+HomeStore.prototype.eachFnc = function (element) {
+	var status = $(element).data('loaded') ? 'success' : 'error';
+	if (status == "success") {
+		var v = (parseFloat(++this.imgNum) / this.images.length).toFixed(2);
+		this.percent = v;
+		// _this.percent = Math.round(v * 100);
+		// _this.setPercent(Math.round(v * 100));
+		// console.log("_this.percent-->" + Math.round(v * 100));
+		// $(".progress-title").html(Math.round(v * 100) + " %");
+
+	}
+};
+HomeStore.prototype.allFnc = function () {
+	debugger
+	this.percent = 100;
+};
+
+
+//get all images in style（此方法引用其他博客的）
+HomeStore.prototype.getallBgimages = function () {
+	var url, B = [], A = document.getElementsByTagName('*');
+	A = B.slice.call(A, 0, A.length);
+	while (A.length) {
+		url = document.deepCss(A.shift(), 'background-image');
+		if (url) url = /url\(['"]?([^")]+)/.exec(url) || [];
+		url = url[1];
+		if (url && B.indexOf(url) == -1) B[B.length] = url;
+	}
+	return B;
+};
+
+document.deepCss = function (who, css) {
+	if (!who || !who.style) return '';
+	var sty = css.replace(/\-([a-z])/g, function (a, b) {
+		return b.toUpperCase();
+	});
+	if (who.currentStyle) {
+		return who.style[sty] || who.currentStyle[sty] || '';
+	}
+	var dv = document.defaultView || window;
+	return who.style[sty] ||
+		dv.getComputedStyle(who, "").getPropertyValue(css) || '';
+};
+
+Array.prototype.indexOf = Array.prototype.indexOf ||
+	function (what, index) {
+		index = index || 0;
+		var L = this.length;
+		while (index < L) {
+			if (this[index] === what) return index;
+			++index;
+		}
+		return -1;
+	}
+
+
+HomeStore.prototype.imgpreloadFnc = function (imgs) {
+	var loaded = [];
+	var _this = this;
+	$.each(imgs, function (i, elem) {
+		var img = new Image();
+
+		var url = elem;
+
+		var img_obj = img;
+
+		if ('string' != typeof elem) {
+			url = $(elem).attr('src') || $(elem).css('background-image').replace(/^url\((?:"|')?(.*)(?:'|")?\)$/mg, "$1");
+			img_obj = elem;
+		}
+
+		$(img).bind('load error', function (e) {
+			// 	loaded.push(img_obj);
+			// 	$.data(img_obj, 'loaded', ('error' == e.type) ? false : true);
+			// http://msdn.microsoft.com/en-us/library/ie/tkcsy6fe(v=vs.94).aspx
+			// _this.eachFnc(loaded.slice(0));
+
+			// http://jsperf.com/length-in-a-variable
+			// if (loaded.length >= imgs.length) {
+			_this.allFnc(loaded);
+			// }
+			// $(this).unbind('load error');
+		}, _this);
+		//
+		img.src = url;
+	});
 };
 
 module.exports = alt.createStore(HomeStore, 'HomeStore');

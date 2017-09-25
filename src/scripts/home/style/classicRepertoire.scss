@@ -3,7 +3,8 @@
 .classic-repertoire-content {
   width: 100%;
   height: 100%;
-  background: transparent url("~images/classicRepertoire/classicRepertoire-bg.jpg") no-repeat;
+  background-image: url("~images/classicRepertoire/classicRepertoire-bg.jpg");
+  background-repeat: no-repeat;
   background-size: contain;
   position: relative;
 
@@ -22,7 +23,8 @@
 	  height: 825px;
 	  left: 0;
 	  top: 0;
-	  background: transparent url("~images/classicRepertoire/suspend-logo.png") no-repeat;
+	  background-image: url("~images/classicRepertoire/suspend-logo.png");
+	  background-repeat: no-repeat;
 	  background-size: 179px 179px;
 	  background-position: center;
 	  z-index: 100;
