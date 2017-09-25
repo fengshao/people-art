@@ -45,6 +45,10 @@ function HomeStore() {
 	this.previewContent = "";
 	this.nextContent = "";
 
+	this.imageUrls = [];
+	this.percent = 0;
+	this.imgNum = 0;
+
 	this.bindActions(HomeAction);
 }
 
@@ -399,5 +403,63 @@ HomeStore.prototype.touchEnd = function (type) {
 
 	}
 };
+
+
+HomeStore.prototype.setPercent = function () {
+	var v = (parseFloat(++this.imgNum) / this.imageUrls.length).toFixed(2);
+	this.percent = Math.round(v * 100);
+};
+
+HomeStore.prototype.preLoadImg = function () {
+	/*get all imgs those tag is <img>
+	 var imgs = document.images;
+	 for (var i = 0; i < imgs.length; i++) {
+	 images.push(imgs[i].src);
+	 }*/
+	var images = [];
+	//get all images in style
+	var cssImages = this.getallBgimages();
+	for (var j = 0; j < cssImages.length; j++) {
+		images.push(cssImages[j]);
+	}
+	this.imageUrls = images;
+};
+
+//get all images in style（此方法引用其他博客的）
+HomeStore.prototype.getallBgimages = function () {
+	var url, B = [], A = document.getElementsByTagName('*');
+	A = B.slice.call(A, 0, A.length);
+	while (A.length) {
+		url = document.deepCss(A.shift(), 'background-image');
+		if (url) url = /url\(['"]?([^")]+)/.exec(url) || [];
+		url = url[1];
+		if (url && B.indexOf(url) == -1) B[B.length] = url;
+	}
+	return B;
+};
+
+document.deepCss = function (who, css) {
+	if (!who || !who.style) return '';
+	var sty = css.replace(/\-([a-z])/g, function (a, b) {
+		return b.toUpperCase();
+	});
+	if (who.currentStyle) {
+		return who.style[sty] || who.currentStyle[sty] || '';
+	}
+	var dv = document.defaultView || window;
+	return who.style[sty] ||
+		dv.getComputedStyle(who, "").getPropertyValue(css) || '';
+};
+
+Array.prototype.indexOf = Array.prototype.indexOf ||
+	function (what, index) {
+		index = index || 0;
+		var L = this.length;
+		while (index < L) {
+			if (this[index] === what) return index;
+			++index;
+		}
+		return -1;
+	}
 
 module.exports = alt.createStore(HomeStore, 'HomeStore');

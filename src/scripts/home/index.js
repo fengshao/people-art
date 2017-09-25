@@ -12,6 +12,7 @@ import PerformerInfo from './view/performer-info';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
+var Loading = require("../../component/loading");
 var Home = React.createClass({
 	getInitialState: function () {
 		var data = HomeStore.getState();
@@ -25,6 +26,7 @@ var Home = React.createClass({
 
 	componentDidMount: function () {
 		HomeStore.listen(this.onChange);
+		HomeAction.preLoadImg();
 		HomeAction.getHomePageData();
 	},
 
@@ -121,12 +123,21 @@ var Home = React.createClass({
 
 		changePreview: function (id, dataList) {
 			HomeAction.changePreview({"id": id, "dataList": dataList});
+		},
+
+		setPercent: function () {
+			HomeAction.setPercent();
 		}
 	},
 
 	render: function () {
 		return (
 			<div className="main-content">
+				<Loading
+					imageUrls={this.state.imageUrls}
+					percent={this.state.percent}
+					setPercent={this.events.setPercent}
+				/>
 				{
 					this.state.isOpenHomePage ?
 						<HomePage
