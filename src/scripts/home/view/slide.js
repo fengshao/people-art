@@ -1,12 +1,11 @@
 /**
  * Created by fengs on 2017/9/16.
  */
-require('../style/home.scss');
-
+// require('../style/home.scss');
+var swiper = "";
 var SlideCompent = React.createClass({
 	componentDidMount: function () {
 		this.slideInit();
-		this.props.Slide.k_touch($(".slide-container"));
 	},
 
 	componentDidUpdate: function () {
@@ -15,18 +14,47 @@ var SlideCompent = React.createClass({
 
 	slideInit: function () {
 		var _this = this;
+		swiper ? swiper.destroy(true, true) : swiper = "";
 		switch (_this.props.isSelectPerformeInfoNavId) {
 			case "1":
-				_this.props.Slide.initSlide($(".modern-contnet"));
+				swiper = new Swiper('.bottom-content .modern-contnet .swiper-container', {
+					effect: 'coverflow',
+					grabCursor: true,
+					centeredSlides: true,
+					slidesPerView: 'auto',
+					coverflow: {
+						rotate: 50,
+						stretch: 0,
+						depth: 100,
+						modifier: 1,
+						slideShadows: true
+					},
+					nextButton: '.bottom-content .modern-contnet .swiper-button-next',
+					prevButton: '.bottom-content .modern-contnet .swiper-button-prev'
+				});
 				break;
 			case "2":
-				_this.props.Slide.initSlide($(".he-institute-contnet"));
+				swiper = new Swiper('.bottom-content .he-institute-contnet .swiper-container', {
+					// 如果需要前进后退按钮
+					nextButton: '.bottom-content .he-institute-contnet .swiper-button-next',
+					prevButton: '.bottom-content .he-institute-contnet .swiper-button-prev'
+				});
 				break;
 			case "3":
-				_this.props.Slide.initSlide($(".movies-contnet"));
+				swiper = new Swiper('.bottom-content .movies-contnet .swiper-container', {
+					// 如果需要前进后退按钮
+					nextButton: '.bottom-content .movies-contnet .swiper-button-next',
+					prevButton: '.bottom-content .movies-contnet .swiper-button-prev'
+				});
 				break;
 			case "4":
-				_this.props.Slide.initSlide($(".article-contnet"));
+				swiper = new Swiper('.bottom-content .article-contnet .swiper-container', {
+					slidesPerView: 4,
+					spaceBetween: 60,
+					// 如果需要前进后退按钮
+					nextButton: '.bottom-content .article-contnet .swiper-button-next',
+					prevButton: '.bottom-content .article-contnet .swiper-button-prev'
+				});
 				break;
 		}
 	},
@@ -40,18 +68,11 @@ var SlideCompent = React.createClass({
 			this.props.Slide.right($("." + element));
 		},
 
-		showMaskLayer: function (data, element, event) {
+		showMaskLayer: function (data, dataList, event) {
+			var clickedIndex = swiper.clickedIndex;
 			var classNmae = event.currentTarget.className;
-			var imgId = $("." + element + " .img3").attr("data-slide-imgid");
-			if (this.props.isSelectPerformeInfoNavId == 4) {
-				imgId = data;
-			}
-			if (classNmae.indexOf("img3") != -1 || classNmae.indexOf("article-li") != -1) {
-				this.props.showMaskLayer(imgId);
-			} else if (classNmae.indexOf("img1") != -1 || classNmae.indexOf("img2") != -1) {
-				this.props.Slide.left($("." + element));
-			} else if (classNmae.indexOf("img5") != -1 || classNmae.indexOf("img4") != -1) {
-				this.props.Slide.right($("." + element));
+			if (classNmae.indexOf("swiper-slide-active") != -1 || classNmae.indexOf("article-li") != -1) {
+				this.props.showMaskLayer(clickedIndex, data.id, dataList);
 			}
 		}
 
@@ -72,17 +93,13 @@ var SlideCompent = React.createClass({
 			case "1":
 				return (
 					<div className="modern-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"modern-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"modern-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
+						<div className="swiper-container ">
+							<div className="swiper-wrapper slide-container">
 								{
 									modernList.map(function (modern, i) {
 										return (
-											<div key={i} className="img modern-slide-content"
-												 onClick={_this.events.showMaskLayer.bind(_this,modern, "modern-contnet")}>
+											<div key={i} className="swiper-slide modern-slide-content"
+												 onClick={_this.events.showMaskLayer.bind(_this,modern, modernList)}>
 												<div className="modern-name">{modern.name}</div>
 												<div className="modern-img">
 													<img src={modern.preview}/>
@@ -93,23 +110,21 @@ var SlideCompent = React.createClass({
 								}
 							</div>
 						</div>
+						<div className="left-arrow swiper-button-prev"></div>
+						<div className="right-arrow swiper-button-next"></div>
 					</div>
 				);
 				break;
 			case "2":
 				return (
 					<div className="he-institute-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"he-institute-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"he-institute-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
+						<div className="swiper-container ">
+							<div className="swiper-wrapper slide-container">
 								{
 									heInstituteList.map(function (heInstitute, i) {
 										return (
-											<div key={i} className="img he-institute-slide-content"
-												 onClick={_this.events.showMaskLayer.bind(_this,heInstitute, "he-institute-contnet")}>
+											<div key={i} className="swiper-slide he-institute-slide-content"
+												 onClick={_this.events.showMaskLayer.bind(_this,heInstitute, heInstituteList)}>
 												<div className="he-institute-name">
 													<p>{heInstitute.name}</p>
 												</div>
@@ -126,23 +141,22 @@ var SlideCompent = React.createClass({
 								}
 							</div>
 						</div>
+						<div className="left-arrow swiper-button-prev"></div>
+						<div className="right-arrow swiper-button-next"></div>
 					</div>
 				);
 				break;
 			case "3":
 				return (
 					<div className="movies-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"movies-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"movies-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
+
+						<div className="swiper-container ">
+							<div className="swiper-wrapper slide-container">
 								{
 									moviesList.map(function (movies, i) {
 										return (
-											<div key={i} className="img movies-slide-content"
-												 onClick={_this.events.showMaskLayer.bind(_this,movies, "movies-contnet")}>
+											<div key={i} className="swiper-slide movies-slide-content"
+												 onClick={_this.events.showMaskLayer.bind(_this,movies, moviesList)}>
 												<div className="movies-name">
 													<p>{movies.name}</p>
 												</div>
@@ -159,56 +173,37 @@ var SlideCompent = React.createClass({
 								}
 							</div>
 						</div>
+						<div className="left-arrow swiper-button-prev"></div>
+						<div className="right-arrow swiper-button-next"></div>
 					</div>
 				);
 				break;
 
 			case "4":
 
-				var length = Math.ceil(articleList.length / 4);
-				var arrTest = [];
-				for (let i = 0; i < length; i++) {
-					arrTest.push(i);
-				}
-
 				return (
 					<div className="article-contnet">
-						<div className="left-arrow"
-							 onClick={_this.events.left.bind(_this,"article-contnet")}></div>
-						<div className="right-arrow"
-							 onClick={_this.events.right.bind(_this,"article-contnet")}></div>
-						<div className="slide-container">
-							<div id="slide" className="index-slide slide" alt="star">
+						<div className="swiper-container ">
+							<div className="swiper-wrapper slide-container">
 								{
-									arrTest.map(function (index, key) {
-
+									articleList.map(function (article, i) {
 										return (
-											<div className="img article-slide-content" key={key}>
-												{
-													articleList.map(function (article, i) {
-														return (
-															i < 4 * (key + 1) && i >= 4 * key ?
-																<div key={i} className="article-li" data-img-index={i}
-																	 onClick={_this.events.showMaskLayer.bind(_this,i, "article-contnet")}>
-																	<div className="article-img">
-																		<img src={article.preview}/>
-																	</div>
-																	<div className="article-name">
-																		{article.name}
-																	</div>
-																</div> :
-																null
-
-														)
-													})
-												}
+											<div key={i} className="article-li swiper-slide"
+												 onClick={_this.events.showMaskLayer.bind(_this,article, articleList)}>
+												<div className="article-img">
+													<img src={article.preview}/>
+												</div>
+												<div className="article-name">
+													{article.name}
+												</div>
 											</div>
 										)
 									})
-
 								}
 							</div>
 						</div>
+						<div className="left-arrow swiper-button-prev"></div>
+						<div className="right-arrow swiper-button-next"></div>
 					</div>
 				);
 				break;

@@ -11,6 +11,7 @@ function HomeStore() {
 	this.isOpenPerformerInfo = false;
 	this.isOpenTest = false;
 	this.isPerformerInfoDropDown = false;
+	this.isPerformerInfoDropDownShowBg = false;
 	this.isShowSuspend = true;
 	this.isMaskLayerPlay = false;
 //this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
@@ -22,15 +23,12 @@ function HomeStore() {
 	this.classicRepertoire = {};
 	this.loopVideoArr = [];
 	this.isShowLeterStr = "";
-	this.slideNub2 = 0;
-	this.slideNub1 = 0;
 	this._start = 0;
 	this._end = 0;
-
-	this.imgId = 0;
-
-	this.$element1 = ".top-slide-contnet";
-	this.$element2 = ".bottom-slide-contnet";
+	this.touchHeight = 891;
+	this.touchTop = 877;
+	this.clickedIndex = 0;
+	this.isLoading = true;
 
 	this.homePageData = {
 		"id": "",
@@ -44,6 +42,8 @@ function HomeStore() {
 		{"id": "3", "name": "影视作品", "isSelect": false},
 		{"id": "4", "name": "发表文章", "isSelect": false}
 	];
+	this.previewContent = "";
+	this.nextContent = "";
 
 	this.bindActions(HomeAction);
 }
@@ -135,9 +135,7 @@ HomeStore.prototype.openPerformerInfo = function (id) {
 		if (performer.id == id) {
 			_this.performer = performer;
 		}
-	})
-
-
+	});
 };
 
 
@@ -150,12 +148,19 @@ HomeStore.prototype.backOff = function (type) {
 			this.isOpenPerformerList = false;
 			this.isOpenPerformerInfo = false;
 			this.isOpenHomePage = true;
+			this.isMaskLayerPlay = false;
+
 			break;
 		case "performerList":
 			this.isOpenClassicRepertoire = false;
 			this.isOpenHomePage = false;
 			this.isOpenPerformerInfo = false;
 			this.isOpenPerformerList = true;
+			this.touchHeight = 891;
+			this.touchTop = 877;
+			this.isPerformerInfoDropDownShowBg = false;
+			this.isPerformerInfoDropDown = false;
+			this.isMaskLayerPlay = false;
 
 			this.performeInfoNavList.map(function (performeInfoNav, index) {
 				if (index == 0) {
@@ -174,9 +179,17 @@ HomeStore.prototype.backOff = function (type) {
 HomeStore.prototype.performerInfoDropDown = function () {
 	if (this.isPerformerInfoDropDown) {
 		this.isPerformerInfoDropDown = false;
+		this.isPerformerInfoDropDownShowBg = false;
+		this.touchHeight = 891;
+		this.touchTop = 877;
 	} else {
 		this.isPerformerInfoDropDown = true;
+		this.isPerformerInfoDropDownShowBg = true;
+		this.touchHeight = 1769;
+		this.touchTop = 1760;
 	}
+
+
 };
 
 //切换演员作品列表
@@ -214,25 +227,61 @@ HomeStore.prototype.onPause = function () {
 	this.isShowSuspend = true;
 };
 
-HomeStore.prototype.showMaskLayer = function (imgId) {
+HomeStore.prototype.changePreview = function (obj) {
+	this.changePreviewFnc(obj.id, obj.dataList);
+};
+
+HomeStore.prototype.changePreviewFnc = function (id, dataList) {
+	var dataListLength = dataList.length;
+	if (this.isSelectPerformeInfoNavId == 4) {
+		for (let i = 0; i < dataListLength; i++) {
+			if (dataList[i].id == id) {
+				if (i == 0) {
+					// this.previewContent = dataList[dataListLength - 1].articleContent;
+					this.previewContent = "";
+					this.nextContent = dataList[i + 1].articleContent;
+				} else if (i == (dataListLength - 1)) {
+					this.previewContent = dataList[i - 1].articleContent;
+					this.nextContent = "";
+					// this.nextContent = dataList[0].articleContent;
+				} else {
+					this.previewContent = dataList[i - 1].articleContent;
+					this.nextContent = dataList[i + 1].articleContent;
+				}
+			}
+		}
+	} else {
+		for (let i = 0; i < dataListLength; i++) {
+			if (dataList[i].id == id) {
+				if (i == 0) {
+					// this.previewContent = dataList[dataListLength - 1].preview;
+					this.previewContent = "";
+					this.nextContent = dataList[i + 1].preview;
+				} else if (i == (dataListLength - 1)) {
+					this.previewContent = dataList[i - 1].preview;
+					this.nextContent = "";
+					// this.nextContent = dataList[0].preview;
+				} else {
+					this.previewContent = dataList[i - 1].preview;
+					this.nextContent = dataList[i + 1].preview;
+				}
+			}
+		}
+	}
+};
+
+HomeStore.prototype.showMaskLayer = function (obj) {
 	this.isShowMaskLayer = true;
-	this.imgId = imgId;
-	if (this.performer.articleList.length == 1) {
-		this.performer.articleList[0].isSelect = true;
-	}
-	if (this.performer.articleList.length == 2) {
-		this.performer.articleList[0].isSelect = true;
-	}
-	if (this.performer.articleList.length == 3) {
-		this.performer.articleList[1].isSelect = true;
-	}
-	if (this.performer.articleList.length > 3) {
-		this.performer.articleList[2].isSelect = true;
-	}
+	this.clickedIndex = obj.clickedIndex;
+	var id = obj.id;
+	var dataList = obj.dataList;
+	this.changePreviewFnc(id, dataList);
 };
 
 HomeStore.prototype.hideMaskLayer = function () {
 	this.isShowMaskLayer = false;
+	this.isMaskLayerPlay = false;
+	this.clickedIndex = 0;
 	this.performer.articleList.map(function (article, index) {
 		article.isSelect = false;
 	});
@@ -248,236 +297,6 @@ HomeStore.prototype.maskLayerControl = function (id) {
 	}
 };
 
-
-HomeStore.prototype.initChangeDom = function (slideNub, $element, imgId) {
-	for (let i = 0; i < slideNub; i++) {
-		$($element).find(".slide .img:eq(" + i + ")").attr("data-slide-imgId", i);
-	}
-// 根据轮播图片数量设定图片位置对应的class
-	if (slideNub == 1) {
-		for (let i = 0; i < slideNub; i++) {
-			$($element).find(".slide .img:eq(" + i + ")").addClass("img3");
-		}
-	}
-	if (slideNub == 2) {
-		for (let i = 0; i < slideNub; i++) {
-			$($element).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 3));
-		}
-	}
-	if (slideNub == 3) {
-		for (let i = 0; i < slideNub; i++) {
-			$($element).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 2));
-		}
-	}
-	if (slideNub > 3 && slideNub < 6) {
-		for (let i = 0; i < slideNub; i++) {
-			$($element).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
-		}
-	}
-	if (slideNub >= 6) {
-		for (let i = 0; i < slideNub; i++) {
-			if (i < 5) {
-				$($element).find(".slide .img:eq(" + i + ")").addClass("img" + (i + 1));
-			} else {
-				$($element).find(".slide .img:eq(" + i + ")").addClass("img6");
-			}
-		}
-	}
-};
-
-//点击轮播图打开弹层轮播的时候 大图轮播跳转到点击的位置
-HomeStore.prototype.slideClick = function (imgId) {
-	var topSlildID = $(".top-slide-contnet .img3").attr("data-slide-imgid");
-
-	var num = imgId - topSlildID;
-	if (num > 0) {
-		for (let i = 0; i < num; i++) {
-			this.maskLayerRight(this.isSelectPerformeInfoNavId == 4 ? "article-top" : "");
-		}
-	} else if (num < 0) {
-		num = -num;
-		for (let i = 0; i < num; i++) {
-			this.maskLayerLeft(this.isSelectPerformeInfoNavId == 4 ? "article-top" : "");
-		}
-	}
-};
-
-//文章列表弹层 轮播时候 上下轮播一致
-HomeStore.prototype.slideTriggerArticle = function () {
-	var topSlildID = $(".article-content .top-slide-contnet .img3").attr("data-slide-imgid");
-	var bottomSlildID = $(".article-content .bottom-slide-contnet .img3").attr("data-slide-imgid");
-
-	var yeshu = Math.ceil((topSlildID + 1) / 3);
-
-
-	var num = yeshu - bottomSlildID - 1;
-	if (num > 0) {
-		for (let i = 0; i < num; i++) {
-			this.maskLayerRight("article-bottom");
-		}
-	} else if (num < 0) {
-		num = -num;
-		for (let i = 0; i < num; i++) {
-			this.maskLayerLeft("article-bottom");
-		}
-	}
-};
-
-HomeStore.prototype.maskLayerInitSlide = function (imgId) {
-	this.slideNub1 = $(this.$element1).find(".slide .img").size();             //获取轮播图片数量
-	this.slideNub2 = $(this.$element2).find(".slide .img").size();             //获取轮播图片数量
-	this.initChangeDom(this.slideNub1, this.$element1, imgId);
-	this.initChangeDom(this.slideNub2, this.$element2, imgId);
-	this.slideClick(imgId);
-	if (this.isSelectPerformeInfoNavId == 4) {
-		this.slideTriggerArticle();
-	}
-};
-
-HomeStore.prototype.maskLayerLeftFnc = function (slideNub, $element, type) {
-	var fy = new Array();
-	for (let i = 0; i < slideNub; i++) {
-		fy[i] = $($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class");
-	}
-	for (let i = 0; i < slideNub; i++) {
-		if (i == (slideNub - 1)) {
-			$($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[0]);
-		} else {
-			$($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[i + 1]);
-		}
-	}
-	if (this.isSelectPerformeInfoNavId == 4) {
-		if (type == "article-top") {
-			var id = $(".article-content .top-slide-contnet .img3").attr("data-id");
-
-			this.performer.articleList.map(function (article, index) {
-				if (article.id == id) {
-					article.isSelect = true;
-				} else {
-					article.isSelect = false;
-				}
-			});
-			this.slideTriggerArticle();
-		}
-	}
-};
-
-HomeStore.prototype.maskLayerLeft = function (type) {
-	this.isMaskLayerPlay = false;
-	for (let i = 0; i < $(".media-video").length; i++) {
-		$(".media-video")[i].pause();
-	}
-
-	if (this.isSelectPerformeInfoNavId == 4) {
-		if (type == "article-top") {
-			this.maskLayerLeftFnc(this.slideNub1, this.$element1, type);
-		}
-		if (type == "article-bottom") {
-			this.maskLayerLeftFnc(this.slideNub2, this.$element2);
-		}
-	} else {
-		this.maskLayerLeftFnc(this.slideNub1, this.$element1);
-		this.maskLayerLeftFnc(this.slideNub2, this.$element2);
-	}
-
-};
-
-HomeStore.prototype.maskLayerRightFnc = function (slideNub, $element, type) {
-	var fy = new Array();
-	for (let i = 0; i < slideNub; i++) {
-		fy[i] = $($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class");
-	}
-	for (let i = 0; i < slideNub; i++) {
-		if (i == 0) {
-			$($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[slideNub - 1]);
-		} else {
-			$($element).find(".slide .img[data-slide-imgId=" + i + "]").attr("class", fy[i - 1]);
-		}
-	}
-
-
-	if (this.isSelectPerformeInfoNavId == 4) {
-		if (type == "article-top") {
-			var id = $(".article-content .top-slide-contnet .img3").attr("data-id");
-
-			this.performer.articleList.map(function (article, index) {
-				if (article.id == id) {
-					article.isSelect = true;
-				} else {
-					article.isSelect = false;
-				}
-			});
-			this.slideTriggerArticle();
-		}
-	}
-
-
-};
-
-HomeStore.prototype.maskLayerRight = function (type) {
-
-	this.isMaskLayerPlay = false;
-	for (let i = 0; i < $(".media-video").length; i++) {
-		$(".media-video")[i].pause();
-	}
-	if (this.isSelectPerformeInfoNavId == 4) {
-		if (type == "article-top") {
-			this.maskLayerRightFnc(this.slideNub1, this.$element1, type);
-		}
-		if (type == "article-bottom") {
-			this.maskLayerRightFnc(this.slideNub2, this.$element2);
-		}
-	} else {
-		this.maskLayerRightFnc(this.slideNub1, this.$element1);
-		this.maskLayerRightFnc(this.slideNub2, this.$element2);
-	}
-
-};
-HomeStore.prototype.touchStart = function (event) {
-	var touch = event.targetTouches[0];
-	this._start = touch.pageX;
-};
-
-HomeStore.prototype.touchMove = function (event) {
-	var touch = event.targetTouches[0];
-	this._end = (this._start - touch.pageX);
-};
-
-HomeStore.prototype.touchEnd = function (type) {
-	if (this._end < -100) {
-		this.maskLayerLeft(type);
-		this._end = 0;
-	} else if (this._end > 100) {
-		this.maskLayerRight(type);
-		this._end = 0;
-	}
-};
-
-HomeStore.prototype.selectArticle = function (obj) {
-	var id = obj.id;
-	var index = obj.index;
-
-	var nowSlideShowIndex = $(".article-content .top-slide-contnet .img3").attr("data-slide-imgid");
-	var num = index - nowSlideShowIndex;
-	if (num > 0) {
-		for (let i = 0; i < num; i++) {
-			this.maskLayerRight("article-top");
-		}
-	} else if (num < 0) {
-		num = -num;
-		for (let i = 0; i < num; i++) {
-			this.maskLayerLeft("article-top");
-		}
-	}
-
-	this.performer.articleList.map(function (article, inde) {
-		if (article.id == id) {
-			article.isSelect = true;
-		} else {
-			article.isSelect = false;
-		}
-	})
-};
 
 HomeStore.prototype.loopVideo = function (obj) {
 	var vList = this.loopVideoArr; // 初始化播放列表 var
@@ -496,6 +315,88 @@ HomeStore.prototype.loopVideo = function (obj) {
 		if (curr >= vLen) {
 			curr = 0; // 播放完了，重新播放
 		}
+	}
+};
+
+HomeStore.prototype.selectArticle = function (id) {
+	this.performer.articleList.map(function (article, index) {
+		if (article.id == id) {
+			article.isSelect = true;
+		} else {
+			article.isSelect = false;
+		}
+	})
+};
+
+HomeStore.prototype.touchStart = function (event) {
+	var touch = event.targetTouches[0];
+	this._start = touch.pageY;
+};
+
+//高度要增高 878  箭头 top 要增加883
+HomeStore.prototype.touchMove = function (event) {
+	var touch = event.targetTouches[0];
+	this._end = (this._start - touch.pageY);
+
+	console.log("this._end:" + this._end);
+
+	//上移 为正  下移为负
+	if (this.isPerformerInfoDropDown) {
+		//	打开状态 上移 高度变低
+		if (this._end > 878) {
+			return
+		}
+		if (this.touchHeight >= 1769 && this._end < 0) {
+			return
+		}
+
+		this.touchHeight = 1769 - this._end;
+		this.touchTop = 1760 - this._end;
+	} else {
+		if (-this._end > 878) {
+			return
+		}
+
+		if (this.touchHeight <= 891 && this._end > 0) {
+			return
+		}
+		this.isPerformerInfoDropDownShowBg = true;
+
+		this.touchHeight = 891 - this._end;
+		this.touchTop = 877 - this._end;
+	}
+
+};
+
+HomeStore.prototype.touchEnd = function (type) {
+	if (this._end < 0) {
+		if (-439 < this._end && this._end < 0) {
+			this.touchHeight = 891;
+			this.touchTop = 877;
+			this.isPerformerInfoDropDown = false;
+			this.isPerformerInfoDropDownShowBg = false;
+		} else {
+			this.touchHeight = 1769;
+			this.touchTop = 1760;
+			this.isPerformerInfoDropDown = true;
+			this.isPerformerInfoDropDownShowBg = true;
+		}
+		this._end = 0;
+
+	} else if (this._end > 0) {
+		if (0 < this._end && this._end < 439) {
+			this.touchHeight = 1769;
+			this.touchTop = 1760;
+			this.isPerformerInfoDropDown = true;
+			this.isPerformerInfoDropDownShowBg = true;
+		} else {
+			this.touchHeight = 891;
+			this.touchTop = 877;
+			this.isPerformerInfoDropDown = false;
+			this.isPerformerInfoDropDownShowBg = false;
+		}
+		this._end = 0;
+
 	}
 };
 

@@ -16,7 +16,6 @@ if (process.argv.indexOf('p') >= 0
 	process.argv.indexOf('--production') >= 0) {
 	webpackMode = 'production';
 }
-
 if (process.argv.indexOf('-tomcat') >= 0 ||
 	process.argv.indexOf('tomcat') >= 0) {
 	webpackMode = "tomcat";
@@ -27,12 +26,13 @@ var devEntry = [
 	'./publicFile/index'
 ];
 
-if (webpackMode !== 'production') {
+if (webpackMode !== 'production' && webpackMode !== 'tomcat') {
 	devEntry.push(
 		'webpack-dev-server/client?http://localhost:3001',
 		'webpack/hot/only-dev-server'
 	);
 }
+
 
 //插件
 var pluginLists = [
@@ -44,19 +44,21 @@ var pluginLists = [
 		$: 'jquery',
 		jQuery: 'jquery',
 		'window.jQuery': 'jquery',
-		'_': 'underscore'
+		'_': 'underscore',
+		'Swiper': __dirname + '/src/component/swiper/swiper.js'
 	}),
 	new webpack.optimize.CommonsChunkPlugin({
 		name: 'vendor',
 		filename: 'vendor.js'
 	})
 ];
+
 //热替换插件
-if (webpackMode !== 'production') {
+if (webpackMode !== 'production' && webpackMode !== 'tomcat') {
 	pluginLists.push(new webpack.HotModuleReplacementPlugin());
 }
 //压缩混淆插件
-if (webpackMode === 'production') {
+if (webpackMode === 'production' || webpackMode === 'tomcat') {
 	pluginLists.push(new webpack.optimize.UglifyJsPlugin({
 		test: /(\.jsx|\.js)$/,
 		compress: {
@@ -81,7 +83,7 @@ module.exports = {
 	},
 	entry: {
 		home: devEntry.concat('./src/home'),
-		vendor: ['react']
+		vendor: ['react', 'antd']
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
@@ -108,7 +110,7 @@ module.exports = {
 				loaders: ['style', 'css'],
 				include: [
 					path.join(__dirname, 'src'),
-					path.join(__dirname, 'node_modules/antd'),
+					path.join(__dirname, 'node_modules/antd')
 				]
 			},
 			{
@@ -150,7 +152,7 @@ module.exports = {
 				include: [
 					path.resolve(__dirname, "src")
 				]
-			},
+			}
 		]
 	}
 };

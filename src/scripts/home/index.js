@@ -3,6 +3,7 @@
  *
  */
 require("../../component/scrollbar/sly.js");
+require("antd/dist/antd.css");
 
 import HomePage from './view/home';
 import ClassicRepertoire from './view/classicRepertoire';
@@ -33,10 +34,6 @@ var Home = React.createClass({
 	},
 
 	events: {
-
-		maskLayerInitSlide: function (imgId) {
-			HomeAction.maskLayerInitSlide(imgId);
-		},
 
 		maskLayerLeft: function (type) {
 			HomeAction.maskLayerLeft(type);
@@ -86,8 +83,8 @@ var Home = React.createClass({
 			HomeAction.onPlay();
 		},
 
-		showMaskLayer: function (imgId) {
-			HomeAction.showMaskLayer(imgId);
+		showMaskLayer: function (clickedIndex, id, dataList) {
+			HomeAction.showMaskLayer({"clickedIndex": clickedIndex, "id": id, "dataList": dataList});
 		},
 
 		hideMaskLayer: function () {
@@ -96,6 +93,18 @@ var Home = React.createClass({
 
 		maskLayerControl: function (id) {
 			HomeAction.maskLayerControl(id);
+		},
+
+		selectArticle: function (id) {
+			HomeAction.selectArticle(id);
+		},
+
+		selectLetter: function (id) {
+			HomeAction.selectLetter(id);
+		},
+
+		loopVideo: function () {
+			HomeAction.loopVideo();
 		},
 
 		touchStart: function (e) {
@@ -110,19 +119,8 @@ var Home = React.createClass({
 			HomeAction.touchMove(e);
 		},
 
-		selectArticle: function (index, id) {
-			HomeAction.selectArticle({
-				"index": index,
-				"id": id
-			});
-		},
-
-		selectLetter: function (id) {
-			HomeAction.selectLetter(id);
-		},
-
-		loopVideo: function () {
-			HomeAction.loopVideo();
+		changePreview: function (id, dataList) {
+			HomeAction.changePreview({"id": id, "dataList": dataList});
 		}
 	},
 
@@ -153,6 +151,7 @@ var Home = React.createClass({
 				{
 					this.state.isOpenPerformerList ?
 						<PerformerList
+							isLoading={this.state.isLoading}
 							letterArr={this.state.letterArr}
 							performerList={this.state.performerList}
 							isShowLeterStr={this.state.isShowLeterStr}
@@ -171,10 +170,11 @@ var Home = React.createClass({
 							maskLayerInitSlide={this.events.maskLayerInitSlide}
 							maskLayerLeft={this.events.maskLayerLeft}
 							maskLayerRight={this.events.maskLayerRight}
+							selectArticle={this.events.selectArticle}
 							touchMove={this.events.touchMove}
 							touchEnd={this.events.touchEnd}
 							touchStart={this.events.touchStart}
-							selectArticle={this.events.selectArticle}
+							changePreview={this.events.changePreview}
 
 							backOff={this.events.backOff}
 							showMaskLayer={this.events.showMaskLayer}
@@ -183,12 +183,17 @@ var Home = React.createClass({
 							performerInfoDropDown={this.events.performerInfoDropDown}
 							selectPerformeInfoNav={this.events.selectPerformeInfoNav}
 							isPerformerInfoDropDown={this.state.isPerformerInfoDropDown}
+							isPerformerInfoDropDownShowBg={this.state.isPerformerInfoDropDownShowBg}
 							performer={this.state.performer}
 							performeInfoNavList={this.state.performeInfoNavList}
 							isSelectPerformeInfoNavId={this.state.isSelectPerformeInfoNavId}
 							isShowMaskLayer={this.state.isShowMaskLayer}
 							isMaskLayerPlay={this.state.isMaskLayerPlay}
-							imgId={this.state.imgId}
+							touchTop={this.state.touchTop}
+							touchHeight={this.state.touchHeight}
+							clickedIndex={this.state.clickedIndex}
+							nextContent={this.state.nextContent}
+							previewContent={this.state.previewContent}
 						/> : null
 				}
 			</div>

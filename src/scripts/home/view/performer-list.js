@@ -2,6 +2,7 @@
  * Created by fengs on 2017/9/11.
  */
 require('../style/performer-list.scss');
+import {Spin, Icon} from 'antd';
 import classNames from 'classnames';
 
 var PerformerListPage = React.createClass({
@@ -45,7 +46,10 @@ var PerformerListPage = React.createClass({
 			buquanArr.push(i)
 		}
 		var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
-
+		// {
+		// 	this.props.isLoading ? <Spin size="large"/> : null
+		//
+		// }
 		return (
 			<div className="performer-list-content">
 				<div className="performer-list-div">
