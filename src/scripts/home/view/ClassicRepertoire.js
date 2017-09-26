@@ -3,10 +3,11 @@
  */
 require('../style/classicRepertoire.scss');
 import classNames from 'classnames';
-
+var frame = "";
 var ClassicRepertoire = React.createClass({
 
-	componentDidMount: function () {
+	initSly: function () {
+		frame ? frame.destroy(true) : frame = ""
 		var cont = $(".classic-repertoire-content"),
 		// frame = cont.find(".repertoire-sly"),
 			scrollbar = cont.find(".repertoire-scrollbar"),
@@ -20,7 +21,19 @@ var ClassicRepertoire = React.createClass({
 				mouseDragging: 1,
 				touchDragging: 1
 			};
-		var frame = new Sly('#repertoire-sly', options).init();
+		frame = new Sly('#repertoire-sly', options).init();
+	},
+
+	componentDidMount: function () {
+		this.initSly();
+	},
+
+	componentDidUpdate: function () {
+		this.initSly();
+	},
+
+	componentWillMount: function () {
+		this.props.testStore();
 	},
 
 	render(){
