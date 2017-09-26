@@ -129,15 +129,15 @@ var Home = React.createClass({
 			HomeAction.setPercent();
 		}
 	},
-
+//<Loading
+	//imageUrls={this.state.imageUrls}
+	//percent={this.state.percent}
+	//setPercent={this.events.setPercent}
+///>
 	render: function () {
 		return (
 			<div className="main-content">
-				<Loading
-					imageUrls={this.state.imageUrls}
-					percent={this.state.percent}
-					setPercent={this.events.setPercent}
-				/>
+
 				{
 					this.state.isOpenHomePage ?
 						<HomePage

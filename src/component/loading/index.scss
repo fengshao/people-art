@@ -1,7 +1,9 @@
+
 .img-loading-content {
   .gallery {
 	display: none;
   }
+
   .loading-content {
 	position: absolute;
 	top: 0;
@@ -10,5 +12,18 @@
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 999;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+
+	.anticon, .ant-progress-text {
+	  font-size: 2.16666667em;
+	}
+
+	.ant-progress-text {
+	  font-size: 60px;
+	  color: #dacbcb;
+	}
+
   }
 }

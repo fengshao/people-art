@@ -60,7 +60,7 @@ var Gallery = React.createClass({
 				</div>
 				<div className="loading-content">
 					<div className="test-content">
-						<Progress type="circle" percent={this.props.percent}/>
+						<Progress type="circle" width="232" strokeWidth="12" percent={this.props.percent}/>
 					</div>
 				</div>
 			</div>

@@ -29,7 +29,17 @@ exports.getLetterArr = function () {
 //获取演员列表
 exports.getPerformerList = function () {
 	var Deferred = $.Deferred();
-	Deferred.resolve(LocalData.performerList);
+	$.ajax({
+		"type": "get",
+		"url": "http://www.baidu.com",
+		"success": function (data) {
+			Deferred.resolve(LocalData.performerList);
+		},
+		"error": function (data) {
+			Deferred.resolve(LocalData.performerList);
+		}
+	});
+	//Deferred.resolve(LocalData.performerList);
 	return Deferred.promise();
 };
 
