@@ -35,7 +35,10 @@ function HomeAction() {
 		'loopVideo',
 
 		'preLoadImg',
-		'setPercent'
+		'setPercent',
+		'changeAjaxSucc',
+		'showClassicRepertoirePage',
+		'showPerformerList'
 	);
 
 	this.getHomePageData = function () {

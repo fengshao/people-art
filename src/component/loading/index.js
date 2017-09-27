@@ -3,18 +3,26 @@
  */
 import {Progress,Spin} from 'antd';
 require("./index.scss");
+require("./loadingStyle/loaders.css");
+
 var Gallery = React.createClass({
 
 	render() {
-		console.log("percent------->" + this.props.percent);
-		// {this.props.imageUrls.map(imageUrl => this.renderImage(imageUrl))}
+		//<div className="loading-title">{this.props.percent} %</div>
+
 		var _this = this;
 		return (
 			<div className="img-loading-content">
 				<div className="loading-content">
 					<div className="test-content">
-						<Progress type="circle" width={232} strokeWidth={12} percent={this.props.percent}/>
-						<Spin tip="正在读取数据..."></Spin>
+						<div className="loading-title">正在读取数据</div>
+						<div className="loader-inner pacman loading-title">
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
 					</div>
 				</div>
 			</div>

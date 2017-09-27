@@ -15,7 +15,19 @@ exports.getHomePageData = function () {
 //获取经典曲目列表信息
 exports.getClassicRepertoireList = function () {
 	var Deferred = $.Deferred();
-	Deferred.resolve(LocalData.classicRepertoireData);
+	setTimeout(function () {
+		Deferred.resolve(LocalData.classicRepertoireData);
+	}, 3000);
+	//$.ajax({
+	//	"type": "get",
+	//	"url": "http://www.baidu.com",
+	//	"success": function (data) {
+	//		Deferred.resolve(LocalData.classicRepertoireData);
+	//	},
+	//	"error": function (data) {
+	//		Deferred.resolve(LocalData.classicRepertoireData);
+	//	}
+	//});
 	return Deferred.promise();
 };
 

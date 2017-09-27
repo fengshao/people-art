@@ -16,7 +16,6 @@ var Gallery = React.createClass({
 	handleImageChange() {
 		// In React 0.13 use: 'this.refs.gallery.getDOMNode()'
 		const galleryElement = this.refs.gallery;
-		debugger
 		this.props.setPercent(!imagesLoaded(galleryElement));
 		// this.setState({
 		// 	loading: !imagesLoaded(galleryElement)
@@ -36,8 +35,6 @@ var Gallery = React.createClass({
 	},
 
 	render() {
-		console.log("percent------->" + this.props.percent);
-		// {this.props.imageUrls.map(imageUrl => this.renderImage(imageUrl))}
 		var _this = this;
 		return (
 			<div className="gallery" ref="gallery" style={{"display":"none"}}>

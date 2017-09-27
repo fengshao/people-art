@@ -26,6 +26,9 @@ var ClassicRepertoire = React.createClass({
 
 	componentDidMount: function () {
 		this.initSly();
+		if(this.props.isClassicRepertoireLoadingImg){
+			this.props.preLoadImg("classicRepertoire");
+		}
 	},
 
 	componentDidUpdate: function () {
@@ -33,7 +36,7 @@ var ClassicRepertoire = React.createClass({
 	},
 
 	componentWillMount: function () {
-		this.props.testStore();
+		this.props.getClassicRepertoireList();
 	},
 
 	render(){

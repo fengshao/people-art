@@ -4,12 +4,36 @@
 require('../style/performer-list.scss');
 import {Spin, Icon} from 'antd';
 import classNames from 'classnames';
+require("../../../component/arctext/jquery.arctext.js");
+var frame = "", loopVideoArr = [];
+
+function loopVideo() {
+	var vList = loopVideoArr; // 初始化播放列表 var
+	var vLen = vList.length; // 播放列表的长度
+	var curr = 1; // 当前播放的视频
+	var video = document.getElementById("loop-video-media");
+	video.addEventListener('ended', play);
+	// play();
+	function play() {
+		var video = document.getElementById("loop-video-media");
+		video.src = vList[curr].video;
+		video.poster = vList[curr].preview;
+		video.load(); //如果短的话，可以加载完成之后再播放，监听 canplaythrough 事件即可
+		video.play();
+		curr++;
+		if (curr >= vLen) {
+			curr = 0; // 播放完了，重新播放
+		}
+	}
+};
 
 var PerformerListPage = React.createClass({
-	componentDidMount: function () {
-		require("../../../component/arctext/jquery.arctext.js");
-		$(".letter-list").arctext({radius: 1100});
 
+	initSly: function () {
+		frame ? frame.destroy(true) : frame = "";
+		if (this.props.letterArr.length > 0) {
+			$(".letter-list").arctext({radius: 1100});
+		}
 		var cont = $(".performer-list-content"),
 			scrollbar = cont.find(".performer-list-scrollbar"),
 			options = {
@@ -22,9 +46,28 @@ var PerformerListPage = React.createClass({
 				scrollBy: 1,
 				dynamicHandle: true
 			};
-		var frame = new Sly('#performer-sly', options).init();
-		$("#loop-video-media")[0].play();
-		this.props.loopVideo();
+		frame = new Sly('#performer-sly', options).init();
+		if (this.props.classicRepertoireList.length > 0) {
+			$("#loop-video-media")[0].play();
+			loopVideo();
+		}
+	},
+
+	componentDidMount: function () {
+		this.initSly();
+		if (this.props.isPerformerListLoadingImg) {
+			this.props.preLoadImg("performerList");
+		}
+	},
+
+	componentDidUpdate: function () {
+		this.initSly();
+	},
+
+	componentWillMount: function () {
+		if (!this.props.performeInfoReturn) {
+			this.props.getPerformerList();
+		}
 	},
 
 	render(){
@@ -123,13 +166,15 @@ var PerformerListPage = React.createClass({
 				</div>
 				<div className="video-content">
 					<div className="video-content-div">
-						<video id='loop-video-media' ref='media' className="video" controls="controls"
-							   type='video/mp4'
-							   preload="preload"
-							   src={this.props.classicRepertoireList[0].video ? this.props.classicRepertoireList[0].video : ""}
-							   poster={this.props.classicRepertoireList[0].preview ? this.props.classicRepertoireList[0].preview : ""}
-						>
-						</video>
+						{this.props.classicRepertoireList.length > 0 ?
+							<video id='loop-video-media' ref='media' className="video" controls="controls"
+								   type='video/mp4'
+								   preload="preload"
+								   src={this.props.classicRepertoireList[0].video ? this.props.classicRepertoireList[0].video : ""}
+								   poster={this.props.classicRepertoireList[0].preview ? this.props.classicRepertoireList[0].preview : ""}
+							>
+							</video> : null
+						}
 					</div>
 				</div>
 				<div className="back-off" onClick={this.props.backOff.bind(this,"homePage")}></div>

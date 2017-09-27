@@ -47,15 +47,35 @@ function HomeStore() {
 	this.imageUrls = [];
 	this.percent = 0;
 	this.imgNum = 0;
-	this.isLoading = true;
+
+	this.isHomeLoadingImg = true;
+	this.isClassicRepertoireLoadingImg = true;
+	this.isPerformerListLoadingImg = true;
+	this.isPerformerInfoLoadingImg = true;
+
+	this.ajaxSucc = false;
+
+	this.performeInfoReturn = false;
 
 	this.bindActions(HomeAction);
 }
 
 
+HomeStore.prototype.changeAjaxSucc = function () {
+	this.ajaxSucc = false;
+};
+
 //获取首页数据
 HomeStore.prototype.getHomePageData = function (homePageData) {
 	this.homePageData = homePageData;
+	this.ajaxSucc = true;
+};
+
+
+HomeStore.prototype.showClassicRepertoirePage = function () {
+	this.isOpenClassicRepertoire = true;
+	this.isOpenPerformerList = false;
+	this.isOpenHomePage = false;
 };
 
 //获取经典剧目列表
@@ -64,15 +84,20 @@ HomeStore.prototype.getClassicRepertoireList = function (classicRepertoireList) 
 	if (classicRepertoireList.length > 0) {
 		this.classicRepertoire = _.extend(this.classicRepertoire, classicRepertoireList[0]);
 	}
+	this.ajaxSucc = true;
 
-	this.isOpenClassicRepertoire = true;
-	this.isOpenPerformerList = false;
-	this.isOpenHomePage = false;
 };
 
 //获取演员姓氏列表
 HomeStore.prototype.getLetterArr = function (letterArr) {
 	this.homePageData = letterArr;
+};
+
+HomeStore.prototype.showPerformerList = function () {
+	this.isOpenClassicRepertoire = false;
+	this.isOpenPerformerInfo = false;
+	this.isOpenHomePage = false;
+	this.isOpenPerformerList = true;
 };
 
 //获取演员列表
@@ -82,12 +107,14 @@ HomeStore.prototype.getPerformerList = function (obj) {
 	this.performerList = obj.performerList;
 	this.letterArr = obj.letterArr;
 	this.classicRepertoireList = obj.classicRepertoireList;
-	this.isOpenClassicRepertoire = false;
-	this.isOpenPerformerInfo = false;
-	this.isOpenHomePage = false;
-	this.isOpenPerformerList = true;
-	this.isShowLeterStr = obj.letterArr[0];
-	this.letterArr[0].isSelect = true;
+
+	if (this.letterArr.length > 0) {
+		this.letterArr.map(function (letter, index) {
+			letter.isSelect = false;
+		});
+		this.isShowLeterStr = this.letterArr[0];
+		this.letterArr[0].isSelect = true;
+	}
 	obj.performerList.map(function (performer, index) {
 		if (performer.surname == obj.letterArr[0].id) {
 			_this.isShowPerformerList.push(performer)
@@ -102,7 +129,7 @@ HomeStore.prototype.getPerformerList = function (obj) {
 		}
 	});
 	this.loopVideoArr = loopVideoArr;
-
+	this.ajaxSucc = true;
 };
 
 //根据选中字母展示演员列表
@@ -130,6 +157,7 @@ HomeStore.prototype.selectLetter = function (letterID) {
 //进入演员信息页
 HomeStore.prototype.openPerformerInfo = function (id) {
 	var _this = this;
+	this.performeInfoReturn = true;
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerList = false;
 	this.isOpenHomePage = false;
@@ -153,6 +181,7 @@ HomeStore.prototype.backOff = function (type) {
 			this.isOpenPerformerInfo = false;
 			this.isOpenHomePage = true;
 			this.isMaskLayerPlay = false;
+			this.performeInfoReturn = false;
 
 			break;
 		case "performerList":
@@ -342,8 +371,6 @@ HomeStore.prototype.touchMove = function (event) {
 	var touch = event.targetTouches[0];
 	this._end = (this._start - touch.pageY);
 
-	console.log("this._end:" + this._end);
-
 	//上移 为正  下移为负
 	if (this.isPerformerInfoDropDown) {
 		//	打开状态 上移 高度变低
@@ -404,18 +431,39 @@ HomeStore.prototype.touchEnd = function (type) {
 	}
 };
 
-
 HomeStore.prototype.setPercent = function () {
 	var v = (parseFloat(++this.imgNum) / this.imageUrls.length).toFixed(2);
 	this.percent = Math.round(v * 100);
+	if (Math.round(v * 100) >= 100) {
+		this.imageUrls = [];
+	}
 };
 
-HomeStore.prototype.preLoadImg = function () {
+HomeStore.prototype.preLoadImg = function (type) {
 	/*get all imgs those tag is <img>
 	 var imgs = document.images;
 	 for (var i = 0; i < imgs.length; i++) {
 	 images.push(imgs[i].src);
 	 }*/
+	this.imageUrls = [];
+	this.imgNum = 0;
+
+
+	switch (type) {
+		case "performerInfo":
+			this.isPerformerInfoLoadingImg = false;
+			break;
+		case "classicRepertoire":
+			this.isClassicRepertoireLoadingImg = false;
+			break;
+		case "performerList":
+			this.isPerformerListLoadingImg = false;
+			break;
+		case "home":
+			this.isHomeLoadingImg = false;
+			break;
+	}
+
 	var images = [];
 	//get all images in style
 	var cssImages = this.getallBgimages();

@@ -10,19 +10,19 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
+	//background-color: rgba(234, 248, 254, 0.5);
 	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 999;
+	z-index: 9999;
 	justify-content: center;
 	align-items: center;
 	display: flex;
 
-	.anticon, .ant-progress-text {
-	  font-size: 2.16666667em;
-	}
-
-	.ant-progress-text {
-	  font-size: 60px;
-	  color: #dacbcb;
+	.loading-title {
+	  display: inline-block;
+	  vertical-align: middle;
+	  margin-right: 10px;
+	  color: #2db7f5;
+	  font-size: 80px;
 	}
 
   }

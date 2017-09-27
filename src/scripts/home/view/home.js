@@ -6,11 +6,11 @@ var HomePage = React.createClass({
 	render(){
 		return (
 			<div className="home-content">
-				<div className="click-div" onClick={this.props.getPerformerList.bind(this)}>
+				<div className="click-div" onClick={this.props.showPerformerList.bind(this)}>
 					<div className="performer-time-content">{this.props.homePageData.time}</div>
 				</div>
 				<div className="bottom-content">
-					<div className="bottom-left" onClick={this.props.getClassicRepertoireList.bind(this)}>
+					<div className="bottom-left" onClick={this.props.showClassicRepertoirePage.bind(this)}>
 						<div className="left-title-img"></div>
 						<div className="left-click-in-img"></div>
 					</div>
