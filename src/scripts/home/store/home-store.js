@@ -28,7 +28,6 @@ function HomeStore() {
 	this.touchHeight = 891;
 	this.touchTop = 877;
 	this.clickedIndex = 0;
-	this.isLoading = true;
 
 	this.homePageData = {
 		"id": "",
@@ -48,6 +47,7 @@ function HomeStore() {
 	this.imageUrls = [];
 	this.percent = 0;
 	this.imgNum = 0;
+	this.isLoading = true;
 
 	this.bindActions(HomeAction);
 }

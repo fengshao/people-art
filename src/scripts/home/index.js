@@ -162,7 +162,6 @@ var Home = React.createClass({
 				{
 					this.state.isOpenPerformerList ?
 						<PerformerList
-							isLoading={this.state.isLoading}
 							letterArr={this.state.letterArr}
 							performerList={this.state.performerList}
 							isShowLeterStr={this.state.isShowLeterStr}
