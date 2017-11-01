@@ -3,7 +3,6 @@
  */
 require('../style/performer-info.scss');
 import classNames from 'classnames';
-import Slide from '../../../component/slide';
 import SlideCompent from './slide';
 import MaskLayer from '../../../component/mask-layer';
 
@@ -40,24 +39,7 @@ var PerformerInfo = React.createClass({
 
 	events: {
 		selectPerformeInfoNav: function (id) {
-
-			var _this = this;
-			switch (_this.props.isSelectPerformeInfoNavId) {
-				case "1":
-					Slide.removeEventFnc($(".modern-contnet"));
-					break;
-				case "2":
-					Slide.removeEventFnc($(".he-institute-contnet"));
-					break;
-				case "3":
-					Slide.removeEventFnc($(".movies-contnet"));
-					break;
-				case "4":
-					Slide.removeEventFnc($(".article-contnet"));
-					break;
-			}
-
-			_this.props.selectPerformeInfoNav(id);
+			this.props.selectPerformeInfoNav(id);
 		}
 	},
 

@@ -2,7 +2,6 @@
  * Created by fengs on 2016/9/16.
  */
 var HomeAction = require("../action/home-action");
-import Slide from '../../../component/slide';
 
 function HomeStore() {
 	this.isOpenClassicRepertoire = false;
