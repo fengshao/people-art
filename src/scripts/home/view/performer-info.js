@@ -100,7 +100,7 @@ var PerformerInfo = React.createClass({
 				<div className={performerSlyCls} style={{"height":this.props.touchHeight}}>
 					<div className="top-info">
 						<div className="left-content">
-							<div className="actor-name">{performer.actorName}</div>
+							<div className="actor-name">{performer.ActorName}</div>
 							<div className="actor-img">
 								<img src={performer.headPortrait} alt="暂无图片"/>
 							</div>
@@ -116,12 +116,10 @@ var PerformerInfo = React.createClass({
 									<span className="educational-content">{performer.educationalSchool}</span>
 								</div>
 							</div>
-							<div className="personalized-signature">
-								{performer.personalizedSignature}
+							<div className="personalized-signature"  dangerouslySetInnerHTML={{__html : performer.personalizedSignature }}>
 							</div>
 
-							<div className="brief-introduction">
-								{ performer.briefIntroduction }
+							<div className="brief-introduction" dangerouslySetInnerHTML={{__html : performer.briefIntroduction }}>
 							</div>
 						</div>
 					</div>

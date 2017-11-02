@@ -174,7 +174,7 @@ var MaskLayer = React.createClass({
 			'mask-layer-top-logo': true,
 			'mask-layer-top-logo-top': this.props.isSelectPerformeInfoNavId == 4
 		});
-		var length = Math.ceil(dataList.length / 3);
+		var length = Math.ceil((dataList.length || 0) / 3);
 		var arrTest = [];
 		for (let i = 0; i < length; i++) {
 			arrTest.push(i);
@@ -325,7 +325,7 @@ var MaskLayer = React.createClass({
 													<div className="modern-img">
 														<img src={modern.preview}/>
 													</div>
-													<div className="modern-name">{modern.name}</div>
+													<div className="modern-name">{modern.m_name}</div>
 												</div>
 											)
 										})

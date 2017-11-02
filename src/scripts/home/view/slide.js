@@ -96,7 +96,7 @@ var SlideCompent = React.createClass({
 						<div className="swiper-container ">
 							<div className="swiper-wrapper slide-container">
 								{
-									modernList.map(function (modern, i) {
+									modernList && modernList.map(function (modern, i) {
 										return (
 											<div key={i} className="swiper-slide modern-slide-content"
 												 onClick={_this.events.showMaskLayer.bind(_this,modern, modernList)}>
@@ -121,7 +121,7 @@ var SlideCompent = React.createClass({
 						<div className="swiper-container ">
 							<div className="swiper-wrapper slide-container">
 								{
-									heInstituteList.map(function (heInstitute, i) {
+									heInstituteList && heInstituteList.map(function (heInstitute, i) {
 										return (
 											<div key={i} className="swiper-slide he-institute-slide-content"
 												 onClick={_this.events.showMaskLayer.bind(_this,heInstitute, heInstituteList)}>
@@ -153,17 +153,17 @@ var SlideCompent = React.createClass({
 						<div className="swiper-container ">
 							<div className="swiper-wrapper slide-container">
 								{
-									moviesList.map(function (movies, i) {
+									moviesList && moviesList.map(function (movies, i) {
 										return (
 											<div key={i} className="swiper-slide movies-slide-content"
 												 onClick={_this.events.showMaskLayer.bind(_this,movies, moviesList)}>
 												<div className="movies-name">
-													<p>{movies.name}</p>
+													<p>{movies.m_name}</p>
 												</div>
 												<div className="movies-img">
 													<img src={movies.preview}/>
 													{
-														videoRegular.test(movies.video) ?
+														videoRegular.test(movies.m_path) ?
 															<div className="suspend-logo"></div> : null
 													}
 												</div>
@@ -186,7 +186,7 @@ var SlideCompent = React.createClass({
 						<div className="swiper-container ">
 							<div className="swiper-wrapper slide-container">
 								{
-									articleList.map(function (article, i) {
+									articleList && articleList.map(function (article, i) {
 										return (
 											<div key={i} className="article-li swiper-slide"
 												 onClick={_this.events.showMaskLayer.bind(_this,article, articleList)}>

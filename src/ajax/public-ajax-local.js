@@ -31,13 +31,6 @@ exports.getClassicRepertoireList = function () {
 	return Deferred.promise();
 };
 
-//获取姓氏列表
-exports.getLetterArr = function () {
-	var Deferred = $.Deferred();
-	Deferred.resolve(LocalData.letterArr);
-	return Deferred.promise();
-};
-
 //获取演员列表
 exports.getPerformerList = function () {
 	var Deferred = $.Deferred();

@@ -112,7 +112,7 @@ var PerformerListPage = React.createClass({
 														return (
 															i < 3 * (key + 1) && i >= 3 * key ?
 																<div className="performer-li" key={i}
-																	 onClick={_this.props.openPerformerInfo.bind(_this,performer.id)}>
+																	 onClick={_this.props.openPerformerInfo.bind(_this,performer.Id)}>
 																	<img src={performer.headPortrait} alt="暂无图片"/>
 																</div> :
 																null

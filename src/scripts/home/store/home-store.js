@@ -102,10 +102,20 @@ HomeStore.prototype.showPerformerList = function () {
 //获取演员列表
 HomeStore.prototype.getPerformerList = function (obj) {
 	var _this = this;
+	var letterArr = [];
 	_this.isShowPerformerList = [];
-	this.performerList = obj.performerList;
-	this.letterArr = obj.letterArr;
+	var performerList = obj.performerList.data;
 	this.classicRepertoireList = obj.classicRepertoireList;
+
+	let i = 0;
+	for (var key in performerList) {
+		var letter = {"id": "", "letter": ""};
+		letter.id = i;
+		letter.letter = key;
+		letterArr.push(letter);
+		i++;
+	}
+	this.letterArr = letterArr;
 
 	if (this.letterArr.length > 0) {
 		this.letterArr.map(function (letter, index) {
@@ -114,11 +124,19 @@ HomeStore.prototype.getPerformerList = function (obj) {
 		this.isShowLeterStr = this.letterArr[0];
 		this.letterArr[0].isSelect = true;
 	}
-	obj.performerList.map(function (performer, index) {
-		if (performer.surname == obj.letterArr[0].id) {
-			_this.isShowPerformerList.push(performer)
+
+	for (var key in performerList) {
+		if (key == this.letterArr[0].letter) {
+			_this.isShowPerformerList = performerList[key];
 		}
-	});
+	}
+
+	// obj.performerList.map(function (performer, index) {
+	// 	if (performer.surname == obj.letterArr[0].letter) {
+	// 		_this.isShowPerformerList.push(performer)
+	// 	}
+	// });
+	this.performerList = performerList;
 	var loopVideoArr = [];
 	var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
 
@@ -135,20 +153,28 @@ HomeStore.prototype.getPerformerList = function (obj) {
 HomeStore.prototype.selectLetter = function (letterID) {
 	var _this = this;
 	_this.isShowPerformerList = [];
+	var letterStr = "";
 	this.letterArr.map(function (letter, index) {
 		if (letterID == letter.id) {
 			letter.isSelect = true;
 			_this.isShowLeterStr = letter;
+			letterStr = letter.letter;
 		} else {
 			letter.isSelect = false;
 		}
 	});
 
-	this.performerList.map(function (performer, index) {
-		if (performer.surname == letterID) {
-			_this.isShowPerformerList.push(performer)
+	for (var key in this.performerList) {
+		if (key == letterStr) {
+			_this.isShowPerformerList = this.performerList[key];
 		}
-	});
+	}
+
+	// this.performerList.map(function (performer, index) {
+	// 	if (performer.surname == letterID) {
+	// 		_this.isShowPerformerList.push(performer)
+	// 	}
+	// });
 
 };
 
@@ -162,8 +188,14 @@ HomeStore.prototype.openPerformerInfo = function (id) {
 	this.isOpenHomePage = false;
 	this.isOpenPerformerInfo = true;
 
-	this.performerList.map(function (performer, index) {
-		if (performer.id == id) {
+	// for (var key in this.performerList) {
+	// 	if (key == this.letterArr[0].letter) {
+	// 		_this.isShowPerformerList = performerList[key];
+	// 	}
+	// }
+
+	this.isShowPerformerList.map(function (performer, index) {
+		if (performer.Id == id) {
 			_this.performer = performer;
 		}
 	});
@@ -271,7 +303,7 @@ HomeStore.prototype.changePreviewFnc = function (id, dataList) {
 				if (i == 0) {
 					// this.previewContent = dataList[dataListLength - 1].articleContent;
 					this.previewContent = "";
-					this.nextContent = dataList[i + 1].articleContent;
+					this.nextContent = dataList[i + 1] && dataList[i + 1].articleContent;
 				} else if (i == (dataListLength - 1)) {
 					this.previewContent = dataList[i - 1].articleContent;
 					this.nextContent = "";
@@ -288,7 +320,7 @@ HomeStore.prototype.changePreviewFnc = function (id, dataList) {
 				if (i == 0) {
 					// this.previewContent = dataList[dataListLength - 1].preview;
 					this.previewContent = "";
-					this.nextContent = dataList[i + 1].preview;
+					this.nextContent = dataList[i + 1] && dataList[i + 1].preview;
 				} else if (i == (dataListLength - 1)) {
 					this.previewContent = dataList[i - 1].preview;
 					this.nextContent = "";

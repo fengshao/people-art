@@ -2,6 +2,7 @@
  * Created by fengs on 2016/9/16.
  */
 var PublicAjax = require("../../../ajax/public-ajax-local");
+// var PublicAjax = require("../../../ajax/public-ajax");
 
 function HomeAction() {
 
@@ -71,10 +72,10 @@ function HomeAction() {
 	this.getPerformerList = function () {
 		var _this = this;
 
-		$.when(PublicAjax.getPerformerList(), PublicAjax.getClassicRepertoireList(), PublicAjax.getLetterArr()).then(function (performerList, classicRepertoireList, letterArr) {
+		$.when(PublicAjax.getPerformerList(), PublicAjax.getClassicRepertoireList()).then(function (performerList, classicRepertoireList) {
+		// $.when(PublicAjax.getPerformerList()).then(function (performerList) {
 			_this.dispatch({
 				performerList: performerList,
-				letterArr: letterArr,
 				classicRepertoireList: classicRepertoireList
 			});
 		});
