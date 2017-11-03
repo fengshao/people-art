@@ -301,16 +301,16 @@ HomeStore.prototype.changePreviewFnc = function (id, dataList) {
 		for (let i = 0; i < dataListLength; i++) {
 			if (dataList[i].id == id) {
 				if (i == 0) {
-					// this.previewContent = dataList[dataListLength - 1].articleContent;
+					// this.previewContent = dataList[dataListLength - 1].content;
 					this.previewContent = "";
-					this.nextContent = dataList[i + 1] && dataList[i + 1].articleContent;
+					this.nextContent = dataList[i + 1] && dataList[i + 1].content;
 				} else if (i == (dataListLength - 1)) {
-					this.previewContent = dataList[i - 1].articleContent;
+					this.previewContent = dataList[i - 1].content;
 					this.nextContent = "";
-					// this.nextContent = dataList[0].articleContent;
+					// this.nextContent = dataList[0].content;
 				} else {
-					this.previewContent = dataList[i - 1].articleContent;
-					this.nextContent = dataList[i + 1].articleContent;
+					this.previewContent = dataList[i - 1].content;
+					this.nextContent = dataList[i + 1].content;
 				}
 			}
 		}

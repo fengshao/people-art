@@ -217,9 +217,9 @@ var MaskLayer = React.createClass({
 															<div className="handle"></div>
 														</div>
 														<div className="article-scroll-content"
-															 id={"maskLayer" + modern.id}>
+															 id={"maskLayer" + modern.a_a_id}>
 															<div
-																dangerouslySetInnerHTML={{__html : modern.articleContent }}>
+																dangerouslySetInnerHTML={{__html : modern.content }}>
 
 															</div>
 														</div>
@@ -243,8 +243,8 @@ var MaskLayer = React.createClass({
 												'article-li-isSelect': article.isSelect
 											});
 											return (
-												<div key={i} className={cls} data-id={article.id}
-													 onClick={_this.events.selectArticle.bind(_this,article.id)}>
+												<div key={i} className={cls} data-id={article.a_a_id}
+													 onClick={_this.events.selectArticle.bind(_this,article.a_a_id)}>
 													<div className="article-img">
 														<img src={article.preview}/>
 													</div>
@@ -283,13 +283,31 @@ var MaskLayer = React.createClass({
 								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
+											let id = "", video = "", preview = "";
+											switch (_this.props.isSelectPerformeInfoNavId) {
+												case "1":
+													id = modern.id;
+													video = modern.modernList;
+													preview = modern.modernList;
+													break;
+												case "2":
+													id = modern.id;
+													video = modern.modernList;
+													preview = modern.modernList;
+													break;
+												case "3":
+													id = modern.m_a_id;
+													video = modern.m_path;
+													preview = modern.preview;
+													break;
+											}
 											return (
 												<div key={i} className="swiper-slide video-slide-content"
 													 data-id={modern.id}>
 													{videoRegular.test(modern.video) ?
 														<div className="video-img" id={"maskLayer" + modern.id}>
 															<div className={maskLayerSuspendCls}
-																 onClick={_this.props.maskLayerControl.bind(this,"maskLayer" + modern.id)}></div>
+																 onClick={_this.props.maskLayerControl.bind(_this,"maskLayer" + modern.id)}></div>
 															<video ref='media' className="media-video"
 																   type='video/mp4'
 																   loop="loop"
@@ -320,12 +338,30 @@ var MaskLayer = React.createClass({
 								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
+											let id = "", name = "", preview = "";
+											switch (_this.props.isSelectPerformeInfoNavId) {
+												case "1":
+													id = modern.id;
+													name = modern.name;
+													preview = modern.modernList;
+													break;
+												case "2":
+													id = modern.id;
+													name = modern.name;
+													preview = modern.modernList;
+													break;
+												case "3":
+													id = modern.m_a_id;
+													name = modern.m_name;
+													preview = modern.preview;
+													break;
+											}
 											return (
 												<div key={i} className="swiper-slide preview-slide-content">
 													<div className="modern-img">
 														<img src={modern.preview}/>
 													</div>
-													<div className="modern-name">{modern.m_name}</div>
+													<div className="modern-name">{modern.name}</div>
 												</div>
 											)
 										})
