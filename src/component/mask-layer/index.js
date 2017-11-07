@@ -2,6 +2,7 @@
  * Created by fengs on 2017/9/16.
  */
 require('./index.scss');
+var articleImg = require("../../images/performer-info/article-img.png");
 import classNames from 'classnames';
 var frame1 = "";
 var topSwiper = "";
@@ -246,7 +247,7 @@ var MaskLayer = React.createClass({
 												<div key={i} className={cls} data-id={article.a_a_id}
 													 onClick={_this.events.selectArticle.bind(_this,article.a_a_id)}>
 													<div className="article-img">
-														<img src={article.preview}/>
+														<img src={articleImg}/>
 													</div>
 													<div className="article-name">
 														{article.name}

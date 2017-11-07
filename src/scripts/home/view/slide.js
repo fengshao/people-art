@@ -2,6 +2,8 @@
  * Created by fengs on 2017/9/16.
  */
 // require('../style/home.scss');
+var articleImg = require("../../../images/performer-info/article-img.png");
+
 var swiper = "";
 var SlideCompent = React.createClass({
 	componentDidMount: function () {
@@ -15,46 +17,55 @@ var SlideCompent = React.createClass({
 	slideInit: function () {
 		var _this = this;
 		swiper ? swiper.destroy(true, true) : swiper = "";
+
 		switch (_this.props.isSelectPerformeInfoNavId) {
 			case "1":
-				swiper = new Swiper('.bottom-content .modern-contnet .swiper-container', {
-					effect: 'coverflow',
-					grabCursor: true,
-					centeredSlides: true,
-					slidesPerView: 'auto',
-					coverflow: {
-						rotate: 50,
-						stretch: 0,
-						depth: 100,
-						modifier: 1,
-						slideShadows: true
-					},
-					nextButton: '.bottom-content .modern-contnet .swiper-button-next',
-					prevButton: '.bottom-content .modern-contnet .swiper-button-prev'
-				});
+				if (_this.props.performer.modernList && _this.props.performer.modernList.length > 0) {
+					swiper = new Swiper('.bottom-content .modern-contnet .swiper-container', {
+						effect: 'coverflow',
+						grabCursor: true,
+						centeredSlides: true,
+						slidesPerView: 'auto',
+						coverflow: {
+							rotate: 50,
+							stretch: 0,
+							depth: 100,
+							modifier: 1,
+							slideShadows: true
+						},
+						nextButton: '.bottom-content .modern-contnet .swiper-button-next',
+						prevButton: '.bottom-content .modern-contnet .swiper-button-prev'
+					});
+				}
 				break;
 			case "2":
-				swiper = new Swiper('.bottom-content .he-institute-contnet .swiper-container', {
-					// 如果需要前进后退按钮
-					nextButton: '.bottom-content .he-institute-contnet .swiper-button-next',
-					prevButton: '.bottom-content .he-institute-contnet .swiper-button-prev'
-				});
+				if (_this.props.performer.modernList && _this.props.performer.modernList.length > 0) {
+					swiper = new Swiper('.bottom-content .he-institute-contnet .swiper-container', {
+						// 如果需要前进后退按钮
+						nextButton: '.bottom-content .he-institute-contnet .swiper-button-next',
+						prevButton: '.bottom-content .he-institute-contnet .swiper-button-prev'
+					});
+				}
 				break;
 			case "3":
-				swiper = new Swiper('.bottom-content .movies-contnet .swiper-container', {
-					// 如果需要前进后退按钮
-					nextButton: '.bottom-content .movies-contnet .swiper-button-next',
-					prevButton: '.bottom-content .movies-contnet .swiper-button-prev'
-				});
+				if (this.props.performer.modernList && this.props.performer.modernList.length > 0) {
+					swiper = new Swiper('.bottom-content .movies-contnet .swiper-container', {
+						// 如果需要前进后退按钮
+						nextButton: '.bottom-content .movies-contnet .swiper-button-next',
+						prevButton: '.bottom-content .movies-contnet .swiper-button-prev'
+					});
+				}
 				break;
 			case "4":
-				swiper = new Swiper('.bottom-content .article-contnet .swiper-container', {
-					slidesPerView: 4,
-					spaceBetween: 60,
-					// 如果需要前进后退按钮
-					nextButton: '.bottom-content .article-contnet .swiper-button-next',
-					prevButton: '.bottom-content .article-contnet .swiper-button-prev'
-				});
+				if (_this.props.performer.modernList && _this.props.performer.modernList.length > 0) {
+					swiper = new Swiper('.bottom-content .article-contnet .swiper-container', {
+						slidesPerView: 4,
+						spaceBetween: 60,
+						// 如果需要前进后退按钮
+						nextButton: '.bottom-content .article-contnet .swiper-button-next',
+						prevButton: '.bottom-content .article-contnet .swiper-button-prev'
+					});
+				}
 				break;
 		}
 	},
@@ -92,7 +103,7 @@ var SlideCompent = React.createClass({
 		switch (_this.props.isSelectPerformeInfoNavId) {
 			case "1":
 				return (
-					<div className="modern-contnet">
+					modernList && modernList.lenght > 0 ? (<div className="modern-contnet">
 						<div className="swiper-container ">
 							<div className="swiper-wrapper slide-container">
 								{
@@ -112,12 +123,12 @@ var SlideCompent = React.createClass({
 						</div>
 						<div className="left-arrow swiper-button-prev"></div>
 						<div className="right-arrow swiper-button-next"></div>
-					</div>
+					</div>) : (<div className="no-data-cls">暂无作品，请查看其他作品。</div>)
 				);
 				break;
 			case "2":
 				return (
-					<div className="he-institute-contnet">
+					heInstituteList && heInstituteList.length > 0 ? (<div className="he-institute-contnet">
 						<div className="swiper-container ">
 							<div className="swiper-wrapper slide-container">
 								{
@@ -143,13 +154,12 @@ var SlideCompent = React.createClass({
 						</div>
 						<div className="left-arrow swiper-button-prev"></div>
 						<div className="right-arrow swiper-button-next"></div>
-					</div>
+					</div>) : <div className="no-data-cls">暂无作品，请查看其他作品。</div>
 				);
 				break;
 			case "3":
 				return (
-					<div className="movies-contnet">
-
+					moviesList && moviesList.length > 0 ? (<div className="movies-contnet">
 						<div className="swiper-container ">
 							<div className="swiper-wrapper slide-container">
 								{
@@ -175,14 +185,13 @@ var SlideCompent = React.createClass({
 						</div>
 						<div className="left-arrow swiper-button-prev"></div>
 						<div className="right-arrow swiper-button-next"></div>
-					</div>
+					</div>) : <div className="no-data-cls">暂无作品，请查看其他作品。</div>
 				);
 				break;
 
 			case "4":
-
 				return (
-					<div className="article-contnet">
+					articleList && articleList.length > 0 ? (<div className="article-contnet">
 						<div className="swiper-container ">
 							<div className="swiper-wrapper slide-container">
 								{
@@ -191,7 +200,7 @@ var SlideCompent = React.createClass({
 											<div key={i} className="article-li swiper-slide"
 												 onClick={_this.events.showMaskLayer.bind(_this,article, articleList)}>
 												<div className="article-img">
-													<img src={article.preview}/>
+													<img src={articleImg}/>
 												</div>
 												<div className="article-name">
 													{article.name}
@@ -204,7 +213,7 @@ var SlideCompent = React.createClass({
 						</div>
 						<div className="left-arrow swiper-button-prev"></div>
 						<div className="right-arrow swiper-button-next"></div>
-					</div>
+					</div>) : <div className="no-data-cls">暂无作品，请查看其他作品。</div>
 				);
 				break;
 
