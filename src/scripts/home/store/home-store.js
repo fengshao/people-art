@@ -65,8 +65,12 @@ HomeStore.prototype.changeAjaxSucc = function () {
 };
 
 //获取首页数据
-HomeStore.prototype.getHomePageData = function (homePageData) {
-	this.homePageData = homePageData;
+HomeStore.prototype.getHomePageData = function (obj) {
+	this.homePageData = obj.homePageData.data;
+	this.classicRepertoireList = obj.classicRepertoireList.data;
+	if (this.classicRepertoireList.length > 0) {
+		this.classicRepertoire = _.extend(this.classicRepertoire, this.classicRepertoireList[0]);
+	}
 	this.ajaxSucc = true;
 };
 
@@ -77,15 +81,14 @@ HomeStore.prototype.showClassicRepertoirePage = function () {
 	this.isOpenHomePage = false;
 };
 
-//获取经典剧目列表
-HomeStore.prototype.getClassicRepertoireList = function (classicRepertoireList) {
-	this.classicRepertoireList = classicRepertoireList;
-	if (classicRepertoireList.length > 0) {
-		this.classicRepertoire = _.extend(this.classicRepertoire, classicRepertoireList[0]);
-	}
-	this.ajaxSucc = true;
-
-};
+////获取经典剧目列表
+//HomeStore.prototype.getClassicRepertoireList = function () {
+//this.classicRepertoireList = classicRepertoireList;
+//if (this.classicRepertoireList.length > 0) {
+//	this.classicRepertoire = _.extend(this.classicRepertoire, this.classicRepertoireList[0]);
+//}
+//this.ajaxSucc = true;
+//};
 
 //获取演员姓氏列表
 HomeStore.prototype.getLetterArr = function (letterArr) {
@@ -100,12 +103,12 @@ HomeStore.prototype.showPerformerList = function () {
 };
 
 //获取演员列表
-HomeStore.prototype.getPerformerList = function (obj) {
+HomeStore.prototype.getPerformerList = function (performerList) {
 	var _this = this;
 	var letterArr = [];
 	_this.isShowPerformerList = [];
-	var performerList = obj.performerList.data;
-	this.classicRepertoireList = obj.classicRepertoireList;
+	var performerList = performerList.data;
+	//this.classicRepertoireList = obj.classicRepertoireList;
 
 	let i = 0;
 	for (var key in performerList) {
@@ -140,11 +143,11 @@ HomeStore.prototype.getPerformerList = function (obj) {
 	var loopVideoArr = [];
 	var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
 
-	obj.classicRepertoireList.map(function (classicRepertoire, index) {
-		if (classicRepertoire.video && videoRegular.test(classicRepertoire.video)) {
-			loopVideoArr.push(classicRepertoire);
-		}
-	});
+	//obj.classicRepertoireList.map(function (classicRepertoire, index) {
+	//	if (classicRepertoire.video && videoRegular.test(classicRepertoire.video)) {
+	//		loopVideoArr.push(classicRepertoire);
+	//	}
+	//});
 	this.loopVideoArr = loopVideoArr;
 	this.ajaxSucc = true;
 };
@@ -180,7 +183,7 @@ HomeStore.prototype.selectLetter = function (letterID) {
 
 
 //进入演员信息页
-HomeStore.prototype.openPerformerInfo = function (id) {
+HomeStore.prototype.openPerformerInfo = function (performer) {
 	var _this = this;
 	this.performeInfoReturn = true;
 	this.isOpenClassicRepertoire = false;
@@ -194,11 +197,11 @@ HomeStore.prototype.openPerformerInfo = function (id) {
 	// 	}
 	// }
 
-	this.isShowPerformerList.map(function (performer, index) {
-		if (performer.Id == id) {
-			_this.performer = performer;
-		}
-	});
+	//this.isShowPerformerList.map(function (performer, index) {
+	//	if (performer.Id == id) {
+	_this.performer = performer.data;
+	//}
+	//});
 };
 
 

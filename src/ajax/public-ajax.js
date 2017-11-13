@@ -8,17 +8,17 @@ var parms = {};
 
 exports.getHomePageData = function () {
 	var Deferred = $.Deferred();
-	Deferred.resolve(LocalData.homePageData);
-	// $.ajax({
-	// 	"type": "get",
-	// 	"url": "",
-	// 	"success": function (data) {
-	// 		Deferred.resolve(data);
-	// 	},
-	// 	"error": function (data) {
-	// 		Deferred.resolve(data);
-	// 	}
-	// });
+	//Deferred.resolve(LocalData.homePageData);
+	 $.ajax({
+	 	"type": "get",
+	 	"url": "http://118.184.11.238/api/homedata",
+	 	"success": function (data) {
+	 		Deferred.resolve(data);
+	 	},
+	 	"error": function (data) {
+	 		Deferred.resolve(data);
+	 	}
+	 });
 	return Deferred.promise();
 };
 exports.getClassicRepertoireList = function () {
@@ -43,9 +43,21 @@ exports.getPerformerList = function () {
 		"type": "get",
 		"url": "http://118.184.11.238/api/actorlist",
 		// "dataType":"json",
-		headers: {
-			Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+		"success": function (data) {
+			Deferred.resolve(data);
 		},
+		"error": function (data) {
+			Deferred.resolve(data);
+		}
+	});
+	return Deferred.promise();
+};
+
+exports.getPerformerInfo = function (id) {
+	var Deferred = $.Deferred();
+	$.ajax({
+		"type": "get",
+		"url": "http://118.184.11.238/api/actordetail/actor_id/" + id,
 		"success": function (data) {
 			Deferred.resolve(data);
 		},

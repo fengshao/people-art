@@ -91,7 +91,6 @@ var SlideCompent = React.createClass({
 
 	createSlideContent: function () {
 		var _this = this;
-
 		var modernList = this.props.performer.modernList;
 		var heInstituteList = this.props.performer.heInstituteList;
 		var moviesList = this.props.performer.moviesList;
@@ -103,7 +102,7 @@ var SlideCompent = React.createClass({
 		switch (_this.props.isSelectPerformeInfoNavId) {
 			case "1":
 				return (
-					modernList && modernList.lenght > 0 ? (<div className="modern-contnet">
+					modernList && modernList.length > 0 ? (<div className="modern-contnet">
 						<div className="swiper-container ">
 							<div className="swiper-wrapper slide-container">
 								{
@@ -111,9 +110,9 @@ var SlideCompent = React.createClass({
 										return (
 											<div key={i} className="swiper-slide modern-slide-content"
 												 onClick={_this.events.showMaskLayer.bind(_this,modern, modernList)}>
-												<div className="modern-name">{modern.name}</div>
+												<div className="modern-name">{modern.Name}</div>
 												<div className="modern-img">
-													<img src={modern.preview}/>
+													<img src={modern.Preview}/>
 												</div>
 											</div>
 										)
@@ -137,12 +136,12 @@ var SlideCompent = React.createClass({
 											<div key={i} className="swiper-slide he-institute-slide-content"
 												 onClick={_this.events.showMaskLayer.bind(_this,heInstitute, heInstituteList)}>
 												<div className="he-institute-name">
-													<p>{heInstitute.name}</p>
+													<p>{heInstitute.Name}</p>
 												</div>
 												<div className="he-institute-img">
-													<img src={heInstitute.preview}/>
+													<img src={heInstitute.Preview}/>
 													{
-														videoRegular.test(heInstitute.video) ?
+														videoRegular.test(heInstitute.Video) ?
 															<div className="suspend-logo"></div> : null
 													}
 												</div>
@@ -168,12 +167,12 @@ var SlideCompent = React.createClass({
 											<div key={i} className="swiper-slide movies-slide-content"
 												 onClick={_this.events.showMaskLayer.bind(_this,movies, moviesList)}>
 												<div className="movies-name">
-													<p>{movies.m_name}</p>
+													<p>{movies.Name}</p>
 												</div>
 												<div className="movies-img">
-													<img src={movies.preview}/>
+													<img src={movies.Preview}/>
 													{
-														videoRegular.test(movies.m_path) ?
+														videoRegular.test(movies.Video) ?
 															<div className="suspend-logo"></div> : null
 													}
 												</div>

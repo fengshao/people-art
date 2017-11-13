@@ -4,100 +4,162 @@
 
 //首页数据
 var homePageData = {
-	"id": "1",
-	"time": "2000-2018",
-	"img": [
-		"//storage.wesai.com/8/865/496f5/8865b496f5e1aa5cdc4ccd77470e8de9.png"
-	]
+	data: {
+		"id": "1",
+		"Time": "2000-2018",
+		"img": [
+			"//storage.wesai.com/8/865/496f5/8865b496f5e1aa5cdc4ccd77470e8de9.png"
+		]
+	}
+};
+
+var performerInfo = {
+	"data": {
+		"Id": "00892635e2f04595b11aeae494e36192",
+		"Surname": "\u5f20\u8bda",
+		"headPortrait": "\/uploads\/1\/6.jpg",
+		"ActorName": "\u5f20\u8bda",
+		"educationalTime": "2017-09-27",
+		"educationalSchool": "\u6e05\u534e\u5927\u5b66",
+		"personalizedSignature": "\u6f14\u5458\u7684\u4e00\u53e5slogen1",
+		"briefIntroduction": "<p>\u63cf\u8ff01<\/p>\n",
+		"teleplayWorks": "\u300a\u9f99\u987b\u6c9f\u300b",
+		"honourRecord": "\u767e\u82b1\u5956",
+		"articleList": [{
+			"a_a_id": "0325bdec97e54a3f85df995a1e9bb29b",
+			"actor_id": "00892635e2f04595b11aeae494e36192",
+			"article_id": "3fed779c2319404190ad030a739f1937",
+			"weight": null,
+			"create_at": null,
+			"update_at": null,
+			"name": "\u8d44\u8baf117",
+			"topic": "8a995fc7f464424f88285396d2a2db09",
+			"content": "<p>ad\u6371\u4e09\u9876\u4e94\u8303\u5fb7\u84281<\/p>\n",
+			"created_at": "2017-11-01 01:41:14",
+			"updated_at": "2017-11-01 02:10:08"
+		}, {
+			"a_a_id": "9302ab4e731e4e488501b17c9e0f120b",
+			"actor_id": "00892635e2f04595b11aeae494e36192",
+			"article_id": "ca3523435efe478e896f5f0a5b6ed783",
+			"weight": null,
+			"create_at": null,
+			"update_at": null,
+			"name": "\u9a71\u868a\u5668",
+			"topic": "39a88e246adb4d2eb6173611ee377fa0",
+			"content": "<p>\u6492\u554a\u554a<\/p>\n",
+			"created_at": "2017-11-13 03:49:10",
+			"updated_at": null
+		}],
+		"modernList": [{
+			"Id": "555f1bc207d1475c8fd1c40e2bc160a6",
+			"Name": "\u9f99\u987b\u6c9f",
+			"Preview": "\/uploads\/uploads\/1\/6.jpg",
+			"Video": "\/uploads"
+		}],
+		"heInstituteList": [{
+			"Id": "e8ccd548da074ac79e3123344148fae8",
+			"Name": "\u559c\u4e8b",
+			"Preview": "\/uploads\/123.png",
+			"Video": "\/uploads\/demo.mp4"
+		}],
+		"moviesList": [{
+			"Id": "1c4cda1e6cfe4a7b95f5105658da3cd0",
+			"Name": "\u9ea6\u6536\u4e4b\u524d",
+			"Preview": "\/uploads\/uploads\/1\/6.jpg",
+			"Video": "\/uploads"
+		}]
+	}, "code": 0
 };
 
 //经典曲目列表
-var classicRepertoireData = [
-	{
-		"Id": "1",
-		"Name": "雷雨",
-		"Preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
-	},
-	{
-		"id": "2",
-		"name": "白鹿原",
-		"preview": "//storage.wesai.com/8/a83/fe0d4/8a836fe0d4f8b99e6bfb7fa0d90dd0ef.png",
-		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
-	},
-	{
-		"id": "3",
-		"name": "大将军",
-		"preview": "//storage.wesai.com/1/ee4/ccf2a/1ee42ccf2a0befa70e106a723d29a78b.png",
-		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
-	},
-	{
-		"id": "4",
-		"name": "教皇父子",
-		"preview": "//storage.wesai.com/4/f4e/52f80/4f4e052f807f21f0c452e8f5758feaea.png",
-		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
-	},
-	{
-		"id": "5",
-		"name": "天之骄子",
-		"preview": "//storage.wesai.com/4/ae0/d35a8/4ae0ed35a80b35e60c66c777b3f6bb29.png",
-		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
-	},
-	{
-		"id": "6",
-		"name": "万家灯火",
-		"preview": "//storage.wesai.com/6/e9e/fd756/6e9eefd756c25ba0e32443840ca8f3ff.png",
-		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
-	},
-	{
-		"id": "7",
-		"name": "吴王金戈越王剑",
-		"preview": "//storage.wesai.com/2/e61/821b1/2e612821b1786670ae8a03615d8e96a8.png",
-		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
-	},
-	{
-		"id": "8",
-		"name": "新阮玲玉",
-		"preview": "//storage.wesai.com/1/d3e/a452d/1d3eea452dc501da403b893263a55351.png",
-		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
-	},
-	{
-		"id": "9",
-		"name": "雷雨9",
-		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
-	},
-	{
-		"id": "10",
-		"name": "雷雨10",
-		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "http://player.youku.com/player.php/sid/XMTI5ODEzNTM2MA==/v.swfg"
-	},
-	{
-		"id": "11",
-		"name": "雷雨11",
-		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
-	},
-	{
-		"id": "12",
-		"name": "雷雨12",
-		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
-	},
-	{
-		"id": "13",
-		"name": "雷雨13",
-		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
-	},
-	{
-		"id": "14",
-		"name": "雷雨14",
-		"preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
-		"video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
-	}
-];
+var classicRepertoireData = {
+	"data": [
+		{
+			"Id": "1",
+			"Name": "雷雨",
+			"Preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
+			"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
+		},
+		{
+			"id": "2",
+			"name": "白鹿原",
+			"Preview": "//storage.wesai.com/8/a83/fe0d4/8a836fe0d4f8b99e6bfb7fa0d90dd0ef.png",
+			"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
+		},
+		{
+			"id": "3",
+			"name": "大将军",
+			"Preview": "//storage.wesai.com/1/ee4/ccf2a/1ee42ccf2a0befa70e106a723d29a78b.png",
+			"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
+		},
+		{
+			"id": "4",
+			"name": "教皇父子",
+			"Preview": "//storage.wesai.com/4/f4e/52f80/4f4e052f807f21f0c452e8f5758feaea.png",
+			"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
+		},
+		{
+			"id": "5",
+			"name": "天之骄子",
+			"Preview": "//storage.wesai.com/4/ae0/d35a8/4ae0ed35a80b35e60c66c777b3f6bb29.png",
+			"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
+		},
+		{
+			"id": "6",
+			"name": "万家灯火",
+			"Preview": "//storage.wesai.com/6/e9e/fd756/6e9eefd756c25ba0e32443840ca8f3ff.png",
+			"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
+		},
+		{
+			"id": "7",
+			"name": "吴王金戈越王剑",
+			"Preview": "//storage.wesai.com/2/e61/821b1/2e612821b1786670ae8a03615d8e96a8.png",
+			"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
+		},
+		{
+			"id": "8",
+			"name": "新阮玲玉",
+			"Preview": "//storage.wesai.com/1/d3e/a452d/1d3eea452dc501da403b893263a55351.png",
+			"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/1.mp4"
+		},
+		{
+			"id": "9",
+			"name": "雷雨9",
+			"Preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
+			"Video": "http://www.zuihongchen.cc:8086/happyyear/sounds/11/a.mp4"
+		},
+		{
+			"id": "10",
+			"name": "雷雨10",
+			"Preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
+			"Video": "http://player.youku.com/player.php/sid/XMTI5ODEzNTM2MA==/v.swfg"
+		},
+		{
+			"id": "11",
+			"name": "雷雨11",
+			"Preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
+			"Video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
+		},
+		{
+			"id": "12",
+			"name": "雷雨12",
+			"Preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
+			"Video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
+		},
+		{
+			"id": "13",
+			"name": "雷雨13",
+			"Preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
+			"Video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
+		},
+		{
+			"id": "14",
+			"name": "雷雨14",
+			"Preview": "//storage.wesai.com/9/6cf/6dbe5/96cfe6dbe577dab0eed899ccbae05449.png",
+			"Video": "//storage.wesai.com/2/c05/20265/2c058202655e1a49bd8a212f7400c543.png"
+		}],
+	"code": 0
+};
 
 //演员姓氏列表
 // var letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
@@ -2674,3 +2736,4 @@ exports.homePageData = homePageData;
 exports.classicRepertoireData = classicRepertoireData;
 exports.performerList = performerList;
 exports.letterArr = letterArr;
+exports.performerInfo = performerInfo;

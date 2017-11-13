@@ -57,7 +57,7 @@ var Home = React.createClass({
 		},
 
 		getClassicRepertoireList: function () {
-			HomeAction.changeAjaxSucc();
+			//HomeAction.changeAjaxSucc();
 			HomeAction.getClassicRepertoireList();
 		},
 
@@ -171,6 +171,7 @@ var Home = React.createClass({
 							showClassicRepertoirePage={this.events.showClassicRepertoirePage}
 							showPerformerList={this.events.showPerformerList}
 							homePageData={this.state.homePageData}
+							classicRepertoireList={this.state.classicRepertoireList}
 						/> : null
 				}
 				{

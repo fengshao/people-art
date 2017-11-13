@@ -2,7 +2,7 @@
  * Created by fengs on 2016/9/16.
  */
 var PublicAjax = require("../../../ajax/public-ajax-local");
-// var PublicAjax = require("../../../ajax/public-ajax");
+//var PublicAjax = require("../../../ajax/public-ajax");
 
 function HomeAction() {
 
@@ -44,21 +44,24 @@ function HomeAction() {
 
 	this.getHomePageData = function () {
 		var _this = this;
-		PublicAjax.getHomePageData().then(function (homePageData) {
-			_this.dispatch(homePageData);
+		$.when(PublicAjax.getHomePageData(), PublicAjax.getClassicRepertoireList()).then(function (homePageData, classicRepertoireList) {
+			_this.dispatch({
+				homePageData: homePageData,
+				classicRepertoireList: classicRepertoireList
+			});
 		}, function (errorMsg) {
 			_this.dispatch(errorMsg);
 		});
 	};
 
-	this.getClassicRepertoireList = function () {
-		var _this = this;
-		PublicAjax.getClassicRepertoireList().then(function (classicRepertoireList) {
-			_this.dispatch(classicRepertoireList);
-		}, function (errorMsg) {
-			_this.dispatch(errorMsg);
-		});
-	};
+	//this.getClassicRepertoireList = function () {
+	//	var _this = this;
+	//	PublicAjax.getClassicRepertoireList().then(function (classicRepertoireList) {
+	//		_this.dispatch(classicRepertoireList);
+	//	}, function (errorMsg) {
+	//		_this.dispatch(errorMsg);
+	//	});
+	//};
 
 	this.getLetterArr = function () {
 		var _this = this;
@@ -72,12 +75,9 @@ function HomeAction() {
 	this.getPerformerList = function () {
 		var _this = this;
 
-		$.when(PublicAjax.getPerformerList(), PublicAjax.getClassicRepertoireList()).then(function (performerList, classicRepertoireList) {
-		// $.when(PublicAjax.getPerformerList()).then(function (performerList) {
-			_this.dispatch({
-				performerList: performerList,
-				classicRepertoireList: classicRepertoireList
-			});
+		//$.when(PublicAjax.getPerformerList(), PublicAjax.getClassicRepertoireList()).then(function (performerList, classicRepertoireList) {
+		$.when(PublicAjax.getPerformerList()).then(function (performerList) {
+			_this.dispatch(performerList);
 		});
 	};
 
@@ -91,7 +91,12 @@ function HomeAction() {
 	};
 
 	this.openPerformerInfo = function (id) {
-		this.dispatch(id);
+		var _this = this;
+		PublicAjax.getPerformerInfo().then(function (performerInfo) {
+			_this.dispatch(performerInfo);
+		}, function (errorMsg) {
+			_this.dispatch(errorMsg);
+		});
 	};
 
 	this.selectPerformeInfoNav = function (id) {

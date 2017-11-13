@@ -212,13 +212,13 @@ var MaskLayer = React.createClass({
 										dataList.map(function (modern, i) {
 											return (
 												<div key={i} className="swiper-slide video-slide-content"
-													 data-id={modern.id}>
+													 data-id={modern.article_id}>
 													<div>
 														<div className="mask-layer-scrollbar bottom-info-scrollbar">
 															<div className="handle"></div>
 														</div>
 														<div className="article-scroll-content"
-															 id={"maskLayer" + modern.a_a_id}>
+															 id={"maskLayer" + modern.article_id}>
 															<div
 																dangerouslySetInnerHTML={{__html : modern.content }}>
 
@@ -244,8 +244,8 @@ var MaskLayer = React.createClass({
 												'article-li-isSelect': article.isSelect
 											});
 											return (
-												<div key={i} className={cls} data-id={article.a_a_id}
-													 onClick={_this.events.selectArticle.bind(_this,article.a_a_id)}>
+												<div key={i} className={cls} data-id={article.article_id}
+													 onClick={_this.events.selectArticle.bind(_this,article.article_id)}>
 													<div className="article-img">
 														<img src={articleImg}/>
 													</div>
@@ -284,44 +284,44 @@ var MaskLayer = React.createClass({
 								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
-											let id = "", video = "", preview = "";
-											switch (_this.props.isSelectPerformeInfoNavId) {
-												case "1":
-													id = modern.id;
-													video = modern.modernList;
-													preview = modern.modernList;
-													break;
-												case "2":
-													id = modern.id;
-													video = modern.modernList;
-													preview = modern.modernList;
-													break;
-												case "3":
-													id = modern.m_a_id;
-													video = modern.m_path;
-													preview = modern.preview;
-													break;
-											}
+											//let id = "", video = "", preview = "";
+											//switch (_this.props.isSelectPerformeInfoNavId) {
+											//	case "1":
+											//		id = modern.id;
+											//		video = modern.modernList;
+											//		preview = modern.modernList;
+											//		break;
+											//	case "2":
+											//		id = modern.id;
+											//		video = modern.modernList;
+											//		preview = modern.modernList;
+											//		break;
+											//	case "3":
+											//		id = modern.m_a_id;
+											//		video = modern.m_path;
+											//		preview = modern.preview;
+											//		break;
+											//}
 											return (
 												<div key={i} className="swiper-slide video-slide-content"
 													 data-id={modern.id}>
-													{videoRegular.test(modern.video) ?
-														<div className="video-img" id={"maskLayer" + modern.id}>
+													{videoRegular.test(modern.Video) ?
+														<div className="video-img" id={"maskLayer" + modern.Id}>
 															<div className={maskLayerSuspendCls}
-																 onClick={_this.props.maskLayerControl.bind(_this,"maskLayer" + modern.id)}></div>
+																 onClick={_this.props.maskLayerControl.bind(_this,"maskLayer" + modern.Id)}></div>
 															<video ref='media' className="media-video"
 																   type='video/mp4'
 																   loop="loop"
 																   preload="preload"
-																   src={modern.video ? modern.video : ""}
-																   poster={modern.preview ? modern.preview : ""}
+																   src={modern.Video ? modern.Video : ""}
+																   poster={modern.Preview ? modern.Preview : ""}
 															>
 															</video>
 														</div>
 														:
 														<div>
 															<div className="video-img">
-																<img src={modern.preview}/>
+																<img src={modern.Preview}/>
 															</div>
 														</div>
 													}
@@ -339,30 +339,30 @@ var MaskLayer = React.createClass({
 								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
-											let id = "", name = "", preview = "";
-											switch (_this.props.isSelectPerformeInfoNavId) {
-												case "1":
-													id = modern.id;
-													name = modern.name;
-													preview = modern.modernList;
-													break;
-												case "2":
-													id = modern.id;
-													name = modern.name;
-													preview = modern.modernList;
-													break;
-												case "3":
-													id = modern.m_a_id;
-													name = modern.m_name;
-													preview = modern.preview;
-													break;
-											}
+											//let id = "", name = "", preview = "";
+											//switch (_this.props.isSelectPerformeInfoNavId) {
+											//	case "1":
+											//		id = modern.id;
+											//		name = modern.name;
+											//		preview = modern.modernList;
+											//		break;
+											//	case "2":
+											//		id = modern.id;
+											//		name = modern.name;
+											//		preview = modern.modernList;
+											//		break;
+											//	case "3":
+											//		id = modern.m_a_id;
+											//		name = modern.m_name;
+											//		preview = modern.preview;
+											//		break;
+											//}
 											return (
 												<div key={i} className="swiper-slide preview-slide-content">
 													<div className="modern-img">
-														<img src={modern.preview}/>
+														<img src={modern.Preview}/>
 													</div>
-													<div className="modern-name">{modern.name}</div>
+													<div className="modern-name">{modern.Name}</div>
 												</div>
 											)
 										})

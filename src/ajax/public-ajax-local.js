@@ -48,7 +48,13 @@ exports.getPerformerList = function () {
 	return Deferred.promise();
 };
 
-
+exports.getPerformerInfo = function (id) {
+	var Deferred = $.Deferred();
+	setTimeout(function () {
+		Deferred.resolve(LocalData.performerInfo);
+	}, 3000);
+	return Deferred.promise();
+};
 
 
 

@@ -36,7 +36,7 @@ var ClassicRepertoire = React.createClass({
 	},
 
 	componentWillMount: function () {
-		this.props.getClassicRepertoireList();
+		//this.props.getClassicRepertoireList();
 	},
 
 	render(){

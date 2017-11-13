@@ -6,6 +6,7 @@ import {Spin, Icon} from 'antd';
 import classNames from 'classnames';
 require("../../../component/arctext/jquery.arctext.js");
 var frame = "", loopVideoArr = [];
+var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
 
 function loopVideo() {
 	var vList = loopVideoArr; // 初始化播放列表 var
@@ -16,8 +17,8 @@ function loopVideo() {
 	// play();
 	function play() {
 		var video = document.getElementById("loop-video-media");
-		video.src = vList[curr].video;
-		video.poster = vList[curr].preview;
+		video.src = vList[curr].Video;
+		video.poster = vList[curr].Preview;
 		video.load(); //如果短的话，可以加载完成之后再播放，监听 canplaythrough 事件即可
 		video.play();
 		curr++;
@@ -47,16 +48,21 @@ var PerformerListPage = React.createClass({
 				dynamicHandle: true
 			};
 		frame = new Sly('#performer-sly', options).init();
-		if (this.props.classicRepertoireList.length > 0) {
-			$("#loop-video-media")[0].play();
-			loopVideo();
-		}
 	},
 
 	componentDidMount: function () {
 		this.initSly();
 		if (this.props.isPerformerListLoadingImg) {
 			this.props.preLoadImg("performerList");
+		}
+		if (this.props.classicRepertoireList.length > 0) {
+			$("#loop-video-media")[0].play();
+			this.props.classicRepertoireList.map(function (classicRepertoire, index) {
+				if (classicRepertoire.video && videoRegular.test(classicRepertoire.video)) {
+					loopVideoArr.push(classicRepertoire);
+				}
+			});
+			loopVideo();
 		}
 	},
 
@@ -170,8 +176,8 @@ var PerformerListPage = React.createClass({
 							<video id='loop-video-media' ref='media' className="video" controls="controls"
 								   type='video/mp4'
 								   preload="preload"
-								   src={this.props.classicRepertoireList[0].video ? this.props.classicRepertoireList[0].video : ""}
-								   poster={this.props.classicRepertoireList[0].preview ? this.props.classicRepertoireList[0].preview : ""}
+								   src={this.props.classicRepertoireList[0].Video ? this.props.classicRepertoireList[0].Video : ""}
+								   poster={this.props.classicRepertoireList[0].Preview ? this.props.classicRepertoireList[0].Preview : ""}
 							>
 							</video> : null
 						}
