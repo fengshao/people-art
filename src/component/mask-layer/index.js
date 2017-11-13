@@ -137,7 +137,15 @@ var MaskLayer = React.createClass({
 
 		selectArticle: function (id) {
 			topSwiper ? topSwiper.slideTo(bottomSwiper.clickedIndex, 1000, false) : "";
+			var _this = this;
 			this.props.selectArticle(id);
+			$(".preview-content").fadeOut(1000, function () {
+				_this.props.changePreview(id, dataList);
+				$(".preview-content").fadeIn();
+			});
+			$(".next-content").fadeOut(1000, function () {
+				$(".next-content").fadeIn();
+			});
 		}
 
 	},
@@ -304,7 +312,7 @@ var MaskLayer = React.createClass({
 											//}
 											return (
 												<div key={i} className="swiper-slide video-slide-content"
-													 data-id={modern.id}>
+													 data-id={modern.Id}>
 													{videoRegular.test(modern.Video) ?
 														<div className="video-img" id={"maskLayer" + modern.Id}>
 															<div className={maskLayerSuspendCls}

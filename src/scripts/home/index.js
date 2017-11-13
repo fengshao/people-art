@@ -56,10 +56,10 @@ var Home = React.createClass({
 			HomeAction.showClassicRepertoirePage();
 		},
 
-		getClassicRepertoireList: function () {
-			//HomeAction.changeAjaxSucc();
-			HomeAction.getClassicRepertoireList();
-		},
+		// getClassicRepertoireList: function () {
+		// 	HomeAction.changeAjaxSucc();
+		// 	HomeAction.getClassicRepertoireList();
+		// },
 
 		showPerformerList: function () {
 			HomeAction.showPerformerList();
@@ -79,6 +79,7 @@ var Home = React.createClass({
 		},
 
 		openPerformerInfo: function (id) {
+			// HomeAction.changeAjaxSucc();
 			HomeAction.openPerformerInfo(id);
 		},
 
@@ -144,6 +145,10 @@ var Home = React.createClass({
 
 		setPercent: function () {
 			HomeAction.setPercent();
+		},
+
+		getPerformerInfo: function (id) {
+			HomeAction.getPerformerInfo(id);
 		}
 	},
 
@@ -180,7 +185,7 @@ var Home = React.createClass({
 						<ClassicRepertoire
 							backOff={this.events.backOff}
 							playVideoPerformer={this.events.playVideoPerformer}
-							getClassicRepertoireList={this.events.getClassicRepertoireList}
+							// getClassicRepertoireList={this.events.getClassicRepertoireList}
 							playVideo={this.events.playVideo}
 							onPause={this.events.onPause}
 							onPlay={this.events.onPlay}
@@ -221,6 +226,7 @@ var Home = React.createClass({
 							touchEnd={this.events.touchEnd}
 							touchStart={this.events.touchStart}
 							changePreview={this.events.changePreview}
+							getPerformerInfo={this.events.getPerformerInfo}
 
 							preLoadImg={this.events.preLoadImg}
 							backOff={this.events.backOff}
@@ -242,6 +248,7 @@ var Home = React.createClass({
 							nextContent={this.state.nextContent}
 							previewContent={this.state.previewContent}
 							isPerformerInfoLoadingImg={this.state.isPerformerInfoLoadingImg}
+							performerID={this.state.performerID}
 						/> : null
 				}
 			</div>

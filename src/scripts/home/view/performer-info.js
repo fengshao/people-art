@@ -44,7 +44,9 @@ var PerformerInfo = React.createClass({
 		}
 		this.initSly();
 	},
-
+	componentWillMount: function () {
+		this.props.getPerformerInfo(this.props.performerID);
+	},
 	events: {
 		selectPerformeInfoNav: function (id) {
 			this.props.selectPerformeInfoNav(id);
@@ -116,10 +118,12 @@ var PerformerInfo = React.createClass({
 									<span className="educational-content">{performer.educationalSchool}</span>
 								</div>
 							</div>
-							<div className="personalized-signature"  dangerouslySetInnerHTML={{__html : performer.personalizedSignature }}>
+							<div className="personalized-signature"
+								 dangerouslySetInnerHTML={{__html : performer.personalizedSignature }}>
 							</div>
 
-							<div className="brief-introduction" dangerouslySetInnerHTML={{__html : performer.briefIntroduction }}>
+							<div className="brief-introduction"
+								 dangerouslySetInnerHTML={{__html : performer.briefIntroduction }}>
 							</div>
 						</div>
 					</div>

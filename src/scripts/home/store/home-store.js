@@ -27,6 +27,7 @@ function HomeStore() {
 	this.touchHeight = 891;
 	this.touchTop = 877;
 	this.clickedIndex = 0;
+	this.performerID = "";
 
 	this.homePageData = {
 		"id": "",
@@ -183,13 +184,15 @@ HomeStore.prototype.selectLetter = function (letterID) {
 
 
 //进入演员信息页
-HomeStore.prototype.openPerformerInfo = function (performer) {
+HomeStore.prototype.openPerformerInfo = function (id) {
 	var _this = this;
+	this.ajaxSucc = false;
 	this.performeInfoReturn = true;
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerList = false;
 	this.isOpenHomePage = false;
 	this.isOpenPerformerInfo = true;
+	this.performerID = id;
 
 	// for (var key in this.performerList) {
 	// 	if (key == this.letterArr[0].letter) {
@@ -199,11 +202,14 @@ HomeStore.prototype.openPerformerInfo = function (performer) {
 
 	//this.isShowPerformerList.map(function (performer, index) {
 	//	if (performer.Id == id) {
-	_this.performer = performer.data;
 	//}
 	//});
+	// this.ajaxSucc = false;
 };
-
+HomeStore.prototype.getPerformerInfo = function (performer) {
+	this.performer = performer.data;
+	this.ajaxSucc = true;
+};
 
 //回到上一页
 HomeStore.prototype.backOff = function (type) {
@@ -302,7 +308,7 @@ HomeStore.prototype.changePreviewFnc = function (id, dataList) {
 	var dataListLength = dataList.length;
 	if (this.isSelectPerformeInfoNavId == 4) {
 		for (let i = 0; i < dataListLength; i++) {
-			if (dataList[i].id == id) {
+			if (dataList[i].article_id == id) {
 				if (i == 0) {
 					// this.previewContent = dataList[dataListLength - 1].content;
 					this.previewContent = "";
@@ -319,18 +325,18 @@ HomeStore.prototype.changePreviewFnc = function (id, dataList) {
 		}
 	} else {
 		for (let i = 0; i < dataListLength; i++) {
-			if (dataList[i].id == id) {
+			if (dataList[i].Id == id) {
 				if (i == 0) {
 					// this.previewContent = dataList[dataListLength - 1].preview;
 					this.previewContent = "";
-					this.nextContent = dataList[i + 1] && dataList[i + 1].preview;
+					this.nextContent = dataList[i + 1] && dataList[i + 1].Preview;
 				} else if (i == (dataListLength - 1)) {
-					this.previewContent = dataList[i - 1].preview;
+					this.previewContent = dataList[i - 1].Preview;
 					this.nextContent = "";
 					// this.nextContent = dataList[0].preview;
 				} else {
-					this.previewContent = dataList[i - 1].preview;
-					this.nextContent = dataList[i + 1].preview;
+					this.previewContent = dataList[i - 1].Preview;
+					this.nextContent = dataList[i + 1].Preview;
 				}
 			}
 		}

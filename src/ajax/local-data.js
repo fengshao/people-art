@@ -55,16 +55,31 @@ var performerInfo = {
 			"Name": "\u9f99\u987b\u6c9f",
 			"Preview": "\/uploads\/uploads\/1\/6.jpg",
 			"Video": "\/uploads"
+		},{
+			"Id": "12321",
+			"Name": "231312312312",
+			"Preview": "\/uploads\/uploads\/1\/6.jpg",
+			"Video": "\/uploads"
 		}],
 		"heInstituteList": [{
 			"Id": "e8ccd548da074ac79e3123344148fae8",
 			"Name": "\u559c\u4e8b",
 			"Preview": "\/uploads\/123.png",
 			"Video": "\/uploads\/demo.mp4"
+		},{
+			"Id": "555f1bc207d1475c8fd1c40e2bc160a6",
+			"Name": "qedasedqweqweqw",
+			"Preview": "\/uploads\/uploads\/1\/6.jpg",
+			"Video": "\/uploads"
 		}],
 		"moviesList": [{
 			"Id": "1c4cda1e6cfe4a7b95f5105658da3cd0",
 			"Name": "\u9ea6\u6536\u4e4b\u524d",
+			"Preview": "\/uploads\/uploads\/1\/6.jpg",
+			"Video": "\/uploads"
+		},{
+			"Id": "555f1bc207d1475c8fd1c40e2bc160a6",
+			"Name": "rfetgrfdgfdgfd",
 			"Preview": "\/uploads\/uploads\/1\/6.jpg",
 			"Video": "\/uploads"
 		}]
@@ -378,7 +393,6 @@ var letterArr = [
 // 			},
 // 			{
 // 				"id": "5",
-// 				"name": "test5",
 // 				"preview": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png",
 // 				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png"
 // 			},
@@ -389,6 +403,7 @@ var letterArr = [
 // 				"video": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png"
 // 			},
 // 			{
+// 				"name": "test5",
 // 				"id": "7",
 // 				"name": "天之骄子",
 // 				"preview": "//storage.wesai.com/e/24e/61652/e24eb616524a67b223786a1bdda0280f.png",

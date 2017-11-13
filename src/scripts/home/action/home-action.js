@@ -91,16 +91,20 @@ function HomeAction() {
 	};
 
 	this.openPerformerInfo = function (id) {
-		var _this = this;
-		PublicAjax.getPerformerInfo().then(function (performerInfo) {
-			_this.dispatch(performerInfo);
-		}, function (errorMsg) {
-			_this.dispatch(errorMsg);
-		});
+		this.dispatch(id);
 	};
 
 	this.selectPerformeInfoNav = function (id) {
 		this.dispatch(id);
+	};
+
+	this.getPerformerInfo = function (id) {
+		var _this = this;
+		PublicAjax.getPerformerInfo(id).then(function (performerInfo) {
+			_this.dispatch(performerInfo);
+		}, function (errorMsg) {
+			_this.dispatch(errorMsg);
+		});
 	};
 
 }
