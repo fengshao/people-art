@@ -35,9 +35,9 @@ var ClassicRepertoire = React.createClass({
 		this.initSly();
 	},
 
-	componentWillMount: function () {
+	// componentWillMount: function () {
 		//this.props.getClassicRepertoireList();
-	},
+	// },
 
 	render(){
 		var _this = this;

@@ -30,9 +30,7 @@ function HomeStore() {
 	this.performerID = "";
 
 	this.homePageData = {
-		"id": "",
-		"time": "",
-		"img": []
+		"Time": ""
 	};
 	this.isSelectPerformeInfoNavId = "1";
 	this.performeInfoNavList = [
@@ -67,8 +65,8 @@ HomeStore.prototype.changeAjaxSucc = function () {
 
 //获取首页数据
 HomeStore.prototype.getHomePageData = function (obj) {
-	this.homePageData = obj.homePageData.data;
-	this.classicRepertoireList = obj.classicRepertoireList.data;
+	this.homePageData = obj.homePageData.data || this.homePageData;
+	this.classicRepertoireList = obj.classicRepertoireList.data || [];
 	if (this.classicRepertoireList.length > 0) {
 		this.classicRepertoire = _.extend(this.classicRepertoire, this.classicRepertoireList[0]);
 	}
@@ -108,7 +106,7 @@ HomeStore.prototype.getPerformerList = function (performerList) {
 	var _this = this;
 	var letterArr = [];
 	_this.isShowPerformerList = [];
-	var performerList = performerList.data;
+	var performerList = performerList.data || [];
 	//this.classicRepertoireList = obj.classicRepertoireList;
 
 	let i = 0;
@@ -141,15 +139,15 @@ HomeStore.prototype.getPerformerList = function (performerList) {
 	// 	}
 	// });
 	this.performerList = performerList;
-	var loopVideoArr = [];
-	var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
+	// var loopVideoArr = [];
+	// var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
 
 	//obj.classicRepertoireList.map(function (classicRepertoire, index) {
 	//	if (classicRepertoire.video && videoRegular.test(classicRepertoire.video)) {
 	//		loopVideoArr.push(classicRepertoire);
 	//	}
 	//});
-	this.loopVideoArr = loopVideoArr;
+	// this.loopVideoArr = loopVideoArr;
 	this.ajaxSucc = true;
 };
 
@@ -207,7 +205,7 @@ HomeStore.prototype.openPerformerInfo = function (id) {
 	// this.ajaxSucc = false;
 };
 HomeStore.prototype.getPerformerInfo = function (performer) {
-	this.performer = performer.data;
+	this.performer = performer.data || this.performer;
 	this.ajaxSucc = true;
 };
 
@@ -261,8 +259,6 @@ HomeStore.prototype.performerInfoDropDown = function () {
 		this.touchHeight = 1769;
 		this.touchTop = 1760;
 	}
-
-
 };
 
 //切换演员作品列表
