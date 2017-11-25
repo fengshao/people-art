@@ -97,15 +97,15 @@
 	.letter-list {
 	  width: 2000px;
 	  position: absolute;
-	  -webkit-transform: rotate(-92deg);
+	  -webkit-transform: rotate(-90deg);
 	  z-index: 999;
 	  left: -913px;
-	  top: 539px;
+	  top: 493px;
 	  font-size: 0;
 
 	  .letter-li {
 		float: left;
-		width: 61px;
+		width: 60px;
 		text-align: center;
 
 		&.buquan-cls {
@@ -115,6 +115,9 @@
 		  .select-img {
 			display: block !important;
 		  }
+		  .letter-name{
+			color: #ff0000 !important;
+		  }
 		}
 		.letter-name {
 		  font-size: 80px;
@@ -123,7 +126,7 @@
 		  display: block;
 		  width: 100%;
 		  height: 70px;
-		  line-height: 70px;
+		  //line-height: 70px;
 		}
 
 		.letter-bg {
@@ -155,8 +158,12 @@
 	color: #ffffff;
 	z-index: 1000;
 	position: absolute;
-	right: 16px;
-	top: 517px;
+	right: 28px;
+	top: 700px;
+	width: 256px;
+	height: 180px;
+	line-height: 180px;
+	text-align: center;
   }
 
   //底部视频循环播放区域样式

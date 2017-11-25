@@ -191,10 +191,21 @@ var letterArr = [
 	{"id": "9", "letter": "I"},
 	{"id": "10", "letter": "G"},
 	{"id": "11", "letter": "K"},
-	{"id": "12", "letter": "K"},
-	{"id": "13", "letter": "K"},
-	{"id": "14", "letter": "K"},
-	{"id": "15", "letter": "K"}
+	{"id": "12", "letter": "L"},
+	{"id": "13", "letter": "M"},
+	{"id": "14", "letter": "N"},
+	{"id": "15", "letter": "O"},
+	{"id": "16", "letter": "P"},
+	{"id": "17", "letter": "Q"},
+	{"id": "18", "letter": "R"},
+	{"id": "19", "letter": "S"},
+	{"id": "20", "letter": "T"},
+	{"id": "21", "letter": "U"},
+	{"id": "22", "letter": "V"},
+	{"id": "23", "letter": "W"},
+	{"id": "24", "letter": "X"},
+	{"id": "25", "letter": "Y"},
+	{"id": "26", "letter": "Z"}
 ];
 //演员列表
 // var performerList = [

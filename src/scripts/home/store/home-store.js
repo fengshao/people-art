@@ -117,6 +117,11 @@ HomeStore.prototype.getPerformerList = function (performerList) {
 		letterArr.push(letter);
 		i++;
 	}
+
+	letterArr.sort(function (a, b) {
+		return (b.letter).charCodeAt() - (a.letter).charCodeAt()
+	});
+
 	this.letterArr = letterArr;
 
 	if (this.letterArr.length > 0) {
