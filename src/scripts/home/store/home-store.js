@@ -128,15 +128,16 @@ HomeStore.prototype.getPerformerList = function (performerList) {
 		this.letterArr.map(function (letter, index) {
 			letter.isSelect = false;
 		});
-		this.isShowLeterStr = this.letterArr[0];
-		this.letterArr[0].isSelect = true;
-	}
+		this.isShowLeterStr = this.letterArr[this.letterArr.length - 1];
+		this.letterArr[this.letterArr.length - 1].isSelect = true;
 
-	for (var key in performerList) {
-		if (key == this.letterArr[0].letter) {
-			_this.isShowPerformerList = performerList[key];
+		for (var key in performerList) {
+			if (key == this.letterArr[this.letterArr.length - 1].letter) {
+				_this.isShowPerformerList = performerList[key];
+			}
 		}
 	}
+
 
 	// obj.performerList.map(function (performer, index) {
 	// 	if (performer.surname == obj.letterArr[0].letter) {
