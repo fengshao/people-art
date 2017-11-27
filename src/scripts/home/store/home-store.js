@@ -28,6 +28,7 @@ function HomeStore() {
 	this.touchTop = 877;
 	this.clickedIndex = 0;
 	this.performerID = "";
+	this.isHiddenAllImg = false;
 
 	this.homePageData = {
 		"Time": ""
@@ -473,12 +474,14 @@ HomeStore.prototype.touchEnd = function (type) {
 	}
 };
 
-HomeStore.prototype.setPercent = function () {
-	var v = (parseFloat(++this.imgNum) / this.imageUrls.length).toFixed(2);
-	this.percent = Math.round(v * 100);
-	if (Math.round(v * 100) >= 100) {
-		this.imageUrls = [];
-	}
+HomeStore.prototype.setPercent = function (percent) {
+	// var v = (parseFloat(++this.imgNum) / this.imageUrls.length).toFixed(2);
+	// this.percent = Math.round(v * 100);
+	// if (Math.round(v * 100) >= 100) {
+	this.imageUrls = [];
+	this.percent = percent;
+	this.isHiddenAllImg = true;
+// }
 };
 
 HomeStore.prototype.preLoadImg = function (type) {

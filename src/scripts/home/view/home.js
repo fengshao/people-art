@@ -2,6 +2,7 @@
  * Created by fengs on 2017/9/9.
  */
 require('../style/home.scss');
+require('../style/img.scss');
 var loopVideoArr = [];
 var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
 

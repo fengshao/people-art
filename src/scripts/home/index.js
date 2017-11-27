@@ -14,6 +14,7 @@ var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
 var Loading = require("../../component/loading");
 var ImgLoading = require("../../component/loading/img");
+var AllImg = require("../../component/loading/img/allimg");
 var Home = React.createClass({
 	getInitialState: function () {
 		var data = HomeStore.getState();
@@ -41,7 +42,7 @@ var Home = React.createClass({
 	events: {
 
 		preLoadImg: function (type) {
-			HomeAction.preLoadImg(type);
+			// HomeAction.preLoadImg(type);
 		},
 
 		maskLayerLeft: function (type) {
@@ -143,8 +144,8 @@ var Home = React.createClass({
 			HomeAction.changePreview({"id": id, "dataList": dataList});
 		},
 
-		setPercent: function () {
-			HomeAction.setPercent();
+		setPercent: function (percent) {
+			HomeAction.setPercent(percent);
 		},
 
 		getPerformerInfo: function (id) {
@@ -168,6 +169,9 @@ var Home = React.createClass({
 							imageUrls={this.state.imageUrls}
 							percent={this.state.percent}
 						/> : null
+				}
+				{
+					this.state.isHiddenAllImg ? null : <AllImg />
 				}
 
 				{

@@ -10,13 +10,21 @@ function imagesLoaded(parentNode) {
 	}
 	return true;
 }
-
+var imgNum = 0;
 var Gallery = React.createClass({
 
 	handleImageChange() {
 		// In React 0.13 use: 'this.refs.gallery.getDOMNode()'
 		const galleryElement = this.refs.gallery;
-		this.props.setPercent(!imagesLoaded(galleryElement));
+
+		var v = (parseFloat(++imgNum) / this.props.imageUrls.length).toFixed(2);
+		// this.percent = Math.round(v * 100);
+		if (Math.round(v * 100) >= 100) {
+			// this.props.setPercent(!imagesLoaded(galleryElement));
+			this.props.setPercent(Math.round(v * 100));
+			imgNum = 0;
+		}
+
 		// this.setState({
 		// 	loading: !imagesLoaded(galleryElement)
 		// });
