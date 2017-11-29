@@ -5,10 +5,11 @@ require('../style/performer-info.scss');
 import classNames from 'classnames';
 import SlideCompent from './slide';
 import MaskLayer from '../../../component/mask-layer';
-
+var frame = "", frame1 = "";
 var PerformerInfo = React.createClass({
-
-	componentDidMount: function () {
+	initSly: function () {
+		frame ? frame.destroy(true) : frame = "";
+		frame1 ? frame1.destroy(true) : frame1 = "";
 		var cont = $(".performer-info-content"),
 			scrollbar = cont.find(".teleplay-works-scrollbar"),
 			options = {
@@ -37,6 +38,15 @@ var PerformerInfo = React.createClass({
 		var frame1 = new Sly('#honour-record-scrollbar-content', options1).init();
 	},
 
+	componentDidMount: function () {
+		if (this.props.isPerformerInfoLoadingImg) {
+			this.props.preLoadImg("performerInfo");
+		}
+		this.initSly();
+	},
+	componentWillMount: function () {
+		this.props.getPerformerInfo(this.props.performerID);
+	},
 	events: {
 		selectPerformeInfoNav: function (id) {
 			this.props.selectPerformeInfoNav(id);
@@ -92,7 +102,7 @@ var PerformerInfo = React.createClass({
 				<div className={performerSlyCls} style={{"height":this.props.touchHeight}}>
 					<div className="top-info">
 						<div className="left-content">
-							<div className="actor-name">{performer.actorName}</div>
+							<div className="actor-name">{performer.ActorName}</div>
 							<div className="actor-img">
 								<img src={performer.headPortrait} alt="暂无图片"/>
 							</div>
@@ -108,12 +118,12 @@ var PerformerInfo = React.createClass({
 									<span className="educational-content">{performer.educationalSchool}</span>
 								</div>
 							</div>
-							<div className="personalized-signature">
-								{performer.personalizedSignature}
+							<div className="personalized-signature"
+								 dangerouslySetInnerHTML={{__html : performer.personalizedSignature }}>
 							</div>
 
-							<div className="brief-introduction">
-								{ performer.briefIntroduction }
+							<div className="brief-introduction"
+								 dangerouslySetInnerHTML={{__html : performer.briefIntroduction }}>
 							</div>
 						</div>
 					</div>

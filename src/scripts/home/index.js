@@ -12,6 +12,9 @@ import PerformerInfo from './view/performer-info';
 
 var HomeStore = require("./store/home-store");
 var HomeAction = require("./action/home-action");
+var Loading = require("../../component/loading");
+var ImgLoading = require("../../component/loading/img");
+var AllImg = require("../../component/loading/img/allimg");
 var Home = React.createClass({
 	getInitialState: function () {
 		var data = HomeStore.getState();
@@ -25,6 +28,9 @@ var Home = React.createClass({
 
 	componentDidMount: function () {
 		HomeStore.listen(this.onChange);
+		if (this.state.isHomeLoadingImg) {
+			HomeAction.preLoadImg("home");
+		}
 		HomeAction.getHomePageData();
 	},
 
@@ -35,6 +41,10 @@ var Home = React.createClass({
 
 	events: {
 
+		preLoadImg: function (type) {
+			// HomeAction.preLoadImg(type);
+		},
+
 		maskLayerLeft: function (type) {
 			HomeAction.maskLayerLeft(type);
 		},
@@ -43,11 +53,21 @@ var Home = React.createClass({
 			HomeAction.maskLayerRight(type);
 		},
 
-		getClassicRepertoireList: function () {
-			HomeAction.getClassicRepertoireList();
+		showClassicRepertoirePage: function () {
+			HomeAction.showClassicRepertoirePage();
+		},
+
+		// getClassicRepertoireList: function () {
+		// 	HomeAction.changeAjaxSucc();
+		// 	HomeAction.getClassicRepertoireList();
+		// },
+
+		showPerformerList: function () {
+			HomeAction.showPerformerList();
 		},
 
 		getPerformerList: function () {
+			HomeAction.changeAjaxSucc();
 			HomeAction.getPerformerList();
 		},
 
@@ -60,6 +80,7 @@ var Home = React.createClass({
 		},
 
 		openPerformerInfo: function (id) {
+			// HomeAction.changeAjaxSucc();
 			HomeAction.openPerformerInfo(id);
 		},
 
@@ -121,6 +142,14 @@ var Home = React.createClass({
 
 		changePreview: function (id, dataList) {
 			HomeAction.changePreview({"id": id, "dataList": dataList});
+		},
+
+		setPercent: function (percent) {
+			HomeAction.setPercent(percent);
+		},
+
+		getPerformerInfo: function (id) {
+			HomeAction.getPerformerInfo(id);
 		}
 	},
 
@@ -128,32 +157,56 @@ var Home = React.createClass({
 		return (
 			<div className="main-content">
 				{
-					this.state.isOpenHomePage ?
-						<HomePage
-							getClassicRepertoireList={this.events.getClassicRepertoireList}
-							getPerformerList={this.events.getPerformerList}
-							homePageData={this.state.homePageData}
+					this.state.imageUrls.length > 0 ?
+						<ImgLoading
+							imageUrls={this.state.imageUrls}
+							setPercent={this.events.setPercent}
 						/> : null
 				}
 				{
+					this.state.percent < 100 || !this.state.ajaxSucc ?
+						<Loading
+							imageUrls={this.state.imageUrls}
+							percent={this.state.percent}
+						/> : null
+				}
+				{
+					this.state.isHiddenAllImg ? null : <AllImg />
+				}
+
+				{
+					this.state.isOpenHomePage ?
+						<HomePage
+							showClassicRepertoirePage={this.events.showClassicRepertoirePage}
+							showPerformerList={this.events.showPerformerList}
+							homePageData={this.state.homePageData}
+							classicRepertoireList={this.state.classicRepertoireList}
+						/> : null
+				}
+				{
+
 					this.state.isOpenClassicRepertoire ?
 						<ClassicRepertoire
 							backOff={this.events.backOff}
 							playVideoPerformer={this.events.playVideoPerformer}
+							// getClassicRepertoireList={this.events.getClassicRepertoireList}
 							playVideo={this.events.playVideo}
 							onPause={this.events.onPause}
 							onPlay={this.events.onPlay}
+							preLoadImg={this.events.preLoadImg}
 							classicRepertoireList={this.state.classicRepertoireList}
 							classicRepertoire={this.state.classicRepertoire}
 							isShowSuspend={this.state.isShowSuspend}
+							isClassicRepertoireLoadingImg={this.state.isClassicRepertoireLoadingImg}
 						/> : null
 				}
 				{
 					this.state.isOpenPerformerList ?
 						<PerformerList
-							isLoading={this.state.isLoading}
+							performeInfoReturn={this.state.performeInfoReturn}
 							letterArr={this.state.letterArr}
 							performerList={this.state.performerList}
+							isPerformerListLoadingImg={this.state.isPerformerListLoadingImg}
 							isShowLeterStr={this.state.isShowLeterStr}
 							isShowPerformerList={this.state.isShowPerformerList}
 							classicRepertoireList={this.state.classicRepertoireList}
@@ -161,6 +214,8 @@ var Home = React.createClass({
 							selectLetter={this.events.selectLetter}
 							loopVideo={this.events.loopVideo}
 							backOff={this.events.backOff}
+							getPerformerList={this.events.getPerformerList}
+							preLoadImg={this.events.preLoadImg}
 						/> : null
 				}
 				{
@@ -175,7 +230,9 @@ var Home = React.createClass({
 							touchEnd={this.events.touchEnd}
 							touchStart={this.events.touchStart}
 							changePreview={this.events.changePreview}
+							getPerformerInfo={this.events.getPerformerInfo}
 
+							preLoadImg={this.events.preLoadImg}
 							backOff={this.events.backOff}
 							showMaskLayer={this.events.showMaskLayer}
 							hideMaskLayer={this.events.hideMaskLayer}
@@ -194,6 +251,8 @@ var Home = React.createClass({
 							clickedIndex={this.state.clickedIndex}
 							nextContent={this.state.nextContent}
 							previewContent={this.state.previewContent}
+							isPerformerInfoLoadingImg={this.state.isPerformerInfoLoadingImg}
+							performerID={this.state.performerID}
 						/> : null
 				}
 			</div>

@@ -27,12 +27,11 @@ function HomeStore() {
 	this.touchHeight = 891;
 	this.touchTop = 877;
 	this.clickedIndex = 0;
-	this.isLoading = true;
+	this.performerID = "";
+	this.isHiddenAllImg = false;
 
 	this.homePageData = {
-		"id": "",
-		"time": "",
-		"img": []
+		"Time": ""
 	};
 	this.isSelectPerformeInfoNavId = "1";
 	this.performeInfoNavList = [
@@ -44,80 +43,147 @@ function HomeStore() {
 	this.previewContent = "";
 	this.nextContent = "";
 
+	this.imageUrls = [];
+	this.percent = 0;
+	this.imgNum = 0;
+
+	this.isHomeLoadingImg = true;
+	this.isClassicRepertoireLoadingImg = true;
+	this.isPerformerListLoadingImg = true;
+	this.isPerformerInfoLoadingImg = true;
+
+	this.ajaxSucc = false;
+
+	this.performeInfoReturn = false;
+
 	this.bindActions(HomeAction);
 }
 
 
-//获取首页数据
-HomeStore.prototype.getHomePageData = function (homePageData) {
-	this.homePageData = homePageData;
+HomeStore.prototype.changeAjaxSucc = function () {
+	this.ajaxSucc = false;
 };
 
-//获取经典剧目列表
-HomeStore.prototype.getClassicRepertoireList = function (classicRepertoireList) {
-	this.classicRepertoireList = classicRepertoireList;
-	if (classicRepertoireList.length > 0) {
-		this.classicRepertoire = _.extend(this.classicRepertoire, classicRepertoireList[0]);
+//获取首页数据
+HomeStore.prototype.getHomePageData = function (obj) {
+	this.homePageData = obj.homePageData.data || this.homePageData;
+	this.classicRepertoireList = obj.classicRepertoireList.data || [];
+	if (this.classicRepertoireList.length > 0) {
+		this.classicRepertoire = _.extend(this.classicRepertoire, this.classicRepertoireList[0]);
 	}
+	this.ajaxSucc = true;
+};
 
+
+HomeStore.prototype.showClassicRepertoirePage = function () {
 	this.isOpenClassicRepertoire = true;
 	this.isOpenPerformerList = false;
 	this.isOpenHomePage = false;
 };
+
+////获取经典剧目列表
+//HomeStore.prototype.getClassicRepertoireList = function () {
+//this.classicRepertoireList = classicRepertoireList;
+//if (this.classicRepertoireList.length > 0) {
+//	this.classicRepertoire = _.extend(this.classicRepertoire, this.classicRepertoireList[0]);
+//}
+//this.ajaxSucc = true;
+//};
 
 //获取演员姓氏列表
 HomeStore.prototype.getLetterArr = function (letterArr) {
 	this.homePageData = letterArr;
 };
 
-//获取演员列表
-HomeStore.prototype.getPerformerList = function (obj) {
-	var _this = this;
-	_this.isShowPerformerList = [];
-	this.performerList = obj.performerList;
-	this.letterArr = obj.letterArr;
-	this.classicRepertoireList = obj.classicRepertoireList;
+HomeStore.prototype.showPerformerList = function () {
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerInfo = false;
 	this.isOpenHomePage = false;
 	this.isOpenPerformerList = true;
-	this.isShowLeterStr = obj.letterArr[0];
-	this.letterArr[0].isSelect = true;
-	obj.performerList.map(function (performer, index) {
-		if (performer.surname == obj.letterArr[0].id) {
-			_this.isShowPerformerList.push(performer)
-		}
-	});
-	var loopVideoArr = [];
-	var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
+};
 
-	obj.classicRepertoireList.map(function (classicRepertoire, index) {
-		if (classicRepertoire.video && videoRegular.test(classicRepertoire.video)) {
-			loopVideoArr.push(classicRepertoire);
-		}
-	});
-	this.loopVideoArr = loopVideoArr;
+//获取演员列表
+HomeStore.prototype.getPerformerList = function (performerList) {
+	var _this = this;
+	var letterArr = [];
+	_this.isShowPerformerList = [];
+	var performerList = performerList.data || [];
+	//this.classicRepertoireList = obj.classicRepertoireList;
 
+	let i = 0;
+	for (var key in performerList) {
+		var letter = {"id": "", "letter": ""};
+		letter.id = i;
+		letter.letter = key;
+		letterArr.push(letter);
+		i++;
+	}
+
+	letterArr.sort(function (a, b) {
+		return (b.letter).charCodeAt() - (a.letter).charCodeAt()
+	});
+
+	this.letterArr = letterArr;
+
+	if (this.letterArr.length > 0) {
+		this.letterArr.map(function (letter, index) {
+			letter.isSelect = false;
+		});
+		this.isShowLeterStr = this.letterArr[this.letterArr.length - 1];
+		this.letterArr[this.letterArr.length - 1].isSelect = true;
+
+		for (var key in performerList) {
+			if (key == this.letterArr[this.letterArr.length - 1].letter) {
+				_this.isShowPerformerList = performerList[key];
+			}
+		}
+	}
+
+
+	// obj.performerList.map(function (performer, index) {
+	// 	if (performer.surname == obj.letterArr[0].letter) {
+	// 		_this.isShowPerformerList.push(performer)
+	// 	}
+	// });
+	this.performerList = performerList;
+	// var loopVideoArr = [];
+	// var videoRegular = /\.(mp4|swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/i;
+
+	//obj.classicRepertoireList.map(function (classicRepertoire, index) {
+	//	if (classicRepertoire.video && videoRegular.test(classicRepertoire.video)) {
+	//		loopVideoArr.push(classicRepertoire);
+	//	}
+	//});
+	// this.loopVideoArr = loopVideoArr;
+	this.ajaxSucc = true;
 };
 
 //根据选中字母展示演员列表
 HomeStore.prototype.selectLetter = function (letterID) {
 	var _this = this;
 	_this.isShowPerformerList = [];
+	var letterStr = "";
 	this.letterArr.map(function (letter, index) {
 		if (letterID == letter.id) {
 			letter.isSelect = true;
 			_this.isShowLeterStr = letter;
+			letterStr = letter.letter;
 		} else {
 			letter.isSelect = false;
 		}
 	});
 
-	this.performerList.map(function (performer, index) {
-		if (performer.surname == letterID) {
-			_this.isShowPerformerList.push(performer)
+	for (var key in this.performerList) {
+		if (key == letterStr) {
+			_this.isShowPerformerList = this.performerList[key];
 		}
-	});
+	}
+
+	// this.performerList.map(function (performer, index) {
+	// 	if (performer.surname == letterID) {
+	// 		_this.isShowPerformerList.push(performer)
+	// 	}
+	// });
 
 };
 
@@ -125,18 +191,30 @@ HomeStore.prototype.selectLetter = function (letterID) {
 //进入演员信息页
 HomeStore.prototype.openPerformerInfo = function (id) {
 	var _this = this;
+	this.ajaxSucc = false;
+	this.performeInfoReturn = true;
 	this.isOpenClassicRepertoire = false;
 	this.isOpenPerformerList = false;
 	this.isOpenHomePage = false;
 	this.isOpenPerformerInfo = true;
+	this.performerID = id;
 
-	this.performerList.map(function (performer, index) {
-		if (performer.id == id) {
-			_this.performer = performer;
-		}
-	});
+	// for (var key in this.performerList) {
+	// 	if (key == this.letterArr[0].letter) {
+	// 		_this.isShowPerformerList = performerList[key];
+	// 	}
+	// }
+
+	//this.isShowPerformerList.map(function (performer, index) {
+	//	if (performer.Id == id) {
+	//}
+	//});
+	// this.ajaxSucc = false;
 };
-
+HomeStore.prototype.getPerformerInfo = function (performer) {
+	this.performer = performer.data || this.performer;
+	this.ajaxSucc = true;
+};
 
 //回到上一页
 HomeStore.prototype.backOff = function (type) {
@@ -148,6 +226,7 @@ HomeStore.prototype.backOff = function (type) {
 			this.isOpenPerformerInfo = false;
 			this.isOpenHomePage = true;
 			this.isMaskLayerPlay = false;
+			this.performeInfoReturn = false;
 
 			break;
 		case "performerList":
@@ -187,8 +266,6 @@ HomeStore.prototype.performerInfoDropDown = function () {
 		this.touchHeight = 1769;
 		this.touchTop = 1760;
 	}
-
-
 };
 
 //切换演员作品列表
@@ -234,35 +311,35 @@ HomeStore.prototype.changePreviewFnc = function (id, dataList) {
 	var dataListLength = dataList.length;
 	if (this.isSelectPerformeInfoNavId == 4) {
 		for (let i = 0; i < dataListLength; i++) {
-			if (dataList[i].id == id) {
+			if (dataList[i].article_id == id) {
 				if (i == 0) {
-					// this.previewContent = dataList[dataListLength - 1].articleContent;
+					// this.previewContent = dataList[dataListLength - 1].content;
 					this.previewContent = "";
-					this.nextContent = dataList[i + 1].articleContent;
+					this.nextContent = dataList[i + 1] && dataList[i + 1].content;
 				} else if (i == (dataListLength - 1)) {
-					this.previewContent = dataList[i - 1].articleContent;
+					this.previewContent = dataList[i - 1].content;
 					this.nextContent = "";
-					// this.nextContent = dataList[0].articleContent;
+					// this.nextContent = dataList[0].content;
 				} else {
-					this.previewContent = dataList[i - 1].articleContent;
-					this.nextContent = dataList[i + 1].articleContent;
+					this.previewContent = dataList[i - 1].content;
+					this.nextContent = dataList[i + 1].content;
 				}
 			}
 		}
 	} else {
 		for (let i = 0; i < dataListLength; i++) {
-			if (dataList[i].id == id) {
+			if (dataList[i].Id == id) {
 				if (i == 0) {
 					// this.previewContent = dataList[dataListLength - 1].preview;
 					this.previewContent = "";
-					this.nextContent = dataList[i + 1].preview;
+					this.nextContent = dataList[i + 1] && dataList[i + 1].Preview;
 				} else if (i == (dataListLength - 1)) {
-					this.previewContent = dataList[i - 1].preview;
+					this.previewContent = dataList[i - 1].Preview;
 					this.nextContent = "";
 					// this.nextContent = dataList[0].preview;
 				} else {
-					this.previewContent = dataList[i - 1].preview;
-					this.nextContent = dataList[i + 1].preview;
+					this.previewContent = dataList[i - 1].Preview;
+					this.nextContent = dataList[i + 1].Preview;
 				}
 			}
 		}
@@ -337,8 +414,6 @@ HomeStore.prototype.touchMove = function (event) {
 	var touch = event.targetTouches[0];
 	this._end = (this._start - touch.pageY);
 
-	console.log("this._end:" + this._end);
-
 	//上移 为正  下移为负
 	if (this.isPerformerInfoDropDown) {
 		//	打开状态 上移 高度变低
@@ -398,5 +473,86 @@ HomeStore.prototype.touchEnd = function (type) {
 
 	}
 };
+
+HomeStore.prototype.setPercent = function (percent) {
+	// var v = (parseFloat(++this.imgNum) / this.imageUrls.length).toFixed(2);
+	// this.percent = Math.round(v * 100);
+	// if (Math.round(v * 100) >= 100) {
+	this.imageUrls = [];
+	this.percent = percent;
+	this.isHiddenAllImg = true;
+// }
+};
+
+HomeStore.prototype.preLoadImg = function (type) {
+	/*get all imgs those tag is <img>
+	 var imgs = document.images;
+	 for (var i = 0; i < imgs.length; i++) {
+	 images.push(imgs[i].src);
+	 }*/
+	this.imageUrls = [];
+	this.imgNum = 0;
+
+
+	switch (type) {
+		case "performerInfo":
+			this.isPerformerInfoLoadingImg = false;
+			break;
+		case "classicRepertoire":
+			this.isClassicRepertoireLoadingImg = false;
+			break;
+		case "performerList":
+			this.isPerformerListLoadingImg = false;
+			break;
+		case "home":
+			this.isHomeLoadingImg = false;
+			break;
+	}
+
+	var images = [];
+	//get all images in style
+	var cssImages = this.getallBgimages();
+	for (var j = 0; j < cssImages.length; j++) {
+		images.push(cssImages[j]);
+	}
+	this.imageUrls = images;
+};
+
+//get all images in style（此方法引用其他博客的）
+HomeStore.prototype.getallBgimages = function () {
+	var url, B = [], A = document.getElementsByTagName('*');
+	A = B.slice.call(A, 0, A.length);
+	while (A.length) {
+		url = document.deepCss(A.shift(), 'background-image');
+		if (url) url = /url\(['"]?([^")]+)/.exec(url) || [];
+		url = url[1];
+		if (url && B.indexOf(url) == -1) B[B.length] = url;
+	}
+	return B;
+};
+
+document.deepCss = function (who, css) {
+	if (!who || !who.style) return '';
+	var sty = css.replace(/\-([a-z])/g, function (a, b) {
+		return b.toUpperCase();
+	});
+	if (who.currentStyle) {
+		return who.style[sty] || who.currentStyle[sty] || '';
+	}
+	var dv = document.defaultView || window;
+	return who.style[sty] ||
+		dv.getComputedStyle(who, "").getPropertyValue(css) || '';
+};
+
+Array.prototype.indexOf = Array.prototype.indexOf ||
+	function (what, index) {
+		index = index || 0;
+		var L = this.length;
+		while (index < L) {
+			if (this[index] === what) return index;
+			++index;
+		}
+		return -1;
+	}
 
 module.exports = alt.createStore(HomeStore, 'HomeStore');
