@@ -15,25 +15,46 @@ exports.getHomePageData = function () {
 //获取经典曲目列表信息
 exports.getClassicRepertoireList = function () {
 	var Deferred = $.Deferred();
-	Deferred.resolve(LocalData.classicRepertoireData);
-	return Deferred.promise();
-};
-
-//获取姓氏列表
-exports.getLetterArr = function () {
-	var Deferred = $.Deferred();
-	Deferred.resolve(LocalData.letterArr);
+	setTimeout(function () {
+		Deferred.resolve(LocalData.classicRepertoireData);
+	}, 3000);
+	//$.ajax({
+	//	"type": "get",
+	//	"url": "http://www.baidu.com",
+	//	"success": function (data) {
+	//		Deferred.resolve(LocalData.classicRepertoireData);
+	//	},
+	//	"error": function (data) {
+	//		Deferred.resolve(LocalData.classicRepertoireData);
+	//	}
+	//});
 	return Deferred.promise();
 };
 
 //获取演员列表
 exports.getPerformerList = function () {
 	var Deferred = $.Deferred();
-	Deferred.resolve(LocalData.performerList);
+	$.ajax({
+		"type": "get",
+		"url": "http://www.baidu.com",
+		"success": function (data) {
+			Deferred.resolve(LocalData.performerList);
+		},
+		"error": function (data) {
+			Deferred.resolve(LocalData.performerList);
+		}
+	});
+	//Deferred.resolve(LocalData.performerList);
 	return Deferred.promise();
 };
 
-
+exports.getPerformerInfo = function (id) {
+	var Deferred = $.Deferred();
+	setTimeout(function () {
+		Deferred.resolve(LocalData.performerInfo);
+	}, 3000);
+	return Deferred.promise();
+};
 
 
 
