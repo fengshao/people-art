@@ -39,7 +39,8 @@ function HomeAction() {
 		'setPercent',
 		'changeAjaxSucc',
 		'showClassicRepertoirePage',
-		'showPerformerList'
+		'showPerformerList',
+		'onThumbnailsClick'
 	);
 
 	this.getHomePageData = function () {

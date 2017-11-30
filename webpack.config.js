@@ -121,7 +121,7 @@ module.exports = {
 				include: path.join(__dirname, 'src')
 			},
 			{
-				test: /\.(png|jpg)$/,
+				test: /\.(png|jpg|gif)$/,
 				loader: 'url?limit=8192',
 				include: [
 					path.resolve(__dirname, "src")
