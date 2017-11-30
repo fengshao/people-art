@@ -80,7 +80,6 @@ var SlideCompent = React.createClass({
 		},
 
 		showMaskLayer: function (id, dataList, event) {
-			debugger
 			var clickedIndex = swiper.clickedIndex;
 			var classNmae = event.currentTarget.className;
 			if (classNmae.indexOf("swiper-slide-active") != -1 || classNmae.indexOf("article-li") != -1) {

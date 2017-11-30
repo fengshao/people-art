@@ -153,7 +153,6 @@ var Home = React.createClass({
 		},
 
         onThumbnailsClick: function (e) {
-            debugger
 			HomeAction.onThumbnailsClick(e);
 		}
 	},
