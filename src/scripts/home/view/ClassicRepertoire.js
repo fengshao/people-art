@@ -3,10 +3,11 @@
  */
 require('../style/classicRepertoire.scss');
 import classNames from 'classnames';
-
+var frame = "";
 var ClassicRepertoire = React.createClass({
 
-	componentDidMount: function () {
+	initSly: function () {
+		frame ? frame.destroy(true) : frame = ""
 		var cont = $(".classic-repertoire-content"),
 		// frame = cont.find(".repertoire-sly"),
 			scrollbar = cont.find(".repertoire-scrollbar"),
@@ -20,8 +21,23 @@ var ClassicRepertoire = React.createClass({
 				mouseDragging: 1,
 				touchDragging: 1
 			};
-		var frame = new Sly('#repertoire-sly', options).init();
+		frame = new Sly('#repertoire-sly', options).init();
 	},
+
+	componentDidMount: function () {
+		this.initSly();
+		if(this.props.isClassicRepertoireLoadingImg){
+			this.props.preLoadImg("classicRepertoire");
+		}
+	},
+
+	componentDidUpdate: function () {
+		this.initSly();
+	},
+
+	// componentWillMount: function () {
+		//this.props.getClassicRepertoireList();
+	// },
 
 	render(){
 		var _this = this;
@@ -38,7 +54,7 @@ var ClassicRepertoire = React.createClass({
 		});
 		return (
 			<div className="classic-repertoire-content">
-				<div className="repertoire-title">{classicRepertoire.name ? classicRepertoire.name : ""}</div>
+				<div className="repertoire-title">{classicRepertoire.Name ? classicRepertoire.Name : ""}</div>
 				<div className="repertoire-video-play-content">
 					<div className={suspendContentCls} onClick={_this.props.playVideo.bind(this)}>
 
@@ -48,10 +64,10 @@ var ClassicRepertoire = React.createClass({
 						   type='video/mp4'
 						   loop="loop"
 						   preload="preload"
-						   src={classicRepertoire.video ? classicRepertoire.video : ""}
+						   src={classicRepertoire.Video ? classicRepertoire.Video : ""}
 						   onPlay={this.props.onPlay.bind(this)}
 						   onPause={this.props.onPause.bind(this)}
-						   poster={classicRepertoire.preview ? classicRepertoire.preview : ""}
+						   poster={classicRepertoire.Preview ? classicRepertoire.Preview : ""}
 					>
 					</video>
 
@@ -74,10 +90,10 @@ var ClassicRepertoire = React.createClass({
 																<li className="repertoire-list-li" key={i}
 																	onClick={_this.props.playVideoPerformer.bind(_this,performer)}>
 																	<div className="repertoire-video-img">
-																		<img src={performer.preview} alt="暂无图片"/>
+																		<img src={performer.Preview} alt="暂无图片"/>
 																	</div>
 																	<div
-																		className="repertoire-video-title">{performer.name}</div>
+																		className="repertoire-video-title">{performer.Name}</div>
 																</li> :
 																null
 														)
