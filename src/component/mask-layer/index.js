@@ -9,7 +9,7 @@ var topSwiper = "";
 var bottomSwiper = "";
 var controlSwiper3 = "";
 var dataList = [];
-
+var content = '<img class="photo-swipe" data-title="teststsststststst" data-big="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg" data-size="964x1024" src="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_m.jpg" alt="Image description" style="width: 1000px;height: 500px" /> <div> <img class="photo-swipe" data-big="https://farm3.staticflickr.com/2567/5697107145_a4c2eaa0cd_o.jpg" data-size="1024x1024" src="https://farm3.staticflickr.com/2567/5697107145_3c27ff3cd1_m.jpg" alt="Image description"/> </div> <img class="photo-swipe" data-big="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg" data-size="1024x683" src="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_m.jpg" alt="Image description"/> <img class="photo-swipe" data-big="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_b.jpg" data-size="1024x768" src="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_m.jpg" alt="Image description"/>'
 var MaskLayer = React.createClass({
 	componentDidMount: function () {
 		var _this = this;
@@ -233,31 +233,36 @@ var MaskLayer = React.createClass({
 																dangerouslySetInnerHTML={{__html : modern.content }}>
 
 															</div>
+															<div
+																dangerouslySetInnerHTML={{__html : content }}>
+
+															</div>
 															<img className="photo-swipe" data-title="teststsststststst"
 																 data-big="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg"
 																 data-size="964x1024"
 																 src="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_m.jpg"
-																 itemprop="thumbnail" alt="Image description"/>
+																 alt="Image description"
+																 width="100px" height="200px"
+															/>
 															<div>
 																<img className="photo-swipe"
 																	 data-big="https://farm3.staticflickr.com/2567/5697107145_a4c2eaa0cd_o.jpg"
 																	 data-size="1024x1024"
 																	 src="https://farm3.staticflickr.com/2567/5697107145_3c27ff3cd1_m.jpg"
-																	 itemprop="thumbnail" alt="Image description"/>
+																	 alt="Image description"/>
 															</div>
-
 
 															<img className="photo-swipe"
 																 data-big="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg"
 																 data-size="1024x683"
 																 src="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_m.jpg"
-																 itemprop="thumbnail" alt="Image description"/>
+																 alt="Image description"/>
 
 															<img className="photo-swipe"
 																 data-big="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_b.jpg"
 																 data-size="1024x768"
 																 src="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_m.jpg"
-																 itemprop="thumbnail" alt="Image description"/>
+																 alt="Image description"/>
 														</div>
 													</div>
 												</div>

@@ -573,7 +573,7 @@ HomeStore.prototype.onThumbnailsClick = function (e) {
 
 	// find index of clicked item by looping through all child nodes
 	// alternatively, you may define index via data- attribute
-	var clickedGallery = $(clickedListItem).parent(".article-scroll-content"),
+	var clickedGallery = $(clickedListItem).parents(".article-scroll-content"),
 		childNodes = clickedGallery.find("img.photo-swipe"),
 		numChildNodes = childNodes.length,
 		nodeIndex = 0,
