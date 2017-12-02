@@ -64,6 +64,7 @@ var ClassicRepertoire = React.createClass({
 						   type='video/mp4'
 						   loop="loop"
 						   preload="preload"
+						   webkit-playsinline="true"
 						   src={classicRepertoire.Video ? classicRepertoire.Video : ""}
 						   onPlay={this.props.onPlay.bind(this)}
 						   onPause={this.props.onPause.bind(this)}

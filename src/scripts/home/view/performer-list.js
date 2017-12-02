@@ -176,6 +176,7 @@ var PerformerListPage = React.createClass({
 							<video id='loop-video-media' ref='media' className="video" controls="controls"
 								   type='video/mp4'
 								   preload="preload"
+								   webkit-playsinline="true"
 								   src={this.props.classicRepertoireList[0].Video ? this.props.classicRepertoireList[0].Video : ""}
 								   poster={this.props.classicRepertoireList[0].Preview ? this.props.classicRepertoireList[0].Preview : ""}
 							>

@@ -300,7 +300,7 @@ var MaskLayer = React.createClass({
 							</div>
 						</div>
 
-						<div className="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+						<div className="pswp pswp_custom" tabindex="-1" role="dialog" aria-hidden="true">
 							<div className="pswp__bg"></div>
 							<div className="pswp__scroll-wrap">
 								<div className="pswp__container">
@@ -331,7 +331,7 @@ var MaskLayer = React.createClass({
 											title="Next (arrow right)">
 									</button>
 									<div className="pswp__caption">
-										<div className="pswp__caption__center"></div>
+										<div className="pswp__caption__center pswp__caption__center_custom"></div>
 									</div>
 								</div>
 							</div>
@@ -390,6 +390,7 @@ var MaskLayer = React.createClass({
 																   type='video/mp4'
 																   loop="loop"
 																   preload="preload"
+																   webkit-playsinline="true"
 																   src={modern.Video ? modern.Video : ""}
 																   poster={modern.Preview ? modern.Preview : ""}
 															>
