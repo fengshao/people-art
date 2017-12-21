@@ -9,7 +9,6 @@ var topSwiper = "";
 var bottomSwiper = "";
 var controlSwiper3 = "";
 var dataList = [];
-
 var MaskLayer = React.createClass({
 	componentDidMount: function () {
 		var _this = this;
@@ -226,10 +225,11 @@ var MaskLayer = React.createClass({
 															<div className="handle"></div>
 														</div>
 														<div className="article-scroll-content"
-															 id={"maskLayer" + modern.article_id}>
+															 id={"maskLayer" + modern.article_id}
+															 data-pswp-uid={i+1}
+															 onClick={_this.props.onThumbnailsClick.bind(_this)}>
 															<div
 																dangerouslySetInnerHTML={{__html : modern.content }}>
-
 															</div>
 														</div>
 													</div>
@@ -264,6 +264,43 @@ var MaskLayer = React.createClass({
 											)
 										})
 									}
+								</div>
+							</div>
+						</div>
+
+						<div className="pswp pswp_custom" tabindex="-1" role="dialog" aria-hidden="true">
+							<div className="pswp__bg"></div>
+							<div className="pswp__scroll-wrap">
+								<div className="pswp__container">
+									<div className="pswp__item"></div>
+									<div className="pswp__item"></div>
+									<div className="pswp__item"></div>
+								</div>
+								<div className="pswp__ui pswp__ui--hidden">
+									<div className="pswp__top-bar">
+										<div className="pswp__counter"></div>
+										<button className="pswp__button pswp__button--close"
+												title="Close (Esc)"></button>
+										<div className="pswp__preloader">
+											<div className="pswp__preloader__icn">
+												<div className="pswp__preloader__cut">
+													<div className="pswp__preloader__donut"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div className="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+										<div className="pswp__share-tooltip"></div>
+									</div>
+									<button className="pswp__button pswp__button--arrow--left"
+											title="Previous (arrow left)">
+									</button>
+									<button className="pswp__button pswp__button--arrow--right"
+											title="Next (arrow right)">
+									</button>
+									<div className="pswp__caption">
+										<div className="pswp__caption__center pswp__caption__center_custom"></div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -321,6 +358,7 @@ var MaskLayer = React.createClass({
 																   type='video/mp4'
 																   loop="loop"
 																   preload="preload"
+																   webkit-playsinline="true"
 																   src={modern.Video ? modern.Video : ""}
 																   poster={modern.Preview ? modern.Preview : ""}
 															>

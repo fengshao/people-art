@@ -150,6 +150,10 @@ var Home = React.createClass({
 
 		getPerformerInfo: function (id) {
 			HomeAction.getPerformerInfo(id);
+		},
+
+        onThumbnailsClick: function (e) {
+			HomeAction.onThumbnailsClick(e);
 		}
 	},
 
@@ -231,6 +235,7 @@ var Home = React.createClass({
 							touchStart={this.events.touchStart}
 							changePreview={this.events.changePreview}
 							getPerformerInfo={this.events.getPerformerInfo}
+							onThumbnailsClick={this.events.onThumbnailsClick}
 
 							preLoadImg={this.events.preLoadImg}
 							backOff={this.events.backOff}

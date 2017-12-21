@@ -16,8 +16,8 @@ var SlideCompent = React.createClass({
 
 	slideInit: function () {
 		var _this = this;
-		swiper ? swiper.destroy(true, true) : swiper = "";
-
+		swiper ? swiper.destroy(true, true)  : swiper = "";
+		swiper = "";
 		switch (_this.props.isSelectPerformeInfoNavId) {
 			case "1":
 				if (_this.props.performer.modernList && _this.props.performer.modernList.length > 0) {
@@ -39,7 +39,7 @@ var SlideCompent = React.createClass({
 				}
 				break;
 			case "2":
-				if (_this.props.performer.modernList && _this.props.performer.modernList.length > 0) {
+				if (_this.props.performer.heInstituteList && _this.props.performer.heInstituteList.length > 0) {
 					swiper = new Swiper('.bottom-content .he-institute-contnet .swiper-container', {
 						// 如果需要前进后退按钮
 						nextButton: '.bottom-content .he-institute-contnet .swiper-button-next',
@@ -48,7 +48,7 @@ var SlideCompent = React.createClass({
 				}
 				break;
 			case "3":
-				if (this.props.performer.modernList && this.props.performer.modernList.length > 0) {
+				if (this.props.performer.moviesList && this.props.performer.moviesList.length > 0) {
 					swiper = new Swiper('.bottom-content .movies-contnet .swiper-container', {
 						// 如果需要前进后退按钮
 						nextButton: '.bottom-content .movies-contnet .swiper-button-next',
@@ -57,7 +57,7 @@ var SlideCompent = React.createClass({
 				}
 				break;
 			case "4":
-				if (_this.props.performer.modernList && _this.props.performer.modernList.length > 0) {
+				if (_this.props.performer.articleList && _this.props.performer.articleList.length > 0) {
 					swiper = new Swiper('.bottom-content .article-contnet .swiper-container', {
 						slidesPerView: 4,
 						spaceBetween: 60,

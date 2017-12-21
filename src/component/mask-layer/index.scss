@@ -31,6 +31,7 @@
 	position: relative;
 	width: 100%;
 	margin-top: 679px;
+	height: 100%;
 
 	.title-work-name {
 	  font-size: 64px;
@@ -53,9 +54,11 @@
 		-moz-transform-style: preserve-3d;
 		-ms-transform-style: preserve-3d;
 		transform-style: preserve-3d;
-		width: 100%;
+		//width: 100%;
 		height: 887px;
 		bottom: 485px;
+		width: calc(100% - 160px);
+		margin: auto 80px;
 		img {
 		  transform: translate3d(0px, 0px, -429px) rotateX(85deg) rotateY(0deg);
 		}
@@ -77,9 +80,10 @@
 		-moz-transform-style: preserve-3d;
 		-ms-transform-style: preserve-3d;
 		transform-style: preserve-3d;
-		width: 100%;
 		height: 887px;
 		top: 535px;
+		width: calc(100% - 160px);
+		margin: auto 80px;
 
 		img {
 		  transform: translate3d(0px, 0px, -436px) rotateX(-78deg) rotateY(0deg);
@@ -95,19 +99,19 @@
 	  .left-arrow {
 		@extend .left-arrow-public;
 		top: 380px;
-		left: 20px;
+		left: 8px;
 		z-index: 100;
 	  }
 	  .right-arrow {
 		@extend .right-arrow-public;
 		top: 380px;
-		right: 30px;
+		right: 8px;
 		z-index: 100;
 	  }
 
 	  .slide-container {
-		width: 100%;
-		margin: 0 auto;
+		//width: 100%;
+		margin: 0 80px;
 		height: 887px;
 
 		.video-slide-content {
@@ -212,8 +216,9 @@
 	  .preview-content {
 		height: 1100px;
 		bottom: 598px;
-		width: 100%;
-
+		//width: 100%;
+		width: calc(100% - 170px);
+		margin: auto 84px;
 		> div {
 		  width: 100%;
 		  height: 1100px;
@@ -224,10 +229,11 @@
 	  }
 
 	  .next-content {
-		width: 100%;
+		//width: 100%;
 		height: 1100px;
 		top: 646px;
-
+		width: calc(100% - 170px);
+		margin: auto 84px;
 		> div {
 		  width: 100%;
 		  height: 1100px;
@@ -239,25 +245,26 @@
 
 	  .left-arrow {
 		@extend .left-arrow-public;
-		background: transparent url("~images/performer-info/article-arrow-left.png") no-repeat;
+		//background: transparent url("~images/performer-info/article-arrow-left.png") no-repeat;
 		top: 380px;
-		left: 20px;
+		left: 8px;
 		z-index: 100;
 	  }
 
 	  .right-arrow {
 		@extend .right-arrow-public;
 		top: 380px;
-		right: 30px;
+		right: 8px;
 		z-index: 100;
-		background: transparent url("~images/performer-info/article-arrow-right.png") no-repeat;
+		//background: transparent url("~images/performer-info/article-arrow-right.png") no-repeat;
 
 	  }
 
 	  .slide-container {
-		width: 100%;
-		margin: 0 auto;
+		//width: 100%;
+		//margin: 0 auto;
 		height: 1100px;
+		margin: 0 80px;
 
 		.article-scroll-content {
 		  width: 100%;
@@ -265,6 +272,7 @@
 		  //overflow: hidden;
 		  background-color: #ffffff;
 		  padding: 50px;
+		  overflow: scroll;
 		  .bottom-info-content {
 			height: 300px;
 		  }
@@ -333,7 +341,30 @@
 	  }
 
 	}
+	.pswp_custom {
+	  .pswp__button {
+		transform: scale(2.5, 2.5);
+	  }
+	  .pswp__counter {
+		left: 10px;
+		top: 20px;
+		font-size: 30px;
+	  }
+	  .pswp__caption__center_custom {
+		word-break: break-all;
+		font-size: 30px;
+		max-width: 80%;
+	  }
+	  .pswp__button--close {
+		left: -17px;
+		top: 20px;
+	  }
 
+	  .pswp__preloader{
+		display: none !important;
+	  }
+
+	}
   }
 
 }

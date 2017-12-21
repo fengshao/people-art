@@ -555,4 +555,153 @@ Array.prototype.indexOf = Array.prototype.indexOf ||
 		return -1;
 	}
 
+HomeStore.prototype.onThumbnailsClick = function (e) {
+	// triggers when user clicks on thumbnail
+	e = e || window.event;
+	e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+	var eTarget = e.target || e.srcElement;
+
+	// find root element of slide
+	var clickedListItem = closest(eTarget, function (el) {
+		return (el.tagName && el.tagName.toUpperCase() === 'IMG');
+	});
+
+	if (!clickedListItem) {
+		return;
+	}
+
+	// find index of clicked item by looping through all child nodes
+	// alternatively, you may define index via data- attribute
+	var clickedGallery = $(clickedListItem).parents(".article-scroll-content"),
+		childNodes = clickedGallery.find("img.photo-swipe"),
+		numChildNodes = childNodes.length,
+		nodeIndex = 0,
+		index;
+
+	for (var i = 0; i < numChildNodes; i++) {
+		if (childNodes[i].nodeType !== 1 || childNodes[i].tagName.toUpperCase() !== 'IMG') {
+			continue;
+		}
+
+		if (childNodes[i] === clickedListItem) {
+			index = nodeIndex;
+			break;
+		}
+		nodeIndex++;
+	}
+
+
+	if (index >= 0) {
+		// open PhotoSwipe if valid index found
+		openPhotoSwipe(index, clickedGallery);
+	}
+	return false;
+};
+
+// find nearest parent element
+var closest = function closest(el, fn) {
+	return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+};
+
+// parse slide data (url, title, size ...) from DOM elements
+// (children of gallerySelector)
+var parseThumbnailElements = function (el) {
+	var thumbElements = el.find("img.photo-swipe"),
+		numNodes = thumbElements.length,
+		items = [],
+		figureEl,
+		linkEl,
+		size,
+		item;
+
+	for (var i = 0; i < numNodes; i++) {
+
+		figureEl = thumbElements[i]; // <figure> element
+
+		// include only element nodes
+		if (figureEl.nodeType !== 1 || figureEl.tagName.toUpperCase() !== 'IMG') {
+			continue;
+		}
+
+
+		size = figureEl.getAttribute('data-size').split('x');
+
+		// create slide object
+		item = {
+			src: figureEl.getAttribute('data-big'),
+			w: parseInt(size[0], 10),
+			h: parseInt(size[1], 10)
+		};
+
+
+		// <figcaption> content
+		item.title = figureEl.getAttribute('data-title');
+
+		// <img> thumbnail element, retrieving thumbnail url
+		item.msrc = figureEl.getAttribute('src');
+
+		item.el = figureEl; // save link to element for getThumbBoundsFn
+		items.push(item);
+	}
+
+	return items;
+};
+var openPhotoSwipe = function (index, galleryElement, disableAnimation, fromURL) {
+	var pswpElement = document.querySelectorAll('.pswp')[0],
+		gallery,
+		options,
+		items;
+
+	items = parseThumbnailElements(galleryElement);
+
+	// define options (if needed)
+	options = {
+
+		// define gallery index (for URL)
+		galleryUID: galleryElement[0].getAttribute('data-pswp-uid'),
+
+		getThumbBoundsFn: function (index) {
+			// See Options -> getThumbBoundsFn section of documentation for more info
+			var thumbnail = items[index].el, // find thumbnail
+				pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+				rect = thumbnail.getBoundingClientRect();
+
+			return {x: rect.left, y: rect.top + pageYScroll, w: rect.width};
+		}
+
+	};
+
+	// PhotoSwipe opened from URL
+	if (fromURL) {
+		if (options.galleryPIDs) {
+			// parse real index when custom PIDs are used
+			// http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+			for (var j = 0; j < items.length; j++) {
+				if (items[j].pid == index) {
+					options.index = j;
+					break;
+				}
+			}
+		} else {
+			// in URL indexes start from 1
+			options.index = parseInt(index, 10) - 1;
+		}
+	} else {
+		options.index = parseInt(index, 10);
+	}
+
+	// exit if index not found
+	if (isNaN(options.index)) {
+		return;
+	}
+
+	if (disableAnimation) {
+		options.showAnimationDuration = 0;
+	}
+	// Pass data to PhotoSwipe and initialize it
+	gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+	gallery.init();
+};
+
 module.exports = alt.createStore(HomeStore, 'HomeStore');

@@ -45,7 +45,9 @@ var pluginLists = [
 		jQuery: 'jquery',
 		'window.jQuery': 'jquery',
 		'_': 'underscore',
-		'Swiper': __dirname + '/src/component/swiper/swiper.js'
+		'Swiper': __dirname + '/src/component/swiper/swiper.js',
+		'PhotoSwipe': __dirname + '/src/lib/photoSwipe/photoswipe.js',
+		'PhotoSwipeUI_Default': __dirname + '/src/lib/photoSwipe/photoswipe-ui-default.js'
 	}),
 	new webpack.optimize.CommonsChunkPlugin({
 		name: 'vendor',
@@ -119,7 +121,7 @@ module.exports = {
 				include: path.join(__dirname, 'src')
 			},
 			{
-				test: /\.(png|jpg)$/,
+				test: /\.(png|jpg|gif)$/,
 				loader: 'url?limit=8192',
 				include: [
 					path.resolve(__dirname, "src")
