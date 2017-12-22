@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   background: transparent url("~images/performer-list/performer-list-bg.jpg") no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   position: relative;
 
   .back-off {
@@ -16,11 +16,11 @@
 
   //演员列表区域样式
   .performer-list-div {
-	height: 1579px;
-	width: 985px;
+	height: 1116px;
+	width: 700px;
 	position: absolute;
-	top: 345px;
-	left: 48px;
+	top: 248px;
+	left: 42px;
 
 	//滚动条区域样式
 	.performer-list-scrollbar {
@@ -42,7 +42,7 @@
 	  //加 performer-list-scrollbar-content 这一层是为了让滚动区域顶部有距离
 	  //如果不加这一层 加到底下那一层的话 滚动条插件会自动计算顶部留白 上移滚动区域
 	  width: 100%;
-	  height: 1535px;
+	  height: 1086px;
 	  padding-top: 44px;
 	  //padding-bottom: 44px;
 
@@ -64,13 +64,14 @@
 		  .repertoire-list-div {
 			margin-top: 44px;
 			float: left;
+			margin-left: 10px;
 		  }
 
 		  .performer-li {
 			float: left;
-			margin-left: 30px;
-			width: 279px;
-			height: 357px;
+			margin-left: 24px;
+			width: 194px;
+			height: 254px;
 			//background: transparent url("~images/performer-list/performer.png") no-repeat;
 			//background-size: contain;
 			//background-repeat: no-repeat;
@@ -86,26 +87,26 @@
   }
 
   .letter-content {
-	width: 466px;
-	height: 1612px;
+	width: 330px;
+	height: 1122px;
 	position: absolute;
-	top: 545px;
+	top: 380px;
 	right: 0;
 	//display: none;
 	//overflow: hidden;
 
 	.letter-list {
-	  width: 2000px;
+	  width: 1500px;
 	  position: absolute;
-	  -webkit-transform: rotate(-90deg);
+	  -webkit-transform: rotate(-91deg);
 	  z-index: 999;
-	  left: -913px;
-	  top: 493px;
+	  left: -693px;
+	  top: 277px;
 	  font-size: 0;
 
 	  .letter-li {
 		float: left;
-		width: 60px;
+		width: 40px;
 		text-align: center;
 
 		&.buquan-cls {
@@ -120,31 +121,32 @@
 		  }
 		}
 		.letter-name {
-		  font-size: 80px;
+		  font-size: 50px;
 		  color: #821c1e;
+
 		  font-weight: bold;
 		  display: block;
 		  width: 100%;
-		  height: 70px;
+		  height: 67px;
 		  //line-height: 70px;
 		}
 
 		.letter-bg {
 		  background: transparent url("~images/performer-list/letter-bg.png") no-repeat;
 		  background-size: contain;
-		  height: 74px;
+		  height: 50px;
 		  width: 100%;
 		  display: block;
 		  text-align: center;
 		  background-position: center;
-		  margin-top: 50px;
+		  margin-top: 15px;
 		  .select-img {
 			height: 60px;
 			background: transparent url("~images/performer-list/performer-list-select.png") no-repeat;
 			width: 100%;
 			text-align: center;
-			background-size: 32px 32px;
-			background-position: 23px 23px;
+			background-size: 24px 24px;
+			background-position: 8px 17px;
 			display: none;
 
 		  }
@@ -154,26 +156,26 @@
   }
 
   .letter-title {
-	font-size: 300px;
+	font-size: 150px;
 	color: #ffffff;
 	z-index: 1000;
 	position: absolute;
-	right: 28px;
-	top: 700px;
-	width: 256px;
+	right: 6px;
+	top: 465px;
+	width: 158px;
 	height: 180px;
 	line-height: 180px;
-	text-align: center;
+	text-align: center
   }
 
   //底部视频循环播放区域样式
   .video-content {
 	.video-content-div {
-	  width: 820px;
-	  height: 480px;
+	  width: 600px;
+	  height: 336px;
 	  position: absolute;
-	  left: 145px;
-	  bottom: 150px;
+	  left: 95px;
+	  bottom: 101px;
 	}
   }
 

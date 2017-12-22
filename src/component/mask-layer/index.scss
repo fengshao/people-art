@@ -4,33 +4,33 @@
   background: transparent url("~images/performer-info/mask-layer-bg.png") no-repeat;
   width: 100%;
   height: 100%;
-  background-size: contain;
+  background-size: 100% 100%;
   position: absolute;
   left: 0;
   top: 0;
   z-index: 100;
 
   .back-off {
-	right: 83px;
-	bottom: 154px;
+	right: 28px;
+	bottom: 59px;
   }
   .mask-layer-top-logo {
 	background: transparent url("~images/performer-info/mask-layer-top-logo.png") no-repeat;
 	background-size: contain;
 	right: 8px;
-	top: 571px;
-	width: 288px;
-	height: 275px;
+	top: 364px;
+	width: 148px;
+	height: 178px;
 	position: absolute;
 	&.mask-layer-top-logo-top {
-	  top: 320px;
+	  top: 213px;
 	}
   }
 
   .video-content {
 	position: relative;
 	width: 100%;
-	margin-top: 679px;
+	margin-top: 370px;
 	height: 100%;
 
 	.title-work-name {
@@ -41,7 +41,7 @@
 
 	.top-slide-contnet {
 	  position: relative;
-	  margin-top: 120px;
+	  margin-top: 80px;
 	  //height: 887px;
 
 	  .preview-content {
@@ -55,10 +55,10 @@
 		-ms-transform-style: preserve-3d;
 		transform-style: preserve-3d;
 		//width: 100%;
-		height: 887px;
-		bottom: 485px;
-		width: calc(100% - 160px);
-		margin: auto 80px;
+		height: 714px;
+		bottom: 389px;
+		width: calc(100% - 202px);
+		margin: auto 105px;
 		img {
 		  transform: translate3d(0px, 0px, -429px) rotateX(85deg) rotateY(0deg);
 		}
@@ -80,10 +80,10 @@
 		-moz-transform-style: preserve-3d;
 		-ms-transform-style: preserve-3d;
 		transform-style: preserve-3d;
-		height: 887px;
-		top: 535px;
-		width: calc(100% - 160px);
-		margin: auto 80px;
+		height: 714px;
+		top: 412px;
+		width: calc(100% - 200px);
+		margin: 0 101px;
 
 		img {
 		  transform: translate3d(0px, 0px, -436px) rotateX(-78deg) rotateY(0deg);
@@ -111,8 +111,8 @@
 
 	  .slide-container {
 		//width: 100%;
-		margin: 0 80px;
-		height: 887px;
+		margin: 0 128px;
+		height: 714px;
 
 		.video-slide-content {
 		  width: 100%;
@@ -120,7 +120,7 @@
 
 		  .video-img {
 			width: 100%;
-			height: 887px;
+			height: 700px;
 			overflow: hidden;
 			position: absolute;
 
@@ -131,7 +131,7 @@
 			  width: 100%;
 			  height: 100%;
 			  background: transparent url("~images/classicRepertoire/suspend-logo.png") no-repeat;
-			  background-size: 179px 179px;
+			  background-size: 125px 125px;
 			  background-position: center;
 			  z-index: 101;
 
@@ -147,8 +147,8 @@
 	}
 	.bottom-slide-contnet {
 	  position: relative;
-	  width: 1282px;
-	  margin: 180px auto 0 auto;
+	  width: 966px;
+	  margin: 70px auto 0 auto;
 	  background: transparent url("~images/performer-info/arrow-left-right.png") no-repeat;
 	  background-size: contain;
 	  background-position: center;
@@ -167,7 +167,7 @@
 	  }
 
 	  .slide-container {
-		width: 1050px;
+		width: 800px;
 		margin: 0 auto;
 		height: 322px;
 
@@ -199,7 +199,7 @@
   }
 
   .article-content {
-	margin-top: 465px;
+	margin-top: 286px;
 
 	.title-work-name {
 	  font-size: 64px;
@@ -214,14 +214,13 @@
 	  background-position: center;
 
 	  .preview-content {
-		height: 1100px;
-		bottom: 598px;
-		//width: 100%;
-		width: calc(100% - 170px);
-		margin: auto 84px;
+		height: 858px;
+		bottom: 393px;
+		width: calc(100% - 126px);
+		margin: auto 61px;
 		> div {
 		  width: 100%;
-		  height: 1100px;
+		  height: 714px;
 		  background-color: #ffffff;
 		  padding: 50px;
 		  transform: translate3d(0px, 0px, -529px) rotateX(85deg) rotateY(0deg);
@@ -230,13 +229,13 @@
 
 	  .next-content {
 		//width: 100%;
-		height: 1100px;
-		top: 646px;
-		width: calc(100% - 170px);
-		margin: auto 84px;
+		height: 858px;
+		top: 546px;
+		width: calc(100% - 115px);
+		margin: auto 58px;
 		> div {
 		  width: 100%;
-		  height: 1100px;
+		  height: 714px;
 		  background-color: #ffffff;
 		  padding: 50px;
 		  transform: translate3d(0px, 0px, -534px) rotateX(-80deg) rotateY(0deg);
@@ -263,15 +262,15 @@
 	  .slide-container {
 		//width: 100%;
 		//margin: 0 auto;
-		height: 1100px;
-		margin: 0 80px;
+		height: 858px;
+		margin: 0 120px;
 
 		.article-scroll-content {
 		  width: 100%;
-		  height: 1100px;
+		  height: 858px;
 		  //overflow: hidden;
 		  background-color: #ffffff;
-		  padding: 50px;
+		  padding: 25px;
 		  overflow: scroll;
 		  .bottom-info-content {
 			height: 300px;
@@ -283,8 +282,8 @@
 	}
 	.bottom-slide-contnet {
 	  position: relative;
-	  width: 1282px;
-	  margin: 180px auto 0 auto;
+	  width: 966px;
+	  margin: 150px auto 0 auto;
 	  background: transparent url("~images/performer-info/arrow-left-right.png") no-repeat;
 	  background-size: contain;
 	  background-position: 0 100px;
@@ -303,12 +302,12 @@
 	  }
 
 	  .slide-container {
-		width: 1050px;
+		width: 800px;
 		margin: 0 auto;
-		height: 595px;
+		height: 367px;
 
 		.article-li {
-		  width: 247px;
+		  width: 190px;
 		  float: left;
 		  //margin-left: 140px;
 		  word-break: break-all;
@@ -322,7 +321,7 @@
 		  }
 
 		  .article-name {
-			font-size: 30px;
+			font-size: 25px;
 			color: #ffffff;
 			width: 100%;
 			text-align: center;
@@ -332,9 +331,10 @@
 
 		  .article-img {
 			float: left;
-			width: 247px;
-			height: 292px;
+			width: 170px;
+			height: 210px;
 			overflow: hidden;
+
 		  }
 
 		}
@@ -360,7 +360,7 @@
 		top: 20px;
 	  }
 
-	  .pswp__preloader{
+	  .pswp__preloader {
 		display: none !important;
 	  }
 

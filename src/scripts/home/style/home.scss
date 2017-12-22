@@ -17,8 +17,8 @@ body {
   background: transparent;
   overflow: auto;
   font-size: 16px;
-  width: 1502px !important;
-  height: 2665px !important;
+  width: 1080px !important;
+  height: 1848px !important;
   margin: 0;
   padding: 0;
   position: relative;
@@ -44,12 +44,12 @@ body {
   //返回按钮样式
   .back-off {
 	position: absolute;
-	right: 77px;
-	bottom: 644px;
+	right: 54px;
+	bottom: 410px;
+	width: 90px;
+	height: 89px;
 	background: transparent url("~images/back-off.png") no-repeat;
 	background-size: contain;
-	width: 124px;
-	height: 124px;
   }
 
 }
@@ -58,7 +58,7 @@ body {
   background: transparent url("~images/home/home-bg.jpg") no-repeat;
   width: 100%;
   height: 100%;
-  background-size: contain;
+  background-size: 100% 100%;
   position: relative;
 
   /*-----------顶部点击区域样式 start 既时间展示区域------------*/
@@ -68,16 +68,16 @@ body {
 	position: absolute;
 	height: 600px;
 	z-index: 10;
-	top: 777px;
+	top: 425px;
 
 	//时间样式
 	.performer-time-content {
-	  font-size: 120px;
+	  font-size: 80px;
 	  position: absolute;
 	  color: #efe3b4;
 	  width: 100%;
 	  text-align: center;
-	  bottom: -31px;
+	  bottom: 40px;
 	  padding-left: 29px;
 	}
   }
@@ -85,24 +85,28 @@ body {
 
   /*-----------样式-------------*/
   .bottom-content {
-	width: 1240px;
+	width: 100%;
 	height: 720px;
 	position: absolute;
-	bottom: 286px;
-	left: 152px;
+	bottom: 0;
+	left: 0;
 
 	//左侧进入经典剧目页样式
 	.bottom-left {
 	  display: inline-block;
 	  height: 100%;
 	  width: 340px;
+	  position: relative;
 
 	  //经典剧目 区域样式
 	  .left-title-img {
 		background: transparent url("~images/home/home-title.png") no-repeat;
 		background-size: contain;
 		height: 167px;
-		width: 294px;
+		width: 220px;
+		position: absolute;
+		left: 100px;
+		top: 41px;
 	  }
 
 	  //点击进入样式
@@ -112,8 +116,8 @@ body {
 		height: 44px;
 		width: 179px;
 		position: absolute;
-		bottom: 180px;
-		left: 51px;
+		bottom: 327px;
+		left: 123px;
 	  }
 	}
 
@@ -125,10 +129,10 @@ body {
 	  .right-thumbnail {
 		//background: transparent url("~images/home/thumbnail.jpg") no-repeat;
 		//background-size: contain;
-		height: 443px;
-		width: 710px;
-		margin-left: 85px;
-		margin-top: 66px;
+		height: 347px;
+		width: 571px;
+		margin-left: 43px;
+		margin-top: 35px;
 	  }
 
 	}

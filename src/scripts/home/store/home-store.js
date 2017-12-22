@@ -13,19 +13,45 @@ function HomeStore() {
 	this.isPerformerInfoDropDownShowBg = false;
 	this.isShowSuspend = true;
 	this.isMaskLayerPlay = false;
-//this.letterArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].reverse();
+this.letterArr = [{"id": "1", "letter": "A"},
+	{"id": "2", "letter": "B"},
+	{"id": "3", "letter": "C"},
+	{"id": "4", "letter": "D"},
+	{"id": "5", "letter": "E"},
+	{"id": "6", "letter": "F"},
+	{"id": "7", "letter": "G"},
+	{"id": "8", "letter": "H"},
+	{"id": "9", "letter": "I"},
+	{"id": "10", "letter": "G"},
+	{"id": "11", "letter": "K"},
+	{"id": "12", "letter": "L"},
+	{"id": "13", "letter": "M"},
+	{"id": "14", "letter": "N"},
+	{"id": "15", "letter": "O"},
+	{"id": "16", "letter": "P"},
+	{"id": "17", "letter": "Q"},
+	{"id": "18", "letter": "R"},
+	{"id": "19", "letter": "S"},
+	{"id": "20", "letter": "T"},
+	{"id": "21", "letter": "U"},
+	{"id": "22", "letter": "V"},
+	{"id": "23", "letter": "W"},
+	{"id": "24", "letter": "X"},
+	{"id": "25", "letter": "Y"},
+	{"id": "26", "letter": "Z"}
+];
 	this.performerList = [];
 	this.isShowPerformerList = [];
 	this.performer = {};
-	this.letterArr = [];
+	// this.letterArr = [];
 	this.classicRepertoireList = [];
 	this.classicRepertoire = {};
 	this.loopVideoArr = [];
 	this.isShowLeterStr = "";
 	this._start = 0;
 	this._end = 0;
-	this.touchHeight = 891;
-	this.touchTop = 877;
+	this.touchHeight = 640;
+	this.touchTop = 625;
 	this.clickedIndex = 0;
 	this.performerID = "";
 	this.isHiddenAllImg = false;
@@ -123,7 +149,7 @@ HomeStore.prototype.getPerformerList = function (performerList) {
 		return (b.letter).charCodeAt() - (a.letter).charCodeAt()
 	});
 
-	this.letterArr = letterArr;
+	// this.letterArr = letterArr;
 
 	if (this.letterArr.length > 0) {
 		this.letterArr.map(function (letter, index) {
@@ -234,8 +260,8 @@ HomeStore.prototype.backOff = function (type) {
 			this.isOpenHomePage = false;
 			this.isOpenPerformerInfo = false;
 			this.isOpenPerformerList = true;
-			this.touchHeight = 891;
-			this.touchTop = 877;
+			this.touchHeight = 640;
+			this.touchTop = 625;
 			this.isPerformerInfoDropDownShowBg = false;
 			this.isPerformerInfoDropDown = false;
 			this.isMaskLayerPlay = false;
@@ -258,13 +284,13 @@ HomeStore.prototype.performerInfoDropDown = function () {
 	if (this.isPerformerInfoDropDown) {
 		this.isPerformerInfoDropDown = false;
 		this.isPerformerInfoDropDownShowBg = false;
-		this.touchHeight = 891;
-		this.touchTop = 877;
+		this.touchHeight = 640;
+		this.touchTop = 625;
 	} else {
 		this.isPerformerInfoDropDown = true;
 		this.isPerformerInfoDropDownShowBg = true;
-		this.touchHeight = 1769;
-		this.touchTop = 1760;
+		this.touchHeight = 1200;
+		this.touchTop = 1191;
 	}
 };
 
@@ -420,24 +446,24 @@ HomeStore.prototype.touchMove = function (event) {
 		if (this._end > 878) {
 			return
 		}
-		if (this.touchHeight >= 1769 && this._end < 0) {
+		if (this.touchHeight >= 1200 && this._end < 0) {
 			return
 		}
 
-		this.touchHeight = 1769 - this._end;
-		this.touchTop = 1760 - this._end;
+		this.touchHeight = 1200 - this._end;
+		this.touchTop = 1191 - this._end;
 	} else {
 		if (-this._end > 878) {
 			return
 		}
 
-		if (this.touchHeight <= 891 && this._end > 0) {
+		if (this.touchHeight <= 640 && this._end > 0) {
 			return
 		}
 		this.isPerformerInfoDropDownShowBg = true;
 
-		this.touchHeight = 891 - this._end;
-		this.touchTop = 877 - this._end;
+		this.touchHeight = 640 - this._end;
+		this.touchTop = 625 - this._end;
 	}
 
 };
@@ -445,13 +471,13 @@ HomeStore.prototype.touchMove = function (event) {
 HomeStore.prototype.touchEnd = function (type) {
 	if (this._end < 0) {
 		if (-439 < this._end && this._end < 0) {
-			this.touchHeight = 891;
-			this.touchTop = 877;
+			this.touchHeight = 640;
+			this.touchTop = 625;
 			this.isPerformerInfoDropDown = false;
 			this.isPerformerInfoDropDownShowBg = false;
 		} else {
-			this.touchHeight = 1769;
-			this.touchTop = 1760;
+			this.touchHeight = 1200;
+			this.touchTop = 1191;
 			this.isPerformerInfoDropDown = true;
 			this.isPerformerInfoDropDownShowBg = true;
 		}
@@ -459,13 +485,13 @@ HomeStore.prototype.touchEnd = function (type) {
 
 	} else if (this._end > 0) {
 		if (0 < this._end && this._end < 439) {
-			this.touchHeight = 1769;
-			this.touchTop = 1760;
+			this.touchHeight = 1200;
+			this.touchTop = 1191;
 			this.isPerformerInfoDropDown = true;
 			this.isPerformerInfoDropDownShowBg = true;
 		} else {
-			this.touchHeight = 891;
-			this.touchTop = 877;
+			this.touchHeight = 640;
+			this.touchTop = 625;
 			this.isPerformerInfoDropDown = false;
 			this.isPerformerInfoDropDownShowBg = false;
 		}
