@@ -1,8 +1,8 @@
 /**
  * Created by fengs on 2016/9/16.
  */
-var PublicAjax = require("../../../ajax/public-ajax-local");
-// var PublicAjax = require("../../../ajax/public-ajax");
+// var PublicAjax = require("../../../ajax/public-ajax-local");
+var PublicAjax = require("../../../ajax/public-ajax");
 
 function HomeAction() {
 
