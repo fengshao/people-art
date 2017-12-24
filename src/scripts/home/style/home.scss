@@ -15,10 +15,13 @@
 
 body {
   background: transparent;
-  overflow: auto;
+  //overflow: auto;
   font-size: 16px;
-  width: 1080px !important;
-  height: 1848px !important;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  //width: 720px !important;
+  //height: 1280px !important;
   margin: 0;
   padding: 0;
   position: relative;
@@ -44,10 +47,10 @@ body {
   //返回按钮样式
   .back-off {
 	position: absolute;
-	right: 54px;
-	bottom: 410px;
-	width: 90px;
-	height: 89px;
+	right: 36px;
+	bottom: 273px;
+	width: 60px;
+	height: 60px;
 	background: transparent url("~images/back-off.png") no-repeat;
 	background-size: contain;
   }
@@ -66,18 +69,18 @@ body {
 	text-align: center;
 	width: 100%;
 	position: absolute;
-	height: 600px;
+	height: 686px;
 	z-index: 10;
-	top: 425px;
+	top: 0;
 
 	//时间样式
 	.performer-time-content {
-	  font-size: 80px;
+	  font-size: 54px;
 	  position: absolute;
 	  color: #efe3b4;
 	  width: 100%;
 	  text-align: center;
-	  bottom: 40px;
+	  bottom: 4px;
 	  padding-left: 29px;
 	}
   }
@@ -86,7 +89,7 @@ body {
   /*-----------样式-------------*/
   .bottom-content {
 	width: 100%;
-	height: 720px;
+	height: 516px;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -95,18 +98,18 @@ body {
 	.bottom-left {
 	  display: inline-block;
 	  height: 100%;
-	  width: 340px;
+	  width: 237px;
 	  position: relative;
 
 	  //经典剧目 区域样式
 	  .left-title-img {
 		background: transparent url("~images/home/home-title.png") no-repeat;
 		background-size: contain;
-		height: 167px;
-		width: 220px;
+		height: 85px;
+		width: 124px;
 		position: absolute;
-		left: 100px;
-		top: 41px;
+		left: 76px;
+		top: 68px;
 	  }
 
 	  //点击进入样式
@@ -114,10 +117,10 @@ body {
 		background: transparent url("~images/home/home-click.png") no-repeat;
 		background-size: contain;
 		height: 44px;
-		width: 179px;
+		width: 118px;
 		position: absolute;
-		bottom: 327px;
-		left: 123px;
+		bottom: 200px;
+		left: 82px
 	  }
 	}
 
@@ -129,10 +132,10 @@ body {
 	  .right-thumbnail {
 		//background: transparent url("~images/home/thumbnail.jpg") no-repeat;
 		//background-size: contain;
-		height: 347px;
-		width: 571px;
-		margin-left: 43px;
-		margin-top: 35px;
+		height: 214px;
+		width: 363px;
+		margin-left: 26px;
+		margin-top: 66px;
 	  }
 
 	}

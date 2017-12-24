@@ -11,13 +11,14 @@
 	background-size: 100% 100%;
 	background-position: center;
 	width: 100%;
-	height: 38px;
+	height: 25px;
 	position: absolute;
-	top: 625px;
+	top: 416px;
 	z-index: 98;
+
 	@include transition-public(top);
 	&.top-arrow-open {
-	  top: 1760px;
+	  top: 794px;
 	}
   }
 
@@ -27,7 +28,7 @@
 	background: transparent url("~images/performer-info/top-bg.jpg") no-repeat;
 	background-size: contain !important;
 	width: 100%;
-	height: 640px;
+	height: 426px;
 	overflow: hidden;
 	@include transition-public(height);
 
@@ -36,14 +37,14 @@
 	  background-size: 100% 100%;
 	  position: absolute;
 	  right: 0;
-	  width: 148px;
-	  height: 178px;
-	  top: 22px;
+	  width: 98px;
+	  height: 118px;
+	  top: 14px;
 	  z-index: 1;
 	}
 
 	&.top-content-open {
-	  height: 1200px;
+	  height: 533px;
 	}
 
 	&.top-content-open-showBg {
@@ -51,29 +52,29 @@
 	}
 
 	.top-info {
-	  height: 633px;
+	  height: 422px;
 	  width: 100%;
 	  //左侧头像 姓名区域样式
 	  .left-content {
-		width: 451px;
-		height: 577px;
+		width: 300px;
+		height: 384px;
 		float: left;
 
 		.actor-name {
-		  margin-top: 82px;
-		  margin-left: 92px;
-		  font-size: 75px;
+		  margin-top: 54px;
+		  margin-left: 61px;
+		  font-size: 50px;
 		  color: #FFFFFF;
 		}
 
 		.actor-img {
 		  background: transparent url("~images/performer-info/the-actor-bg.png") no-repeat;
-		  margin-top: 13px;
-		  width: 324px;
-		  height: 335px;
-		  margin-left: 40px;
+		  margin-top: 8px;
+		  width: 216px;
+		  height: 223px;
+		  margin-left: 26px;
 		  font-size: 0;
-		  padding: 5px 64px 23px 25px;
+		  padding: 5px 42px 15px 16px;
 		  background-size: contain;
 		  img {
 			width: 100%;
@@ -86,16 +87,16 @@
 	  //右侧文字区域样式
 	  .right-content {
 		float: left;
-		height: 578px;
-		width: 624px;
+		height: 385px;
+		width: 416px;
 		z-index: 10;
 		position: relative;
 
 		//来院时间及毕业院校区域样式
 		.educational-information {
-		  margin-top: 73px;
-		  height: 89px;
-		  font-size: 30px;
+		  margin-top: 48px;
+		  height: 59px;
+		  font-size: 20px;
 		  color: #821c1e;
 
 		  .educational-title {
@@ -103,7 +104,7 @@
 		  }
 
 		  .educational-content {
-			width: 317px;
+			width: 211px;
 			@extend .inline-block-vertical-align;
 			@extend .overhidden-public;
 
@@ -112,57 +113,57 @@
 
 		//个性签名区域样式
 		.personalized-signature {
-		  width: 570px;
-		  height: 130px;
+		  width: 380px;
+		  height: 90px;
 		  color: #821c1e;
-		  font-size: 30px;
-		  margin-top: 50px;
-		  line-height: 64px;
+		  font-size: 20px;
+		  margin-top: 33px;
+		  line-height: 42px;
 		  overflow: hidden;
 		  word-break: break-all;
 		}
 
 		.brief-introduction {
-		  width: 570px;
-		  height: 230px;
-		  font-size: 26px;
+		  width: 380px;
+		  height: 150px;
+		  font-size: 17px;
 		  color: #1a0b03;
-		  margin-top: 44px;
+		  margin-top: 29px;
 		  overflow: hidden;
 		}
 	  }
 	}
 
 	.bottom-info {
-	  margin-top: 30px;
+	  margin-top: 20px;
 	  width: 100%;
-	  height: 533px;
+	  height: 335px;
 
 	  .bottom-info-title {
-		font-size: 46px;
+		font-size: 30px;
 		color: #1a0b03;
 	  }
 	  .bottom-info-content {
-		font-size: 32px;
+		font-size: 21px;
 		color: #1a0b03;
-		padding-right: 20px;
+		padding-right: 13px;
 	  }
 
 	  .zhanwi {
-		height: 30px;
+		height: 20px;
 		width: 100%;
 	  }
 
 	  .bottom-info-scrollbar {
 		height: 100%;
-		width: 10px;
+		width: 6px;
 		background-color: #9f857a;
 		position: absolute;
 		border-radius: 50px;
 		right: 0;
 
 		.handle {
-		  width: 6px;
+		  width: 4px;
 		  margin: 0 auto;
 		  background-color: #fcfbfa;
 		  border-radius: 50px;
@@ -171,9 +172,9 @@
 	  }
 
 	  .teleplay-works {
-		margin-left: 60px;
-		width: 467px;
-		height: 520px;
+		margin-left: 40px;
+		width: 311px;
+		height: 346px;
 		float: left;
 		position: relative;
 
@@ -183,10 +184,10 @@
 		}
 	  }
 	  .honour-record {
-		width: 467px;
-		height: 520px;
+		width: 311px;
+		height: 346px;
 		float: left;
-		margin-left: 34px;
+		margin-left: 22px;
 		position: relative;
 		.honour-record-scrollbar-content {
 		  height: 100%;
@@ -202,22 +203,22 @@
 	background: transparent url("~images/performer-info/bottom-bg.jpg") no-repeat;
 	background-size: contain;
 	width: 100%;
-	height: 1301px;
-	padding-top: 55px;
+	height: 867px;
+	padding-top: 36px;
 
 	//顶部导航样式
 	.nav-content {
-	  margin-left: 139px;
-	  width: 1204px;
+	  margin-left: 77px;
+	  width: 802px;
 	  //height: 139px;
 	  overflow: hidden;
 
 	  .nav-li {
 		float: left;
-		width: 200px;
-		height: 88px;
+		width: 133px;
+		height: 58px;
 		background: transparent url("~images/performer-info/nav-bg.png") no-repeat;
-		background-size: contain;
+		background-size: contain !important;
 		margin-left: 3px;
 
 		&:first-child {
@@ -226,10 +227,10 @@
 
 		.nav-li-title {
 		  color: #495978;
-		  height: 74px;
-		  width: 200px;
-		  line-height: 74px;
-		  font-size: 30px;
+		  height: 49px;
+		  width: 133px;
+		  line-height: 49px;
+		  font-size: 20px;
 		  text-align: center;
 
 		  .select {
@@ -248,49 +249,49 @@
 
 	//底部轮区域样式
 	.slide-content {
-	  padding-right: 156px;
-	  padding-left: 156px;
-	  padding-top: 30px;
+	  padding-right: 104px;
+	  padding-left: 104px;
+	  padding-top: 20px;
 
 	  .no-data-cls{
-		font-size: 37px;
+		font-size: 24px;
 		color: #000000;
 	  }
 
 	  //话剧作品轮播样式
 	  .modern-contnet {
 		position: relative;
-		height: 500px;;
+		height: 333px;;
 		.left-arrow {
 		  @extend .left-arrow-public;
-		  top: 174px;
+		  top: 116px;
 		}
 		.right-arrow {
 		  @extend .right-arrow-public;
-		  top: 174px;
+		  top: 116px;
 		}
 
 		.slide-container {
 		  width: 100%;
 		  margin: 0 auto;
-		  height: 500px;;
+		  height: 333px;;
 
 		  .modern-slide-content {
-			width: 411px;
-			height: 388px;
+			width: 274px;
+			height: 258px;
 
 			.modern-name {
-			  font-size: 50px;
+			  font-size: 33px;
 			  color: #ffffff;
-			  height: 60px;
-			  margin-bottom: 20px;
+			  height: 40px;
+			  margin-bottom: 13px;
 			  text-align: center;
 			  //visibility: hidden;
 
 			}
 			.modern-img {
-			  width: 411px;
-			  height: 308px;
+			  width: 274px;
+			  height: 205px;
 			  overflow: hidden;
 			  position: absolute;
 			}
@@ -306,36 +307,36 @@
 
 		.left-arrow {
 		  @extend .left-arrow-public;
-		  top: 142px;
+		  top: 94px;
 		}
 
 		.right-arrow {
 		  @extend .right-arrow-public;
-		  top: 142px;
+		  top: 94px;
 		}
 
 		.slide-container {
 		  width: 100%;
 		  margin: 0 auto;
-		  height: 405px;
+		  height: 270px;
 		  .he-institute-slide-content, .movies-slide-content {
 			width: 100%;
 			height: 100%;
 			overflow: hidden;
 
 			.he-institute-name, .movies-name {
-			  font-size: 35px;
+			  font-size: 23px;
 			  color: #ffffff;
 			  height: 100%;
 			  text-align: center;
 			  float: left;
-			  width: calc(100% - 580px);
+			  width: calc(100% - 386px);
 			  p {
 				display: table-cell;
 				vertical-align: middle;
 				margin: 0;
-				width: 380px;
-				height: 350px;
+				width: 253px;
+				height: 233px;
 				word-break: break-all;
 			  }
 
@@ -346,24 +347,24 @@
 			  background: transparent url("~images/performer-info/works-bg.png") no-repeat;
 			  background-size: contain;
 			  float: left;
-			  width: 580px;
+			  width: 386px;
 			  height: 100%;
 			  overflow: hidden;
 			  position: relative;
 			  img {
-				margin: 35px 44px 100px 55px;
-				width: calc(580px - 70px * 2);
-				height: calc(100% - 138px);
+				margin: 23px 29px 66px 26px;
+				width: calc(386px - 46px * 2);
+				height: calc(100% - 92px);
 			  }
 
 			  .suspend-logo {
 				background: transparent url("~images/performer-info/suspend-logo-small.png") no-repeat;
 				background-size: 100% 100%;
-				width: 50px;
-				height: 50px;
+				width: 33px;
+				height: 33px;
 				position: absolute;
-				left: 257px;
-				top: 141px;
+				left: 171px;
+				top: 94px;
 			  }
 
 			}
@@ -415,26 +416,26 @@
 
 		.left-arrow {
 		  @extend .left-arrow-public;
-		  top: 95px;
+		  top: 63px;
 		}
 
 		.right-arrow {
 		  @extend .right-arrow-public;
-		  top: 95px;
+		  top: 63px;
 		}
 
 		.slide-container {
 		  width: 100%;
 		  margin: 0 auto;
-		  height: 595px;
+		  height: 396px;
 
 		  .article-li {
 			word-break: break-all;
-			width: 247px;
+			width: 164px;
 			float: left;
 
 			.article-name {
-			  font-size: 25px;
+			  font-size: 16px;
 			  color: #ffffff;
 			  width: 100%;
 			  text-align: center;
@@ -443,8 +444,8 @@
 
 			.article-img {
 			  float: left;
-			  width: 170px;
-			  height: 210px;
+			  width: 113px;
+			  height: 140px;
 			  overflow: hidden;
 			}
 
@@ -461,14 +462,14 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 481px;
+	height: 320px;
 	background: transparent url("~images/performer-info/foter.png") no-repeat;
 	background-size: 100% 100%;
 
 	.back-off {
 	  position: absolute;
-	  right: 28px;
-	  bottom: 60px;
+	  right: 18px;
+	  bottom: 40px;
 	}
   }
 

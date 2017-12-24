@@ -11,37 +11,37 @@
   z-index: 100;
 
   .back-off {
-	right: 28px;
-	bottom: 59px;
+	right: 18px;
+	bottom: 39px;
   }
   .mask-layer-top-logo {
 	background: transparent url("~images/performer-info/mask-layer-top-logo.png") no-repeat;
 	background-size: contain;
-	right: 8px;
-	top: 364px;
-	width: 148px;
-	height: 178px;
+	right: 5px;
+	top: 242px;
+	width: 98px;
+	height: 118px;
 	position: absolute;
 	&.mask-layer-top-logo-top {
-	  top: 213px;
+	  top: 142px;
 	}
   }
 
   .video-content {
 	position: relative;
 	width: 100%;
-	margin-top: 370px;
+	margin-top: 246px;
 	height: 100%;
 
 	.title-work-name {
-	  font-size: 64px;
+	  font-size: 42px;
 	  color: #FFFFFF;
 	  text-align: center;
 	}
 
 	.top-slide-contnet {
 	  position: relative;
-	  margin-top: 80px;
+	  margin-top: 53px;
 	  //height: 887px;
 
 	  .preview-content {
@@ -55,10 +55,10 @@
 		-ms-transform-style: preserve-3d;
 		transform-style: preserve-3d;
 		//width: 100%;
-		height: 714px;
-		bottom: 389px;
-		width: calc(100% - 202px);
-		margin: auto 105px;
+		height: 476px;
+		bottom: 259px;
+		width: calc(100% - 134px);
+		margin: auto 70px;
 		img {
 		  transform: translate3d(0px, 0px, -429px) rotateX(85deg) rotateY(0deg);
 		}
@@ -80,10 +80,10 @@
 		-moz-transform-style: preserve-3d;
 		-ms-transform-style: preserve-3d;
 		transform-style: preserve-3d;
-		height: 714px;
-		top: 412px;
-		width: calc(100% - 200px);
-		margin: 0 101px;
+		height: 476px;
+		top: 274px;
+		width: calc(100% - 133px);
+		margin: 0 67px;
 
 		img {
 		  transform: translate3d(0px, 0px, -436px) rotateX(-78deg) rotateY(0deg);
@@ -91,28 +91,28 @@
 
 		> div {
 		  background-color: #ffffff;
-		  padding: 50px;
+		  padding: 33px;
 		  transform: translate3d(0px, 0px, -436px) rotateX(-78deg) rotateY(0deg);
 		}
 	  }
 
 	  .left-arrow {
 		@extend .left-arrow-public;
-		top: 380px;
-		left: 8px;
+		top: 253px;
+		left: 5px;
 		z-index: 100;
 	  }
 	  .right-arrow {
 		@extend .right-arrow-public;
-		top: 380px;
-		right: 8px;
+		top: 253px;
+		right: 5px;
 		z-index: 100;
 	  }
 
 	  .slide-container {
 		//width: 100%;
-		margin: 0 128px;
-		height: 714px;
+		margin: 0 85px;
+		height: 476px;
 
 		.video-slide-content {
 		  width: 100%;
@@ -120,7 +120,7 @@
 
 		  .video-img {
 			width: 100%;
-			height: 700px;
+			height: 466px;
 			overflow: hidden;
 			position: absolute;
 
@@ -131,7 +131,7 @@
 			  width: 100%;
 			  height: 100%;
 			  background: transparent url("~images/classicRepertoire/suspend-logo.png") no-repeat;
-			  background-size: 125px 125px;
+			  background-size: 83px 83px;
 			  background-position: center;
 			  z-index: 101;
 
@@ -147,48 +147,48 @@
 	}
 	.bottom-slide-contnet {
 	  position: relative;
-	  width: 966px;
-	  margin: 70px auto 0 auto;
+	  width: 644px;
+	  margin: 46px auto 0 auto;
 	  background: transparent url("~images/performer-info/arrow-left-right.png") no-repeat;
 	  background-size: contain;
 	  background-position: center;
 
 	  .left-arrow {
 		@extend .left-arrow-public;
-		top: 100px;
+		top: 66px;
 		left: 0;
 		background: none;
 	  }
 	  .right-arrow {
 		@extend .right-arrow-public;
 		background: none;
-		top: 100px;
+		top: 66px;
 		right: 0;
 	  }
 
 	  .slide-container {
-		width: 800px;
+		width: 533px;
 		margin: 0 auto;
-		height: 322px;
+		height: 214px;
 
 		.preview-slide-content {
-		  width: 337px;
-		  height: 322px;
+		  width: 224px;
+		  height: 212px;
 		  overflow: hidden;
 
 		  .modern-name {
-			font-size: 50px;
+			font-size: 33px;
 			color: #ffffff;
-			height: 60px;
-			margin-bottom: 20px;
+			height: 40px;
+			margin-bottom: 13px;
 			text-align: center;
 			//visibility: hidden;
-			margin-top: 20px;
+			margin-top: 13px;
 
 		  }
 		  .modern-img {
-			width: 337px;
-			height: 244px;
+			width: 224px;
+			height: 162px;
 			overflow: hidden;
 		  }
 		}
@@ -199,45 +199,45 @@
   }
 
   .article-content {
-	margin-top: 286px;
+	margin-top: 190px;
 
 	.title-work-name {
-	  font-size: 64px;
+	  font-size: 42px;
 	  color: #FFFFFF;
 	  text-align: center;
 	}
 
 	.top-slide-contnet {
 	  position: relative;
-	  margin-top: 120px;
+	  margin-top: 80px;
 	  background-size: contain;
 	  background-position: center;
 
 	  .preview-content {
-		height: 858px;
-		bottom: 393px;
-		width: calc(100% - 126px);
-		margin: auto 61px;
+		height: 572px;
+		bottom: 262px;
+		width: calc(100% - 84px);
+		margin: auto 40px;
 		> div {
 		  width: 100%;
-		  height: 714px;
+		  height: 476px;
 		  background-color: #ffffff;
-		  padding: 50px;
+		  padding: 33px;
 		  transform: translate3d(0px, 0px, -529px) rotateX(85deg) rotateY(0deg);
 		}
 	  }
 
 	  .next-content {
 		//width: 100%;
-		height: 858px;
-		top: 546px;
-		width: calc(100% - 115px);
-		margin: auto 58px;
+		height: 572px;
+		top: 364px;
+		width: calc(100% - 76px);
+		margin: auto 38px;
 		> div {
 		  width: 100%;
-		  height: 714px;
+		  height: 476px;
 		  background-color: #ffffff;
-		  padding: 50px;
+		  padding: 33px;
 		  transform: translate3d(0px, 0px, -534px) rotateX(-80deg) rotateY(0deg);
 		}
 	  }
@@ -245,15 +245,15 @@
 	  .left-arrow {
 		@extend .left-arrow-public;
 		//background: transparent url("~images/performer-info/article-arrow-left.png") no-repeat;
-		top: 380px;
-		left: 8px;
+		top: 253px;
+		left: 5px;
 		z-index: 100;
 	  }
 
 	  .right-arrow {
 		@extend .right-arrow-public;
-		top: 380px;
-		right: 8px;
+		top: 253px;
+		right: 5px;
 		z-index: 100;
 		//background: transparent url("~images/performer-info/article-arrow-right.png") no-repeat;
 
@@ -262,18 +262,18 @@
 	  .slide-container {
 		//width: 100%;
 		//margin: 0 auto;
-		height: 858px;
-		margin: 0 120px;
+		height: 572px;
+		margin: 0 80px;
 
 		.article-scroll-content {
 		  width: 100%;
-		  height: 858px;
+		  height: 572px;
 		  //overflow: hidden;
 		  background-color: #ffffff;
-		  padding: 25px;
+		  padding: 16px;
 		  overflow: scroll;
 		  .bottom-info-content {
-			height: 300px;
+			height: 200px;
 		  }
 
 		}
@@ -282,32 +282,32 @@
 	}
 	.bottom-slide-contnet {
 	  position: relative;
-	  width: 966px;
-	  margin: 150px auto 0 auto;
+	  width: 644px;
+	  margin: 100px auto 0 auto;
 	  background: transparent url("~images/performer-info/arrow-left-right.png") no-repeat;
 	  background-size: contain;
-	  background-position: 0 100px;
+	  background-position: 0 60px;
 
 	  .left-arrow {
 		@extend .left-arrow-public;
-		top: 100px;
+		top: 66px;
 		left: 0;
 		background: none;
 	  }
 	  .right-arrow {
 		@extend .right-arrow-public;
 		background: none;
-		top: 100px;
+		top: 66px;
 		right: 0;
 	  }
 
 	  .slide-container {
-		width: 800px;
+		width: 533px;
 		margin: 0 auto;
-		height: 367px;
+		height: 244px;
 
 		.article-li {
-		  width: 190px;
+		  width: 126px;
 		  float: left;
 		  //margin-left: 140px;
 		  word-break: break-all;
@@ -321,18 +321,18 @@
 		  }
 
 		  .article-name {
-			font-size: 25px;
+			font-size: 16px;
 			color: #ffffff;
 			width: 100%;
 			text-align: center;
 			float: left;
-			margin-top: 20px;
+			margin-top: 13px;
 		  }
 
 		  .article-img {
 			float: left;
-			width: 170px;
-			height: 210px;
+			width: 113px;
+			height: 140px;
 			overflow: hidden;
 
 		  }
@@ -346,18 +346,18 @@
 		transform: scale(2.5, 2.5);
 	  }
 	  .pswp__counter {
-		left: 10px;
-		top: 20px;
-		font-size: 30px;
+		left: 6px;
+		top: 13px;
+		font-size: 20px;
 	  }
 	  .pswp__caption__center_custom {
 		word-break: break-all;
-		font-size: 30px;
+		font-size: 20px;
 		max-width: 80%;
 	  }
 	  .pswp__button--close {
-		left: -17px;
-		top: 20px;
+		left: -11px;
+		top: 13px;
 	  }
 
 	  .pswp__preloader {

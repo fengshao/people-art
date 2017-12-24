@@ -33,7 +33,7 @@ var PerformerListPage = React.createClass({
 	initSly: function () {
 		frame ? frame.destroy(true) : frame = "";
 		if (this.props.letterArr.length > 0) {
-			$(".letter-list").arctext({radius: 780});
+			$(".letter-list").arctext({radius: 500});
 		}
 		var cont = $(".performer-list-content"),
 			scrollbar = cont.find(".performer-list-scrollbar"),
