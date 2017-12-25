@@ -9,6 +9,7 @@ var topSwiper = "";
 var bottomSwiper = "";
 var controlSwiper3 = "";
 var dataList = [];
+var content = '<img class="photo-swipe" data-title="teststsststststst" data-big="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg" data-size="964x1024" src="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_m.jpg" alt="Image description" style="width: 1000px;height: 500px" /> <div> <img class="photo-swipe" data-big="https://farm3.staticflickr.com/2567/5697107145_a4c2eaa0cd_o.jpg" data-size="1024x1024" src="https://farm3.staticflickr.com/2567/5697107145_3c27ff3cd1_m.jpg" alt="Image description"/> </div> <img class="photo-swipe" data-big="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg" data-size="1024x683" src="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_m.jpg" alt="Image description"/> <img class="photo-swipe" data-big="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_b.jpg" data-size="1024x768" src="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_m.jpg" alt="Image description"/>'
 var MaskLayer = React.createClass({
 	componentDidMount: function () {
 		var _this = this;
@@ -25,7 +26,7 @@ var MaskLayer = React.createClass({
 			initialSlide: this.props.clickedIndex,
 			onSlideChangeEnd: function (swiper) {
 				if (_this.props.isSelectPerformeInfoNavId == 4) {
-					_this.slideArticle();
+					// _this.slideArticle();
 					let $articleElement = $(".article-content .top-slide-contnet .video-slide-content.swiper-slide-active");
 					_this.props.selectArticle($articleElement.attr("data-id"));
 				}
@@ -53,7 +54,7 @@ var MaskLayer = React.createClass({
 			bottomSwiper = new Swiper('.bottom-slide-contnet .swiper-container', {
 				// slidesPerView: 3,
 				// centeredSlides: true,
-				spaceBetween: 140,
+				spaceBetween: 50,
 				// freeMode: true,
 
 				grabCursor: true,
@@ -220,17 +221,12 @@ var MaskLayer = React.createClass({
 											return (
 												<div key={i} className="swiper-slide video-slide-content"
 													 data-id={modern.article_id}>
-													<div>
-														<div className="mask-layer-scrollbar bottom-info-scrollbar">
-															<div className="handle"></div>
-														</div>
-														<div className="article-scroll-content"
-															 id={"maskLayer" + modern.article_id}
-															 data-pswp-uid={i+1}
-															 onClick={_this.props.onThumbnailsClick.bind(_this)}>
-															<div
-																dangerouslySetInnerHTML={{__html : modern.content }}>
-															</div>
+													<div className="article-scroll-content"
+														 id={"maskLayer" + modern.article_id}
+														 data-pswp-uid={i+1}
+														 onClick={_this.props.onThumbnailsClick.bind(_this)}>
+														<div
+															dangerouslySetInnerHTML={{__html : modern.content }}>
 														</div>
 													</div>
 												</div>

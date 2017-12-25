@@ -13,37 +13,37 @@ function HomeStore() {
 	this.isPerformerInfoDropDownShowBg = false;
 	this.isShowSuspend = true;
 	this.isMaskLayerPlay = false;
-	this.letterArr = [{"id": "1", "letter": "A"},
-		{"id": "2", "letter": "B"},
-		{"id": "3", "letter": "C"},
-		{"id": "4", "letter": "D"},
-		{"id": "5", "letter": "E"},
-		{"id": "6", "letter": "F"},
-		{"id": "7", "letter": "G"},
-		{"id": "8", "letter": "H"},
-		{"id": "9", "letter": "I"},
-		{"id": "10", "letter": "G"},
-		{"id": "11", "letter": "K"},
-		{"id": "12", "letter": "L"},
-		{"id": "13", "letter": "M"},
-		{"id": "14", "letter": "N"},
-		{"id": "15", "letter": "O"},
-		{"id": "16", "letter": "P"},
-		{"id": "17", "letter": "Q"},
-		{"id": "18", "letter": "R"},
-		{"id": "19", "letter": "S"},
-		{"id": "20", "letter": "T"},
-		{"id": "21", "letter": "U"},
-		{"id": "22", "letter": "V"},
-		{"id": "23", "letter": "W"},
-		{"id": "24", "letter": "X"},
-		{"id": "25", "letter": "Y"},
-		{"id": "26", "letter": "Z"}
-	];
+	// this.letterArr = [{"id": "1", "letter": "A"},
+	// 	{"id": "2", "letter": "B"},
+	// 	{"id": "3", "letter": "C"},
+	// 	{"id": "4", "letter": "D"},
+	// 	{"id": "5", "letter": "E"},
+	// 	{"id": "6", "letter": "F"},
+	// 	{"id": "7", "letter": "G"},
+	// 	{"id": "8", "letter": "H"},
+	// 	{"id": "9", "letter": "I"},
+	// 	{"id": "10", "letter": "G"},
+	// 	{"id": "11", "letter": "K"},
+	// 	{"id": "12", "letter": "L"},
+	// 	{"id": "13", "letter": "M"},
+	// 	{"id": "14", "letter": "N"},
+	// 	{"id": "15", "letter": "O"},
+	// 	{"id": "16", "letter": "P"},
+	// 	{"id": "17", "letter": "Q"},
+	// 	{"id": "18", "letter": "R"},
+	// 	{"id": "19", "letter": "S"},
+	// 	{"id": "20", "letter": "T"},
+	// 	{"id": "21", "letter": "U"},
+	// 	{"id": "22", "letter": "V"},
+	// 	{"id": "23", "letter": "W"},
+	// 	{"id": "24", "letter": "X"},
+	// 	{"id": "25", "letter": "Y"},
+	// 	{"id": "26", "letter": "Z"}
+	// ];
 	this.performerList = [];
 	this.isShowPerformerList = [];
 	this.performer = {};
-	// this.letterArr = [];
+	this.letterArr = [];
 	this.classicRepertoireList = [];
 	this.classicRepertoire = {};
 	this.loopVideoArr = [];
@@ -65,10 +65,10 @@ function HomeStore() {
 	};
 	this.isSelectPerformeInfoNavId = "1";
 	this.performeInfoNavList = [
-		{"id": "1", "name": "话剧作品", "isSelect": true},
-		{"id": "2", "name": "他院作品", "isSelect": false},
-		{"id": "3", "name": "影视作品", "isSelect": false},
-		{"id": "4", "name": "发表文章", "isSelect": false}
+		{"id": "1", "name": "话剧作品", "isSelect": true, "isShow": true},
+		{"id": "2", "name": "他院作品", "isSelect": false, "isShow": true},
+		{"id": "3", "name": "影视作品", "isSelect": false, "isShow": true},
+		{"id": "4", "name": "发表文章", "isSelect": false, "isShow": true}
 	];
 	this.previewContent = "";
 	this.nextContent = "";
@@ -153,7 +153,7 @@ HomeStore.prototype.getPerformerList = function (performerList) {
 		return (b.letter).charCodeAt() - (a.letter).charCodeAt()
 	});
 
-	// this.letterArr = letterArr;
+	this.letterArr = letterArr;
 
 	if (this.letterArr.length > 0) {
 		this.letterArr.map(function (letter, index) {
@@ -243,6 +243,12 @@ HomeStore.prototype.openPerformerInfo = function (id) {
 };
 HomeStore.prototype.getPerformerInfo = function (performer) {
 	this.performer = performer.data || this.performer;
+
+	this.performer.modernList && this.performer.modernList.length > 0 ? this.performeInfoNavList[0].isShow = true : this.performeInfoNavList[0].isShow = false;
+	this.performer.heInstituteList && this.performer.heInstituteList.length > 0 ? this.performeInfoNavList[1].isShow = true : this.performeInfoNavList[1].isShow = false;
+	this.performer.moviesList && this.performer.moviesList.length > 0 ? this.performeInfoNavList[2].isShow = true : this.performeInfoNavList[2].isShow = false;
+	this.performer.articleList && this.performer.articleList.length > 0 ? this.performeInfoNavList[3].isShow = true : this.performeInfoNavList[3].isShow = false;
+
 	this.ajaxSucc = true;
 };
 

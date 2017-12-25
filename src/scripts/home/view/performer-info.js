@@ -161,7 +161,8 @@ var PerformerInfo = React.createClass({
 							this.props.performeInfoNavList.map(function (performeInfoNav, index) {
 								var topArrowCls = classNames({
 									'nav-li': true,
-									'nav-li-select': performeInfoNav.isSelect
+									'nav-li-select': performeInfoNav.isSelect,
+									'isShow': performeInfoNav.isShow
 								});
 								return (
 									<div
