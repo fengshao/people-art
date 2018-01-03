@@ -54,11 +54,7 @@ var HomePage = React.createClass({
 				<div className="click-div" onClick={this.props.showPerformerList.bind(this)}>
 					<div className="performer-time-content">{this.props.homePageData.Time}</div>
 				</div>
-				<div className="bottom-content">
-					<div className="bottom-left" onClick={this.props.showClassicRepertoirePage.bind(this)}>
-						<div className="left-title-img"></div>
-						<div className="left-click-in-img"></div>
-					</div>
+				<div className="bottom-content" onClick={this.props.showClassicRepertoirePage.bind(this)}>
 					<div className="bottom-right">
 						<div className="right-thumbnail">
 							{this.props.classicRepertoireList && this.props.classicRepertoireList.length > 0 ?

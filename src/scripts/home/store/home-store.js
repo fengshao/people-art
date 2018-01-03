@@ -344,42 +344,45 @@ HomeStore.prototype.changePreview = function (obj) {
 };
 
 HomeStore.prototype.changePreviewFnc = function (id, dataList) {
-	var dataListLength = dataList.length;
-	if (this.isSelectPerformeInfoNavId == 4) {
-		for (let i = 0; i < dataListLength; i++) {
-			if (dataList[i].article_id == id) {
-				if (i == 0) {
-					// this.previewContent = dataList[dataListLength - 1].content;
-					this.previewContent = "";
-					this.nextContent = dataList[i + 1] && dataList[i + 1].content;
-				} else if (i == (dataListLength - 1)) {
-					this.previewContent = dataList[i - 1].content;
-					this.nextContent = "";
-					// this.nextContent = dataList[0].content;
-				} else {
-					this.previewContent = dataList[i - 1].content;
-					this.nextContent = dataList[i + 1].content;
+	if (dataList && dataList.length) {
+		var dataListLength = dataList.length;
+		if (this.isSelectPerformeInfoNavId == 4) {
+			for (let i = 0; i < dataListLength; i++) {
+				if (dataList[i].article_id == id) {
+					if (i == 0) {
+						// this.previewContent = dataList[dataListLength - 1].content;
+						this.previewContent = "";
+						this.nextContent = dataList[i + 1] && dataList[i + 1].content;
+					} else if (i == (dataListLength - 1)) {
+						this.previewContent = dataList[i - 1].content;
+						this.nextContent = "";
+						// this.nextContent = dataList[0].content;
+					} else {
+						this.previewContent = dataList[i - 1].content;
+						this.nextContent = dataList[i + 1].content;
+					}
 				}
 			}
-		}
-	} else {
-		for (let i = 0; i < dataListLength; i++) {
-			if (dataList[i].Id == id) {
-				if (i == 0) {
-					// this.previewContent = dataList[dataListLength - 1].preview;
-					this.previewContent = "";
-					this.nextContent = dataList[i + 1] && dataList[i + 1].Preview;
-				} else if (i == (dataListLength - 1)) {
-					this.previewContent = dataList[i - 1].Preview;
-					this.nextContent = "";
-					// this.nextContent = dataList[0].preview;
-				} else {
-					this.previewContent = dataList[i - 1].Preview;
-					this.nextContent = dataList[i + 1].Preview;
+		} else {
+			for (let i = 0; i < dataListLength; i++) {
+				if (dataList[i].Id == id) {
+					if (i == 0) {
+						// this.previewContent = dataList[dataListLength - 1].preview;
+						this.previewContent = "";
+						this.nextContent = dataList[i + 1] && dataList[i + 1].Preview;
+					} else if (i == (dataListLength - 1)) {
+						this.previewContent = dataList[i - 1].Preview;
+						this.nextContent = "";
+						// this.nextContent = dataList[0].preview;
+					} else {
+						this.previewContent = dataList[i - 1].Preview;
+						this.nextContent = dataList[i + 1].Preview;
+					}
 				}
 			}
 		}
 	}
+
 };
 
 HomeStore.prototype.showMaskLayer = function (obj) {
