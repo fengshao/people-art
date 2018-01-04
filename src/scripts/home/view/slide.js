@@ -22,6 +22,8 @@ var SlideCompent = React.createClass({
 			case "1":
 				if (_this.props.performer.modernList && _this.props.performer.modernList.length > 0) {
 					swiper = new Swiper('.bottom-content .modern-contnet .swiper-container', {
+						freeMode : true,
+						freeModeSticky : true,
 						effect: 'coverflow',
 						grabCursor: true,
 						centeredSlides: true,
@@ -41,6 +43,19 @@ var SlideCompent = React.createClass({
 			case "2":
 				if (_this.props.performer.heInstituteList && _this.props.performer.heInstituteList.length > 0) {
 					swiper = new Swiper('.bottom-content .he-institute-contnet .swiper-container', {
+						freeMode : true,
+						freeModeSticky : true,
+						effect: 'coverflow',
+						grabCursor: true,
+						centeredSlides: true,
+						slidesPerView: 'auto',
+						coverflow: {
+							rotate: 50,
+							stretch: 0,
+							depth: 100,
+							modifier: 1,
+							slideShadows: true
+						},
 						// 如果需要前进后退按钮
 						nextButton: '.bottom-content .he-institute-contnet .swiper-button-next',
 						prevButton: '.bottom-content .he-institute-contnet .swiper-button-prev'
@@ -135,9 +150,7 @@ var SlideCompent = React.createClass({
 										return (
 											<div key={i} className="swiper-slide he-institute-slide-content"
 												 onClick={_this.events.showMaskLayer.bind(_this,heInstitute.Id, heInstitute.Ablum)}>
-												<div className="he-institute-name">
-													<p>{heInstitute.Name}</p>
-												</div>
+												<div className="he-institute-name">{heInstitute.Name}</div>
 												<div className="he-institute-img">
 													<img src={heInstitute.Preview}/>
 													{

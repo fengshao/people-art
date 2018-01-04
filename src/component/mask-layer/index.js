@@ -77,7 +77,10 @@ var MaskLayer = React.createClass({
 			bottomSwiper = new Swiper('.bottom-slide-contnet .swiper-container', {
 				effect: 'coverflow',
 				grabCursor: true,
+				slideToClickedSlide: true,
 				centeredSlides: true,
+				freeMode: true,
+				freeModeSticky: true,
 				slidesPerView: 'auto',
 				initialSlide: this.props.clickedIndex,
 				coverflow: {
@@ -97,11 +100,11 @@ var MaskLayer = React.createClass({
 			});
 		}
 
-		topSwiper.params.control = bottomSwiper;//需要在bottomSwiper初始化后，topSwiper控制bottomSwiper
-		bottomSwiper.params.control = topSwiper;//需要在topSwiper初始化后，bottomSwiper控制topSwiper
-		controlSwiper3 = new Swiper('#swiper-container3', {
-			control: [topSwiper, bottomSwiper]//控制前面两个Swiper
-		})
+		// topSwiper.params.control = bottomSwiper;//需要在bottomSwiper初始化后，topSwiper控制bottomSwiper
+		// bottomSwiper.params.control = topSwiper;//需要在topSwiper初始化后，bottomSwiper控制topSwiper
+		// controlSwiper3 = new Swiper('#swiper-container3', {
+		// 	control: [topSwiper, bottomSwiper]//控制前面两个Swiper
+		// })
 
 	},
 
@@ -133,6 +136,11 @@ var MaskLayer = React.createClass({
 
 		right: function (type) {
 			this.props.maskLayerRight(type);
+		},
+
+		clickBottomSwipe: function (type) {
+			debugger
+			topSwiper.slideTo(bottomSwiper.activeIndex, 1000, false);
 		},
 
 		selectArticle: function (id) {
@@ -400,7 +408,8 @@ var MaskLayer = React.createClass({
 											//		break;
 											//}
 											return (
-												<div key={i} className="swiper-slide preview-slide-content">
+												<div key={i} className="swiper-slide preview-slide-content"
+													 onClick={_this.events.clickBottomSwipe.bind(_this)}>
 													<div className="modern-img">
 														<img src={modern.Preview}/>
 													</div>

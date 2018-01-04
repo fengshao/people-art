@@ -223,7 +223,7 @@
 		background-size: 100% !important;
 		margin-left: 3px;
 
-		&.isShow{
+		&.isShow {
 		  display: inline-block;
 		}
 
@@ -264,8 +264,8 @@
 		color: #000000;
 	  }
 
-	  //话剧作品轮播样式
-	  .modern-contnet {
+	  //话剧作品 他院作品 轮播样式
+	  .modern-contnet, .he-institute-contnet {
 		position: relative;
 		height: 333px;;
 		.left-arrow {
@@ -282,11 +282,11 @@
 		  margin: 0 auto;
 		  height: 333px;;
 
-		  .modern-slide-content {
+		  .he-institute-slide-content, .modern-slide-content {
 			width: 274px;
 			height: 258px;
 
-			.modern-name {
+			.he-institute-name, .modern-name {
 			  font-size: 33px;
 			  color: #ffffff;
 			  height: 40px;
@@ -295,7 +295,7 @@
 			  //visibility: hidden;
 
 			}
-			.modern-img {
+			.he-institute-img, .modern-img {
 			  width: 274px;
 			  height: 205px;
 			  overflow: hidden;
@@ -307,8 +307,8 @@
 
 	  }
 
-	  //影视作品 他院作品样式
-	  .he-institute-contnet, .movies-contnet {
+	  //影视作品 样式
+	  .movies-contnet {
 		position: relative;
 
 		.left-arrow {
@@ -325,12 +325,12 @@
 		  width: 100%;
 		  margin: 0 auto;
 		  height: 270px;
-		  .he-institute-slide-content, .movies-slide-content {
+		  .movies-slide-content {
 			width: 100%;
 			height: 100%;
 			overflow: hidden;
 
-			.he-institute-name, .movies-name {
+			.movies-name {
 			  font-size: 23px;
 			  color: #ffffff;
 			  height: 100%;
@@ -348,7 +348,7 @@
 
 			}
 
-			.he-institute-img, .movies-img {
+			.movies-img {
 			  background: transparent url("~images/performer-info/works-bg.png") no-repeat;
 			  background-size: contain;
 			  float: left;

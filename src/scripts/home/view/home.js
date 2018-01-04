@@ -55,20 +55,19 @@ var HomePage = React.createClass({
 					<div className="performer-time-content">{this.props.homePageData.Time}</div>
 				</div>
 				<div className="bottom-content" onClick={this.props.showClassicRepertoirePage.bind(this)}>
-					<div className="bottom-right">
-						<div className="right-thumbnail">
-							{this.props.classicRepertoireList && this.props.classicRepertoireList.length > 0 ?
-								<video id='loop-video-media' ref='media' className="video" controls="controls"
-									   type='video/mp4'
-									   preload="preload"
-									   webkit-playsinline="true"
-									   src={this.props.classicRepertoireList[0].Video ? this.props.classicRepertoireList[0].Video : ""}
-									   poster={this.props.classicRepertoireList[0].Preview ? this.props.classicRepertoireList[0].Preview : ""}
-								>
-								</video> : null
-							}
-						</div>
-					</div>
+
+				</div>
+				<div className="right-thumbnail">
+					{this.props.classicRepertoireList && this.props.classicRepertoireList.length > 0 ?
+						<video id='loop-video-media' ref='media' className="video" controls="controls"
+							   type='video/mp4'
+							   preload="preload"
+							   webkit-playsinline="true"
+							   src={this.props.classicRepertoireList[0].Video ? this.props.classicRepertoireList[0].Video : ""}
+							   poster={this.props.classicRepertoireList[0].Preview ? this.props.classicRepertoireList[0].Preview : ""}
+						>
+						</video> : null
+					}
 				</div>
 			</div>
 		);
