@@ -684,12 +684,10 @@
     };
 
     if (typeof define !== 'undefined' && define.amd) {
-        console.log("aAAAAAAAAAAA")
         define(['jquery', 'underscore'], function ($, _) {
             return definePinchZoom($, _);
         });
     } else {
-        console.log("sssss")
         window.RTP = window.RTP || {};
         window.RTP.PinchZoom = definePinchZoom(jQuery, _);
     }

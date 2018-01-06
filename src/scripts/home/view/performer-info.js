@@ -185,8 +185,17 @@ var PerformerInfo = React.createClass({
 					/>
 				</div>
 				<div className="foter-content">
-					<div className="back-off trans" onClick={this.props.backOff.bind(this,"performerList")}></div>
-					<div className="back-off trans arrow-1" onClick={this.props.backOff.bind(this,"performerList")}></div>
+					{
+						this.props.isShowMaskLayer ? "" :
+							(
+								<span>
+									<div className="back-off trans"
+										 onClick={this.props.backOff.bind(this,"performerList")}></div>
+									<div className="back-off trans arrow-1"
+										 onClick={this.props.backOff.bind(this,"performerList")}></div>
+								</span>
+							)
+					}
 				</div>
 			</div>
 		);
