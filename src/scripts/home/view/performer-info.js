@@ -99,7 +99,9 @@ var PerformerInfo = React.createClass({
 					 onTouchStart={this.props.touchStart.bind(_this)}
 					 onTouchMove={this.props.touchMove.bind(_this)}
 					 onTouchEnd={this.props.touchEnd.bind(_this)}
-				></div>
+				>
+					<div className="arrow"></div>
+				</div>
 				<div className={performerSlyCls} style={{"height":this.props.touchHeight}}>
 					<div className="top-info">
 						<div className="left-content">
@@ -182,7 +184,8 @@ var PerformerInfo = React.createClass({
 					/>
 				</div>
 				<div className="foter-content">
-					<div className="back-off" onClick={this.props.backOff.bind(this,"performerList")}></div>
+					<div className="back-off trans" onClick={this.props.backOff.bind(this,"performerList")}></div>
+					<div className="back-off trans arrow-1" onClick={this.props.backOff.bind(this,"performerList")}></div>
 				</div>
 			</div>
 		);

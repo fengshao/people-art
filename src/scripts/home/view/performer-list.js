@@ -184,7 +184,8 @@ var PerformerListPage = React.createClass({
 						}
 					</div>
 				</div>
-				<div className="back-off" onClick={this.props.backOff.bind(this,"homePage")}></div>
+				<div className="back-off trans" onClick={this.props.backOff.bind(this,"homePage")}></div>
+				<div className="back-off trans arrow-1" onClick={this.props.backOff.bind(this,"homePage")}></div>
 			</div>
 		);
 	}

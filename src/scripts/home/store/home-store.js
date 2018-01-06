@@ -363,6 +363,23 @@ HomeStore.prototype.changePreviewFnc = function (id, dataList) {
 					}
 				}
 			}
+		} else if (this.isSelectPerformeInfoNavId == 1 || this.isSelectPerformeInfoNavId == 2) {
+			for (let i = 0; i < dataListLength; i++) {
+				if (dataList[i].Id == id) {
+					if (i == 0) {
+						// this.previewContent = dataList[dataListLength - 1].preview;
+						this.previewContent = "";
+						this.nextContent = dataList[i + 1] && dataList[i + 1].PicPath;
+					} else if (i == (dataListLength - 1)) {
+						this.previewContent = dataList[i - 1].PicPath;
+						this.nextContent = "";
+						// this.nextContent = dataList[0].preview;
+					} else {
+						this.previewContent = dataList[i - 1].PicPath;
+						this.nextContent = dataList[i + 1].PicPath;
+					}
+				}
+			}
 		} else {
 			for (let i = 0; i < dataListLength; i++) {
 				if (dataList[i].Id == id) {
@@ -452,11 +469,10 @@ HomeStore.prototype.touchStart = function (event) {
 HomeStore.prototype.touchMove = function (event) {
 	var touch = event.targetTouches[0];
 	this._end = (this._start - touch.pageY);
-
 	//上移 为正  下移为负
 	if (this.isPerformerInfoDropDown) {
 		//	打开状态 上移 高度变低
-		if (this._end > 878) {
+		if (this._end > 380) {
 			return
 		}
 		if (this.touchHeight >= this.endTouchHeight && this._end < 0) {
@@ -466,7 +482,7 @@ HomeStore.prototype.touchMove = function (event) {
 		this.touchHeight = this.endTouchHeight - this._end;
 		this.touchTop = this.endTouchTop - this._end;
 	} else {
-		if (-this._end > 878) {
+		if (-this._end > 380) {
 			return
 		}
 
@@ -478,7 +494,6 @@ HomeStore.prototype.touchMove = function (event) {
 		this.touchHeight = this.initTouchHeight - this._end;
 		this.touchTop = this.initTouchTop - this._end;
 	}
-
 };
 
 HomeStore.prototype.touchEnd = function (type) {

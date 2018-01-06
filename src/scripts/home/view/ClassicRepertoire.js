@@ -111,7 +111,8 @@ var ClassicRepertoire = React.createClass({
 						<div className="handle"></div>
 					</div>
 				</div>
-				<div className="back-off" onClick={this.props.backOff.bind(this,"homePage")}></div>
+				<div className="back-off trans" onClick={this.props.backOff.bind(this,"homePage")}></div>
+				<div className="back-off trans arrow-1" onClick={this.props.backOff.bind(this,"homePage")}></div>
 			</div>
 		);
 	}

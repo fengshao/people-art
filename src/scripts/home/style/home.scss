@@ -55,6 +55,191 @@ body {
 	background-size: contain;
   }
 
+  .back-off.trans{
+	-webkit-animation:xguide_down 4.0s infinite ease-in-out;
+	-moz-animation:xguide_down 4.0s infinite ease-in-out;
+	-o-animation:xguide_down 4.0s infinite ease-in-out;
+	animation:xguide_down 4.0s infinite ease-in-out
+  }
+  .back-off.arrow-1{
+	animation-delay:-2.0s;
+	-webkit-animation-delay:-2.0s;
+	-moz-animation-delay:-2.0s;
+	-o-animation-delay:-2.0s
+  }
+
+
+  @keyframes  myMove{
+	0%{
+	  transform:scale(1,1);
+	  -moz-transform:scale(1,1);
+	  -webkit-transform:scale(1,1);
+	  -o-transform:scale(1,1);
+	  -ms-transform:scale(1,1);
+	}
+	50%{
+	  transform:scale(1.2,1.2);
+	  -moz-transform:scale(1.2,1.2);
+	  -webkit-transform:scale(1.2,1.2);
+	  -o-transform:scale(1.2,1.2);
+	  -ms-transform:scale(1.2,1.2);
+	}
+	100%{
+	  transform:scale(1,1);
+	  -moz-transform:scale(1,1);
+	  -webkit-transform:scale(1,1);
+	  -o-transform:scale(1,1);
+	  -ms-transform:scale(1,1);
+	}
+  }
+  @-webkit-keyframes  myMove{
+	0%{
+	  transform:scale(1,1);
+	  -moz-transform:scale(1,1);
+	  -webkit-transform:scale(1,1);
+	  -o-transform:scale(1,1);
+	  -ms-transform:scale(1,1);
+	}
+	50%{
+	  transform:scale(1.2,1.2);
+	  -moz-transform:scale(1.2,1.2);
+	  -webkit-transform:scale(1.2,1.2);
+	  -o-transform:scale(1.2,1.2);
+	  -ms-transform:scale(1.2,1.2);
+	}
+	100%{
+	  transform:scale(1,1);
+	  -moz-transform:scale(1,1);
+	  -webkit-transform:scale(1,1);
+	  -o-transform:scale(1,1);
+	  -ms-transform:scale(1,1);
+	}
+  }
+  @-moz-keyframes  myMove{
+	0%{
+	  transform:scale(1,1);
+	  -moz-transform:scale(1,1);
+	  -webkit-transform:scale(1,1);
+	  -o-transform:scale(1,1);
+	  -ms-transform:scale(1,1);
+	}
+	50%{
+	  transform:scale(1.2,1.2);
+	  -moz-transform:scale(1.2,1.2);
+	  -webkit-transform:scale(1.2,1.2);
+	  -o-transform:scale(1.2,1.2);
+	  -ms-transform:scale(1.2,1.2);
+	}
+	100%{
+	  transform:scale(1,1);
+	  -moz-transform:scale(1,1);
+	  -webkit-transform:scale(1,1);
+	  -o-transform:scale(1,1);
+	  -ms-transform:scale(1,1);
+	}
+  }
+  @-o-keyframes  myMove{
+	0%{
+	  transform:scale(1,1);
+	  -moz-transform:scale(1,1);
+	  -webkit-transform:scale(1,1);
+	  -o-transform:scale(1,1);
+	  -ms-transform:scale(1,1);
+	}
+	50%{
+	  transform:scale(1.2,1.2);
+	  -moz-transform:scale(1.2,1.2);
+	  -webkit-transform:scale(1.2,1.2);
+	  -o-transform:scale(1.2,1.2);
+	  -ms-transform:scale(1.2,1.2);
+	}
+	100%{
+	  transform:scale(1,1);
+	  -moz-transform:scale(1,1);
+	  -webkit-transform:scale(1,1);
+	  -o-transform:scale(1,1);
+	  -ms-transform:scale(1,1);
+	}
+  }
+
+  @keyframes xguide_down{
+	0%,100%{
+	  transform:scale(0.0);
+	  -moz-transform:scale(0.0);
+	  -o-transform:scale(0.0);
+	  -webkit-transform:scale(0.0);
+	  -ms-transform:scale(0.0);
+	  opacity:0
+	}
+	50%{
+	  transform:scale(1.0);
+	  -moz-transform:scale(1.0);
+	  -o-transform:scale(1.0);
+	  -webkit-transform:scale(1.0);
+	  -ms-transform:scale(1.0);
+	  opacity:1
+	}
+
+  }
+  @-webkit-keyframes xguide_down{
+	0%,100%{
+	  -webkit-transform:scale(0.0);
+	  -moz-transform:scale(0.0);
+	  -o-transform:scale(0.0);
+	  -ms-transform:scale(0.0);
+	  transform:scale(0.0);
+	  opacity:0
+	}
+	50%{
+	  -webkit-transform:scale(1.0);
+	  -moz-transform:scale(1.0);
+	  -o-transform:scale(1.0);
+	  -ms-transform:scale(1.0);
+	  transform:scale(1.0);
+	  opacity:1
+	}
+
+  }
+  @-moz-keyframes xguide_down{
+	0%,100%{
+	  -moz-transform:scale(0.0);
+	  -o-transform:scale(0.0);
+	  -webkit-transform:scale(0.0);
+	  -ms-transform:scale(0.0);
+	  transform:scale(0.0);
+	  opacity:0
+	}
+	50%{
+	  -moz-transform:scale(1.0);
+	  -o-transform:scale(1.0);
+	  -webkit-transform:scale(1.0);
+	  -ms-transform:scale(1.0);
+	  transform:scale(1.0);
+	  opacity:1
+	}
+
+  }
+  @-o-keyframes xguide_down{
+	0%,100%{
+	  -o-transform:scale(0.0);
+	  -moz-transform:scale(0.0);
+	  -webkit-transform:scale(0.0);
+	  -ms-transform:scale(0.0);
+	  transform:scale(0.0);
+	  opacity:0
+	}
+	50%{
+	  -o-transform:scale(1.0);
+	  -moz-transform:scale(1.0);
+	  -webkit-transform:scale(1.0);
+	  -ms-transform:scale(1.0);
+	  transform:scale(1.0);
+	  opacity:1
+	}
+
+  }
+
+
 }
 
 .home-content {
@@ -67,33 +252,34 @@ body {
   /*-----------顶部点击区域样式 start 既时间展示区域------------*/
   .click-div {
 	text-align: center;
-	width: 100%;
+	/* width: 100%; */
 	position: absolute;
-	height: 686px;
+	height: 646px;
 	z-index: 10;
-	top: 0;
-
+	top: 40px;
+	left: 23px;
+	right: 23px;
 	//时间样式
 	.performer-time-content {
-	  font-size: 56px;
+	  font-size: 60px;
 	  position: absolute;
 	  color: #efe3b4;
 	  width: 100%;
 	  text-align: center;
-	  bottom: 4px;
-	  padding-left: 9px;
+	  bottom: 5px;
+	  padding-left: 14px;
 	}
   }
   /*-----------顶部点击区域样式 end 既时间展示区域------------*/
 
   /*-----------样式-------------*/
   .bottom-content {
-	width: 100%;
-	height: 516px;
+	height: 479px;
 	position: absolute;
-	bottom: 0;
-	left: 0;
+	bottom: 37px;
 	z-index: 99;
+	left: 23px;
+	right: 23px;
 
 	//底部右侧viede/img展示样式
 

@@ -333,45 +333,45 @@ var MaskLayer = React.createClass({
 								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
-											//let id = "", video = "", preview = "";
-											//switch (_this.props.isSelectPerformeInfoNavId) {
-											//	case "1":
-											//		id = modern.id;
-											//		video = modern.modernList;
-											//		preview = modern.modernList;
-											//		break;
-											//	case "2":
-											//		id = modern.id;
-											//		video = modern.modernList;
-											//		preview = modern.modernList;
-											//		break;
-											//	case "3":
-											//		id = modern.m_a_id;
-											//		video = modern.m_path;
-											//		preview = modern.preview;
-											//		break;
-											//}
+											let id = "", video = "", preview = "";
+											switch (_this.props.isSelectPerformeInfoNavId) {
+												case "1":
+													id = modern.id;
+													video = modern.PicPath;
+													preview = modern.PicPath;
+													break;
+												case "2":
+													id = modern.id;
+													video = modern.PicPath;
+													preview = modern.PicPath;
+													break;
+												case "3":
+													id = modern.Id;
+													video = modern.Video;
+													preview = modern.Preview;
+													break;
+											}
 											return (
 												<div key={i} className="swiper-slide video-slide-content"
-													 data-id={modern.Id}>
-													{videoRegular.test(modern.Video) ?
-														<div className="video-img" id={"maskLayer" + modern.Id}>
+													 data-id={id}>
+													{videoRegular.test(video) ?
+														<div className="video-img" id={"maskLayer" + id}>
 															<div className={maskLayerSuspendCls}
-																 onClick={_this.props.maskLayerControl.bind(_this,"maskLayer" + modern.Id)}></div>
+																 onClick={_this.props.maskLayerControl.bind(_this,"maskLayer" + id)}></div>
 															<video ref='media' className="media-video"
 																   type='video/mp4'
 																   loop="loop"
 																   preload="preload"
 																   webkit-playsinline="true"
-																   src={modern.Video ? modern.Video : ""}
-																   poster={modern.Preview ? modern.Preview : ""}
+																   src={video ? video : ""}
+																   poster={preview ? preview : ""}
 															>
 															</video>
 														</div>
 														:
 														<div>
 															<div className="video-img">
-																<img src={modern.Preview}/>
+																<img src={preview}/>
 															</div>
 														</div>
 													}
@@ -389,31 +389,31 @@ var MaskLayer = React.createClass({
 								<div className="swiper-wrapper">
 									{
 										dataList.map(function (modern, i) {
-											//let id = "", name = "", preview = "";
-											//switch (_this.props.isSelectPerformeInfoNavId) {
-											//	case "1":
-											//		id = modern.id;
-											//		name = modern.name;
-											//		preview = modern.modernList;
-											//		break;
-											//	case "2":
-											//		id = modern.id;
-											//		name = modern.name;
-											//		preview = modern.modernList;
-											//		break;
-											//	case "3":
-											//		id = modern.m_a_id;
-											//		name = modern.m_name;
-											//		preview = modern.preview;
-											//		break;
-											//}
+											let id = "", name = "", preview = "";
+											switch (_this.props.isSelectPerformeInfoNavId) {
+												case "1":
+													// id = modern.id;
+													name = modern.name;
+													preview = modern.PicPath;
+													break;
+												case "2":
+													// id = modern.id;
+													name = modern.name;
+													preview = modern.PicPath;
+													break;
+												case "3":
+													// id = modern.m_a_id;
+													name = modern.Name;
+													preview = modern.Preview;
+													break;
+											}
 											return (
 												<div key={i} className="swiper-slide preview-slide-content"
 													 onClick={_this.events.clickBottomSwipe.bind(_this)}>
 													<div className="modern-img">
-														<img src={modern.Preview}/>
+														<img src={preview}/>
 													</div>
-													<div className="modern-name">{modern.Name}</div>
+													<div className="modern-name">{name}</div>
 												</div>
 											)
 										})
