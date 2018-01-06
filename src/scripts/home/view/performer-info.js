@@ -91,6 +91,7 @@ var PerformerInfo = React.createClass({
 							previewContent={this.props.previewContent}
 							changePreview={this.props.changePreview}
 							onThumbnailsClick={this.props.onThumbnailsClick}
+							ablum={this.props.ablum}
 						/> : null
 				}
 

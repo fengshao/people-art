@@ -258,6 +258,7 @@ var Home = React.createClass({
 							previewContent={this.state.previewContent}
 							isPerformerInfoLoadingImg={this.state.isPerformerInfoLoadingImg}
 							performerID={this.state.performerID}
+							ablum={this.state.ablum}
 						/> : null
 				}
 			</div>

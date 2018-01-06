@@ -129,7 +129,29 @@ var performerInfo = {
 			"Id": "e8ccd548da074ac79e3123344148fae8",
 			"Name": "\u559c\u4e8b",
 			"Preview": "\/uploads\/123.png",
-			"Video": "\/uploads\/demo.mp4"
+			"Video": "\/uploads\/demo.mp4",
+			"Ablum":[
+				{
+					"id": "e8ccd548da074ac79e3123344148fae8",
+					"name": "测试1",
+					"PicPath": "//storage.wesai.com/8/865/496f5/8865b496f5e1aa5cdc4ccd77470e8de9.png"
+				},
+				{
+					"id": "ssdassa",
+					"name": "测试2",
+					"PicPath": "//storage.wesai.com/8/865/496f5/8865b496f5e1aa5cdc4ccd77470e8de9.png"
+				},
+				{
+					"id": "fgjhfghdfh",
+					"name": "测试4",
+					"PicPath": "//storage.wesai.com/8/865/496f5/8865b496f5e1aa5cdc4ccd77470e8de9.png"
+				},
+				{
+					"id": "sdfsdzx65456",
+					"name": "测试4",
+					"PicPath": "//storage.wesai.com/8/865/496f5/8865b496f5e1aa5cdc4ccd77470e8de9.png"
+				}
+			]
 		}, {
 			"Id": "555f1bc207d1475c8fd1c40e2bc160a6",
 			"Name": "qedasedqweqweqw",

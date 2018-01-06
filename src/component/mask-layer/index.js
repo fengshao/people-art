@@ -2,6 +2,7 @@
  * Created by fengs on 2017/9/16.
  */
 require('./index.scss');
+var PinchZoom = require("../../lib/pinchzoom.js");
 var articleImg = require("../../images/performer-info/article-img.png");
 import classNames from 'classnames';
 var frame1 = "";
@@ -105,7 +106,13 @@ var MaskLayer = React.createClass({
 		// controlSwiper3 = new Swiper('#swiper-container3', {
 		// 	control: [topSwiper, bottomSwiper]//控制前面两个Swiper
 		// })
-
+		if (this.props.isSelectPerformeInfoNavId == 1 || this.props.isSelectPerformeInfoNavId == 2) {
+			$(".top-slide-contnet .video-slide-content .video-img").each(function () {
+				// new RTP.PinchZoom($(this), {});
+				new PinchZoom($(this), {})
+			});
+		}
+		
 	},
 
 	slideArticle: function () {
@@ -165,11 +172,11 @@ var MaskLayer = React.createClass({
 		switch (this.props.isSelectPerformeInfoNavId) {
 			case "1":
 				title = "话剧作品";
-				dataList = _this.props.performer.modernList;
+				dataList = _this.props.ablum || [];
 				break;
 			case "2":
 				title = "他院作品";
-				dataList = _this.props.performer.heInstituteList;
+				dataList = _this.props.ablum || [];
 				break;
 			case "3":
 				title = "影视作品";
@@ -425,7 +432,8 @@ var MaskLayer = React.createClass({
 				}
 
 				<div className={maskLayerTopLogoCls}></div>
-				<div className="back-off" onClick={this.props.hideMaskLayer.bind(this)}></div>
+				<div className="back-off trans" onClick={this.props.hideMaskLayer.bind(this)}></div>
+				<div className="back-off trans arrow-1" onClick={this.props.hideMaskLayer.bind(this)}></div>
 			</div>
 		);
 	}

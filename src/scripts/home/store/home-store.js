@@ -13,6 +13,7 @@ function HomeStore() {
 	this.isPerformerInfoDropDownShowBg = false;
 	this.isShowSuspend = true;
 	this.isMaskLayerPlay = false;
+	this.ablum = [];
 	// this.letterArr = [{"id": "1", "letter": "A"},
 	// 	{"id": "2", "letter": "B"},
 	// 	{"id": "3", "letter": "C"},
@@ -407,6 +408,7 @@ HomeStore.prototype.showMaskLayer = function (obj) {
 	this.clickedIndex = obj.clickedIndex;
 	var id = obj.id;
 	var dataList = obj.dataList;
+	this.ablum = obj.dataList;
 	this.changePreviewFnc(id, dataList);
 };
 
